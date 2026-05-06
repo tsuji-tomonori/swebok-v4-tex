@@ -11,6 +11,7 @@ from __future__ import annotations
 from dataclasses import dataclass
 from pathlib import Path
 import re
+import shutil
 from typing import Iterable
 
 from build_swebok_structure import CHAPTERS, OUT_DIR, ROOT, dir_name
@@ -19,6 +20,7 @@ from build_swebok_structure import CHAPTERS, OUT_DIR, ROOT, dir_name
 SOURCE_DIR = ROOT / "tex" / "chapters" / "ch02"
 TARGET_CHAPTER = 2
 SOURCE_FILENAME = "source.tex"
+FIGURE_PATH_RE = re.compile(r"assets/generated_figures/ch\d{2}/fig-ch\d{2}-\d{2}\.png")
 
 
 @dataclass(frozen=True)
@@ -122,7 +124,29 @@ def build_path_map() -> dict[str, Path]:
 
 def write_source(path: Path, content: str) -> None:
     path.mkdir(parents=True, exist_ok=True)
+    content = localize_assets(path, content)
     path.joinpath(SOURCE_FILENAME).write_text(content, encoding="utf-8")
+
+
+def localize_assets(path: Path, content: str) -> str:
+    asset_refs = sorted(set(FIGURE_PATH_RE.findall(content)))
+    if not asset_refs:
+        return content
+
+    assets_dir = path / "assets"
+    assets_dir.mkdir(parents=True, exist_ok=True)
+    replacements: dict[str, str] = {}
+    for asset_ref in asset_refs:
+        source = ROOT / "tex" / asset_ref
+        if not source.exists():
+            raise FileNotFoundError(f"missing figure asset: {source}")
+        target = assets_dir / source.name
+        shutil.copy2(source, target)
+        replacements[asset_ref] = target.relative_to(ROOT / "tex").as_posix()
+
+    for old, new in replacements.items():
+        content = content.replace(old, new)
+    return content
 
 
 def main() -> None:
