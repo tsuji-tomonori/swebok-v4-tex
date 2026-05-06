@@ -6,3 +6,7 @@
 ## 本文
 
 - [content.tex](./content.tex)
+
+## Assets
+
+- [assets/fig-ch03-09.png](./assets/fig-ch03-09.png)
