@@ -3,6 +3,10 @@
 - 日本語: 新興技術のテストと新興技術によるテスト
 - English: Testing of and Testing Through Emerging Technologies
 
+## 本文
+
+- [content.tex](./content.tex)
+
 ## 下位構成
 
 - [5.7.1 新興技術をテストする (Testing of Emerging Technologies)](./5.7.1.新興技術をテストする(Testing_of_Emerging_Technologies)/)

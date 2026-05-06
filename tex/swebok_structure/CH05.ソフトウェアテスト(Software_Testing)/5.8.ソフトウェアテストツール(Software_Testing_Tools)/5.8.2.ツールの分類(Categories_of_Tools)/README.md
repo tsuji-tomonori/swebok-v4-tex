@@ -2,3 +2,7 @@
 
 - 日本語: ツールの分類
 - English: Categories of Tools
+## 本文
+
+- [content.tex](./content.tex)
+

@@ -3,6 +3,10 @@
 - 日本語: テストプロセス
 - English: Test Process
 
+## 本文
+
+- [content.tex](./content.tex)
+
 ## 下位構成
 
 - [5.5.1 実務上の考慮 (Practical Considerations)](./5.5.1.実務上の考慮(Practical_Considerations)/)

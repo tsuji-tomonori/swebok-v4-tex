@@ -16,3 +16,8 @@
 - [5.8 ソフトウェアテストツール (Software Testing Tools)](./5.8.ソフトウェアテストツール(Software_Testing_Tools)/)
 - [5.9 トピックと参考文献の対応 (Matrix of Topics vs Reference Material)](./5.9.トピックと参考文献の対応(Matrix_of_Topics_vs_Reference_Material)/)
 - [5.10 参考文献 (References)](./5.10.参考文献(References)/)
+
+## 補助資料
+
+- [章末確認問題.tex](./章末確認問題.tex)
+

@@ -3,6 +3,10 @@
 - 日本語: ソフトウェアテストツール
 - English: Software Testing Tools
 
+## 本文
+
+- [content.tex](./content.tex)
+
 ## 下位構成
 
 - [5.8.1 テストツール支援と選択 (Testing Tool Support and Selection)](./5.8.1.テストツール支援と選択(Testing_Tool_Support_and_Selection)/)
