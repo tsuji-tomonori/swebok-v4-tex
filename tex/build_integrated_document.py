@@ -18,7 +18,13 @@ OUT_DIR = ROOT / "tex"
 OUT_TEX = OUT_DIR / "swebok_v4_ch01_06_ja_integrated.tex"
 MASTER_TEX = OUT_DIR / "swebok_v4_ch01_06_ja_master.tex"
 PARTS_DIR = OUT_DIR / "chapters"
-CH01_STRUCTURE_CHAPTER = OUT_DIR / "swebok_structure" / "CH01.ソフトウェア要求(Software_Requirements)" / "chapter.tex"
+CH01_STRUCTURE_CHAPTER = (
+    OUT_DIR
+    / "swebok_structure"
+    / "CH01.ソフトウェア要求(Software_Requirements)"
+    / "1.0.導入(Introduction)"
+    / "chapter.tex"
+)
 MANIFEST = OUT_DIR / "swebok_v4_ch01_06_ja_figures_manifest.tsv"
 IMAGE_DIR = OUT_DIR / "assets" / "generated_figures"
 PROMPT_DIR = OUT_DIR / "imagegen_prompts"

@@ -129,13 +129,17 @@ def main() -> None:
     paths = build_path_map()
 
     root_body = "\n\n".join(read_source(name).strip() for name in CHAPTER_ROOT_FILES) + "\n"
-    write_source(paths["CH02"], root_body)
+    stale_root_source = paths["CH02"] / SOURCE_FILENAME
+    if stale_root_source.exists():
+        stale_root_source.unlink()
 
-    written = {"CH02"}
+    written: set[str] = set()
     for section_num, filename in SECTION_FILES.items():
         text = read_source(filename)
         segments = split_segments(text)
         parent_parts: list[str] = []
+        if section_num == "2.0":
+            parent_parts.append(root_body.strip())
 
         for segment in segments:
             target_num = TITLE_TO_NUMBER.get(segment.title)
@@ -151,7 +155,7 @@ def main() -> None:
         write_source(paths[section_num], "\n\n".join(parent_parts).strip() + "\n")
         written.add(section_num)
 
-    missing = sorted(set(paths) - written)
+    missing = sorted(set(paths) - written - {"CH02"})
     if missing:
         raise SystemExit(f"missing source for: {', '.join(missing)}")
 
