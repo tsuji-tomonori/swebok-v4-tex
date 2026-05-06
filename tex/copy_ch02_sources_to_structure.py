@@ -130,10 +130,12 @@ def write_source(path: Path, content: str) -> None:
 
 def localize_assets(path: Path, content: str) -> str:
     asset_refs = sorted(set(FIGURE_PATH_RE.findall(content)))
+    assets_dir = path / "assets"
+    if assets_dir.exists():
+        shutil.rmtree(assets_dir)
     if not asset_refs:
         return content
 
-    assets_dir = path / "assets"
     assets_dir.mkdir(parents=True, exist_ok=True)
     replacements: dict[str, str] = {}
     for asset_ref in asset_refs:

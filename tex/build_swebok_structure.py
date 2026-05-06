@@ -265,10 +265,12 @@ def generated_tex(source: Path, body: str) -> str:
 
 def localize_assets(path: Path, body: str) -> str:
     asset_refs = sorted(set(FIGURE_PATH_RE.findall(body)))
+    assets_dir = path / "assets"
+    if assets_dir.exists():
+        shutil.rmtree(assets_dir)
     if not asset_refs:
         return body
 
-    assets_dir = path / "assets"
     assets_dir.mkdir(parents=True, exist_ok=True)
     replacements: dict[str, str] = {}
     for asset_ref in asset_refs:
