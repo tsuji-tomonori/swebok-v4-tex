@@ -13,3 +13,7 @@
 - [3.3.6 統合と相互運用性 (Integration and Interoperability)](./3.3.6.統合と相互運用性(Integration_and_Interoperability)/)
 - [3.3.7 保証・セキュリティ・安全性 (Assurance Security and Safety)](./3.3.7.保証・セキュリティ・安全性(Assurance_Security_and_Safety)/)
 - [3.3.8 変動性 (Variability)](./3.3.8.変動性(Variability)/)
+
+## 本文
+
+- [content.tex](./content.tex)

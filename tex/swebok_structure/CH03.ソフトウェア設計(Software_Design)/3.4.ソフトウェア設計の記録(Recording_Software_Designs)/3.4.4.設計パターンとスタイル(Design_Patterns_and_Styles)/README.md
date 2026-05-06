@@ -2,3 +2,7 @@
 
 - 日本語: 設計パターンとスタイル
 - English: Design Patterns and Styles
+
+## 本文
+
+- [content.tex](./content.tex)

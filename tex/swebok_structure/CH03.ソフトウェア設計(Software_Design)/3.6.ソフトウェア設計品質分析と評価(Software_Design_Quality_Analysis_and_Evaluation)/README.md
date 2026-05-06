@@ -10,3 +10,7 @@
 - [3.6.3 品質分析・評価技法 (Quality Analysis and Evaluation Techniques)](./3.6.3.品質分析・評価技法(Quality_Analysis_and_Evaluation_Techniques)/)
 - [3.6.4 測度とメトリクス (Measures and Metrics)](./3.6.4.測度とメトリクス(Measures_and_Metrics)/)
 - [3.6.5 検証・妥当性確認・認証 (Verification Validation and Certification)](./3.6.5.検証・妥当性確認・認証(Verification_Validation_and_Certification)/)
+
+## 本文
+
+- [content.tex](./content.tex)

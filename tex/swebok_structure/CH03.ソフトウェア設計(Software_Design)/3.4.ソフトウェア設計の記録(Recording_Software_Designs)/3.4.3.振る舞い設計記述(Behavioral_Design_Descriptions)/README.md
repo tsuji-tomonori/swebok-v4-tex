@@ -2,3 +2,7 @@
 
 - 日本語: 振る舞い設計記述
 - English: Behavioral Design Descriptions
+
+## 本文
+
+- [content.tex](./content.tex)

@@ -2,3 +2,7 @@
 
 - 日本語: 設計思考
 - English: Design Thinking
+
+## 本文
+
+- [content.tex](./content.tex)

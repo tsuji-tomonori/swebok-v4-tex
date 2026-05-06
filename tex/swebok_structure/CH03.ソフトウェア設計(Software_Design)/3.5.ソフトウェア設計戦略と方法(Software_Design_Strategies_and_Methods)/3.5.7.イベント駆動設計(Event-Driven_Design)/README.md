@@ -2,3 +2,7 @@
 
 - 日本語: イベント駆動設計
 - English: Event-Driven Design
+
+## 本文
+
+- [content.tex](./content.tex)

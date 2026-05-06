@@ -2,3 +2,7 @@
 
 - 日本語: アスペクト指向設計
 - English: Aspect-Oriented Design AOD
+
+## 本文
+
+- [content.tex](./content.tex)

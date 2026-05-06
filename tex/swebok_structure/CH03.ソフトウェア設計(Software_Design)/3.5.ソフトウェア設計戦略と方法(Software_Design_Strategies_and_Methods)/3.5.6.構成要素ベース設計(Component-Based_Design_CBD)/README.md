@@ -2,3 +2,7 @@
 
 - 日本語: 構成要素ベース設計
 - English: Component-Based Design CBD
+
+## 本文
+
+- [content.tex](./content.tex)

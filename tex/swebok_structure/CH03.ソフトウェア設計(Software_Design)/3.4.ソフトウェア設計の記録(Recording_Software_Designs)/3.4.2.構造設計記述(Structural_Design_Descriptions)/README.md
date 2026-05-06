@@ -2,3 +2,7 @@
 
 - 日本語: 構造設計記述
 - English: Structural Design Descriptions
+
+## 本文
+
+- [content.tex](./content.tex)

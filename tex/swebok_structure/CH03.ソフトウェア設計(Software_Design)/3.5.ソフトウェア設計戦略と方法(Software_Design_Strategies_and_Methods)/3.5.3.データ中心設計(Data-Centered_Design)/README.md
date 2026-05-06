@@ -2,3 +2,7 @@
 
 - 日本語: データ中心設計
 - English: Data-Centered Design
+
+## 本文
+
+- [content.tex](./content.tex)

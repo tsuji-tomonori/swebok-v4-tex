@@ -2,3 +2,7 @@
 
 - 日本語: 一般戦略
 - English: General Strategies
+
+## 本文
+
+- [content.tex](./content.tex)

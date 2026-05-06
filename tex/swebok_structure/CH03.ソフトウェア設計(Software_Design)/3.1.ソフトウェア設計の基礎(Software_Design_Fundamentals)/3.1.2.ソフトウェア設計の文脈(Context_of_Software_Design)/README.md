@@ -2,3 +2,7 @@
 
 - 日本語: ソフトウェア設計の文脈
 - English: Context of Software Design
+
+## 本文
+
+- [content.tex](./content.tex)

@@ -2,3 +2,7 @@
 
 - 日本語: 設計根拠
 - English: Design Rationale
+
+## 本文
+
+- [content.tex](./content.tex)

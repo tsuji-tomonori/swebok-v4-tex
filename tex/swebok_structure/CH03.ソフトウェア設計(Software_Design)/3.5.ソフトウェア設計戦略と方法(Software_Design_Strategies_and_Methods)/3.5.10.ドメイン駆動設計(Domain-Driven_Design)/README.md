@@ -2,3 +2,7 @@
 
 - 日本語: ドメイン駆動設計
 - English: Domain-Driven Design
+
+## 本文
+
+- [content.tex](./content.tex)

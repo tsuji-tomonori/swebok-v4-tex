@@ -2,3 +2,7 @@
 
 - 日本語: 詳細設計
 - English: Detailed Design
+
+## 本文
+
+- [content.tex](./content.tex)

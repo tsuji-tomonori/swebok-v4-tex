@@ -2,3 +2,7 @@
 
 - 日本語: その他の方法
 - English: Other Methods
+
+## 本文
+
+- [content.tex](./content.tex)
