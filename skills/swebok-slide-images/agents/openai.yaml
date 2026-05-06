@@ -1,0 +1,4 @@
+interface:
+  display_name: "SWEBOK Slide Images"
+  short_description: "SWEBOK Guide V4.0a の章節から日本語学習用スライド画像を生成"
+  default_prompt: "SWEBOK Guide V4.0a の章節名を指定して、16:9 の日本語学習用スライド画像を作成してください。"

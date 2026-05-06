@@ -1,0 +1,4 @@
+interface:
+  display_name: "SWEBOK Chapter Orchestrator"
+  short_description: "SWEBOK Guide V4.0a の章指定から章概要・節別スライド・章まとめを統合生成"
+  default_prompt: "SWEBOK Guide V4.0a の章名または章番号を指定して、章全体の概要、各節の学習用スライド、章全体のまとめを作成してください。"

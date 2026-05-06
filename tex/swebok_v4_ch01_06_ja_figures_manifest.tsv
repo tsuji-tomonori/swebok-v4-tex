@@ -1,0 +1,76 @@
+chapter	index	label	layout	image_path	prompt_path	title	center	items
+01	01	fig:ch01-01	radial	assets/generated_figures/ch01/fig-ch01-01.png	imagegen_prompts/ch01/fig-ch01-01.md	第01章の全体地図	ソフトウェア要求	基礎 / 要求獲得 / 要求分析 / 要求仕様化 / 要求妥当性確認 / 要求管理 / 実務上の考慮 / 要求ツール
+01	02	fig:ch01-02	stack	assets/generated_figures/ch01/fig-ch01-02.png	imagegen_prompts/ch01/fig-ch01-02.md	要求分類の階層図	ソフトウェア要求	ソフトウェア製品要求 / ソフトウェアプロジェクト要求 / 機能要求 / 非機能要求 / 技術制約 / サービス品質制約
+01	03	fig:ch01-03	cards	assets/generated_figures/ch01/fig-ch01-03.png	imagegen_prompts/ch01/fig-ch01-03.md	完全技術フィルタの判定フロー	候補要求	理想的なコンピュータでも必要か？ / 機能要求 / 非機能要求 / 特定技術名を指定するか？ / 技術制約 / サービス品質制約
+01	04	fig:ch01-04	cards	assets/generated_figures/ch01/fig-ch01-04.png	imagegen_prompts/ch01/fig-ch01-04.md	システム要求からソフトウェア要求への割当図	システム	ハードウェア / ソフトウェア / 人 / 手順 / 設備 / システム要求 / ソフトウェア要求
+01	05	fig:ch01-05	flow	assets/generated_figures/ch01/fig-ch01-05.png	imagegen_prompts/ch01/fig-ch01-05.md	要求開発と要求管理の活動図	要求開発	獲得 / 分析 / 仕様化 / 妥当性確認 / 要求管理 / 要求整理 / 変更管理 / 範囲調整
+01	06	fig:ch01-06	matrix	assets/generated_figures/ch01/fig-ch01-06.png	imagegen_prompts/ch01/fig-ch01-06.md	要求の源泉と獲得技法の対応図	利用者	業務専門家 / 運用担当 / 既存文書 / 既存システム / 規制・標準 / 面接 / 観察 / ワークショップ
+01	07	fig:ch01-07	cards	assets/generated_figures/ch01/fig-ch01-07.png	imagegen_prompts/ch01/fig-ch01-07.md	サービス品質制約の価値・費用曲線	性能水準	価値 / 失敗点 / 完全点 / 金額 / 最も費用対効果が高い水準
+01	08	fig:ch01-08	cards	assets/generated_figures/ch01/fig-ch01-08.png	imagegen_prompts/ch01/fig-ch01-08.md	要求仕様化技法の比較図	曖昧さが残りやすい	精密 / 作成が容易 / 作成が難しい / 非構造化自然言語 / 構造化自然言語 / 受け入れ基準 / モデル / 形式モデル
+01	09	fig:ch01-09	matrix	assets/generated_figures/ch01/fig-ch01-09.png	imagegen_prompts/ch01/fig-ch01-09.md	要求妥当性確認の三手法を比較する図	レビュー	シミュレーション・実行 / プロトタイプ / 向いている対象 / 強み / 注意点
+01	10	fig:ch01-10	flow	assets/generated_figures/ch01/fig-ch01-10.png	imagegen_prompts/ch01/fig-ch01-10.md	要求変更管理の流れ	変更要求	影響分析 / 判断 / 通知 / 実施 / 完了確認 / 承認 / 却下 / 保留
+01	11	fig:ch01-11	flow	assets/generated_figures/ch01/fig-ch01-11.png	imagegen_prompts/ch01/fig-ch01-11.md	要求追跡の連鎖図	要求源泉	ソフトウェア要求 / 設計 / コード / テストケース / 利用者文書 / 前方追跡 / 後方追跡
+01	12	fig:ch01-12	matrix	assets/generated_figures/ch01/fig-ch01-12.png	imagegen_prompts/ch01/fig-ch01-12.md	要求ツールの分類図	要求管理ツール	要求モデリングツール / 機能テストケース生成ツール / 属性 / 追跡 / 変更管理 / 図化 / 整合性確認 / シミュレーション
+02	01	fig:ch02-01	radial	assets/generated_figures/ch02/fig-ch02-01.png	imagegen_prompts/ch02/fig-ch02-01.md	02 章の全体地図	ソフトウェアアーキテクチャ	基礎 / アーキテクチャ記述 / アーキテクチャ過程 / アーキテクチャ評価 / 関心事 / ビュー / 分析・統合・評価 / レビュー・測度
+02	02	fig:ch02-02	flow	assets/generated_figures/ch02/fig-ch02-02.png	imagegen_prompts/ch02/fig-ch02-02.md	アーキテクチャの三つの意味	分野としてのアーキテクチャ	活動としてのアーキテクチャ / 成果としてのアーキテクチャ / 概念・原則 / 設計過程 / アーキテクチャ記述
+02	03	fig:ch02-03	matrix	assets/generated_figures/ch02/fig-ch02-03.png	imagegen_prompts/ch02/fig-ch02-03.md	利害関係者と関心事の対応図	顧客	利用者 / 開発者 / 運用担当 / 保守担当 / 監査者 / 費用・納期 / 機能 / 性能
+02	04	fig:ch02-04	radial	assets/generated_figures/ch02/fig-ch02-04.png	imagegen_prompts/ch02/fig-ch02-04.md	ビューとビューポイントの関係図	アーキテクチャ記述	論理ビュー / 開発ビュー / プロセスビュー / 配置ビュー / シナリオビュー / ビューポイント / 利害関係者の関心事に答える
+02	05	fig:ch02-05	matrix	assets/generated_figures/ch02/fig-ch02-05.png	imagegen_prompts/ch02/fig-ch02-05.md	様式、パターン、参照アーキテクチャの比較図	アーキテクチャ様式	アーキテクチャパターン / 参照アーキテクチャ / 目的 / 適用範囲 / 例 / 実務での使い方
+02	06	fig:ch02-06	cards	assets/generated_figures/ch02/fig-ch02-06.png	imagegen_prompts/ch02/fig-ch02-06.md	アーキテクチャ意思決定記録のテンプレート図	アーキテクチャ意思決定記録	決定事項 / 背景 / 関係する要求・関心事 / 検討した代替案 / 選択理由 / トレードオフ / 却下した案 / 将来の影響
+02	07	fig:ch02-07	flow	assets/generated_figures/ch02/fig-ch02-07.png	imagegen_prompts/ch02/fig-ch02-07.md	アーキテクチャ分析・統合・評価の反復サイクル	アーキテクチャ設計	分析：ASR と制約を整理 / 統合：候補解を作る / 評価：満たすか確認 / 利害関係者の関心事 / 要求 / 環境制約
+02	08	fig:ch02-08	cards	assets/generated_figures/ch02/fig-ch02-08.png	imagegen_prompts/ch02/fig-ch02-08.md	ユースケースからアーキテクチャ要素をたどる図	ユースケースの手順	構成要素 / インタフェース / データ / 配置先 / 対応しない手順は不足の候補 / 使われない要素は過剰の候補
+02	09	fig:ch02-09	radial	assets/generated_figures/ch02/fig-ch02-09.png	imagegen_prompts/ch02/fig-ch02-09.md	アーキテクチャ評価の観点マップ	アーキテクチャ評価	よさ / 推論 / レビュー / 測度 / トレードオフ / リスク
+03	01	fig:ch03-01	flow	assets/generated_figures/ch03/fig-ch03-01.png	imagegen_prompts/ch03/fig-ch03-01.md	03章の全体地図	ソフトウェア設計	基礎 / 設計プロセス / 設計品質 / 設計の記録 / 設計戦略と方法 / 品質分析と評価 / 要求から設計へ / 設計から実装・テストへ
+03	02	fig:ch03-02	flow	assets/generated_figures/ch03/fig-ch03-02.png	imagegen_prompts/ch03/fig-ch03-02.md	設計思考の五段階を示す図	目的の明確化	概念構造 / 仕組み / 記法・語彙 / 具体的適用 / 問題を理解する / 解決策を実装可能にする
+03	03	fig:ch03-03	radial	assets/generated_figures/ch03/fig-ch03-03.png	imagegen_prompts/ch03/fig-ch03-03.md	設計と他知識領域の関係図	ソフトウェア設計	要求 / アーキテクチャ / 実装 / テスト / 保守 / 問題 / 制約 / 青写真
+03	04	fig:ch03-04	radial	assets/generated_figures/ch03/fig-ch03-04.png	imagegen_prompts/ch03/fig-ch03-04.md	主要な設計原則の関係図	複雑さを管理する	抽象化 / 関心事の分離 / モジュール化 / カプセル化 / 低結合 / 高凝集 / 検証可能性
+03	05	fig:ch03-05	cards	assets/generated_figures/ch03/fig-ch03-05.png	imagegen_prompts/ch03/fig-ch03-05.md	設計の三段階を示す図	要求・制約	アーキテクチャ設計 / 高水準設計 / 詳細設計 / 実装 / 全体方針 / 外部とのやり取り / 内部構造 / コード化
+03	06	fig:ch03-06	radial	assets/generated_figures/ch03/fig-ch03-06.png	imagegen_prompts/ch03/fig-ch03-06.md	設計品質の関心事マップ	設計品質	並行性 / イベント処理 / 永続化 / 分散 / 例外・耐故障 / 統合・相互運用 / 保証・セキュリティ・安全 / 変動性
+03	07	fig:ch03-07	cards	assets/generated_figures/ch03/fig-ch03-07.png	imagegen_prompts/ch03/fig-ch03-07.md	文書中心設計とモデル中心設計の比較図	文書中心設計	文章 / 図 / 表 / モデルに基づく設計 / モデル / ビュー / 分析 / シミュレーション
+03	08	fig:ch03-08	matrix	assets/generated_figures/ch03/fig-ch03-08.png	imagegen_prompts/ch03/fig-ch03-08.md	構造設計記述と振る舞い設計記述の分類図	構造を表す記法	クラス図 / コンポーネント図 / 配置図 / ERD / IDL / 振る舞いを表す記法 / 活動図 / シーケンス図
+03	09	fig:ch03-09	cards	assets/generated_figures/ch03/fig-ch03-09.png	imagegen_prompts/ch03/fig-ch03-09.md	設計パターン分類の図	設計パターン	生成 / 構造 / 振る舞い / ファクトリ / ビルダー / シングルトン / アダプタ / ファサード
+03	10	fig:ch03-10	matrix	assets/generated_figures/ch03/fig-ch03-10.png	imagegen_prompts/ch03/fig-ch03-10.md	設計戦略と中心概念の対応図	機能指向	データ中心 / オブジェクト指向 / 利用者中心 / 構成要素ベース / イベント駆動 / アスペクト指向 / ドメイン駆動 / 中心に置くもの
+03	11	fig:ch03-11	flow	assets/generated_figures/ch03/fig-ch03-11.png	imagegen_prompts/ch03/fig-ch03-11.md	設計レビューの流れ	レビュー対象の準備	観点・チェックリスト設定 / 個別確認 / レビュー会議 / 指摘整理 / 是正・再確認 / 要求対応 / 品質属性 / 未解決事項
+03	12	fig:ch03-12	matrix	assets/generated_figures/ch03/fig-ch03-12.png	imagegen_prompts/ch03/fig-ch03-12.md	品質分析・評価技法の比較図	レビュー	静的分析 / 形式的分析 / シミュレーション / プロトタイプ / 主な目的 / 必要な成果物 / 強み / 注意点
+04	01	fig:ch04-01	radial	assets/generated_figures/ch04/fig-ch04-01.png	imagegen_prompts/ch04/fig-ch04-01.md	第04章の全体地図	ソフトウェア構築	基礎 / 構築の管理 / 実務上の考慮 / 構築技術 / 構築ツール / 設計 / テスト / 品質
+04	02	fig:ch04-02	radial	assets/generated_figures/ch04/fig-ch04-02.png	imagegen_prompts/ch04/fig-ch04-02.md	構築と他知識領域の関係図	ソフトウェア構築	ソフトウェア設計 / ソフトウェアテスト / 構成管理 / 品質 / プロジェクト管理 / 計算基礎 / 設計成果物 / コード・単体テスト・統合結果
+04	03	fig:ch04-03	radial	assets/generated_figures/ch04/fig-ch04-03.png	imagegen_prompts/ch04/fig-ch04-03.md	構築の五つの基礎概念を示す図	よいソフトウェア構築	複雑さの最小化 / 変化を予期し受け入れる / 検証しやすく構築する / 資産を再利用する / 標準を適用する
+04	04	fig:ch04-04	flow	assets/generated_figures/ch04/fig-ch04-04.png	imagegen_prompts/ch04/fig-ch04-04.md	ライフサイクル別の構築位置を比較する図	ウォーターフォール型	要求 / 設計 / 構築 / テスト / 運用 / アジャイル型 / 要求詳細化 / 継続的デリバリ/デプロイ
+04	05	fig:ch04-05	cards	assets/generated_figures/ch04/fig-ch04-05.png	imagegen_prompts/ch04/fig-ch04-05.md	依存関係の供給網を示す図	自分の製品	直接依存 A / 直接依存 B / 直接依存 C / 間接依存 / 脆弱性 / ライセンス衝突 / 保守停止 / 不審な依存
+04	06	fig:ch04-06	matrix	assets/generated_figures/ch04/fig-ch04-06.png	imagegen_prompts/ch04/fig-ch04-06.md	構築言語の分類図	構築言語	設定言語 / ツールキット言語 / スクリプト言語 / プログラミング言語 / ドメイン固有言語 / 言語的表記 / 形式的表記 / 視覚的表記
+04	07	fig:ch04-07	flow	assets/generated_figures/ch04/fig-ch04-07.png	imagegen_prompts/ch04/fig-ch04-07.md	段階的統合と継続的統合の流れ	部品 A	部品 B / 部品 C / 段階的統合 / 継続的統合パイプライン / コミット / 自動ビルド / 単体テスト / 統合テスト
+04	08	fig:ch04-08	flow	assets/generated_figures/ch04/fig-ch04-08.png	imagegen_prompts/ch04/fig-ch04-08.md	API ファーストの流れ	API 契約を設計	OpenAPI などで記述 / サーバ側コード生成 / クライアント側コード生成 / 実装 / テスト / 操作 / 引数 / 戻り値
+04	09	fig:ch04-09	flow	assets/generated_figures/ch04/fig-ch04-09.png	imagegen_prompts/ch04/fig-ch04-09.md	表明・契約・防御的プログラミングの関係図	関数またはクラス	事前条件 / 事後条件 / 不変条件 / 表明 / 防御的入力検査
+04	10	fig:ch04-10	radial	assets/generated_figures/ch04/fig-ch04-10.png	imagegen_prompts/ch04/fig-ch04-10.md	実行可能モデル、PIM、PSM の関係図	プラットフォーム非依存モデル PIM	変換器 / プラットフォーム固有モデル PSM / 実装 / 対象プラットフォーム情報
+04	11	fig:ch04-11	radial	assets/generated_figures/ch04/fig-ch04-11.png	imagegen_prompts/ch04/fig-ch04-11.md	状態機械と表駆動の比較図	状態に基づく構築	表駆動構築 / 複雑な分岐を整理する
+04	12	fig:ch04-12	cards	assets/generated_figures/ch04/fig-ch04-12.png	imagegen_prompts/ch04/fig-ch04-12.md	分散・クラウド構築の概念図	API ゲートウェイ	マイクロサービス / コンテナ / クラウド基盤 / サービス登録・発見 / 監視 / メッセージング / データストア / 部分故障
+04	13	fig:ch04-13	flow	assets/generated_figures/ch04/fig-ch04-13.png	imagegen_prompts/ch04/fig-ch04-13.md	性能分析とチューニングの流れ	性能要求の確認	計測 / ボトルネック特定 / 改善案 / 実装変更 / 再計測 / 推測ではなく測定 / 実行時間 / メモリ
+04	14	fig:ch04-14	flow	assets/generated_figures/ch04/fig-ch04-14.png	imagegen_prompts/ch04/fig-ch04-14.md	テスト駆動開発のサイクル図	失敗するテストを書く	テストを通す最小コードを書く / リファクタリングする / TDD/テストファースト / 赤 / 緑 / 整理
+04	15	fig:ch04-15	matrix	assets/generated_figures/ch04/fig-ch04-15.png	imagegen_prompts/ch04/fig-ch04-15.md	構築ツールの分類図	開発環境	テスト支援 / 分析支援 / IDE / クラウド開発環境 / AI 支援 / 単体テスト / テストランナー / 継続的統合
+05	01	fig:ch05-01	flow	assets/generated_figures/ch05/fig-ch05-01.png	imagegen_prompts/ch05/fig-ch05-01.md	05 章の全体地図	ソフトウェアテスト	基礎 / テストレベル / テスト技法 / テスト関連測度 / テストプロセス / 開発プロセスと適用領域 / 新興技術 / テストツール
+05	02	fig:ch05-02	flow	assets/generated_figures/ch05/fig-ch05-02.png	imagegen_prompts/ch05/fig-ch05-02.md	テストの基本定義図	テストケース集合	テスト対象システム SUT / 実際の結果 / 期待結果 / テストオラクル / 合格 / 不合格 / 判定不能
+05	03	fig:ch05-03	flow	assets/generated_figures/ch05/fig-ch05-03.png	imagegen_prompts/ch05/fig-ch05-03.md	欠陥・障害・テスト・デバッグの関係図	欠陥	特定の入力・状態 / 障害として観測 / テストで検出 / デバッグで原因特定 / 修正
+05	04	fig:ch05-04	stack	assets/generated_figures/ch05/fig-ch05-04.png	imagegen_prompts/ch05/fig-ch05-04.md	テストレベルの四層図	単体テスト	結合テスト / システムテスト / 受入テスト / 対象 / 主な目的 / 典型的な実施者 / 対象が大きくなる / 利用者視点に近づく
+05	05	fig:ch05-05	radial	assets/generated_figures/ch05/fig-ch05-05.png	imagegen_prompts/ch05/fig-ch05-05.md	テスト目的の地図	テスト目的	適合性 / 法令・規制順守 / 導入 / アルファ・ベータ / 回帰 / 非機能 / セキュリティ / プライバシー
+05	06	fig:ch05-06	matrix	assets/generated_figures/ch05/fig-ch05-06.png	imagegen_prompts/ch05/fig-ch05-06.md	主要テスト技法の比較図	仕様ベース	構造ベース / 経験ベース / 欠陥ベース / 利用ベース / 主な情報源 / 得意な問題 / 弱点 / 代表例
+05	07	fig:ch05-07	radial	assets/generated_figures/ch05/fig-ch05-07.png	imagegen_prompts/ch05/fig-ch05-07.md	同値分割と境界値分析の図	有効範囲 0 から 120	無効範囲 / -1 / 0 / 1 / 119 / 120 / 121
+05	08	fig:ch05-08	cards	assets/generated_figures/ch05/fig-ch05-08.png	imagegen_prompts/ch05/fig-ch05-08.md	状態遷移テストの図	注文受付	支払待ち / 出荷準備 / 出荷済み / キャンセル / 支払い完了 / 出荷 / キャンセル要求 / 状態カバレッジ
+05	09	fig:ch05-09	flow	assets/generated_figures/ch05/fig-ch05-09.png	imagegen_prompts/ch05/fig-ch05-09.md	制御フローとデータフローの図	x を定義	x を使用
+05	10	fig:ch05-10	flow	assets/generated_figures/ch05/fig-ch05-10.png	imagegen_prompts/ch05/fig-ch05-10.md	ミューテーションテストの図	元のプログラム	小さな変更を加えた変異体 A/B/C / 同じテストスイートを実行 / 差を検出できた変異体は殺された / 検出できない変異体は生存 / ミューテーションスコア
+05	11	fig:ch05-11	matrix	assets/generated_figures/ch05/fig-ch05-11.png	imagegen_prompts/ch05/fig-ch05-11.md	テスト関連測度の分類図	SUT の評価	実施したテストの評価 / 欠陥密度 / 信頼性 / 運用信頼性 / KPI / カバレッジ / ミューテーションスコア / 欠陥注入
+05	12	fig:ch05-12	stack	assets/generated_figures/ch05/fig-ch05-12.png	imagegen_prompts/ch05/fig-ch05-12.md	テストプロセスの多層図	組織テストプロセス	テスト管理プロセス / 動的テストプロセス / 方針・戦略 / 計画・監視・制御・完了 / 設計・実装・環境・実行・報告 / 目的・リスク・資源 / 根拠・報告・改善
+05	13	fig:ch05-13	flow	assets/generated_figures/ch05/fig-ch05-13.png	imagegen_prompts/ch05/fig-ch05-13.md	従来型とシフトレフトの比較図	要求、設計、実装、後半のテスト	要求からテスト設計、単体、結合、回帰、自動化、監視 / 欠陥を早く見つけるほど修正コストが下がる
+05	14	fig:ch05-14	radial	assets/generated_figures/ch05/fig-ch05-14.png	imagegen_prompts/ch05/fig-ch05-14.md	Testing of と Testing through の対比図	新興技術をテストする	新興技術でテストする / 対象か、手段か
+05	15	fig:ch05-15	matrix	assets/generated_figures/ch05/fig-ch05-15.png	imagegen_prompts/ch05/fig-ch05-15.md	テストツール分類図	テストツール	生成 / 実行 / 判定 / 測定 / 管理 / セキュリティ / 性能 / 環境・端末
+06	01	fig:ch06-01	radial	assets/generated_figures/ch06/fig-ch06-01.png	imagegen_prompts/ch06/fig-ch06-01.md	06章の全体地図	ソフトウェアエンジニアリング運用	基礎 / 計画 / 提供 / 制御 / 実務上の考慮 / ツール / 配備 / 監視
+06	02	fig:ch06-02	stack	assets/generated_figures/ch06/fig-ch06-02.png	imagegen_prompts/ch06/fig-ch06-02.md	運用プロセスの三層図	運用計画	運用提供 / 運用制御 / SLA、容量、バックアップ、セキュリティ / テスト、配備、リリース、ロールバック / インシデント、変更、監視、報告
+06	03	fig:ch06-03	radial	assets/generated_figures/ch06/fig-ch06-03.png	imagegen_prompts/ch06/fig-ch06-03.md	運用計画とCONOPSの関係	開発開始の意思決定	概念文書 / 運用保守計画 / 運用構想 CONOPS / 変更要求 / 問題報告 / リリース計画 / 運用支援
+06	04	fig:ch06-04	flow	assets/generated_figures/ch06/fig-ch06-04.png	imagegen_prompts/ch06/fig-ch06-04.md	環境の流れ	開発環境	試験・品質保証環境 / 事前本番環境 / 本番環境 / 単一の真実の源泉 / 環境差分を減らす
+06	05	fig:ch06-05	flow	assets/generated_figures/ch06/fig-ch06-05.png	imagegen_prompts/ch06/fig-ch06-05.md	バックアップ・災害復旧・フェイルオーバーの流れ	復元点	予備系 / 切替 / 検証
+06	06	fig:ch06-06	radial	assets/generated_figures/ch06/fig-ch06-06.png	imagegen_prompts/ch06/fig-ch06-06.md	DevOps・IaC・SRE・プラットフォーム工学の関係	安定した継続的な運用	DevOps / IaC / SRE / プラットフォーム工学 / DevSecOps / 協働 / 再現性 / 信頼性
+06	07	fig:ch06-07	radial	assets/generated_figures/ch06/fig-ch06-07.png	imagegen_prompts/ch06/fig-ch06-07.md	配備とリリースの違い	配備：ソフトウェアを環境へ置く	リリース：利用者に使わせる / 本番環境に配備済みだが未リリースの機能
+06	08	fig:ch06-08	flow	assets/generated_figures/ch06/fig-ch06-08.png	imagegen_prompts/ch06/fig-ch06-08.md	ロールバックとデータ移行の時系列	旧版稼働	新版配備 / データ移行 / 監視 / 異常検知 / ロールバック / データ復元または補正
+06	09	fig:ch06-09	flow	assets/generated_figures/ch06/fig-ch06-09.png	imagegen_prompts/ch06/fig-ch06-09.md	監視とテレメトリのデータ層	インフラ層	オペレーティングシステム層 / アプリケーション層 / 利用者行動層
+06	10	fig:ch06-10	flow	assets/generated_figures/ch06/fig-ch06-10.png	imagegen_prompts/ch06/fig-ch06-10.md	インシデント・問題・変更管理の関係	インシデント発生	記録 / 一次対応 / 問題分析 / 根本原因 / 変更要求 / 変更承認 / 修正配備 / 再発防止
+06	11	fig:ch06-11	flow	assets/generated_figures/ch06/fig-ch06-11.png	imagegen_prompts/ch06/fig-ch06-11.md	CI/CDと継続的テストのパイプライン	コード変更	ビルド / 単体試験 / 統合試験 / パッケージ / 事前本番配備 / 受け入れ試験 / 本番配備 / 監視
+06	12	fig:ch06-12	matrix	assets/generated_figures/ch06/fig-ch06-12.png	imagegen_prompts/ch06/fig-ch06-12.md	運用ツールの分類図	運用ツール	コンテナ・仮想化 / 配備 / 自動テスト / 監視・テレメトリ / 設定管理 / セキュリティ

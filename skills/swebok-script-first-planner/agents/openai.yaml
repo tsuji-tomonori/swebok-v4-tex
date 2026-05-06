@@ -1,0 +1,4 @@
+interface:
+  display_name: "SWEBOK Script First Planner"
+  short_description: "SWEBOK スライド生成前に日本語発表原稿と重複しない全体設計を作成"
+  default_prompt: "SWEBOK の指定範囲について、まず日本語の発表用原稿と重複のない全体設計を作成し、その後スライド画像または画像生成プロンプトを作成してください。"
