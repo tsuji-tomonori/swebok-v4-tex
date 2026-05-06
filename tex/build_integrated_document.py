@@ -18,6 +18,7 @@ OUT_DIR = ROOT / "tex"
 OUT_TEX = OUT_DIR / "swebok_v4_ch01_06_ja_integrated.tex"
 MASTER_TEX = OUT_DIR / "swebok_v4_ch01_06_ja_master.tex"
 PARTS_DIR = OUT_DIR / "chapters"
+CH01_STRUCTURE_CHAPTER = OUT_DIR / "swebok_structure" / "CH01.ソフトウェア要求(Software_Requirements)" / "chapter.tex"
 MANIFEST = OUT_DIR / "swebok_v4_ch01_06_ja_figures_manifest.tsv"
 IMAGE_DIR = OUT_DIR / "assets" / "generated_figures"
 PROMPT_DIR = OUT_DIR / "imagegen_prompts"
@@ -524,7 +525,17 @@ def write_split_document(chapters: list[str]) -> None:
             path = chapter_dir / filename
             path.write_text(part + "\n", encoding="utf-8")
             rel = path.relative_to(OUT_DIR).as_posix()
-            input_lines.append(rf"\input{{{rel}}}")
+            if chapter.no != 1:
+                input_lines.append(rf"\input{{{rel}}}")
+        if chapter.no == 1:
+            if CH01_STRUCTURE_CHAPTER.exists():
+                rel = CH01_STRUCTURE_CHAPTER.relative_to(OUT_DIR).as_posix()
+                input_lines.append(rf"\input{{{rel}}}")
+            else:
+                input_lines.extend(
+                    rf"\input{{{path.relative_to(OUT_DIR).as_posix()}}}"
+                    for path in sorted(chapter_dir.glob("*.tex"))
+                )
 
     master = "\n\n".join(
         [
