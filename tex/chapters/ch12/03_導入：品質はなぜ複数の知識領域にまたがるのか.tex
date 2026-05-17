@@ -1,0 +1,19 @@
+\subsection*{導入：品質はなぜ複数の知識領域にまたがるのか}
+\addcontentsline{toc}{subsection}{導入：品質はなぜ複数の知識領域にまたがるのか}
+ソフトウェア品質という語は、複数の意味で使われる。第一に、ソフトウェア製品に望まれる性質を指す。第二に、ある製品がその性質をどの程度持っているか、すなわち\term{ソフトウェア製品品質}{software product quality}を指す。第三に、その品質を得るためのプロセス、ツール、技法、すなわち\term{ソフトウェアプロセス品質}{software process quality}を指す。
+
+\term{品質}{Quality}は「要求への適合」と表現されることがある。ただし、ここでいう要求は、単に文書に書かれた要求だけでは不十分である。書かれた要求が、利害関係者のニーズ、期待、利用状況を正しく表していなければ、要求に適合してもよい品質とは言えない。
+
+品質要求は、機能要求に対する制約である。たとえば「検索する」という機能要求に対して、「通常時 2 秒以内に結果を返す」「障害時にもサービスを継続する」「個人情報を権限なく閲覧できない」といった品質要求が付く。品質要求は第 1 章の用語ではサービス品質制約に近い。
+
+アジャイル開発や DevOps は、短い反復、早いフィードバック、利用者と開発者の近接、テストや運用の自動化によって、プロセス品質と製品品質の向上をねらう。品質は最後に検査で付け足すものではなく、開発と運用の流れ全体に組み込むべきものである。
+
+\par\smallskip
+\begin{center}
+\centering
+\IfFileExists{assets/generated_figures/ch12/fig-ch12-02.png}{\includegraphics[width=0.96\linewidth]{assets/generated_figures/ch12/fig-ch12-02.png}}{\fbox{\parbox[c][48mm][c]{0.9\linewidth}{\centering 画像生成待ち\\「品質」「品質要求」「製品品質」「プロセス品質」の関係図}}}
+\par\smallskip
+\refstepcounter{figure}\label{fig:ch12-02}図 \thefigure: 「品質」「品質要求」「製品品質」「プロセス品質」の関係図
+\end{center}
+図 \thefigure は、「品質」「品質要求」「製品品質」「プロセス品質」の関係図を視覚的に整理したものである。
+\par\smallskip

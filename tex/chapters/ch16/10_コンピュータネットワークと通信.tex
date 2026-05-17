@@ -1,0 +1,137 @@
+\subsection{コンピュータネットワークと通信}
+
+コンピュータネットワークは、情報を共有するために接続された装置の集まりである。通信、装置共有、データ保存、セキュリティ、遠隔監視、業務連携、ウェブ閲覧など、多くのソフトウェアはネットワークを前提にしている。分散計算、グリッド計算、クラウド計算もネットワーク原理に基づく。
+
+\subsubsection{コンピュータネットワークの種類}
+
+\par\smallskip\noindent\refstepcounter{table}\label{tab:ch16-22}表 \thetable: コンピュータネットワークの種類における種類・説明\par\smallskip
+表 \thetable は、コンピュータネットワークの種類における種類・説明を比較・確認しやすい形で整理したものである。\par\smallskip
+\begin{longtable}{>{\raggedright\arraybackslash}p{0.32\textwidth}>{\raggedright\arraybackslash}p{0.62\textwidth}}
+\toprule
+種類 & 説明 \\
+\midrule
+\endfirsthead
+\toprule
+種類 & 説明 \\
+\midrule
+\endhead
+個人領域ネットワーク・家庭内ネットワーク & 個人または家庭内の短距離接続である。 \\
+局所領域ネットワーク & 建物や組織内のネットワークである。 \\
+無線局所領域ネットワーク & 無線で構成される局所領域ネットワークである。 \\
+広域ネットワーク & 都市、国、拠点間など広範囲をつなぐ。 \\
+キャンパス領域ネットワーク & 大学や企業キャンパス内の複数建物をつなぐ。 \\
+都市領域ネットワーク & 都市規模のネットワークである。 \\
+記憶領域ネットワーク & 記憶装置を高速に共有するためのネットワークである。 \\
+仮想私設ネットワーク & 公衆網上に仮想的な私設通信路を作る。 \\
+\bottomrule
+\end{longtable}
+
+\subsubsection{ネットワークの層状アーキテクチャ}
+
+通信システムは複雑であるため、層に分けて考える。各層は特定の役割を持ち、下位層のサービスを使って上位層へ機能を提供する。同じ層同士の会話の約束をプロトコルという。層の基本要素は、サービス、プロトコル、インタフェースである。
+
+\par\smallskip\noindent\refstepcounter{table}\label{tab:ch16-23}表 \thetable: ネットワークの層状アーキテクチャにおける要素・意味\par\smallskip
+表 \thetable は、ネットワークの層状アーキテクチャにおける要素・意味を比較・確認しやすい形で整理したものである。\par\smallskip
+\begin{longtable}{>{\raggedright\arraybackslash}p{0.23\textwidth}>{\raggedright\arraybackslash}p{0.70\textwidth}}
+\toprule
+要素 & 意味 \\
+\midrule
+\endfirsthead
+\toprule
+要素 & 意味 \\
+\midrule
+\endhead
+サービス & ある層が隣接する上位層に提供する機能である。 \\
+プロトコル & 同じ層の相手と情報を交換するための規則である。 \\
+インタフェース & 隣接する層の間で情報を渡すための接点である。 \\
+\bottomrule
+\end{longtable}
+
+\subsubsection{開放型システム間相互接続モデル}
+
+開放型システム間相互接続モデル（OSI参照モデル）は、ネットワーク通信を七つの層に分ける参照モデルである。各層は独立した役割を持ち、上位または下位の層から受け取ったデータを処理して渡す。
+
+\par\smallskip\noindent\refstepcounter{table}\label{tab:ch16-24}表 \thetable: 開放型システム間相互接続モデルにおける層・名称・役割の直感\par\smallskip
+表 \thetable は、開放型システム間相互接続モデルにおける層・名称・役割の直感を比較・確認しやすい形で整理したものである。\par\smallskip
+\begin{longtable}{>{\raggedright\arraybackslash}p{0.14\textwidth}>{\raggedright\arraybackslash}p{0.28\textwidth}>{\raggedright\arraybackslash}p{0.52\textwidth}}
+\toprule
+層 & 名称 & 役割の直感 \\
+\midrule
+\endfirsthead
+\toprule
+層 & 名称 & 役割の直感 \\
+\midrule
+\endhead
+第1層 & 物理層 & 信号、ケーブル、電波など実際の媒体を扱う。 \\
+第2層 & データリンク層 & 同じリンク上でフレームを送る。 \\
+第3層 & ネットワーク層 & ネットワーク間でパケットを配送する。 \\
+第4層 & トランスポート層 & 端末間の通信品質や接続を扱う。 \\
+第5層 & セッション層 & 通信の開始、維持、終了を扱う。 \\
+第6層 & プレゼンテーション層 & 表現形式、変換、暗号化などを扱う。 \\
+第7層 & アプリケーション層 & 利用者アプリケーションに近い通信機能を扱う。 \\
+\bottomrule
+\end{longtable}
+
+\par\smallskip
+\begin{center}
+\centering
+\IfFileExists{assets/generated_figures/ch16/fig-ch16-14.png}{\includegraphics[width=0.96\linewidth]{assets/generated_figures/ch16/fig-ch16-14.png}}{\fbox{\parbox[c][48mm][c]{0.9\linewidth}{\centering 画像生成待ち\\OSI参照モデルと層間通信を示す図}}}
+\par\smallskip
+\refstepcounter{figure}\label{fig:ch16-14}図 \thefigure: OSI参照モデルと層間通信を示す図
+\end{center}
+図 \thefigure は、OSI参照モデルと層間通信を示す図を視覚的に整理したものである。
+\par\smallskip
+
+\subsubsection{カプセル化とカプセル解除}
+
+送信側では、上位層から受け取ったデータに各層がヘッダや末尾情報を付け加える。この処理をカプセル化という。受信側では、各層が自分に関係する情報を取り出し、残りを上位層へ渡す。この処理をカプセル解除という。各層のデータ単位はプロトコルデータ単位（PDU）と呼ばれる。
+
+\par\smallskip
+\begin{center}
+\centering
+\IfFileExists{assets/generated_figures/ch16/fig-ch16-15.png}{\includegraphics[width=0.96\linewidth]{assets/generated_figures/ch16/fig-ch16-15.png}}{\fbox{\parbox[c][48mm][c]{0.9\linewidth}{\centering 画像生成待ち\\カプセル化とカプセル解除の図}}}
+\par\smallskip
+\refstepcounter{figure}\label{fig:ch16-15}図 \thefigure: カプセル化とカプセル解除の図
+\end{center}
+図 \thefigure は、カプセル化とカプセル解除の図を視覚的に整理したものである。
+\par\smallskip
+
+\subsubsection{アプリケーション層プロトコル}
+
+アプリケーション層は、利用者のアプリケーションにサービスとインタフェースを提供する。ファイル転送、遠隔ログイン、電子メール、名前解決、ネットワーク管理、印刷などに関するプロトコルがある。FTP、TFTP、NFS、Telnet、SMTP、DNS、SNMP、DHCP などは代表例である。
+
+\subsubsection{信頼でき効率的なネットワークの設計技法}
+
+現代の業務システムでは、ネットワークは常時稼働、信頼性、効率、拡張性を求められる。設計では、業務目標と技術解決策、拡張のロードマップを明確にする。基本目標は、信頼性、セキュリティ、可用性、管理容易性である。
+
+設計では、ファイアウォール、LAN、VLAN、サブネット、サービス品質、非武装地帯、スパニングツリー、ポートチャネル、無線アクセスポイント、物理セキュリティ、監視、障害検知を考える。攻撃や脆弱性は常に変化するため、設計後も継続的な監視と更新が必要である。
+
+\subsubsection{インターネットプロトコル群}
+
+インターネットプロトコル群、または TCP/IP は、インターネット上で接続されたコンピュータ同士がデータを通信するための一連の規約である。OSIの上位三層はTCP/IPではアプリケーション層へまとめて扱われることが多く、IP がネットワーク層の中心的役割を担う。
+
+代表的なプロトコルには、TCP/IP、UDP/IP、SMTP、PPP、FTP、SFTP、HTTP、HTTPS、Telnet、POP3、VoIP などがある。IPv4 は 32 ビットのアドレス、IPv6 は 128 ビットのアドレスを使う。IPv4 と IPv6 の移行では、二重スタック、トンネリング、NAT64 などを理解する必要がある。
+
+\subsubsection{無線ネットワークと移動体ネットワーク}
+
+無線ネットワークは、ケーブルなしで装置を接続し通信できるようにする。無線個人領域ネットワーク、無線局所領域ネットワーク、無線広域ネットワークなどがある。移動体ネットワークでは、セルと呼ばれる地域を基地局が担当し、隣接セルでは干渉を避けるため異なる周波数を使う。
+
+データ伝送には、周波数分割多元接続、時分割多元接続、符号分割多元接続、空間分割多元接続などがある。1Gから5Gまでの世代差では、中核網、アクセス方式、周波数、帯域幅、通信技術が変化する。
+
+\subsubsection{セキュリティと脆弱性}
+
+無線や移動体通信は便利だが、適切に保護しなければ攻撃を受けやすい。リスクには、便乗接続、無線探索、偽アクセスポイント、盗聴、未承認アクセス、端末盗難、フィッシング系攻撃、暗号方式への攻撃、電波妨害などがある。
+
+\begin{itemize}[leftmargin=2em]
+\item 初期パスワードを変更し、定期的に更新する。
+\item 許可された利用者だけにアクセスを制限する。
+\item システム内とネットワーク上のデータを暗号化する。
+\item 複数段のファイアウォールを利用する。
+\item SSIDの公開や共有設定を慎重に扱う。
+\item ウイルス対策、VPN、装置のセキュリティパッチを継続的に更新する。
+\end{itemize}
+
+\begin{pointbox}{実務での注意}
+ネットワーク設計は、つながることだけを目的にしない。可用性、性能、管理、認証、暗号化、監視、障害時の切り替え、ログ取得まで含めて設計する必要がある。
+
+\end{pointbox}

@@ -1,0 +1,56 @@
+\subsection{領域別ソフトウェアセキュリティ}
+セキュリティの基本原則は共通だが、利用領域によって注意すべき攻撃面や運用上の弱点は変わる。第13章では、コンテナとクラウド、IoT、機械学習アプリケーションが例として扱われる。
+
+\subsubsection{コンテナとクラウドのセキュリティ}
+クラウド基盤とサービスは、安価で簡単に準備できる。その反面、世界中に資産が散らばり、忘れられたまま残ることがある。忘れられた資産は、後でセキュリティ事故につながる時限爆弾のような存在になる。
+
+クラウドでは、データセンターの物理的な資産管理や入退室管理の多くをクラウド提供者に委ねられる。一方で、利用者側には、アカウント、権限、ネットワーク設定、鍵、コンテナイメージ、公開ストレージ、ログ、構成管理を正しく扱う責任が残る。
+
+\par\smallskip
+\begin{center}
+\centering
+\IfFileExists{assets/generated_figures/ch13/fig-ch13-09.png}{\includegraphics[width=0.96\linewidth]{assets/generated_figures/ch13/fig-ch13-09.png}}{\fbox{\parbox[c][48mm][c]{0.9\linewidth}{\centering 画像生成待ち\\クラウド資産の散在と管理責任の図}}}
+\par\smallskip
+\refstepcounter{figure}\label{fig:ch13-09}図 \thefigure: クラウド資産の散在と管理責任の図
+\end{center}
+図 \thefigure は、クラウド資産の散在と管理責任の図を視覚的に整理したものである。
+\par\smallskip
+\subsubsection{IoT ソフトウェアのセキュリティ}
+IoT では、多数の機器がネットワークにつながり、バックエンドシステムとも連携する。業務 IT に存在する既知の脆弱性を通じて攻撃者が侵入すると、弱く保護された産業用 IoT 機器にも到達し得る。その結果、安全上の事故を含む深刻な損害が起こり得る。
+
+消費者環境や産業環境に大量の端点が追加されると、弱いリンクが攻撃されやすくなる。端点の強化、機器間通信の保護、機器と情報の信頼性確認、IoT プラットフォームのリスク分析と脅威分析が重要である。
+
+\par\smallskip
+\begin{center}
+\centering
+\IfFileExists{assets/generated_figures/ch13/fig-ch13-10.png}{\includegraphics[width=0.96\linewidth]{assets/generated_figures/ch13/fig-ch13-10.png}}{\fbox{\parbox[c][48mm][c]{0.9\linewidth}{\centering 画像生成待ち\\IoT の攻撃面を示す図}}}
+\par\smallskip
+\refstepcounter{figure}\label{fig:ch13-10}図 \thefigure: IoT の攻撃面を示す図
+\end{center}
+図 \thefigure は、IoT の攻撃面を示す図を視覚的に整理したものである。
+\par\smallskip
+\subsubsection{機械学習に基づくアプリケーションのセキュリティ}
+機械学習は多くのシステムで使われるが、固有の脆弱性を持つ。攻撃者は、機械学習モデルの判断を変えようとすることがある。代表的な攻撃には、学習データを狙うモデル汚染と、学習済みモデルへの入力を狙う回避攻撃がある。
+
+モデル汚染では、訓練データに悪意あるデータを混ぜ、モデルが誤った規則を学ぶようにする。回避攻撃では、学習済みモデルに対して、人間にはほとんど同じに見えるがモデルの判断を変える入力を与える。したがって、機械学習システムでは、データの由来、学習過程、入力検証、監視、再学習の管理が重要になる。
+
+\par\smallskip\noindent\refstepcounter{table}\label{tab:ch13-05}表 \thetable: 機械学習に基づくアプリケーションのセキュリティの整理\par\smallskip
+表 \thetable は、機械学習に基づくアプリケーションのセキュリティの整理を比較・確認しやすい形で整理したものである。\par\smallskip
+\begin{longtable}{>{\raggedright\arraybackslash}p{0.25\linewidth}>{\raggedright\arraybackslash}p{0.35\linewidth}>{\raggedright\arraybackslash}p{0.35\linewidth}}
+\toprule
+\term{攻撃}{Attack} & 狙う対象 & 初学者向けの説明 \\
+\midrule
+\endhead
+モデル汚染 & 学習データ & 学習前または学習中のデータを汚し、モデルに誤った判断を学ばせる。 \\
+回避攻撃 & 学習済みモデルへの入力 & 入力を細工して、モデルの分類や判断を意図的に変えさせる。 \\
+\bottomrule
+\end{longtable}
+\par\smallskip
+\begin{center}
+\centering
+\IfFileExists{assets/generated_figures/ch13/fig-ch13-11.png}{\includegraphics[width=0.96\linewidth]{assets/generated_figures/ch13/fig-ch13-11.png}}{\fbox{\parbox[c][48mm][c]{0.9\linewidth}{\centering 画像生成待ち\\機械学習への二種類の攻撃を示す図}}}
+\par\smallskip
+\refstepcounter{figure}\label{fig:ch13-11}図 \thefigure: 機械学習への二種類の攻撃を示す図
+\end{center}
+図 \thefigure は、機械学習への二種類の攻撃を示す図を視覚的に整理したものである。
+\par\smallskip

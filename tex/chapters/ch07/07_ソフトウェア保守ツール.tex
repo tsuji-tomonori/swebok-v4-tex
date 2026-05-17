@@ -1,0 +1,31 @@
+\subsection{ソフトウェア保守ツール}
+保守ツールは、既存ソフトウェアを変更する場面で特に重要である。保守ツールは開発ツールや運用ツールと密接に結びついており、全体としてソフトウェア工学環境の一部を構成する。\par
+\par\smallskip\noindent\refstepcounter{table}\label{tab:ch07-14}表 \thetable: ソフトウェア保守ツールにおけるツール分類・主な役割\par\smallskip
+表 \thetable は、ソフトウェア保守ツールにおけるツール分類・主な役割を比較・確認しやすい形で整理したものである。\par\smallskip
+\begin{longtable}{p{0.30\linewidth}p{0.64\linewidth}}
+\toprule
+ツール分類 & 主な役割 \\
+\midrule
+\endhead
+構成管理・版管理・コードレビュー & 変更を記録し、承認し、リリース内容を管理する。 \\
+ソフトウェアテストツール & 単体テスト、結合テスト、回帰テスト、自動テストを支援する。 \\
+品質評価ツール & 技術的負債、コード品質、複雑度、コードのにおいを評価する。 \\
+プログラムスライサ & 変更の影響を受けるプログラム部分だけを選び出す。 \\
+静的解析器 & プログラム内容を実行せずに確認し、構造、欠陥、脆弱性を調べる。 \\
+動的解析器 & 実行時の経路や状態を追跡し、実際の振る舞いを確認する。 \\
+データフロー解析器 & プログラム内のデータの流れを追跡する。 \\
+相互参照生成器 & プログラム構成要素の索引を作る。 \\
+依存関係解析器 & 構成要素同士の関係を理解する。 \\
+遠隔アクセスツール & 利用者環境を遠隔で診断し、必要な修正を行う。 \\
+リバースエンジニアリングツール & 既存製品から仕様、設計記述、図などの成果物を作る。 \\
+\bottomrule
+\end{longtable}
+\par\smallskip
+\begin{center}
+\centering
+\IfFileExists{assets/generated_figures/ch07/fig-ch07-10.png}{\includegraphics[width=0.96\linewidth]{assets/generated_figures/ch07/fig-ch07-10.png}}{\fbox{\parbox[c][48mm][c]{0.9\linewidth}{\centering 画像生成待ち\\保守ツールの分類図}}}
+\par\smallskip
+\refstepcounter{figure}\label{fig:ch07-10}図 \thefigure: 保守ツールの分類図
+\end{center}
+図 \thefigure は、保守ツールの分類図を視覚的に整理したものである。
+\par\smallskip

@@ -21,32 +21,38 @@
 設計思考とは、問題を理解し、制約の中で複数の解決策を考え、根拠を持って選び、表現可能な形へまとめる思考である。
 \end{definitionbox}
 
-\begin{figure}[htbp]
+\par\smallskip
+\begin{center}
 \centering
 \IfFileExists{assets/generated_figures/ch03/fig-ch03-02.png}{\includegraphics[width=0.96\linewidth]{assets/generated_figures/ch03/fig-ch03-02.png}}{\fbox{\parbox[c][48mm][c]{0.9\linewidth}{\centering 画像生成待ち\\設計思考の五段階を示す図}}}
-\caption{設計思考の五段階を示す図}
-\label{fig:ch03-02}
-\end{figure}
+\par\smallskip
+\refstepcounter{figure}\label{fig:ch03-02}図 \thefigure: 設計思考の五段階を示す図
+\end{center}
+図 \thefigure は、設計思考の五段階を示す図を視覚的に整理したものである。
+\par\smallskip
 
 \subsubsection{ソフトウェア設計の文脈}
 
 ソフトウェア設計は、開発ライフサイクルの中で孤立して存在しない。要求、アーキテクチャ、実装、テスト、保守と強くつながっている。
 
 \begin{itemize}
-  \item \textbf{要求との関係}：要求は、設計が解くべき問題を示す。設計は、要求を実装可能な構造と振る舞いへ変換する。
-  \item \textbf{アーキテクチャとの関係}：アーキテクチャが定められている場合、それは設計の制約となる。主要構成要素、接続、API、採用すべきスタイルやパターン、設計原則などを制約する。
-  \item \textbf{実装との関係}：設計は、実装者が何を作るべきかを示す案内である。実装者がコードを読む前に、部品の責務やインタフェースを理解できることが望ましい。
-  \item \textbf{テストとの関係}：設計は、テスト戦略とテストケースの土台になる。設計要素が要求をどう満たすかが明らかであれば、テストの観点も作りやすい。
+  \item 要求との関係：要求は、設計が解くべき問題を示す。設計は、要求を実装可能な構造と振る舞いへ変換する。
+  \item \term{アーキテクチャとの関係}{Relationship to Architecture}：アーキテクチャが定められている場合、それは設計の制約となる。主要構成要素、接続、API、採用すべきスタイルやパターン、設計原則などを制約する。
+  \item \term{実装との関係}{Relationship to Implementation}：設計は、実装者が何を作るべきかを示す案内である。実装者がコードを読む前に、部品の責務やインタフェースを理解できることが望ましい。
+  \item \term{テストとの関係}{Relationship to Testing}：設計は、テスト戦略とテストケースの土台になる。設計要素が要求をどう満たすかが明らかであれば、テストの観点も作りやすい。
 \end{itemize}
 
 設計の形式性は、プロジェクトによって異なる。安全性が重要なシステムでは、設計記述を厳密に残す必要がある。一方、小規模な探索的開発では、簡潔なモデルやコードそのものが設計記録の中心になる場合もある。ただし、どの場合でも、関係者が設計判断を理解できることが重要である。
 
-\begin{figure}[htbp]
+\par\smallskip
+\begin{center}
 \centering
 \IfFileExists{assets/generated_figures/ch03/fig-ch03-03.png}{\includegraphics[width=0.96\linewidth]{assets/generated_figures/ch03/fig-ch03-03.png}}{\fbox{\parbox[c][48mm][c]{0.9\linewidth}{\centering 画像生成待ち\\設計と他知識領域の関係図}}}
-\caption{設計と他知識領域の関係図}
-\label{fig:ch03-03}
-\end{figure}
+\par\smallskip
+\refstepcounter{figure}\label{fig:ch03-03}図 \thefigure: 設計と他知識領域の関係図
+\end{center}
+図 \thefigure は、設計と他知識領域の関係図を視覚的に整理したものである。
+\par\smallskip
 
 \subsubsection{ソフトウェア設計の主要論点}
 
@@ -62,10 +68,11 @@
 
 設計原則は、設計中の判断に方向を与える基本的な考え方である。原則は、特定のプログラミング言語や開発手法だけに依存しない。むしろ、複雑な問題を扱うための共通の知恵である。
 
-\par\smallskip\noindent\refstepcounter{table}\label{tab:ch03-03}\textbf{表 \thetable: 第03章 ソフトウェア設計 表03}\par\smallskip
+\par\smallskip\noindent\refstepcounter{table}\label{tab:ch03-03}表 \thetable: ソフトウェア設計原則の整理\par\smallskip
+表 \thetable は、ソフトウェア設計原則の整理を比較・確認しやすい形で整理したものである。\par\smallskip
 \begin{longtable}{L{34mm}L{55mm}L{76mm}}
 \toprule
-\textbf{原則} & \textbf{意味} & \textbf{実務で見ること} \\
+原則 & 意味 & 実務で見ること \\
 \midrule
 \endhead
 抽象化 & 目的に関係する情報だけを示し、不要な詳細を隠す。 & 利用者、設計者、実装者が必要な詳細水準だけを見られるか。 \\
@@ -88,9 +95,12 @@
 設計原則は、単独で使うものではない。抽象化、関心事の分離、モジュール化、カプセル化、低結合、高凝集は互いに支え合う。
 \end{pointbox}
 
-\begin{figure}[htbp]
+\par\smallskip
+\begin{center}
 \centering
 \IfFileExists{assets/generated_figures/ch03/fig-ch03-04.png}{\includegraphics[width=0.96\linewidth]{assets/generated_figures/ch03/fig-ch03-04.png}}{\fbox{\parbox[c][48mm][c]{0.9\linewidth}{\centering 画像生成待ち\\主要な設計原則の関係図}}}
-\caption{主要な設計原則の関係図}
-\label{fig:ch03-04}
-\end{figure}
+\par\smallskip
+\refstepcounter{figure}\label{fig:ch03-04}図 \thefigure: 主要な設計原則の関係図
+\end{center}
+図 \thefigure は、主要な設計原則の関係図を視覚的に整理したものである。
+\par\smallskip

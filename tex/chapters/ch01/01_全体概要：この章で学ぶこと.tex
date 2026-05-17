@@ -16,27 +16,31 @@
 \SmallHead{学習順序}
 初学者は、まず「要求とは何か」と「要求の分類」を押さえる。その後、「要求をどう集めるか」「どう分析するか」「どう書くか」「どう確認するか」「どう変化に対応するか」という流れで読むとよい。
 
-\begin{figure}[htbp]
+\par\smallskip
+\begin{center}
 \centering
 \IfFileExists{assets/generated_figures/ch01/fig-ch01-01.png}{\includegraphics[width=0.96\linewidth]{assets/generated_figures/ch01/fig-ch01-01.png}}{\fbox{\parbox[c][48mm][c]{0.9\linewidth}{\centering 画像生成待ち\\第01章の全体地図}}}
-\caption{第01章の全体地図}
-\label{fig:ch01-01}
-\end{figure}
+\par\smallskip
+\refstepcounter{figure}\label{fig:ch01-01}図 \thefigure: 第01章の全体地図
+\end{center}
+図 \thefigure は、第01章の全体地図を視覚的に整理したものである。
+\par\smallskip
 
 \subsubsection*{最初に必要な用語}
 \addcontentsline{toc}{subsubsection}{最初に必要な用語}
 
-\par\smallskip\noindent\refstepcounter{table}\label{tab:ch01-01}\textbf{表 \thetable: 第01章 ソフトウェア要求 表01}\par\smallskip
+\par\smallskip\noindent\refstepcounter{table}\label{tab:ch01-01}表 \thetable: 最初に必要な用語における用語・初学者向けの説明\par\smallskip
+表 \thetable は、最初に必要な用語における用語・初学者向けの説明を比較・確認しやすい形で整理したものである。\par\smallskip
 \begin{tabularx}{0.97\linewidth}{@{}p{.25\linewidth}X@{}}
 \toprule
 用語 & 初学者向けの説明 \\
 \midrule
-\term{ソフトウェア} & プログラムだけでなく、データ、設定、操作手順、関連文書を含むことがある。 \\
-\term{要求} & 何かを達成するために満たすべき条件・能力・制約。 \\
-\term{利害関係者} & 開発結果に影響を与える、または影響を受ける人・組織。顧客、利用者、運用担当、規制当局など。 \\
-\term{システム} & ソフトウェア、ハードウェア、人、手順、設備などが組み合わさって目的を達成するもの。 \\
-\term{仕様} & 要求や設計などを、関係者が共有できるように記録したもの。 \\
-\term{妥当性確認} & 「これを作れば本当に相手の問題を解決できるか」を確認すること。 \\
-\term{追跡可能性} & 要求が設計、コード、テスト、利用者文書などとどうつながるかをたどれること。 \\
+\term{ソフトウェア}{Software} & プログラムだけでなく、データ、設定、操作手順、関連文書を含むことがある。 \\
+\term{要求}{Requirement} & 何かを達成するために満たすべき条件・能力・制約。 \\
+\term{利害関係者}{Stakeholder} & 開発結果に影響を与える、または影響を受ける人・組織。顧客、利用者、運用担当、規制当局など。 \\
+\term{システム}{System} & ソフトウェア、ハードウェア、人、手順、設備などが組み合わさって目的を達成するもの。 \\
+\term{仕様}{Specification} & 要求や設計などを、関係者が共有できるように記録したもの。 \\
+\term{妥当性確認}{Validation} & 「これを作れば本当に相手の問題を解決できるか」を確認すること。 \\
+\term{追跡可能性}{Traceability} & 要求が設計、コード、テスト、利用者文書などとどうつながるかをたどれること。 \\
 \bottomrule
 \end{tabularx}

@@ -1,0 +1,37 @@
+\subsection{有限状態機械}
+有限状態機械は、有限個の状態と、入力による状態遷移で振る舞いを表す抽象モデルである。画面遷移、通信プロトコル、ワークフロー、字句解析器、組込み制御、ゲームの状態管理などに使える。
+
+状態機械では、システムはある状態にいる。入力が来ると、遷移関数に従って別の状態へ移り、必要なら出力を出す。開始状態から始まり、受理状態や終了状態に到達することで、処理の成功を表せる。
+
+\par\smallskip\noindent\refstepcounter{table}\label{tab:ch17-13}表 \thetable: 有限状態機械における構成要素・説明\par\smallskip
+表 \thetable は、有限状態機械における構成要素・説明を比較・確認しやすい形で整理したものである。\par\smallskip
+\begin{longtable}{>{\raggedright\arraybackslash}p{0.26\linewidth} >{\raggedright\arraybackslash}p{0.68\linewidth}}
+\toprule
+構成要素 & 説明 \\
+\midrule
+\endfirsthead
+\toprule
+構成要素 & 説明 \\
+\midrule
+\endhead
+状態集合 & 取り得る状態の有限集合である。 \\
+入力記号集合 & 状態遷移を引き起こす入力の集合である。 \\
+出力記号集合 & 遷移時または状態で出される出力の集合である。 \\
+遷移関数 & 現在状態と入力から次状態を決める規則である。 \\
+出力関数 & 現在状態と入力から出力を決める規則である。 \\
+初期状態 & 処理を開始する状態である。 \\
+受理状態 & 入力列が有効に処理されたことを示す状態である。 \\
+\bottomrule
+\end{longtable}
+\begin{notebox}{実務での見方}
+状態機械を使うと、「この状態でこの入力が来たらどうするか」を表にできる。漏れた入力、到達不能な状態、不正な遷移を見つけやすくなる。これはテストケース設計にも有用である。
+\end{notebox}
+\par\smallskip
+\begin{center}
+\centering
+\IfFileExists{assets/generated_figures/ch17/fig-ch17-09.png}{\includegraphics[width=0.96\linewidth]{assets/generated_figures/ch17/fig-ch17-09.png}}{\fbox{\parbox[c][48mm][c]{0.9\linewidth}{\centering 画像生成待ち\\有限状態機械の状態遷移図と状態表}}}
+\par\smallskip
+\refstepcounter{figure}\label{fig:ch17-09}図 \thefigure: 有限状態機械の状態遷移図と状態表
+\end{center}
+図 \thefigure は、有限状態機械の状態遷移図と状態表を視覚的に整理したものである。
+\par\smallskip

@@ -1,0 +1,111 @@
+\subsection{モデリング}
+\subsubsection{モデリングの考え方}
+モデリングとは、ソフトウェアの重要な側面を、関係者が理解し、議論し、判断できるように表す活動である。モデルは、要求、設計、実装、テスト、運用のさまざまな場面で使われる。
+
+モデルは、対象の完全な複製ではない。完全な複製であれば、複雑さは元の対象と同じになってしまう。モデルの価値は、目的に不要な情報を取り除き、判断に必要な情報を見やすくする点にある。
+
+\subsubsection{モデリング原則}
+SWEBOK 第11章では、モデリングを導く一般的な原則として、次の三つを示している。
+
+\par\smallskip\noindent\refstepcounter{table}\label{tab:ch11-02}表 \thetable: モデリング原則の整理\par\smallskip
+表 \thetable は、モデリング原則の整理を比較・確認しやすい形で整理したものである。\par\smallskip
+\begin{longtable}{>{\raggedright\arraybackslash}p{0.27\textwidth}>{\raggedright\arraybackslash}p{0.68\textwidth}}
+\toprule
+原則 & 説明 \\
+\midrule
+本質をモデル化する & すべてを表すのではなく、答えたい問いに関係する側面だけを表す。これによりモデルは扱いやすくなる。\\
+視点を与える & 構造、振る舞い、時間、組織、配置など、関心事ごとに見方を分ける。視点を分けることで、議論すべきことが明確になる。\\
+効果的なコミュニケーションを可能にする & 対象領域の語彙、モデリング言語、文脈上の意味を使って、関係者間の理解を助ける。\\
+\bottomrule
+\end{longtable}
+
+\begin{pointbox}{例：病院予約システムのモデル}
+医師、患者、予約枠の関係を考えるときは構造モデルが役立つ。一方、患者が予約を変更する流れを考えるときは振る舞いモデルが役立つ。同じシステムでも、問いが違えば必要なモデルも違う。
+\end{pointbox}
+
+\par\smallskip
+\begin{center}
+\centering
+\IfFileExists{assets/generated_figures/ch11/fig-ch11-02.png}{\includegraphics[width=0.96\linewidth]{assets/generated_figures/ch11/fig-ch11-02.png}}{\fbox{\parbox[c][48mm][c]{0.9\linewidth}{\centering 画像生成待ち\\モデリング三原則の図}}}
+\par\smallskip
+\refstepcounter{figure}\label{fig:ch11-02}図 \thefigure: モデリング三原則の図
+\end{center}
+図 \thefigure は、モデリング三原則の図を視覚的に整理したものである。
+\par\smallskip
+
+\subsubsection{モデルの性質と表現}
+モデルの性質とは、そのモデルがどの程度よくできているかを判断する特徴である。代表的な性質は、完全性、整合性、正しさである。
+
+\par\smallskip\noindent\refstepcounter{table}\label{tab:ch11-03}表 \thetable: モデルの性質と表現の整理\par\smallskip
+表 \thetable は、モデルの性質と表現の整理を比較・確認しやすい形で整理したものである。\par\smallskip
+\begin{longtable}{>{\raggedright\arraybackslash}p{0.25\textwidth}>{\raggedright\arraybackslash}p{0.70\textwidth}}
+\toprule
+性質 & 説明 \\
+\midrule
+完全性 & 必要な要求がモデルに含まれ、検証できる状態になっている度合いである。\\
+整合性 & 要求、制約、機能、構成要素の記述が互いに矛盾していない度合いである。\\
+正しさ & モデルが要求や設計仕様を満たし、欠陥を含まない度合いである。\\
+\bottomrule
+\end{longtable}
+
+モデルは、通常、\term{実体}{Entity}と関係で表される。実体は、センサー、ロボット、画面、ソフトウェア部品、通信プロトコルなどである。関係は、実体同士の接続、依存、利用、継承、データの流れ、呼び出しなどである。実体や関係は、図形、線、文字、演算子、表などで表される。
+
+自動化されたモデリング環境では、モデルの構文の誤り、未接続の要素、矛盾の一部を機械的に検出できる。ただし、ツールが役立つ範囲は、モデリング言語の厳密さ、意味の定義、ツール支援の程度に依存する。
+
+\subsubsection{構文・意味論・語用論}
+モデルを正しく扱うには、構文、意味論、語用論を区別する必要がある。
+
+\par\smallskip\noindent\refstepcounter{table}\label{tab:ch11-04}表 \thetable: 構文・意味論・語用論の整理\par\smallskip
+表 \thetable は、構文・意味論・語用論の整理を比較・確認しやすい形で整理したものである。\par\smallskip
+\begin{longtable}{>{\raggedright\arraybackslash}p{0.24\textwidth}>{\raggedright\arraybackslash}p{0.45\textwidth}>{\raggedright\arraybackslash}p{0.24\textwidth}}
+\toprule
+観点 & 意味 & 例 \\
+\midrule
+構文 & モデルの書き方が文法として正しいかを扱う。 & UMLのクラス図で、許される記号と接続を使っているか。\\
+意味論 & 記号や関係が何を意味するかを扱う。 & 二つの箱を線で結んだとき、それが関連、依存、制御フローのどれを意味するか。\\
+語用論 & そのモデルが文脈の中でどう理解され、どう使われるかを扱う。 & 利用者向け説明図として十分か、開発者向け設計図として十分か。\\
+\bottomrule
+\end{longtable}
+
+構文が正しいモデルでも、意味が間違っていることはある。たとえば、図としては正しいクラス図でも、業務上は存在しない関係を表していれば、意味としては誤りである。また、意味が正しくても、読む相手に伝わらなければ実務上は役に立たない。この伝わり方が語用論の問題である。
+
+\begin{pointbox}{注意}
+一つのモデルを見ただけで、対象を完全に理解した気になることがある。これは危険である。多くの場合、完全な理解には、複数のサブモデル、複数の視点、前提条件、対象領域の文脈が必要である。
+\end{pointbox}
+
+\par\smallskip
+\begin{center}
+\centering
+\IfFileExists{assets/generated_figures/ch11/fig-ch11-03.png}{\includegraphics[width=0.96\linewidth]{assets/generated_figures/ch11/fig-ch11-03.png}}{\fbox{\parbox[c][48mm][c]{0.9\linewidth}{\centering 画像生成待ち\\構文・意味論・語用論の違いを示す図}}}
+\par\smallskip
+\refstepcounter{figure}\label{fig:ch11-03}図 \thefigure: 構文・意味論・語用論の違いを示す図
+\end{center}
+図 \thefigure は、構文・意味論・語用論の違いを示す図を視覚的に整理したものである。
+\par\smallskip
+
+\subsubsection{事前条件・事後条件・不変条件}
+関数やメソッドをモデル化するときは、実行前、実行後、実行中に変わらず守られる条件を明確にする必要がある。これらは、正しい動作を考えるための基礎である。
+
+\par\smallskip\noindent\refstepcounter{table}\label{tab:ch11-05}表 \thetable: 事前条件・事後条件・不変条件の整理\par\smallskip
+表 \thetable は、事前条件・事後条件・不変条件の整理を比較・確認しやすい形で整理したものである。\par\smallskip
+\begin{longtable}{>{\raggedright\arraybackslash}p{0.24\textwidth}>{\raggedright\arraybackslash}p{0.70\textwidth}}
+\toprule
+用語 & 説明 \\
+\midrule
+事前条件 & 関数やメソッドを実行する前に満たされていなければならない条件である。満たされない場合、結果が誤る可能性がある。\\
+事後条件 & 関数やメソッドが正常に完了した後に成り立つことが保証される条件である。\\
+不変条件 & 実行の前後を通じて変わらず成り立つ条件である。対象の正しい動作に必要な制約である。\\
+\bottomrule
+\end{longtable}
+
+たとえば、銀行口座から出金する処理を考える。事前条件は「口座が存在する」「出金額が0より大きい」「残高が出金額以上である」などである。事後条件は「残高が出金額だけ減る」「取引記録が作成される」などである。不変条件は「残高は負にならない」「口座番号は処理中に変わらない」などである。
+
+\par\smallskip
+\begin{center}
+\centering
+\IfFileExists{assets/generated_figures/ch11/fig-ch11-04.png}{\includegraphics[width=0.96\linewidth]{assets/generated_figures/ch11/fig-ch11-04.png}}{\fbox{\parbox[c][48mm][c]{0.9\linewidth}{\centering 画像生成待ち\\事前条件・事後条件・不変条件の時間軸図}}}
+\par\smallskip
+\refstepcounter{figure}\label{fig:ch11-04}図 \thefigure: 事前条件・事後条件・不変条件の時間軸図
+\end{center}
+図 \thefigure は、事前条件・事後条件・不変条件の時間軸図を視覚的に整理したものである。
+\par\smallskip

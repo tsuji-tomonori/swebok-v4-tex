@@ -1,0 +1,105 @@
+\subsection{グラフと木}
+グラフと木は、つながりと階層を表す構造である。ネットワーク、依存関係、状態遷移、制御フロー、データベースの関連、ファイルシステム、構文木などは、グラフまたは木として考えられる。
+
+\subsubsection{グラフ}
+グラフは、頂点と辺からなる構造である。頂点は対象を表し、辺は対象間のつながりを表す。辺は、有向でも無向でもよく、重みを持つこともある。
+
+\par\smallskip\noindent\refstepcounter{table}\label{tab:ch17-09}表 \thetable: グラフにおけるグラフの種類・説明と例\par\smallskip
+表 \thetable は、グラフにおけるグラフの種類・説明と例を比較・確認しやすい形で整理したものである。\par\smallskip
+\begin{longtable}{>{\raggedright\arraybackslash}p{0.26\linewidth} >{\raggedright\arraybackslash}p{0.68\linewidth}}
+\toprule
+グラフの種類 & 説明と例 \\
+\midrule
+\endfirsthead
+\toprule
+グラフの種類 & 説明と例 \\
+\midrule
+\endhead
+単純グラフ & 同じ頂点対を結ぶ辺が一つまでで、自己ループを持たないグラフである。 \\
+多重グラフ & 同じ頂点対の間に複数の辺を許すグラフである。複数種類の関係を表す場合に使える。 \\
+擬グラフ & 頂点から同じ頂点へ戻る自己ループを許すグラフである。 \\
+有向グラフ & 辺に向きがあるグラフである。依存関係、遷移、呼び出し関係に適する。 \\
+重み付きグラフ & 辺に距離、費用、遅延、容量などの数値を持たせたグラフである。 \\
+\bottomrule
+\end{longtable}
+グラフでは、隣接、接続、端点、次数、入次数、出次数、経路、回路、閉路などの用語を使う。これらは、ネットワーク経路探索、依存関係解析、ビルド順序決定、到達可能性分析で重要である。
+
+\par\smallskip\noindent\refstepcounter{table}\label{tab:ch17-10}表 \thetable: グラフにおける表現方法・特徴\par\smallskip
+表 \thetable は、グラフにおける表現方法・特徴を比較・確認しやすい形で整理したものである。\par\smallskip
+\begin{longtable}{>{\raggedright\arraybackslash}p{0.26\linewidth} >{\raggedright\arraybackslash}p{0.68\linewidth}}
+\toprule
+表現方法 & 特徴 \\
+\midrule
+\endfirsthead
+\toprule
+表現方法 & 特徴 \\
+\midrule
+\endhead
+隣接リスト & 各頂点について隣接する頂点を列挙する。辺が少ない疎なグラフで効率がよい。 \\
+隣接行列 & 頂点対ごとに辺の有無を行列で表す。辺の有無を高速に確認しやすい。 \\
+接続行列 & 頂点と辺の関係を行列で表す。グラフ理論の解析で使われる。 \\
+\bottomrule
+\end{longtable}
+\par\smallskip
+\begin{center}
+\centering
+\IfFileExists{assets/generated_figures/ch17/fig-ch17-07.png}{\includegraphics[width=0.96\linewidth]{assets/generated_figures/ch17/fig-ch17-07.png}}{\fbox{\parbox[c][48mm][c]{0.9\linewidth}{\centering 画像生成待ち\\グラフの種類を比較する図}}}
+\par\smallskip
+\refstepcounter{figure}\label{fig:ch17-07}図 \thefigure: グラフの種類を比較する図
+\end{center}
+図 \thefigure は、グラフの種類を比較する図を視覚的に整理したものである。
+\par\smallskip
+\subsubsection{木}
+木は、根を起点に親子関係で枝分かれする階層構造である。別の見方をすると、木は連結で単純な閉路を持たない無向グラフである。木の辺数は、節点数から1を引いた数になる。
+
+\par\smallskip\noindent\refstepcounter{table}\label{tab:ch17-11}表 \thetable: 木における用語・説明\par\smallskip
+表 \thetable は、木における用語・説明を比較・確認しやすい形で整理したものである。\par\smallskip
+\begin{longtable}{>{\raggedright\arraybackslash}p{0.26\linewidth} >{\raggedright\arraybackslash}p{0.68\linewidth}}
+\toprule
+用語 & 説明 \\
+\midrule
+\endfirsthead
+\toprule
+用語 & 説明 \\
+\midrule
+\endhead
+根 & 木の出発点となる節点である。 \\
+親と子 & ある節点から下位の節点へ向かう関係である。根以外の節点は一つの親を持つ。 \\
+内部節点 & 少なくとも一つの子を持つ節点である。 \\
+葉 & 子を持たない節点である。 \\
+レベル & 根から何本の辺をたどるかで決まる深さである。 \\
+高さ & 木の中で最大のレベルである。 \\
+兄弟 & 同じ親を持つ節点である。 \\
+\bottomrule
+\end{longtable}
+二分木は、各節点が高々二つの子を持つ木である。二分探索木は、各節点にキーを持たせ、左部分木には小さいキー、右部分木には大きいキーを置くようにした二分木である。探索、挿入、整列に使われる。
+
+\par\smallskip\noindent\refstepcounter{table}\label{tab:ch17-12}表 \thetable: 木における二分木の種類・説明\par\smallskip
+表 \thetable は、木における二分木の種類・説明を比較・確認しやすい形で整理したものである。\par\smallskip
+\begin{longtable}{>{\raggedright\arraybackslash}p{0.26\linewidth} >{\raggedright\arraybackslash}p{0.68\linewidth}}
+\toprule
+二分木の種類 & 説明 \\
+\midrule
+\endfirsthead
+\toprule
+二分木の種類 & 説明 \\
+\midrule
+\endhead
+二分木 & 各内部節点の子が高々2個であり、左と右の位置に意味がある木である。 \\
+満二分木 & すべての内部節点がちょうど2個の子を持つ二分木である。 \\
+完全二分木 & 最後のレベル以外が埋まり、最後のレベルは左から詰まっている二分木である。 \\
+平衡二分木 & 葉の深さが大きく偏らないよう保たれた二分木である。 \\
+二分探索木 & 左は小さい値、右は大きい値という順序規則を持つ二分木である。 \\
+\bottomrule
+\end{longtable}
+木の巡回には、前順、中順、後順がある。前順は根を先に訪れる。中順は左部分木、根、右部分木の順に訪れる。後順は部分木を先に訪れ、根を最後に訪れる。二分探索木を中順に巡回すると、キーを昇順に取り出せる。
+
+\par\smallskip
+\begin{center}
+\centering
+\IfFileExists{assets/generated_figures/ch17/fig-ch17-08.png}{\includegraphics[width=0.96\linewidth]{assets/generated_figures/ch17/fig-ch17-08.png}}{\fbox{\parbox[c][48mm][c]{0.9\linewidth}{\centering 画像生成待ち\\木構造と二分探索木の巡回を示す図}}}
+\par\smallskip
+\refstepcounter{figure}\label{fig:ch17-08}図 \thefigure: 木構造と二分探索木の巡回を示す図
+\end{center}
+図 \thefigure は、木構造と二分探索木の巡回を示す図を視覚的に整理したものである。
+\par\smallskip

@@ -1,0 +1,98 @@
+\subsection{集合・関係・関数}
+集合、関係、関数は、データと処理を正確に考えるための基本語彙である。データベースの表、APIの入力と出力、型、制約、関連、写像は、集合・関係・関数の考え方で整理できる。
+
+\subsubsection{集合の基本}
+集合とは、対象の集まりである。対象は要素と呼ばれる。集合では、同じ要素が含まれるかどうかが重要であり、通常は並び順や重複は本質ではない。
+
+\par\smallskip\noindent\refstepcounter{table}\label{tab:ch17-06}表 \thetable: 集合の基本における概念・説明\par\smallskip
+表 \thetable は、集合の基本における概念・説明を比較・確認しやすい形で整理したものである。\par\smallskip
+\begin{longtable}{>{\raggedright\arraybackslash}p{0.26\linewidth} >{\raggedright\arraybackslash}p{0.68\linewidth}}
+\toprule
+概念 & 説明 \\
+\midrule
+\endfirsthead
+\toprule
+概念 & 説明 \\
+\midrule
+\endhead
+有限集合 & 要素数が有限である集合である。 \\
+無限集合 & 要素数が有限ではない集合である。自然数全体などである。 \\
+濃度 & 有限集合では要素数を意味する。 \\
+全体集合 & 議論している範囲のすべての要素を含む集合である。 \\
+部分集合 & 集合Xのすべての要素が集合Yにも含まれるとき、XはYの部分集合である。 \\
+真部分集合 & 部分集合であり、かつ等しくない集合である。 \\
+空集合 & 要素を一つも持たない集合である。 \\
+冪集合 & ある集合のすべての部分集合を集めた集合である。 \\
+\bottomrule
+\end{longtable}
+\subsubsection{集合演算}
+集合演算は、複数の集合を組み合わせたり、差を取ったりする操作である。検索条件、権限判定、データ抽出、テスト対象の分類で頻繁に現れる。
+
+\par\smallskip\noindent\refstepcounter{table}\label{tab:ch17-07}表 \thetable: 集合演算における演算・意味とソフトウェアでの例\par\smallskip
+表 \thetable は、集合演算における演算・意味とソフトウェアでの例を比較・確認しやすい形で整理したものである。\par\smallskip
+\begin{longtable}{>{\raggedright\arraybackslash}p{0.26\linewidth} >{\raggedright\arraybackslash}p{0.68\linewidth}}
+\toprule
+演算 & 意味とソフトウェアでの例 \\
+\midrule
+\endfirsthead
+\toprule
+演算 & 意味とソフトウェアでの例 \\
+\midrule
+\endhead
+共通部分 & 両方の集合に含まれる要素である。例：有料会員かつ管理者である利用者。 \\
+和集合 & どちらか一方、または両方に含まれる要素である。例：メール通知対象またはSMS通知対象の利用者。 \\
+補集合 & 全体集合のうち、指定集合に含まれない要素である。例：退会済みでない利用者。 \\
+差集合 & 一方に含まれ、他方に含まれない要素である。例：登録済みだが本人確認未完了の利用者。 \\
+直積 & 二つの集合から順序付き対を作る演算である。例：利用者集合と権限集合の組合せ。 \\
+\bottomrule
+\end{longtable}
+\par\smallskip
+\begin{center}
+\centering
+\IfFileExists{assets/generated_figures/ch17/fig-ch17-05.png}{\includegraphics[width=0.96\linewidth]{assets/generated_figures/ch17/fig-ch17-05.png}}{\fbox{\parbox[c][48mm][c]{0.9\linewidth}{\centering 画像生成待ち\\集合演算のベン図}}}
+\par\smallskip
+\refstepcounter{figure}\label{fig:ch17-05}図 \thefigure: 集合演算のベン図
+\end{center}
+図 \thefigure は、集合演算のベン図を視覚的に整理したものである。
+\par\smallskip
+\subsubsection{集合の性質}
+集合には、結合法則、交換法則、分配法則、恒等法則、補法則、冪等法則、吸収法則、ド・モルガンの法則などがある。これらは条件式や検索条件を変形するときに役立つ。
+
+\begin{notebox}{実務での例}
+「Aに属し、かつBまたはCに属する」を「AかつB、またはAかつC」と変形すると、検索条件や権限条件を実装しやすくなる場合がある。これは集合の分配法則に対応する。
+\end{notebox}
+\subsubsection{関係と関数}
+関係とは、集合の要素どうしの対応である。たとえば、人と電話番号の対応、注文と商品明細の対応、モジュールと依存先の対応は関係である。
+
+関数とは、入力ごとに出力がただ一つ決まる関係である。入力が同じなのに複数の異なる出力があり得るなら、それは関数ではない。関数は、プログラムの処理、API、写像、変換、計算式を考える基本である。
+
+\par\smallskip\noindent\refstepcounter{table}\label{tab:ch17-08}表 \thetable: 関係と関数における用語・説明\par\smallskip
+表 \thetable は、関係と関数における用語・説明を比較・確認しやすい形で整理したものである。\par\smallskip
+\begin{longtable}{>{\raggedright\arraybackslash}p{0.26\linewidth} >{\raggedright\arraybackslash}p{0.68\linewidth}}
+\toprule
+用語 & 説明 \\
+\midrule
+\endfirsthead
+\toprule
+用語 & 説明 \\
+\midrule
+\endhead
+定義域 & 入力として取り得る値の集合である。 \\
+値域 & 対応する出力値の集合である。 \\
+関係 & 入力と出力の対応である。入力一つに複数出力が対応してもよい。 \\
+関数 & 入力一つに対して出力が一つだけ決まる関係である。 \\
+垂直線テスト & グラフ上で同じxに複数のyが対応するなら関数ではない、という確認方法である。 \\
+\bottomrule
+\end{longtable}
+\begin{notebox}{API設計での見方}
+同じリクエストを同じ状態で送ったときに同じレスポンスが返るなら、APIは関数のように扱いやすい。一方、時刻、乱数、外部状態、ユーザセッションによって出力が変わる場合は、状態も入力として考えなければならない。
+\end{notebox}
+\par\smallskip
+\begin{center}
+\centering
+\IfFileExists{assets/generated_figures/ch17/fig-ch17-06.png}{\includegraphics[width=0.96\linewidth]{assets/generated_figures/ch17/fig-ch17-06.png}}{\fbox{\parbox[c][48mm][c]{0.9\linewidth}{\centering 画像生成待ち\\関係と関数の違いを示す図}}}
+\par\smallskip
+\refstepcounter{figure}\label{fig:ch17-06}図 \thefigure: 関係と関数の違いを示す図
+\end{center}
+図 \thefigure は、関係と関数の違いを示す図を視覚的に整理したものである。
+\par\smallskip

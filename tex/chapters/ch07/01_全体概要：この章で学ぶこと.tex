@@ -1,0 +1,39 @@
+\subsection{全体概要：この章で学ぶこと}
+第7章は、運用中のソフトウェアを支え、変更し、価値を保つための知識領域である。ソフトウェアは納品された時点で完成して終わるわけではない。利用者の業務、法規制、外部システム、ハードウェア、クラウド基盤、セキュリティ状況は変化し続ける。したがって、ソフトウェアも変更され続ける必要がある。\par
+\begin{pointbox}{到達目標}この章を読み終えると、ソフトウェア保守の定義、保守が必要になる理由、保守の分類、技術的・管理的課題、保守プロセス、代表的な保守技法、保守ツールの役割を説明できるようになる。\end{pointbox}
+\begin{itemize}
+\item ソフトウェア保守を、欠陥修正だけでなく、変更・適応・改善・支援・廃止まで含む活動として理解する。
+\item 是正保守、予防保守、適応保守、追加保守、完全化保守、緊急保守を区別する。
+\item プログラム理解、回帰テスト、影響分析、保守性、技術的負債の関係を説明する。
+\item 保守の費用、測定、計画、構成管理、品質活動を実務上の管理対象として理解する。
+\item 継続的統合、継続的デリバリ、継続的テスト、継続的デプロイが保守とどう関係するかを説明する。
+\end{itemize}
+\par\smallskip
+\begin{center}
+\centering
+\IfFileExists{assets/generated_figures/ch07/fig-ch07-01.png}{\includegraphics[width=0.96\linewidth]{assets/generated_figures/ch07/fig-ch07-01.png}}{\fbox{\parbox[c][48mm][c]{0.9\linewidth}{\centering 画像生成待ち\\07 章の全体地図}}}
+\par\smallskip
+\refstepcounter{figure}\label{fig:ch07-01}図 \thefigure: 07 章の全体地図
+\end{center}
+図 \thefigure は、07 章の全体地図を視覚的に整理したものである。
+\par\smallskip
+\subsubsection{最初に必要な用語}
+\par\smallskip\noindent\refstepcounter{table}\label{tab:ch07-01}表 \thetable: 最初に必要な用語における用語・初学者向けの説明\par\smallskip
+表 \thetable は、最初に必要な用語における用語・初学者向けの説明を比較・確認しやすい形で整理したものである。\par\smallskip
+\begin{longtable}{p{0.30\linewidth}p{0.64\linewidth}}
+\toprule
+用語 & 初学者向けの説明 \\
+\midrule
+\endhead
+ソフトウェア保守（software maintenance） & 運用中のソフトウェアに対し、費用対効果の高い支援を提供するために必要な活動の総体である。修正、変更、監視、訓練、ヘルプデスク連携、廃止準備を含む。 \\
+保守担当者（maintainer） & 保守活動を担う個人、チーム、または組織である。既存の成果物を理解し、変更し、運用中の品質を守る役割を持つ。 \\
+変更要求（MR: Modification Request） & 機能追加、改善、設定変更など、ソフトウェア変更を求める依頼である。 \\
+問題報告（PR: Problem Report） & 障害、不具合、利用上の問題、期待と実際の差異を報告する依頼である。 \\
+保守性（maintainability） & ソフトウェアを修正、改善、適応、テストしやすい性質である。 \\
+技術的負債（technical debt） & 短期的な都合で残された設計・実装・文書・テスト上の問題が、後の変更費用を増やす状態である。 \\
+構成管理（SCM: Software Configuration Management） & ソフトウェア、文書、設定、テスト、リリースを識別し、変更を管理し、状態を記録する活動である。 \\
+回帰テスト（regression testing） & 変更後に、以前は動いていた機能が壊れていないかを選択的に再テストすることである。 \\
+サービス水準合意（SLA） & 保守や運用で提供するサービス内容と品質水準を、契約または合意として定めたものである。 \\
+継続的統合（CI） & チームの変更を頻繁に共有の主線へ統合し、自動ビルドやテストで問題を早く見つける実践である。 \\
+\bottomrule
+\end{longtable}

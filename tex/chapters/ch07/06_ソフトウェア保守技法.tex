@@ -1,0 +1,60 @@
+\subsection{ソフトウェア保守技法}
+この節では、保守で広く用いられる技法を整理する。技法は、既存ソフトウェアを理解し、変更し、影響を抑え、継続的に品質を守るために使われる。\par
+\subsubsection{プログラム理解}
+プログラム理解とは、変更を実装するために、既存プログラムを読み、構造と振る舞いを理解する活動である。保守担当者は、コードの検索、参照、依存関係の確認、実行経路の確認を行う。コードブラウザや明確な文書は、理解を大きく助ける。\par
+\begin{pointbox}{実務の目安}保守作業では、いきなりコードを変えるのではなく、まず対象機能、関連モジュール、依存する外部サービス、テスト、設定、過去の変更履歴を確認する。\end{pointbox}
+\subsubsection{ソフトウェア再工学}
+ソフトウェア再工学とは、既存ソフトウェアを調査し、変更し、新しい形に再構成することである。老朽化したレガシーソフトウェアを置き換える目的で行われることが多い。\par
+リファクタリングは、外部から見た振る舞いを変えずに、内部構造を整理する再工学技法である。保守活動の前後にリファクタリングを行うと、技術的負債を減らし、将来の変更を容易にできる。\par
+アジャイル開発や継続的統合では、小さな変更が頻繁に行われるため、コード品質と信頼性を保つために継続的なリファクタリングが重要である。\par
+\subsubsection{リバースエンジニアリング}
+リバースエンジニアリングとは、既存ソフトウェアを分析して、構成要素と相互関係を明らかにし、より抽象度の高い表現を作る活動である。リバースエンジニアリング自体は受動的であり、ソフトウェアを変更しない。\par
+\par\smallskip\noindent\refstepcounter{table}\label{tab:ch07-12}表 \thetable: リバースエンジニアリングにおける種類・説明\par\smallskip
+表 \thetable は、リバースエンジニアリングにおける種類・説明を比較・確認しやすい形で整理したものである。\par\smallskip
+\begin{longtable}{p{0.30\linewidth}p{0.64\linewidth}}
+\toprule
+種類 & 説明 \\
+\midrule
+\endhead
+再文書化 & 既存コードや設定から、理解しやすい文書や図を作り直す。 \\
+設計回復 & コードから設計意図、構造、アーキテクチャを復元する。 \\
+データ・リバースエンジニアリング & 物理データベースから論理スキーマやデータ関係を回復する。 \\
+\bottomrule
+\end{longtable}
+リバースエンジニアリングでは、ツールが重要である。呼出しグラフ、制御フローグラフ、依存関係図、データフロー図などを生成し、保守担当者が構造と変化を理解する助けになる。\par
+\subsubsection{継続的統合・継続的デリバリ・継続的テスト・継続的デプロイ}
+開発、運用、保守に関する作業を自動化すると、工学的資源を節約できる。適切に実装された自動化は、手作業より速く、容易で、信頼しやすい。DevOps は、開発、運用、保守の資源と手順を組み合わせ、継続的統合、継続的デリバリ、継続的テスト、継続的デプロイを実行する。\par
+\par\smallskip\noindent\refstepcounter{table}\label{tab:ch07-13}表 \thetable: 継続的統合・継続的デリバリ・継続的テスト・継続的デプロイにおける実践・説明\par\smallskip
+表 \thetable は、継続的統合・継続的デリバリ・継続的テスト・継続的デプロイにおける実践・説明を比較・確認しやすい形で整理したものである。\par\smallskip
+\begin{longtable}{p{0.30\linewidth}p{0.64\linewidth}}
+\toprule
+実践 & 説明 \\
+\midrule
+\endhead
+継続的統合（CI） & チーム全員の変更を頻繁に共有の主線へ統合し、自動ビルドとテストで統合誤りを早く検出する。 \\
+\term{継続的デリバリ}{Continuous Delivery} & 最新のコードと設定を継続的に組み立て、ステージング環境やテスト環境へ頻繁にリリース候補を届ける。 \\
+継続的テスト & ライフサイクルの各段階でテストを行い、早く頻繁に品質を評価する。 \\
+継続的デプロイ & 検証済みの変更を本番環境へ自動的に展開し、リスクを抑えながら価値を届ける。 \\
+\bottomrule
+\end{longtable}
+\par\smallskip
+\begin{center}
+\centering
+\IfFileExists{assets/generated_figures/ch07/fig-ch07-08.png}{\includegraphics[width=0.96\linewidth]{assets/generated_figures/ch07/fig-ch07-08.png}}{\fbox{\parbox[c][48mm][c]{0.9\linewidth}{\centering 画像生成待ち\\CI/CD/テスト/デプロイのパイプライン図}}}
+\par\smallskip
+\refstepcounter{figure}\label{fig:ch07-08}図 \thefigure: CI/CD/テスト/デプロイのパイプライン図
+\end{center}
+図 \thefigure は、CI/CD/テスト/デプロイのパイプライン図を視覚的に整理したものである。
+\par\smallskip
+\subsubsection{保守の可視化}
+保守では、進化し続ける構造と依存関係を理解し続けることが難しい。可視化は、ソフトウェアの構成要素、依存関係、変更履歴、実行時の振る舞いを視覚的に表し、保守担当者の判断を助ける。\par
+大規模で複雑なソフトウェアでは、可視化により依存関係分析、進化履歴の追跡、実行時動作の理解、補完的な文書化が可能になる。可視化は、計算機の処理能力と人間のパターン認識能力を組み合わせる技法である。\par
+\par\smallskip
+\begin{center}
+\centering
+\IfFileExists{assets/generated_figures/ch07/fig-ch07-09.png}{\includegraphics[width=0.96\linewidth]{assets/generated_figures/ch07/fig-ch07-09.png}}{\fbox{\parbox[c][48mm][c]{0.9\linewidth}{\centering 画像生成待ち\\保守可視化ダッシュボード}}}
+\par\smallskip
+\refstepcounter{figure}\label{fig:ch07-09}図 \thefigure: 保守可視化ダッシュボード
+\end{center}
+図 \thefigure は、保守可視化ダッシュボードを視覚的に整理したものである。
+\par\smallskip

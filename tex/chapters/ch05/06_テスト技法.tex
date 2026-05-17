@@ -1,12 +1,15 @@
 \subsection{テスト技法}
-テスト技法は、テストケースをどの考え方で選ぶかを定める。代表的には、仕様から選ぶ仕様ベース技法、内部構造から選ぶ構造ベース技法、経験から選ぶ経験ベース技法がある。さらに、欠陥モデル、利用モデル、アプリケーションの性質、他領域から得た知識に基づく技法もある。
+\term{テスト技法}{Test Technique}は、テストケースをどの考え方で選ぶかを定める。代表的には、仕様から選ぶ仕様ベース技法、内部構造から選ぶ構造ベース技法、経験から選ぶ経験ベース技法がある。さらに、欠陥モデル、利用モデル、アプリケーションの性質、他領域から得た知識に基づく技法もある。
 
-\begin{figure}[htbp]
+\par\smallskip
+\begin{center}
 \centering
 \IfFileExists{assets/generated_figures/ch05/fig-ch05-06.png}{\includegraphics[width=0.96\linewidth]{assets/generated_figures/ch05/fig-ch05-06.png}}{\fbox{\parbox[c][48mm][c]{0.9\linewidth}{\centering 画像生成待ち\\主要テスト技法の比較図}}}
-\caption{主要テスト技法の比較図}
-\label{fig:ch05-06}
-\end{figure}
+\par\smallskip
+\refstepcounter{figure}\label{fig:ch05-06}図 \thefigure: 主要テスト技法の比較図
+\end{center}
+図 \thefigure は、主要テスト技法の比較図を視覚的に整理したものである。
+\par\smallskip
 
 \subsubsection{仕様ベース技法}
 仕様ベース技法は、SUT の入力と出力、要求、仕様、モデルに基づいてテストケースを選ぶ。内部コードを知らなくても使えるため、ブラックボックス技法とも呼ばれる。
@@ -17,12 +20,15 @@
 \paragraph{境界値分析}
 境界値分析は、入力範囲の境界付近に欠陥が集中しやすいという経験に基づき、下限、上限、その直前直後を選ぶ技法である。範囲外の値を使って堅牢性を見る場合もある。
 
-\begin{figure}[htbp]
+\par\smallskip
+\begin{center}
 \centering
 \IfFileExists{assets/generated_figures/ch05/fig-ch05-07.png}{\includegraphics[width=0.96\linewidth]{assets/generated_figures/ch05/fig-ch05-07.png}}{\fbox{\parbox[c][48mm][c]{0.9\linewidth}{\centering 画像生成待ち\\同値分割と境界値分析の図}}}
-\caption{同値分割と境界値分析の図}
-\label{fig:ch05-07}
-\end{figure}
+\par\smallskip
+\refstepcounter{figure}\label{fig:ch05-07}図 \thefigure: 同値分割と境界値分析の図
+\end{center}
+図 \thefigure は、同値分割と境界値分析の図を視覚的に整理したものである。
+\par\smallskip
 
 \paragraph{構文テスト}
 構文テストは、形式言語で書かれた仕様や入力文法に基づいてテストケースを導く技法である。仕様が形式的であれば、機能テストケースの自動生成や期待結果の判定に使いやすい。
@@ -39,12 +45,15 @@
 \paragraph{状態遷移テスト}
 状態遷移テストは、SUT を有限状態機械として表し、状態と遷移をカバーするようにテストケースを作る技法である。画面遷移、通信プロトコル、注文状態、予約状態など、状態によって振る舞いが変わる対象に向いている。
 
-\begin{figure}[htbp]
+\par\smallskip
+\begin{center}
 \centering
 \IfFileExists{assets/generated_figures/ch05/fig-ch05-08.png}{\includegraphics[width=0.96\linewidth]{assets/generated_figures/ch05/fig-ch05-08.png}}{\fbox{\parbox[c][48mm][c]{0.9\linewidth}{\centering 画像生成待ち\\状態遷移テストの図}}}
-\caption{状態遷移テストの図}
-\label{fig:ch05-08}
-\end{figure}
+\par\smallskip
+\refstepcounter{figure}\label{fig:ch05-08}図 \thefigure: 状態遷移テストの図
+\end{center}
+図 \thefigure は、状態遷移テストの図を視覚的に整理したものである。
+\par\smallskip
 
 \paragraph{シナリオベーステスト}
 シナリオベーステストは、利用者やシステムがたどる一連の行動をモデル化し、その流れに沿ってテストケースを作る技法である。通常の流れだけでなく、代替流、例外流も扱う。業務プロセステストやワークフローモデルを使うテストもこの考え方に含まれる。
@@ -70,12 +79,15 @@
 \paragraph{構造ベース技法の参照モデル}
 構造ベース技法では、制御フローグラフがよく使われる。ノードは文や文列を表し、辺は制御の移動を表す。この図に基づいて、どの文、分岐、経路を通したかを可視化できる。
 
-\begin{figure}[htbp]
+\par\smallskip
+\begin{center}
 \centering
 \IfFileExists{assets/generated_figures/ch05/fig-ch05-09.png}{\includegraphics[width=0.96\linewidth]{assets/generated_figures/ch05/fig-ch05-09.png}}{\fbox{\parbox[c][48mm][c]{0.9\linewidth}{\centering 画像生成待ち\\制御フローとデータフローの図}}}
-\caption{制御フローとデータフローの図}
-\label{fig:ch05-09}
-\end{figure}
+\par\smallskip
+\refstepcounter{figure}\label{fig:ch05-09}図 \thefigure: 制御フローとデータフローの図
+\end{center}
+図 \thefigure は、制御フローとデータフローの図を視覚的に整理したものである。
+\par\smallskip
 
 \subsubsection{経験ベース技法}
 経験ベース技法は、仕様やコードだけではなく、テスト担当者の知識、直感、過去の障害、ドメイン理解を活用する。
@@ -94,12 +106,15 @@
 
 ミューテーションテストは、SUT をわずかに変更した変異体を多数作り、テストスイートがそれらの違いを検出できるかを評価する技法である。テストが変異体を見破れば、その変異体は殺されたという。変異体を多く殺せるテストスイートほど、欠陥検出能力が高いと考える。近年は、機械学習システムのテストで、入力を変化させて出力関係を見るメタモルフィックテストにも関連する。
 
-\begin{figure}[htbp]
+\par\smallskip
+\begin{center}
 \centering
 \IfFileExists{assets/generated_figures/ch05/fig-ch05-10.png}{\includegraphics[width=0.96\linewidth]{assets/generated_figures/ch05/fig-ch05-10.png}}{\fbox{\parbox[c][48mm][c]{0.9\linewidth}{\centering 画像生成待ち\\ミューテーションテストの図}}}
-\caption{ミューテーションテストの図}
-\label{fig:ch05-10}
-\end{figure}
+\par\smallskip
+\refstepcounter{figure}\label{fig:ch05-10}図 \thefigure: ミューテーションテストの図
+\end{center}
+図 \thefigure は、ミューテーションテストの図を視覚的に整理したものである。
+\par\smallskip
 
 \subsubsection{利用ベース技法}
 利用ベース技法は、実際の運用や利用のされ方をモデル化し、その頻度や順序に沿ってテストケースを選ぶ。運用環境に近い条件で実行するため、受入テストや信頼性評価に向いている。

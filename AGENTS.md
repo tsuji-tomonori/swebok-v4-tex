@@ -7,7 +7,7 @@
 - `git diff`、`git status`、変更ファイル一覧、ステージ済み差分、PR 内容、作業レポートから文面を作る場合も該当 skill を適用する。
 - `reports/working/*.md`、`reports/bugs/*.md`、同等の作業・障害レポートが関係する場合は本文を確認し、commit message / PR 本文に要点を反映する。
 - 実施していないテスト、確認、検証を実施済みとして書かない。
-- TeX 文書の生成・確認では、原則 `python3 tex/build_integrated_document.py` と LuaLaTeX による `tex/swebok_v4_ch01_06_ja_master.tex` のビルド可否を確認する。
+- TeX 文書の生成・確認では、原則 `python3 tex/build_integrated_document.py` と LuaLaTeX による `tex/swebok_v4_ch01_18_ja_master.tex` のビルド可否を確認する。
 
 ## Git Commit Message
 - 対象: Git commit message、コミットメッセージ、コミットコメント、git comment、`git commit`。ユーザーの「コメント」も Git 文脈では commit message と扱う。

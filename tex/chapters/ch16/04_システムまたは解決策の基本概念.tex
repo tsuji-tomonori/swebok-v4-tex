@@ -1,0 +1,34 @@
+\subsection{システムまたは解決策の基本概念}
+
+解くべき問題は、機能要求、利用者との相互作用、性能要求、装置とのインタフェース、セキュリティ、脆弱性、耐久性、更新容易性などの観点から詳しく分析する必要がある。システムは、特定の機能を持つサブシステム、モジュール、構成要素が統合されたものである。
+
+工学的に作られたシステムでは、部分同士の分け方が重要である。SWEBOK 16章は、サブシステムがモジュール性、凝集性、疎結合性を持つように設計されるべきだと整理する。
+
+\par\smallskip\noindent\refstepcounter{table}\label{tab:ch16-02}表 \thetable: システムまたは解決策の基本概念における性質・意味・初学者向けの見方\par\smallskip
+表 \thetable は、システムまたは解決策の基本概念における性質・意味・初学者向けの見方を比較・確認しやすい形で整理したものである。\par\smallskip
+\begin{longtable}{>{\raggedright\arraybackslash}p{0.21\textwidth}>{\raggedright\arraybackslash}p{0.37\textwidth}>{\raggedright\arraybackslash}p{0.37\textwidth}}
+\toprule
+性質 & 意味 & 初学者向けの見方 \\
+\midrule
+\endfirsthead
+\toprule
+性質 & 意味 & 初学者向けの見方 \\
+\midrule
+\endhead
+モジュール性 & 各サブシステムやモジュールが適切な大きさと境界を持つこと。 & 大きすぎる一枚岩ではなく、理解・変更・交換しやすい単位に分かれているかを見る。 \\
+凝集性 & 一つの部分が一つの明確な仕事に集中していること。 & 一つのモジュールが、関係の薄い処理を抱え込みすぎていないかを見る。 \\
+疎結合性 & 各部分ができるだけ独立して動くこと。 & ある部分を変えたとき、別の部分へ影響が広がりすぎないかを見る。 \\
+\bottomrule
+\end{longtable}
+
+システムはソフトウェアだけでなく、ハードウェアも含む場合が多い。ハードウェアは、ソフトウェアの実行、入力と出力、性能目標を支える。ソフトウェア技術者は、技術、道具、データ構造、基本ソフトウェア、データベース、利用者インタフェース、プログラミング言語、アルゴリズムを、目的に合わせて選ぶ必要がある。
+
+\par\smallskip
+\begin{center}
+\centering
+\IfFileExists{assets/generated_figures/ch16/fig-ch16-02.png}{\includegraphics[width=0.96\linewidth]{assets/generated_figures/ch16/fig-ch16-02.png}}{\fbox{\parbox[c][48mm][c]{0.9\linewidth}{\centering 画像生成待ち\\システム分解と三つの設計性質を示す図}}}
+\par\smallskip
+\refstepcounter{figure}\label{fig:ch16-02}図 \thefigure: システム分解と三つの設計性質を示す図
+\end{center}
+図 \thefigure は、システム分解と三つの設計性質を示す図を視覚的に整理したものである。
+\par\smallskip

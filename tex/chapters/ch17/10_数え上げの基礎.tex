@@ -1,0 +1,34 @@
+\subsection{数え上げの基礎}
+数え上げは、可能な選択肢や組合せの数を数えるための考え方である。テストケース数、入力の組合せ、経路数、状態数、パスワード探索空間、スケジューリング候補を見積もるときに使う。
+
+\par\smallskip\noindent\refstepcounter{table}\label{tab:ch17-17}表 \thetable: 数え上げの基礎における規則・説明と例\par\smallskip
+表 \thetable は、数え上げの基礎における規則・説明と例を比較・確認しやすい形で整理したものである。\par\smallskip
+\begin{longtable}{>{\raggedright\arraybackslash}p{0.26\linewidth} >{\raggedright\arraybackslash}p{0.68\linewidth}}
+\toprule
+規則 & 説明と例 \\
+\midrule
+\endfirsthead
+\toprule
+規則 & 説明と例 \\
+\midrule
+\endhead
+和の規則 & 同時に起こらない選択肢AとBがあるとき、全体の数はAの数とBの数の和である。 \\
+積の規則 & 一つ目の選択の後に二つ目の選択を行うとき、全体の数はそれぞれの数の積である。 \\
+包除原理 & 重なりがある二つの集合を数えるとき、重複して数えた共通部分を引く。 \\
+再帰 & 対象や処理を、自分自身のより小さい場合で定義する。 \\
+順列 & 順序が意味を持つ選び方である。 \\
+組合せ & 順序が意味を持たない選び方である。 \\
+\bottomrule
+\end{longtable}
+\begin{notebox}{テスト設計での見方}
+入力項目が増えると、すべての組合せを試す数は急増する。数え上げを理解すると、全探索が現実的か、同値分割や組合せテストで減らすべきかを判断しやすくなる。
+\end{notebox}
+\par\smallskip
+\begin{center}
+\centering
+\IfFileExists{assets/generated_figures/ch17/fig-ch17-12.png}{\includegraphics[width=0.96\linewidth]{assets/generated_figures/ch17/fig-ch17-12.png}}{\fbox{\parbox[c][48mm][c]{0.9\linewidth}{\centering 画像生成待ち\\和の規則・積の規則・順列・組合せの比較図}}}
+\par\smallskip
+\refstepcounter{figure}\label{fig:ch17-12}図 \thefigure: 和の規則・積の規則・順列・組合せの比較図
+\end{center}
+図 \thefigure は、和の規則・積の規則・順列・組合せの比較図を視覚的に整理したものである。
+\par\smallskip

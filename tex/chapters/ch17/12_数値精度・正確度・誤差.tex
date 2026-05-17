@@ -1,0 +1,37 @@
+\subsection{数値精度・正確度・誤差}
+計算機は有限個のビットで数を表す。そのため、任意の大きさの数や任意の実数を完全には表せない。数値解析では、この制約の中で効率よく、十分に正確な計算を行う方法を考える。
+
+固定小数点は、数を一定間隔で配置して表す方式である。処理速度が重要な場合に有利なことがある。浮動小数点は、非常に大きな値と非常に小さな値を広く扱えるが、丸め誤差を伴う。
+
+\par\smallskip\noindent\refstepcounter{table}\label{tab:ch17-19}表 \thetable: 数値精度・正確度・誤差における用語・説明\par\smallskip
+表 \thetable は、数値精度・正確度・誤差における用語・説明を比較・確認しやすい形で整理したものである。\par\smallskip
+\begin{longtable}{>{\raggedright\arraybackslash}p{0.26\linewidth} >{\raggedright\arraybackslash}p{0.68\linewidth}}
+\toprule
+用語 & 説明 \\
+\midrule
+\endfirsthead
+\toprule
+用語 & 説明 \\
+\midrule
+\endhead
+正確度 & 測定値または計算値が真の値にどれだけ近いかである。 \\
+精密度 & 同じ対象を複数回測った値が互いにどれだけ近いかである。 \\
+絶対誤差 & 近似値と真値の差の絶対値である。 \\
+相対誤差 & 絶対誤差を真値の大きさで割った比である。 \\
+有効数字 & 信頼できる桁を表す。 \\
+オーバーフロー & 計算結果が表現可能範囲を超えることである。 \\
+丸め & 近い表現可能な値へ置き換えることである。 \\
+\bottomrule
+\end{longtable}
+\begin{notebox}{実務での注意}
+金額、医療、制御、物理シミュレーションでは、数値表現の選択が重要である。浮動小数点で0.1を正確に表せないこと、丸め順序で結果が変わること、オーバーフローが起こることを前提に設計する必要がある。
+\end{notebox}
+\par\smallskip
+\begin{center}
+\centering
+\IfFileExists{assets/generated_figures/ch17/fig-ch17-14.png}{\includegraphics[width=0.96\linewidth]{assets/generated_figures/ch17/fig-ch17-14.png}}{\fbox{\parbox[c][48mm][c]{0.9\linewidth}{\centering 画像生成待ち\\正確度・精密度・誤差の概念図}}}
+\par\smallskip
+\refstepcounter{figure}\label{fig:ch17-14}図 \thefigure: 正確度・精密度・誤差の概念図
+\end{center}
+図 \thefigure は、正確度・精密度・誤差の概念図を視覚的に整理したものである。
+\par\smallskip

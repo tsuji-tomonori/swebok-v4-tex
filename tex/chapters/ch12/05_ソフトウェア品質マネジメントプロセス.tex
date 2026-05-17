@@ -1,0 +1,90 @@
+\subsection{ソフトウェア品質マネジメントプロセス}
+\term{ソフトウェア品質マネジメント}{Software Quality Management, SQM}は、ソフトウェア品質に関して組織を方向づけ、管理する活動である。目的は、製品、サービス、品質マネジメントプロセスの実施が、組織やプロジェクトの品質目標を満たし、顧客満足を達成することである。
+
+中心概念は\term{品質マネジメントシステム}{Quality Management System, QMS}である。QMS は、プロセス、プロセス所有者、プロセス要求、測定、フィードバック経路を定義する。QMS には、品質保証、検証と妥当性確認、レビュー、監査、ソフトウェア構成管理などが含まれる。
+
+品質活動が有効になるには、経営層の支援が不可欠である。プロジェクトが QMS を理解し、必要な教育と資源を持ち、不適合が見つかったときに是正できる体制が必要である。
+
+\par\smallskip
+\begin{center}
+\centering
+\IfFileExists{assets/generated_figures/ch12/fig-ch12-06.png}{\includegraphics[width=0.96\linewidth]{assets/generated_figures/ch12/fig-ch12-06.png}}{\fbox{\parbox[c][48mm][c]{0.9\linewidth}{\centering 画像生成待ち\\QMS と SQM のフィードバックループ}}}
+\par\smallskip
+\refstepcounter{figure}\label{fig:ch12-06}図 \thefigure: QMS と SQM のフィードバックループ
+\end{center}
+図 \thefigure は、QMS と SQM のフィードバックループを視覚的に整理したものである。
+\par\smallskip
+
+\subsubsection{ソフトウェア品質改善}
+\term{ソフトウェア品質改善}{Software Quality Improvement, SQI}は、品質を継続的に高める活動である。代表的な考え方には、ソフトウェアプロセス改善、シックスシグマ、リーン、カイゼン、PDCA サイクルがある。
+
+品質改善では、欠陥を後から見つけて直すだけではなく、欠陥が発生しにくいプロセスへ変えることが重要である。改善の対象は、ライフサイクルプロセス、欠陥の分類・検出・除去・予防、個人の能力改善である。
+
+\term{品質機能展開}{Quality Function Deployment, QFD}は、顧客の声を品質目標や設計要素へ展開するための方法である。\term{個人ソフトウェアプロセス}{Personal Software Process, PSP}は、個々の技術者が自分の作業を測定し、技能と知識を継続的に改善する考え方である。
+
+\par\smallskip
+\begin{center}
+\centering
+\IfFileExists{assets/generated_figures/ch12/fig-ch12-07.png}{\includegraphics[width=0.96\linewidth]{assets/generated_figures/ch12/fig-ch12-07.png}}{\fbox{\parbox[c][48mm][c]{0.9\linewidth}{\centering 画像生成待ち\\PDCA と欠陥予防の流れ}}}
+\par\smallskip
+\refstepcounter{figure}\label{fig:ch12-07}図 \thefigure: PDCA と欠陥予防の流れ
+\end{center}
+図 \thefigure は、PDCA と欠陥予防の流れを視覚的に整理したものである。
+\par\smallskip
+
+\subsubsection{品質マネジメント計画}
+品質マネジメント計画では、どの品質プロセスを使うか、どの標準やモデルを使うか、具体的な品質目標をどう定めるか、各目標達成にどの程度の工数を使うか、どの活動時点で品質活動を行うかを決める。
+
+組織は、品質方針、品質目標、手順を含む QMS を確立しなければならない。QMS の実施責任と権限は明確である必要があり、品質活動がプロジェクト管理上の短期的圧力だけで歪められないようにすることも重要である。
+
+計画や手順は、利用者であるプロジェクトメンバーが使える形で文書化する必要がある。形式的に存在するだけの手順は、品質改善に役立たない。どの活動で、何を確認し、どの証拠を残すかが分かることが重要である。
+
+\subsubsection{品質マネジメントの評価}
+QMS が存在しても、それが機能しているとは限らない。したがって、品質マネジメント活動は評価される必要がある。プロセス能力や成熟度を評価し、その結果を改善プログラムへつなげる。
+
+評価では、品質測定値、欠陥分類、監査結果、レビュー結果、テスト結果、不適合の数、是正処置の進捗などを見る。評価結果は、単なる報告で終わらせず、実行可能な改善課題に変換することが重要である。
+
+\paragraph{ソフトウェア品質測定}
+品質測定は意思決定のために行う。ソフトウェアが複雑になるほど、「動くかどうか」だけではなく、「どの程度よく動くか」「どの品質目標をどの程度満たすか」を測る必要がある。
+
+品質測定は、次の判断に役立つ。
+\begin{itemize}
+  \item 製品が品質目標をどの程度満たしているか。
+  \item 工数、費用、納期に関する管理上の判断。
+  \item テストをいつ終了してリリースするか。
+  \item プロセス改善の効果が出ているか。
+\end{itemize}
+
+代表的な測定値には、\term{誤り密度}{error density}、欠陥密度、\term{故障率}{failure rate}がある。欠陥密度は、欠陥数をソフトウェア規模で割った値である。故障率や平均故障時間は、信頼性モデルを作り、今後の故障可能性やテスト終了判断に使われることがある。
+
+測定値は、表や数字だけでなく、パレート図、実行図、散布図、管理図、傾向分析、信頼性モデルとして可視化すると、どこに改善資源を集中すべきか判断しやすい。
+
+\par\smallskip
+\begin{center}
+\centering
+\IfFileExists{assets/generated_figures/ch12/fig-ch12-08.png}{\includegraphics[width=0.96\linewidth]{assets/generated_figures/ch12/fig-ch12-08.png}}{\fbox{\parbox[c][48mm][c]{0.9\linewidth}{\centering 画像生成待ち\\品質測定ダッシュボードの概念図}}}
+\par\smallskip
+\refstepcounter{figure}\label{fig:ch12-08}図 \thefigure: 品質測定ダッシュボードの概念図
+\end{center}
+図 \thefigure は、品質測定ダッシュボードの概念図を視覚的に整理したものである。
+\par\smallskip
+
+\subsubsection{是正処置と予防処置の実施}
+品質目標が達成されない場合には、\term{是正処置}{corrective action}と\term{予防処置}{preventive action}が必要である。是正処置は、発生した問題を直すための処置である。予防処置は、同じ問題が将来再発しないように原因を取り除く処置である。
+
+このためには、プロセスやツールの問題を報告できる仕組み、独立した記録・監視の仕組み、関係者へ進捗を知らせる仕組みが必要である。
+
+\paragraph{欠陥特徴づけ}
+欠陥特徴づけとは、発見した誤り、欠陥、故障を分類し、原因や傾向を理解する活動である。単に「欠陥が何件あった」と数えるだけでは、再発防止に十分ではない。どの種類の欠陥が、どの工程で、どの成果物に、どの原因で入り込んだかを分類する必要がある。
+
+\term{根本原因分析}{Root Cause Analysis, RCA}は、欠陥や不適合の表面的な現象ではなく、再発を生む根本原因を探す活動である。レビューやテストで発見された欠陥は、修正するだけでなく、プロセス、教育、ツール、標準、設計方針の改善へつなげるべきである。
+
+\par\smallskip
+\begin{center}
+\centering
+\IfFileExists{assets/generated_figures/ch12/fig-ch12-09.png}{\includegraphics[width=0.96\linewidth]{assets/generated_figures/ch12/fig-ch12-09.png}}{\fbox{\parbox[c][48mm][c]{0.9\linewidth}{\centering 画像生成待ち\\欠陥分類と根本原因分析の流れ}}}
+\par\smallskip
+\refstepcounter{figure}\label{fig:ch12-09}図 \thefigure: 欠陥分類と根本原因分析の流れ
+\end{center}
+図 \thefigure は、欠陥分類と根本原因分析の流れを視覚的に整理したものである。
+\par\smallskip

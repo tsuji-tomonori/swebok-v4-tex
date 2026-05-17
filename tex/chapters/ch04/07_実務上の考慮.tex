@@ -12,10 +12,11 @@
 
 構築言語とは、人間がコンピュータに実行可能な解決策を指定するための言語である。狭い意味のプログラミング言語だけでなく、設定言語、ツールキット言語、スクリプト言語、ドメイン固有言語も含む。
 
-\par\smallskip\noindent\refstepcounter{table}\label{tab:ch04-03}\textbf{表 \thetable: 第04章 ソフトウェア構築 表03}\par\smallskip
+\par\smallskip\noindent\refstepcounter{table}\label{tab:ch04-03}表 \thetable: 構築言語の整理\par\smallskip
+表 \thetable は、構築言語の整理を比較・確認しやすい形で整理したものである。\par\smallskip
 \begin{longtable}{L{0.24\linewidth}L{0.66\linewidth}}
 \toprule
-\textbf{構築言語の種類} & \textbf{説明} \\
+構築言語の種類 & 説明 \\
 \midrule
 設定言語 & 限られた選択肢から設定を選び、ソフトウェアの振る舞いや導入形態を変える言語である。設定ファイルなどが該当する。 \\
 ツールキット言語 & 特定の部品群やツールキットを組み合わせてアプリケーションを作るための言語である。 \\
@@ -27,12 +28,15 @@
 
 構築言語の表記法には、テキストを中心にする言語的表記、数学的に厳密な形式的表記、図形やアイコンを中心にする視覚的表記がある。言語選択は、性能、信頼性、移植性、セキュリティ、開発者の学習コストに影響する。
 
-\begin{figure}[htbp]
+\par\smallskip
+\begin{center}
 \centering
 \IfFileExists{assets/generated_figures/ch04/fig-ch04-06.png}{\includegraphics[width=0.96\linewidth]{assets/generated_figures/ch04/fig-ch04-06.png}}{\fbox{\parbox[c][48mm][c]{0.9\linewidth}{\centering 画像生成待ち\\構築言語の分類図}}}
-\caption{構築言語の分類図}
-\label{fig:ch04-06}
-\end{figure}
+\par\smallskip
+\refstepcounter{figure}\label{fig:ch04-06}図 \thefigure: 構築言語の分類図
+\end{center}
+図 \thefigure は、構築言語の分類図を視覚的に整理したものである。
+\par\smallskip
 
 \subsubsection{コーディング}
 
@@ -62,7 +66,7 @@
 
 単体テストは、関数、クラス、モジュールなどを単独で確認する。統合テストは、それらを組み合わせたときに正しく相互作用するかを確認する。構築テストは、通常、システムテスト、アルファテスト、ベータテスト、ストレステスト、使用性テストなどの広い範囲のテストまでは含まない。
 
-テストケースは、コードを書いた後に作られることもあるが、コードを書く前に作られることもある。テストを先に書く方法は、テストファーストプログラミングまたはテスト駆動開発として扱われる。
+\term{テストケース}{Test Case}は、コードを書いた後に作られることもあるが、コードを書く前に作られることもある。テストを先に書く方法は、テストファーストプログラミングまたはテスト駆動開発として扱われる。
 
 \subsubsection{構築における再利用}
 
@@ -88,12 +92,15 @@
 
 段階的統合では、まだ存在しない部品の代役として、スタブ、ドライバ、モックオブジェクトなどの足場が必要になることがある。現代では、継続的統合によって、変更のたびに自動的にビルドとテストを行うことが広く使われる。
 
-\begin{figure}[htbp]
+\par\smallskip
+\begin{center}
 \centering
 \IfFileExists{assets/generated_figures/ch04/fig-ch04-07.png}{\includegraphics[width=0.96\linewidth]{assets/generated_figures/ch04/fig-ch04-07.png}}{\fbox{\parbox[c][48mm][c]{0.9\linewidth}{\centering 画像生成待ち\\段階的統合と継続的統合の流れ}}}
-\caption{段階的統合と継続的統合の流れ}
-\label{fig:ch04-07}
-\end{figure}
+\par\smallskip
+\refstepcounter{figure}\label{fig:ch04-07}図 \thefigure: 段階的統合と継続的統合の流れ
+\end{center}
+図 \thefigure は、段階的統合と継続的統合の流れを視覚的に整理したものである。
+\par\smallskip
 
 \subsubsection{クロスプラットフォーム開発と移行}
 

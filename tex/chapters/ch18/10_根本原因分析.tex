@@ -1,0 +1,64 @@
+\subsection{根本原因分析}
+根本原因分析は、望ましくない結果の背後にある原因を特定する問題解決方法群である。症状だけを直すのではなく、なぜ、どのようにその結果が起きたかを理解し、再発を防ぐ行動につなげる。
+ソフトウェアプロジェクトでは、根本原因分析は多くの場面で役立つ。工学活動で本当に解くべき問題を見つける。リスクの背後にある要因を明らかにする。プロセス改善の機会を見つける。繰り返し発生する欠陥の原因を調べる。
+\subsubsection{根本原因分析技法}
+\par\smallskip\noindent\refstepcounter{table}\label{tab:ch18-12}表 \thetable: 根本原因分析技法の整理\par\smallskip
+表 \thetable は、根本原因分析技法の整理を比較・確認しやすい形で整理したものである。\par\smallskip
+\begin{longtable}{>{\raggedright\arraybackslash}p{0.20\linewidth}>{\raggedright\arraybackslash}p{0.51\linewidth}>{\raggedright\arraybackslash}p{0.21\linewidth}}
+\toprule
+技法 & 説明 & 使いどころ \\
+\midrule
+\endfirsthead
+\toprule
+技法 & 説明 & 使いどころ \\
+\midrule
+\endhead
+変更分析 & うまくいった状況とうまくいかなかった状況を比較し、差分に原因を探す。 & リリース後に突然障害が増えた場合。 \\
+5つのなぜ & 望ましくない結果から始め、なぜを繰り返して深い原因に近づく。 & 単純な障害やプロセス問題の初期分析。 \\
+原因結果図 & 特性要因図、石川図、魚骨図とも呼ばれる。原因を人、過程、道具、材料、測定、環境などに分けて整理する。 & 原因候補を広く出す場合。 \\
+故障木解析 & 原因と結果のAND/OR関係を明示する、より形式的な原因分析である。 & 安全性や信頼性の分析。 \\
+故障モード影響解析 & 故障し得る要素から出発し、その影響がどう連鎖するかを前向きに調べる。 & 設計段階の予防的な分析。 \\
+原因マップ & 証拠に基づいて、原因から結果、さらに組織目標への影響までを構造化する。 & 厳密な再発防止分析。 \\
+現実ツリー & 論理規則に従って、現状の望ましくない結果と原因を木として表す。 & 複数の問題が絡む改善課題。 \\
+人間性能評価 & 入力検出、入力理解、行動選択、行動実行のどこで失敗したかを見る。 & 運用ミス、認知負荷、疲労、思い込みが関わる問題。 \\
+\bottomrule
+\end{longtable}
+\par\smallskip
+\begin{center}
+\centering
+\IfFileExists{assets/generated_figures/ch18/fig-ch18-14.png}{\includegraphics[width=0.96\linewidth]{assets/generated_figures/ch18/fig-ch18-14.png}}{\fbox{\parbox[c][48mm][c]{0.9\linewidth}{\centering 画像生成待ち\\根本原因分析技法の比較図}}}
+\par\smallskip
+\refstepcounter{figure}\label{fig:ch18-14}図 \thefigure: 根本原因分析技法の比較図
+\end{center}
+図 \thefigure は、根本原因分析技法の比較図を視覚的に整理したものである。
+\par\smallskip
+\subsubsection{根本原因に基づく改善}
+根本原因を特定しても、何も改善しなければ意味がない。根本原因分析は、より大きなプロセス改善の一部として使う必要がある。
+\par\smallskip\noindent\refstepcounter{table}\label{tab:ch18-13}表 \thetable: 根本原因に基づく改善の整理\par\smallskip
+表 \thetable は、根本原因に基づく改善の整理を比較・確認しやすい形で整理したものである。\par\smallskip
+\begin{longtable}{>{\raggedright\arraybackslash}p{0.23\linewidth}>{\raggedright\arraybackslash}p{0.69\linewidth}}
+\toprule
+段階 & 内容 \\
+\midrule
+\endfirsthead
+\toprule
+段階 & 内容 \\
+\midrule
+\endhead
+解く問題を選ぶ & パレート分析、頻度と重大度、統計的工程管理などを使い、優先度の高い望ましくない結果を選ぶ。 \\
+証拠を集める & 証言、過程、標準、仕様、報告、履歴傾向、実験、試験などを集める。 \\
+根本原因を特定する & 一つまたは複数の根本原因分析技法を使う。 \\
+是正処置を選ぶ & 再発防止、組織が制御可能、目標に合う、別問題を起こさない、費用対効果が高いという条件で選ぶ。 \\
+是正処置を実施する & 選んだ対策を実際に導入する。 \\
+効果を観察する & 効率性と有効性を確認し、必要なら改善する。 \\
+\bottomrule
+\end{longtable}
+\par\smallskip
+\begin{center}
+\centering
+\IfFileExists{assets/generated_figures/ch18/fig-ch18-15.png}{\includegraphics[width=0.96\linewidth]{assets/generated_figures/ch18/fig-ch18-15.png}}{\fbox{\parbox[c][48mm][c]{0.9\linewidth}{\centering 画像生成待ち\\根本原因に基づく改善サイクル}}}
+\par\smallskip
+\refstepcounter{figure}\label{fig:ch18-15}図 \thefigure: 根本原因に基づく改善サイクル
+\end{center}
+図 \thefigure は、根本原因に基づく改善サイクルを視覚的に整理したものである。
+\par\smallskip

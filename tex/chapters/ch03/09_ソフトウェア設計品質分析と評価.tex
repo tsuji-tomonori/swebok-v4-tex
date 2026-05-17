@@ -8,12 +8,15 @@
 
 \term{設計監査}{Design Audit} は、より狭い観点に焦点を当てる。たとえば、特定の機能監査、標準への適合監査、セキュリティ方針への適合監査などである。
 
-\begin{figure}[htbp]
+\par\smallskip
+\begin{center}
 \centering
 \IfFileExists{assets/generated_figures/ch03/fig-ch03-11.png}{\includegraphics[width=0.96\linewidth]{assets/generated_figures/ch03/fig-ch03-11.png}}{\fbox{\parbox[c][48mm][c]{0.9\linewidth}{\centering 画像生成待ち\\設計レビューの流れ}}}
-\caption{設計レビューの流れ}
-\label{fig:ch03-11}
-\end{figure}
+\par\smallskip
+\refstepcounter{figure}\label{fig:ch03-11}図 \thefigure: 設計レビューの流れ
+\end{center}
+図 \thefigure は、設計レビューの流れを視覚的に整理したものである。
+\par\smallskip
 
 \subsubsection{品質属性}
 
@@ -25,10 +28,11 @@
 
 設計品質を分析・評価するための技法には、静的分析、シミュレーション、プロトタイピング、レビュー、要求追跡などがある。
 
-\par\smallskip\noindent\refstepcounter{table}\label{tab:ch03-06}\textbf{表 \thetable: 第03章 ソフトウェア設計 表06}\par\smallskip
+\par\smallskip\noindent\refstepcounter{table}\label{tab:ch03-06}表 \thetable: 品質分析・評価技法の整理\par\smallskip
+表 \thetable は、品質分析・評価技法の整理を比較・確認しやすい形で整理したものである。\par\smallskip
 \begin{tabularx}{\linewidth}{L{36mm}Y}
 \toprule
-\textbf{技法} & \textbf{説明} \\
+技法 & 説明 \\
 \midrule
 設計レビュー・検査 & 設計記述を人が確認し、要求対応、未解決事項、設計上のリスクを見つける。 \\
 シナリオに基づく評価 & 利用シナリオ、障害シナリオ、変更シナリオを使って、設計がどう反応するか確認する。 \\
@@ -36,16 +40,19 @@
 静的分析 & 実行せずに設計やモデルを分析する。依存関係、循環、整合性、弱点を確認する。 \\
 形式的分析 & 数学的モデルを使い、性質を厳密に検査する。安全性やセキュリティが重要な領域で有効である。 \\
 シミュレーション & 設計モデルを使い、性能、タイミング、負荷、失敗時の挙動などを試す。 \\
-プロトタイピング & 実現可能性、使いやすさ、技術的リスクを確認するために試作品を作る。 \\
+\term{プロトタイピング}{Prototyping} & 実現可能性、使いやすさ、技術的リスクを確認するために試作品を作る。 \\
 \bottomrule
 \end{tabularx}
 
-\begin{figure}[htbp]
+\par\smallskip
+\begin{center}
 \centering
 \IfFileExists{assets/generated_figures/ch03/fig-ch03-12.png}{\includegraphics[width=0.96\linewidth]{assets/generated_figures/ch03/fig-ch03-12.png}}{\fbox{\parbox[c][48mm][c]{0.9\linewidth}{\centering 画像生成待ち\\品質分析・評価技法の比較図}}}
-\caption{品質分析・評価技法の比較図}
-\label{fig:ch03-12}
-\end{figure}
+\par\smallskip
+\refstepcounter{figure}\label{fig:ch03-12}図 \thefigure: 品質分析・評価技法の比較図
+\end{center}
+図 \thefigure は、品質分析・評価技法の比較図を視覚的に整理したものである。
+\par\smallskip
 
 \subsubsection{測度とメトリクス}
 
@@ -59,14 +66,15 @@
 
 設計の分析と評価は、検証、妥当性確認、認証に関わる。
 
-\par\smallskip\noindent\refstepcounter{table}\label{tab:ch03-07}\textbf{表 \thetable: 第03章 ソフトウェア設計 表07}\par\smallskip
+\par\smallskip\noindent\refstepcounter{table}\label{tab:ch03-07}表 \thetable: 検証・妥当性確認・認証の整理\par\smallskip
+表 \thetable は、検証・妥当性確認・認証の整理を比較・確認しやすい形で整理したものである。\par\smallskip
 \begin{tabularx}{\linewidth}{L{32mm}Y}
 \toprule
-\textbf{活動} & \textbf{意味} \\
+活動 & 意味 \\
 \midrule
-検証 & 設計が、明示された要求を満たしているかを確認することである。 \\
+\term{検証}{Verification} & 設計が、明示された要求を満たしているかを確認することである。 \\
 妥当性確認 & その設計で作られるシステムが、顧客、利用者、運用者、保守担当者の期待を満たせるかを確認することである。 \\
-認証 & 第三者が、設計が仕様や意図された利用に適合していると証明または表明することである。 \\
+\term{認証}{Authentication} & 第三者が、設計が仕様や意図された利用に適合していると証明または表明することである。 \\
 \bottomrule
 \end{tabularx}
 

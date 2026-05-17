@@ -1,0 +1,73 @@
+\subsection{基本論理}
+基本論理は、真偽を扱うための土台である。仕様の条件、プログラムの分岐、テストの期待結果、セキュリティ規則は、多くの場合、論理式として読める。論理を理解すると、「同じ意味の条件」「矛盾する条件」「常に真になる条件」を見分けやすくなる。
+
+\subsubsection{命題論理}
+命題とは、真または偽のどちらかであり、両方ではない文である。「太陽は恒星である」「2 + 3 = 5」は命題である。一方、「a + 3 = b」は、aとbの値が決まらない限り真偽を判定できないため、そのままでは命題ではない。
+
+命題論理は、命題を論理演算で組み合わせる方法である。基本演算には、否定、論理積、論理和、排他的論理和、含意がある。プログラムでは、これらは not、and、or、xor、条件付きの意味として現れる。
+
+\par\smallskip\noindent\refstepcounter{table}\label{tab:ch17-02}表 \thetable: 命題論理における考え方・説明\par\smallskip
+表 \thetable は、命題論理における考え方・説明を比較・確認しやすい形で整理したものである。\par\smallskip
+\begin{longtable}{>{\raggedright\arraybackslash}p{0.26\linewidth} >{\raggedright\arraybackslash}p{0.68\linewidth}}
+\toprule
+考え方 & 説明 \\
+\midrule
+\endfirsthead
+\toprule
+考え方 & 説明 \\
+\midrule
+\endhead
+排中律 & 任意の命題pについて、pは真であるか偽であるかのどちらかである。 \\
+矛盾律 & 任意の命題pについて、pが真かつ偽であることはない。 \\
+恒真式 & どの真理値を入れても常に真になる複合命題である。 \\
+矛盾式 & どの真理値を入れても常に偽になる複合命題である。 \\
+論理的同値 & 二つの論理式が、常に同じ真理値を持つ関係である。 \\
+ド・モルガンの法則 & 「AかつBではない」は「Aでない、またはBでない」に等しい、という形の変形規則である。 \\
+\bottomrule
+\end{longtable}
+\begin{notebox}{ソフトウェアでの見方}
+複雑なif条件は、命題論理として整理できる。たとえば「管理者であり、かつ停止中でない場合だけ操作できる」という条件は、権限判定の論理式である。ド・モルガンの法則を使うと、否定条件を読みやすく変形できる。
+\end{notebox}
+\par\smallskip
+\begin{center}
+\centering
+\IfFileExists{assets/generated_figures/ch17/fig-ch17-02.png}{\includegraphics[width=0.96\linewidth]{assets/generated_figures/ch17/fig-ch17-02.png}}{\fbox{\parbox[c][48mm][c]{0.9\linewidth}{\centering 画像生成待ち\\命題論理の真理値表と論理演算の図}}}
+\par\smallskip
+\refstepcounter{figure}\label{fig:ch17-02}図 \thefigure: 命題論理の真理値表と論理演算の図
+\end{center}
+図 \thefigure は、命題論理の真理値表と論理演算の図を視覚的に整理したものである。
+\par\smallskip
+\subsubsection{述語論理}
+述語論理は、命題論理を拡張し、変数を含む性質や関係を扱えるようにした論理である。たとえば「xは赤い」「xは利用者である」「xはyに依存している」といった文の型を述語と呼ぶ。xやyに具体的な対象を入れると、真偽を判定できる文になる。
+
+述語論理では、量化子が重要である。全称量化子は「すべてのxについて」を表し、存在量化子は「少なくとも一つのxが存在する」を表す。仕様では、「すべての注文は一つの顧客に属する」「少なくとも一人の管理者が存在する」といった制約を表すために使える。
+
+\par\smallskip\noindent\refstepcounter{table}\label{tab:ch17-03}表 \thetable: 述語論理における量化子・意味と例\par\smallskip
+表 \thetable は、述語論理における量化子・意味と例を比較・確認しやすい形で整理したものである。\par\smallskip
+\begin{longtable}{>{\raggedright\arraybackslash}p{0.26\linewidth} >{\raggedright\arraybackslash}p{0.68\linewidth}}
+\toprule
+量化子 & 意味と例 \\
+\midrule
+\endfirsthead
+\toprule
+量化子 & 意味と例 \\
+\midrule
+\endhead
+全称量化子 & 「すべてのxについて成り立つ」を表す。例：すべての認証済み利用者は利用者IDを持つ。 \\
+存在量化子 & 「少なくとも一つのxについて成り立つ」を表す。例：少なくとも一つの管理者アカウントが存在する。 \\
+束縛変数 & 量化子の範囲内で意味が決まる変数である。 \\
+自由変数 & 量化子に束縛されておらず、値が外から与えられる変数である。 \\
+\bottomrule
+\end{longtable}
+\begin{notebox}{命題論理との違い}
+命題論理は「この文は真か偽か」を扱う。述語論理は「どの対象について成り立つか」「すべてに成り立つか」「少なくとも一つに成り立つか」を扱う。データベース制約、クラス不変条件、業務規則の表現では、述語論理の考え方が特に重要である。
+\end{notebox}
+\par\smallskip
+\begin{center}
+\centering
+\IfFileExists{assets/generated_figures/ch17/fig-ch17-03.png}{\includegraphics[width=0.96\linewidth]{assets/generated_figures/ch17/fig-ch17-03.png}}{\fbox{\parbox[c][48mm][c]{0.9\linewidth}{\centering 画像生成待ち\\量化子の意味を示す図}}}
+\par\smallskip
+\refstepcounter{figure}\label{fig:ch17-03}図 \thefigure: 量化子の意味を示す図
+\end{center}
+図 \thefigure は、量化子の意味を示す図を視覚的に整理したものである。
+\par\smallskip

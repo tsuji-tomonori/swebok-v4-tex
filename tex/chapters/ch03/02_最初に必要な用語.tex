@@ -1,31 +1,33 @@
 \subsection*{最初に必要な用語}
 \addcontentsline{toc}{subsection}{最初に必要な用語}
 
-\par\smallskip\noindent\refstepcounter{table}\label{tab:ch03-01}\textbf{表 \thetable: 第03章 ソフトウェア設計 表01}\par\smallskip
+\par\smallskip\noindent\refstepcounter{table}\label{tab:ch03-01}表 \thetable: 最初に必要な用語の整理\par\smallskip
+表 \thetable は、最初に必要な用語の整理を比較・確認しやすい形で整理したものである。\par\smallskip
 \begin{tabularx}{\linewidth}{L{34mm}Y}
 \toprule
-\textbf{用語} & \textbf{初学者向けの説明} \\
+用語 & 初学者向けの説明 \\
 \midrule
 ソフトウェア設計 & 要求、制約、品質目標を、実装できる構造・振る舞い・インタフェースへ変換する活動である。 \\
 設計記述 & 設計結果を記録した文書、モデル、図、表、プロトタイプなどである。英語では Software Design Description、略して SDD と呼ぶ。 \\
 構成要素 & システムを構成する部品である。部品は、モジュール、クラス、サービス、コンポーネントなどの形を取る。 \\
 インタフェース & ある構成要素が外部とやり取りする接点である。入力、出力、呼び出し方、データ形式、例外条件などを含む。 \\
-抽象化 & 注目したい情報だけを取り出し、不要な詳細を隠す考え方である。複雑さを下げるために使う。 \\
+\term{抽象化}{Abstraction} & 注目したい情報だけを取り出し、不要な詳細を隠す考え方である。複雑さを下げるために使う。 \\
 モジュール化 & 大きなソフトウェアを、名前を持つ小さな部品に分けることである。理解、分担、保守を容易にする。 \\
-カプセル化 & 部品の内部詳細を隠し、外部からは必要な操作だけを見せることである。情報隠蔽とも呼ぶ。 \\
+\term{カプセル化}{Encapsulation} & 部品の内部詳細を隠し、外部からは必要な操作だけを見せることである。情報隠蔽とも呼ぶ。 \\
 品質属性 & 性能、信頼性、保守容易性、セキュリティ、使いやすさなど、ソフトウェアの性質である。 \\
 トレードオフ & ある性質を高めると、別の性質や費用に悪影響が出る関係である。設計では避けられない。 \\
-設計根拠 & なぜその設計判断をしたかという理由である。代替案、前提、制約、採用理由、却下理由を含む。 \\
+\term{設計根拠}{Design Rationale} & なぜその設計判断をしたかという理由である。代替案、前提、制約、採用理由、却下理由を含む。 \\
 \bottomrule
 \end{tabularx}
 
 \subsubsection*{略語}
 \addcontentsline{toc}{subsubsection}{略語}
 
-\par\smallskip\noindent\refstepcounter{table}\label{tab:ch03-02}\textbf{表 \thetable: 第03章 ソフトウェア設計 表02}\par\smallskip
+\par\smallskip\noindent\refstepcounter{table}\label{tab:ch03-02}表 \thetable: 略語の整理\par\smallskip
+表 \thetable は、略語の整理を比較・確認しやすい形で整理したものである。\par\smallskip
 \begin{tabularx}{\linewidth}{L{18mm}L{43mm}Y}
 \toprule
-\textbf{略語} & \textbf{日本語} & \textbf{説明} \\
+略語 & 日本語 & 説明 \\
 \midrule
 API & アプリケーションプログラミングインタフェース & ソフトウェア部品やサービスを外部から利用するための呼び出し規約である。 \\
 AOD & アスペクト指向設計 & 横断的関心事をアスペクトとして扱う設計方法である。 \\

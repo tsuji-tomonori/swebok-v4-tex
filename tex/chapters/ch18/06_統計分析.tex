@@ -1,0 +1,88 @@
+\subsection{統計分析}
+工学者は、製品や過程の特性がどのようにばらつくかを理解する必要がある。多くの調査では標本を使うが、知りたいのは母集団である。したがって、信頼できるデータを集め、標本から母集団について妥当な結論を出すために統計分析が必要である。
+\subsubsection{分析単位、母集団、標本}
+\par\smallskip\noindent\refstepcounter{table}\label{tab:ch18-05}表 \thetable: 分析単位、母集団、標本の整理\par\smallskip
+表 \thetable は、分析単位、母集団、標本の整理を比較・確認しやすい形で整理したものである。\par\smallskip
+\begin{longtable}{>{\raggedright\arraybackslash}p{0.21\linewidth}>{\raggedright\arraybackslash}p{0.40\linewidth}>{\raggedright\arraybackslash}p{0.31\linewidth}}
+\toprule
+概念 & 説明 & ソフトウェアでの例 \\
+\midrule
+\endfirsthead
+\toprule
+概念 & 説明 & ソフトウェアでの例 \\
+\midrule
+\endhead
+分析単位 & 観察や測定の対象になる単位である。 & 利用者、機能、欠陥、コミット、チケットなど。 \\
+母集団 & 関心のある全対象の集合である。 & ある製品を使う全利用者、全障害報告、全ソースファイルなど。 \\
+標本 & 母集団から選ばれた一部である。 & 利用者100人の調査、過去3か月の障害報告など。 \\
+確率標本抽出 & 各単位が選ばれる確率を事前に定義して標本を取る方法である。 & 全利用者から無作為に調査対象を選ぶ。 \\
+研究母集団と対象母集団 & 実際に調べた集団と、結果を一般化したい集団は同じとは限らない。 & 過去データから将来の欠陥傾向を推測する場合。 \\
+\bottomrule
+\end{longtable}
+確率変数とは、観測や測定の結果として値を取る量である。値の集合が有限または数えられる場合は離散型、連続的な値を取る場合は連続型である。確率変数の取り得る値の部分集合を事象という。
+\par\smallskip\noindent\refstepcounter{table}\label{tab:ch18-06}表 \thetable: 分析単位、母集団、標本の整理\par\smallskip
+表 \thetable は、分析単位、母集団、標本の整理を比較・確認しやすい形で整理したものである。\par\smallskip
+\begin{longtable}{>{\raggedright\arraybackslash}p{0.17\linewidth}>{\raggedright\arraybackslash}p{0.46\linewidth}>{\raggedright\arraybackslash}p{0.29\linewidth}}
+\toprule
+分布 & 何を表すか & 例 \\
+\midrule
+\endfirsthead
+\toprule
+分布 & 何を表すか & 例 \\
+\midrule
+\endhead
+二項分布 & 独立した試行で成功回数を数える。成功確率は一定と仮定する。 & テストケース100件のうち失敗する件数。 \\
+ポアソン分布 & 時間や空間における事象の発生回数を表す。 & 1時間あたりの障害発生件数。 \\
+正規分布 & 多数の値を取る連続または離散の変数を近似するためによく使う。 & 作業時間や測定誤差の近似。 \\
+\bottomrule
+\end{longtable}
+分布は、平均、標準偏差、発生率、成功確率などの母数によって特徴付けられる。母数は通常未知であるため、標本から推定する。標本平均など、母数を推定するための標本から計算した値を統計量という。
+推定には、点推定と区間推定がある。点推定は一つの値で母数を推定する。区間推定は、標本のばらつきを考慮して、母数が入りそうな区間を示す。推定量には、効率性、一致性、偏りの少なさなどの性質が求められる。
+仮説検定では、変化がないという帰無仮説 H0 と、関心のある対立仮説 H1 を立てる。標本から統計量を計算し、あらかじめ定めた棄却域に入るかどうかで、H0を棄却するか判断する。
+\par\smallskip\noindent\refstepcounter{table}\label{tab:ch18-07}表 \thetable: 分析単位、母集団、標本の整理\par\smallskip
+表 \thetable は、分析単位、母集団、標本の整理を比較・確認しやすい形で整理したものである。\par\smallskip
+\begin{longtable}{>{\raggedright\arraybackslash}p{0.20\linewidth}>{\raggedright\arraybackslash}p{0.36\linewidth}>{\raggedright\arraybackslash}p{0.36\linewidth}}
+\toprule
+自然の状態 & 統計的判断：H0を採択 & 統計的判断：H0を棄却 \\
+\midrule
+\endfirsthead
+\toprule
+自然の状態 & 統計的判断：H0を採択 & 統計的判断：H0を棄却 \\
+\midrule
+\endhead
+H0が真 & 正しい判断 & 第1種の誤り。真のH0を誤って棄却する。 \\
+H0が偽 & 第2種の誤り。偽のH0を誤って採択する。 & 正しい判断 \\
+\bottomrule
+\end{longtable}
+検定では、第1種の誤りの確率を一定値、たとえば5\%以下に保ちつつ、第2種の誤りを減らし、検出力を高めることを目指す。
+\par\smallskip
+\begin{center}
+\centering
+\IfFileExists{assets/generated_figures/ch18/fig-ch18-06.png}{\includegraphics[width=0.96\linewidth]{assets/generated_figures/ch18/fig-ch18-06.png}}{\fbox{\parbox[c][48mm][c]{0.9\linewidth}{\centering 画像生成待ち\\母集団と標本の関係図}}}
+\par\smallskip
+\refstepcounter{figure}\label{fig:ch18-06}図 \thefigure: 母集団と標本の関係図
+\end{center}
+図 \thefigure は、母集団と標本の関係図を視覚的に整理したものである。
+\par\smallskip
+\par\smallskip
+\begin{center}
+\centering
+\IfFileExists{assets/generated_figures/ch18/fig-ch18-07.png}{\includegraphics[width=0.96\linewidth]{assets/generated_figures/ch18/fig-ch18-07.png}}{\fbox{\parbox[c][48mm][c]{0.9\linewidth}{\centering 画像生成待ち\\仮説検定の第1種・第2種の誤り表を図示する}}}
+\par\smallskip
+\refstepcounter{figure}\label{fig:ch18-07}図 \thefigure: 仮説検定の第1種・第2種の誤り表を図示する
+\end{center}
+図 \thefigure は、仮説検定の第1種・第2種の誤り表を図示するを視覚的に整理したものである。
+\par\smallskip
+\subsubsection{相関と回帰}
+相関は、二つの変数の線形関係の強さを表す。相関係数はマイナス1からプラス1までの値を取る。プラスなら一方が増えると他方も増える傾向、マイナスなら一方が増えると他方は減る傾向である。
+\begin{notebox}{注意}相関は因果を意味しない。二つの変数に関係があっても、一方が他方を引き起こしたとは限らない。第三の要因が両方に影響している場合もある。\end{notebox}
+回帰は、変数間の関係の強さを用いて、一方から他方を推定する分析である。決定係数は0から1までの値を取り、1に近いほど関係が強い。ソフトウェアでは、規模から工数を推定する、欠陥数から修正時間を推定する、といった場面で使われる。
+\par\smallskip
+\begin{center}
+\centering
+\IfFileExists{assets/generated_figures/ch18/fig-ch18-08.png}{\includegraphics[width=0.96\linewidth]{assets/generated_figures/ch18/fig-ch18-08.png}}{\fbox{\parbox[c][48mm][c]{0.9\linewidth}{\centering 画像生成待ち\\相関と回帰の違いを示す散布図}}}
+\par\smallskip
+\refstepcounter{figure}\label{fig:ch18-08}図 \thefigure: 相関と回帰の違いを示す散布図
+\end{center}
+図 \thefigure は、相関と回帰の違いを示す散布図を視覚的に整理したものである。
+\par\smallskip

@@ -1,0 +1,93 @@
+\subsection*{構成管理プロセスの管理}
+\addcontentsline{toc}{subsection}{1 構成管理プロセスの管理}
+構成管理プロセスの管理は、製品の進化と完全性を統制するための土台である。SCM は、構成品目を識別し、変更を管理し、構成情報を検証・記録・報告する。成功する SCM には、組織の状況、制約、標準、プロジェクトの性質を理解した計画が必要である。
+
+\subsubsection*{組織における構成管理の位置づけ}
+\addcontentsline{toc}{subsubsection}{1.1 組織における構成管理の位置づけ}
+SCM は、特定のプロジェクトだけで完結しない。開発組織、保守組織、品質保証組織、運用組織、外部委託先、場合によってはハードウェアやファームウェアの構成管理とも関係する。大規模なシステムでは、ソフトウェア SCM はシステム全体の構成管理と整合していなければならない。
+
+SCM の全体責任は、独立した構成管理部門または指定された個人に置かれることがある。一方で、日々のタスクは開発部門や保守部門に分担されることがある。したがって、誰がどの活動に責任を持つのかを曖昧にしないことが重要である。
+
+\subsubsection*{構成管理プロセスに対する制約と指針}
+\addcontentsline{toc}{subsubsection}{1.2 構成管理プロセスに対する制約と指針}
+SCM プロセスには、社内方針、手順、契約、規制、標準、採用するライフサイクルモデルが影響する。安全に関わるソフトウェアでは、外部規制機関が構成監査や管理対象品目を要求することがある。
+
+開発方法も SCM に影響する。継続的統合では、頻繁なビルド、テスト、配備が起こるため、分岐、統合、ビルド、試験、成果物保存の手順を明確にする必要がある。
+
+\par\smallskip
+\begin{center}
+\centering
+\IfFileExists{assets/generated_figures/ch08/fig-ch08-03.png}{\includegraphics[width=0.96\linewidth]{assets/generated_figures/ch08/fig-ch08-03.png}}{\fbox{\parbox[c][48mm][c]{0.9\linewidth}{\centering 画像生成待ち\\分岐・統合と継続的統合の関係図}}}
+\par\smallskip
+\refstepcounter{figure}\label{fig:ch08-03}図 \thefigure: 分岐・統合と継続的統合の関係図
+\end{center}
+図 \thefigure は、分岐・統合と継続的統合の関係図を視覚的に整理したものである。
+\par\smallskip
+\subsubsection*{構成管理の計画}
+\addcontentsline{toc}{subsubsection}{1.3 構成管理の計画}
+構成管理の計画では、構成識別、構成統制、状態記録、構成監査、リリース管理と提供をどのように実施するかを定める。さらに、組織と責任、資源とスケジュール、ツール選定、供給者統制、インタフェース統制を考慮する。
+
+\begin{notebox}{計画時に見る観点}プロジェクト規模、安全性・セキュリティの重要度、契約・規制、開発拠点の分散、外部委託の有無、使うツール、分岐・統合方針、ビルドとテストの頻度を確認する。\end{notebox}
+\paragraph*{組織と責任}
+\addcontentsline{toc}{subsubsection}{1.3.1 組織と責任}
+SCM 活動の責任者、承認権限、報告経路を明確にする。役割は個人名だけでなく、部署や役職として定義すると、担当者交代時にも維持しやすい。
+
+\paragraph*{資源とスケジュール}
+\addcontentsline{toc}{subsubsection}{1.3.2 資源とスケジュール}
+SCM 活動に必要な人員、ツール、教育、作業順序、節目を計画する。構成管理は後から付け足す活動ではなく、要求、設計、実装、テスト、リリースと並行して計画される。
+
+\paragraph*{ツール選定と実装}
+\addcontentsline{toc}{subsubsection}{1.3.3 ツール選定と実装}
+SCM では、単一の万能ツールではなく、版管理、変更管理、ビルド、自動テスト、リポジトリ、リリース管理などの道具群を組み合わせることが多い。ツール選定では、組織方針、費用、保守、移行、将来利用、既存ツールとの統合、分岐・統合戦略への適合を確認する。
+
+ツール群は、異なる供給元のツールを組み合わせる開放型の作業台として構成する場合と、統合製品群として構成する場合がある。小規模組織と大規模組織では、必要な統合範囲が異なる。
+
+\paragraph*{供給者・外部委託先統制}
+\addcontentsline{toc}{subsubsection}{1.3.4 供給者・外部委託先統制}
+購入したソフトウェア、コンパイラ、外部ライブラリ、外部委託先が作るソフトウェアも構成管理の対象になり得る。変更や更新をどのように評価し、プロジェクトのライブラリに取り込み、証跡を残すかを計画する。
+
+\paragraph*{インタフェース統制}
+\addcontentsline{toc}{subsubsection}{1.3.5 インタフェース統制}
+ソフトウェア品目が他のソフトウェアやハードウェアと接続する場合、一方の変更は他方へ影響する。インタフェース仕様、インタフェース統制計画、インタフェース統制文書を用いて、接続点を識別し、変更を管理し、関係者へ伝える必要がある。
+
+\subsubsection*{ソフトウェア構成管理計画}
+\addcontentsline{toc}{subsubsection}{1.4 ソフトウェア構成管理計画}
+ソフトウェア構成管理計画（SCMP）は、SCM 計画の結果を記録する生きた文書である。ライフサイクル中に必要に応じて更新・承認される。SCMP だけでは日々の運用に足りないため、分岐方針、ビルド頻度、試験手順などの下位手順を別途定めることが多い。
+
+\par\smallskip\noindent\refstepcounter{table}\label{tab:ch08-02}表 \thetable: ソフトウェア構成管理計画におけるSCMP の項目・内容\par\smallskip
+表 \thetable は、ソフトウェア構成管理計画におけるSCMP の項目・内容を比較・確認しやすい形で整理したものである。\par\smallskip
+\begin{longtable}{p{0.30\linewidth}p{0.64\linewidth}}\toprule
+SCMP の項目 & 内容 \\ \midrule
+\endfirsthead\toprule
+SCMP の項目 & 内容 \\ \midrule
+\endhead
+導入 & 目的、適用範囲、用語を定める。 \\
+SCM 管理 & 組織、責任、権限、適用する方針、手順を定める。 \\
+SCM 活動 & 構成識別、構成統制、状態記録、監査、リリース管理などを定める。 \\
+SCM スケジュール & 他のプロジェクト活動との調整、節目、実施時期を定める。 \\
+SCM 資源 & ツール、物理資源、人員、教育を定める。 \\
+SCMP 保守 & 計画書をいつ、誰が、どう改訂・承認するかを定める。 \\
+\bottomrule\end{longtable}
+\subsubsection*{ソフトウェア構成管理の監視}
+\addcontentsline{toc}{subsubsection}{1.5 ソフトウェア構成管理の監視}
+SCM プロセスを実装した後は、SCMP の規定が正しく実施されているかを監視する。SCM 責任者は、割り当てられたタスクが実施されているかを確認する。品質保証部門が遵守監査の一部として監視する場合もある。
+
+統合された SCM ツールは、手順遵守を支援する。一部のツールは柔軟性を残し、別のツールは特定の手順を強制する。どの程度の柔軟性を許すかは、ツール選定時の重要な判断である。
+
+\paragraph*{測定}
+\addcontentsline{toc}{subsubsection}{1.5.1 測定}
+SCM 測定は、製品の進化、プロセスの効率、改善の機会を把握するために使う。変更要求数、変更実施時間、構成品目の状態、監査結果、再作業量などは、構成管理の健全性を示す手がかりになる。
+
+\paragraph*{プロセス中監査}
+\addcontentsline{toc}{subsubsection}{1.5.2 プロセス中監査}
+プロセス中監査は、ライフサイクル中に SCM の実施状況を確認する活動である。計画どおりに構成品目が識別されているか、承認済み変更だけが取り込まれているか、状態情報が正しく記録されているかを確認する。
+
+\par\smallskip
+\begin{center}
+\centering
+\IfFileExists{assets/generated_figures/ch08/fig-ch08-04.png}{\includegraphics[width=0.96\linewidth]{assets/generated_figures/ch08/fig-ch08-04.png}}{\fbox{\parbox[c][48mm][c]{0.9\linewidth}{\centering 画像生成待ち\\SCM 計画・実施・監視の循環図}}}
+\par\smallskip
+\refstepcounter{figure}\label{fig:ch08-04}図 \thefigure: SCM 計画・実施・監視の循環図
+\end{center}
+図 \thefigure は、SCM 計画・実施・監視の循環図を視覚的に整理したものである。
+\par\smallskip

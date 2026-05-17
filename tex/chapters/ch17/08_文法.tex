@@ -1,0 +1,56 @@
+\subsection{文法}
+文法は、文字列や文を作る規則である。自然言語では文法が「文として自然か」を判断するが、形式言語では文法が「その文字列が言語に属するか」を厳密に決める。プログラミング言語、正規表現、設定ファイル、問い合わせ言語、データ形式は、形式文法と深く関係している。
+
+\subsubsection{形式言語と文法}
+\term{形式言語}{Formal Language}は、有限のアルファベット上の有限長文字列の集合である。文法は、その言語に属する文字列を生成する規則を与える。すべての正しい文字列を列挙するのではなく、生成規則によってコンパクトに定義する点が重要である。
+
+\par\smallskip\noindent\refstepcounter{table}\label{tab:ch17-14}表 \thetable: 形式言語と文法における用語・説明\par\smallskip
+表 \thetable は、形式言語と文法における用語・説明を比較・確認しやすい形で整理したものである。\par\smallskip
+\begin{longtable}{>{\raggedright\arraybackslash}p{0.26\linewidth} >{\raggedright\arraybackslash}p{0.68\linewidth}}
+\toprule
+用語 & 説明 \\
+\midrule
+\endfirsthead
+\toprule
+用語 & 説明 \\
+\midrule
+\endhead
+アルファベット & 文字列を構成する基本記号の集合である。 \\
+終端記号 & 最終的な文字列に現れる記号である。 \\
+非終端記号 & 生成途中の概念を表す記号である。式、項、文などに相当する。 \\
+開始記号 & 生成を開始する非終端記号である。 \\
+生成規則 & ある記号列を別の記号列に置き換える規則である。 \\
+文法が生成する言語 & 開始記号から生成規則を適用して得られるすべての終端記号列の集合である。 \\
+\bottomrule
+\end{longtable}
+\subsubsection{言語認識とチョムスキー階層}
+形式文法は、許す生成規則の種類によって分類できる。代表的な分類がチョムスキー階層である。正規文法は最も制約が強く、句構造文法は最も一般的である。
+
+\par\smallskip\noindent\refstepcounter{table}\label{tab:ch17-15}表 \thetable: 言語認識とチョムスキー階層における種類・説明と用途\par\smallskip
+表 \thetable は、言語認識とチョムスキー階層における種類・説明と用途を比較・確認しやすい形で整理したものである。\par\smallskip
+\begin{longtable}{>{\raggedright\arraybackslash}p{0.26\linewidth} >{\raggedright\arraybackslash}p{0.68\linewidth}}
+\toprule
+種類 & 説明と用途 \\
+\midrule
+\endfirsthead
+\toprule
+種類 & 説明と用途 \\
+\midrule
+\endhead
+句構造文法 & 最も一般的な形式文法である。 \\
+文脈依存文法 & 置換規則が周囲の文脈に依存し得る文法である。 \\
+文脈自由文法 & 左辺が一つの非終端記号である文法である。多くのプログラミング言語の構文の基礎である。 \\
+正規文法 & 正規表現や有限状態機械と関係が深い文法である。字句解析や簡単なパターン照合に使われる。 \\
+\bottomrule
+\end{longtable}
+正規表現は、文字列のパターンを表す記法である。たとえば、ある文字列が特定の形式のID、メールアドレス、トークン、ログ行に合うかを検査するために使われる。ただし、正規表現は万能ではない。入れ子構造を持つプログラミング言語の構文全体を扱うには、文脈自由文法などが必要になる。
+
+\par\smallskip
+\begin{center}
+\centering
+\IfFileExists{assets/generated_figures/ch17/fig-ch17-10.png}{\includegraphics[width=0.96\linewidth]{assets/generated_figures/ch17/fig-ch17-10.png}}{\fbox{\parbox[c][48mm][c]{0.9\linewidth}{\centering 画像生成待ち\\文法とチョムスキー階層の図}}}
+\par\smallskip
+\refstepcounter{figure}\label{fig:ch17-10}図 \thefigure: 文法とチョムスキー階層の図
+\end{center}
+図 \thefigure は、文法とチョムスキー階層の図を視覚的に整理したものである。
+\par\smallskip

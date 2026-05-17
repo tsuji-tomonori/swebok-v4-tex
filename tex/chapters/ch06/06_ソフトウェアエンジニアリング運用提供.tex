@@ -12,7 +12,8 @@
 
 配備とは、指定された版のソフトウェアを、特定の環境へインストールすることである。リリースとは、機能または機能集合を、顧客や利用者が実際に使える状態にすることである。配備とリリースは似ているが、同じではない。配備は技術的な配置であり、リリースは利用可能にする判断である。
 
-\par\smallskip\noindent\refstepcounter{table}\label{tab:ch06-06}\textbf{表 \thetable: 第06章 ソフトウェアエンジニアリング運用 表06}\par\smallskip
+\par\smallskip\noindent\refstepcounter{table}\label{tab:ch06-06}表 \thetable: 配備・リリース工学における概念・説明\par\smallskip
+表 \thetable は、配備・リリース工学における概念・説明を比較・確認しやすい形で整理したものである。\par\smallskip
 \begin{longtable}{L{35mm}L{115mm}}
 \toprule
 概念 & 説明 \\
@@ -28,12 +29,15 @@
 
 カナリアリリースは、変更を一部の範囲にだけ短期間配備し、その結果を評価してから全面配備を判断する方法である。新しいソフトウェアが異常を示した場合、自動的にロールバックできる構成も重要である。
 
-\begin{figure}[htbp]
+\par\smallskip
+\begin{center}
 \centering
 \IfFileExists{assets/generated_figures/ch06/fig-ch06-07.png}{\includegraphics[width=0.96\linewidth]{assets/generated_figures/ch06/fig-ch06-07.png}}{\fbox{\parbox[c][48mm][c]{0.9\linewidth}{\centering 画像生成待ち\\配備とリリースの違い}}}
-\caption{配備とリリースの違い}
-\label{fig:ch06-07}
-\end{figure}
+\par\smallskip
+\refstepcounter{figure}\label{fig:ch06-07}図 \thefigure: 配備とリリースの違い
+\end{center}
+図 \thefigure は、配備とリリースの違いを視覚的に整理したものである。
+\par\smallskip
 
 \subsubsection{ロールバックとデータ移行}
 
@@ -43,12 +47,15 @@
 
 データ移行がある場合、単にプログラムを戻すだけでは不十分である。データの形式が変わっていると、旧版が新しいデータを読めないことがある。したがって、ロールバック計画には、データをどの状態に戻すか、どこまでの処理を再実行するか、利用者にどの影響があるかを含める必要がある。
 
-\begin{figure}[htbp]
+\par\smallskip
+\begin{center}
 \centering
 \IfFileExists{assets/generated_figures/ch06/fig-ch06-08.png}{\includegraphics[width=0.96\linewidth]{assets/generated_figures/ch06/fig-ch06-08.png}}{\fbox{\parbox[c][48mm][c]{0.9\linewidth}{\centering 画像生成待ち\\ロールバックとデータ移行の時系列}}}
-\caption{ロールバックとデータ移行の時系列}
-\label{fig:ch06-08}
-\end{figure}
+\par\smallskip
+\refstepcounter{figure}\label{fig:ch06-08}図 \thefigure: ロールバックとデータ移行の時系列
+\end{center}
+図 \thefigure は、ロールバックとデータ移行の時系列を視覚的に整理したものである。
+\par\smallskip
 
 \subsubsection{問題解決}
 

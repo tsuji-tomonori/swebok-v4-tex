@@ -1,0 +1,37 @@
+\subsection{経験的方法と実験技法}
+工学では、候補解やそのモデルを提案し、それを観察・実験・試験によって調べる。経験的方法は、観測値のばらつきを理解し、ばらつきの源を特定し、よりよい判断を行うための方法である。
+工学でよく使われる経験的研究には、計画実験、観察研究、回顧研究がある。これらは、どれが常に優れているという関係ではない。操作できる条件、必要な証拠、利用可能なデータ、現場の制約に応じて使い分ける。
+\subsubsection{計画実験}
+計画実験は、明確な仮説を立て、独立変数を操作し、従属変数への効果を測る方法である。独立変数とは研究者が操作する要因であり、従属変数とはその結果として観察する値である。
+たとえば、新しい静的解析ツールを使うと欠陥検出率が上がるかを調べる場合、ツール使用の有無が独立変数、検出された欠陥数やレビュー時間が従属変数になる。独立変数の値の組合せを処置と呼ぶ。
+\subsubsection{観察研究}
+観察研究、または事例研究は、現実の文脈の中で過程や現象を観察する方法である。実験が文脈を意図的に切り離すのに対して、観察研究は文脈を含めて理解する。
+観察研究は、なぜ、どのようにという問いに向いている。また、参加者の行動を操作できない場合、現象と文脈の境界がはっきりしない場合に有用である。
+\subsubsection{回顧研究}
+回顧研究は、過去に蓄積されたデータを分析する方法である。履歴データから、変数間の関係、将来の予測、傾向を見つける。ソフトウェアでは、障害履歴、変更履歴、テスト結果、レビュー記録などが対象になり得る。
+ただし、分析の品質は過去データの品質に依存する。過去データが欠けている、測り方が途中で変わっている、誤って記録されている場合、分析結果にも限界がある。
+\par\smallskip\noindent\refstepcounter{table}\label{tab:ch18-04}表 \thetable: 回顧研究の整理\par\smallskip
+表 \thetable は、回顧研究の整理を比較・確認しやすい形で整理したものである。\par\smallskip
+\begin{longtable}{>{\raggedright\arraybackslash}p{0.17\linewidth}>{\raggedright\arraybackslash}p{0.23\linewidth}>{\raggedright\arraybackslash}p{0.29\linewidth}>{\raggedright\arraybackslash}p{0.24\linewidth}}
+\toprule
+研究の種類 & 主な特徴 & ソフトウェアでの例 & 注意点 \\
+\midrule
+\endfirsthead
+\toprule
+研究の種類 & 主な特徴 & ソフトウェアでの例 & 注意点 \\
+\midrule
+\endhead
+計画実験 & 仮説を立て、条件を操作して効果を見る。 & ツール使用の有無でレビュー効率を比較する。 & 明確な仮説と実験設計が必要である。 \\
+観察研究 & 現実の文脈を含めて観察する。 & アジャイルチームの振り返り運用を観察する。 & 因果関係の断定には注意が必要である。 \\
+回顧研究 & 過去データを分析する。 & 障害履歴から再発しやすい欠陥種類を探す。 & データの欠落や測定方法の変化に注意する。 \\
+\bottomrule
+\end{longtable}
+\par\smallskip
+\begin{center}
+\centering
+\IfFileExists{assets/generated_figures/ch18/fig-ch18-05.png}{\includegraphics[width=0.96\linewidth]{assets/generated_figures/ch18/fig-ch18-05.png}}{\fbox{\parbox[c][48mm][c]{0.9\linewidth}{\centering 画像生成待ち\\経験的研究の三分類を比較する図}}}
+\par\smallskip
+\refstepcounter{figure}\label{fig:ch18-05}図 \thefigure: 経験的研究の三分類を比較する図
+\end{center}
+図 \thefigure は、経験的研究の三分類を比較する図を視覚的に整理したものである。
+\par\smallskip

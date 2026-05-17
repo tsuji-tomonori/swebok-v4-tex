@@ -1,0 +1,102 @@
+\subsection*{ソフトウェア構成識別}
+\addcontentsline{toc}{subsection}{2 ソフトウェア構成識別}
+ソフトウェア構成識別は、管理すべき品目を識別し、品目と版の識別方式を定め、管理するための道具と技法を決める活動である。構成識別は、変更統制、状態記録、監査、リリース管理の前提になる。
+
+\subsubsection*{管理対象品目の識別}
+\addcontentsline{toc}{subsubsection}{2.1 管理対象品目の識別}
+変更を統制する最初の手順は、何を管理対象にするかを決めることである。ソフトウェア構成をシステム構成の中で理解し、ソフトウェア構成品目を選び、ラベル付け方針を決める。
+
+\paragraph*{ソフトウェア構成}
+\addcontentsline{toc}{subsubsection}{2.1.1 ソフトウェア構成}
+ソフトウェア構成とは、技術文書で定められた、または製品として実現された、ソフトウェアの機能的・物理的特性である。システム全体の構成の一部として理解できる。
+
+\paragraph*{ソフトウェア構成品目}
+\addcontentsline{toc}{subsubsection}{2.1.2 ソフトウェア構成品目}
+\term{構成品目}{Configuration Item}は、ひとつの管理単位として扱うハードウェア、ソフトウェア、またはその組合せである。ソフトウェア構成品目は、構成品目として確立されたソフトウェア実体である。
+
+管理対象になり得る品目には、計画書、仕様書、設計文書、テスト資料、ソフトウェアツール、ソースコード、実行コード、コードライブラリ、データ、データ辞書、インストール・保守・運用・利用者向け文書が含まれる。
+
+\begin{notebox}{選定のバランス}品目を細かくしすぎると管理量が増え、粗くしすぎると変更の影響が見えにくい。適切な可視性と管理可能な数の間でバランスを取る。\end{notebox}
+\par\smallskip
+\begin{center}
+\centering
+\IfFileExists{assets/generated_figures/ch08/fig-ch08-05.png}{\includegraphics[width=0.96\linewidth]{assets/generated_figures/ch08/fig-ch08-05.png}}{\fbox{\parbox[c][48mm][c]{0.9\linewidth}{\centering 画像生成待ち\\構成品目の範囲を示す図}}}
+\par\smallskip
+\refstepcounter{figure}\label{fig:ch08-05}図 \thefigure: 構成品目の範囲を示す図
+\end{center}
+図 \thefigure は、構成品目の範囲を示す図を視覚的に整理したものである。
+\par\smallskip
+\subsubsection*{構成品目の識別子と属性}
+\addcontentsline{toc}{subsubsection}{2.2 構成品目の識別子と属性}
+構成品目には、一意に識別できる名前や番号を付ける。状態記録・報告は、これらの属性を集めることで実現される。
+
+\par\smallskip\noindent\refstepcounter{table}\label{tab:ch08-03}表 \thetable: 構成品目の識別子と属性における属性・説明\par\smallskip
+表 \thetable は、構成品目の識別子と属性における属性・説明を比較・確認しやすい形で整理したものである。\par\smallskip
+\begin{longtable}{p{0.30\linewidth}p{0.64\linewidth}}\toprule
+属性 & 説明 \\ \midrule
+\endfirsthead\toprule
+属性 & 説明 \\ \midrule
+\endhead
+CI 名 & 人が読んで意味を理解しやすい名称である。 \\
+一意識別子 & システム上で品目を一意に指す記号や番号である。 \\
+説明 & 品目の目的、内容、利用範囲を説明する。 \\
+日付 & 作成日、変更日、承認日などを記録する。 \\
+種類 & 文書、コード、テスト、データ、外部ライブラリなどの分類である。 \\
+所有者 & 品目の管理責任を持つ人または組織である。 \\
+版 & どの時点の状態かを示す識別情報である。 \\
+\bottomrule\end{longtable}
+識別子には、意味を持たせる方法と、単なる連番のように意味を持たせない方法がある。意味を持たせる場合、反復番号、品目分類、連番などを組み合わせることがある。ただし、意味を持たせすぎると、分類変更時に識別子が扱いにくくなる。
+
+\subsubsection*{基準版の識別}
+\addcontentsline{toc}{subsubsection}{2.3 基準版の識別}
+\term{基準版}{Baseline}とは、ある時点で正式に承認され、固定された構成品目またはその集合である。基準版は、正式な変更統制手続きなしには変更できない。承認済み変更を含む基準版は、その時点の承認済み構成を表す。
+
+基準版は、開発を止めるためのものではない。むしろ、変更の基点を明確にするためのものである。「この要求書の版に基づいて設計した」「このソースコードの版からリリースした」「この基準版に対して不具合修正を入れた」と説明できるようにする。
+
+\subsubsection*{基準版の属性}
+\addcontentsline{toc}{subsubsection}{2.4 基準版の属性}
+基準版にも属性を持たせる。代表的な属性は、基準版名、一意識別子、説明、作成日、含まれる構成品目である。これにより、後から「どの基準版が何を含んでいたか」を確認できる。
+
+\par\smallskip
+\begin{center}
+\centering
+\IfFileExists{assets/generated_figures/ch08/fig-ch08-06.png}{\includegraphics[width=0.96\linewidth]{assets/generated_figures/ch08/fig-ch08-06.png}}{\fbox{\parbox[c][48mm][c]{0.9\linewidth}{\centering 画像生成待ち\\基準版と変更統制の関係図}}}
+\par\smallskip
+\refstepcounter{figure}\label{fig:ch08-06}図 \thefigure: 基準版と変更統制の関係図
+\end{center}
+図 \thefigure は、基準版と変更統制の関係図を視覚的に整理したものである。
+\par\smallskip
+\subsubsection*{関係方式の定義}
+\addcontentsline{toc}{subsubsection}{2.5 関係方式の定義}
+構成品目は単独ではなく、他の品目と関係を持つ。関係を記録すると、変更要求の影響分析、版の追跡、部品表の作成が容易になる。代表的な関係は、依存、派生、継承、変種である。
+
+\par\smallskip\noindent\refstepcounter{table}\label{tab:ch08-04}表 \thetable: 関係方式の定義における関係・説明\par\smallskip
+表 \thetable は、関係方式の定義における関係・説明を比較・確認しやすい形で整理したものである。\par\smallskip
+\begin{longtable}{p{0.30\linewidth}p{0.64\linewidth}}\toprule
+\term{関係}{Relation} & 説明 \\ \midrule
+\endfirsthead\toprule
+関係 & 説明 \\ \midrule
+\endhead
+依存 & 二つの構成品目が互いに影響し合う関係である。例として、クラスモデルとシーケンス図の整合がある。 \\
+派生 & ある構成品目から別の構成品目が生じる関係である。例として、仕様から設計、設計からコードが派生する。 \\
+継承 & 同じ品目が時間とともに版として進化する関係である。版 1 から版 2 への移り変わりを表す。 \\
+変種 & 意図的に用意された代替版である。プラットフォーム別、機能別、顧客別の版が例である。 \\
+\bottomrule\end{longtable}
+どの関係を追跡するかは慎重に決める。追跡すれば変更判断に役立つが、記録と保守の作業が増える。ソフトウェア部品表は、ビルドに使われる構成品目とその供給網上の関係を記録する正式な手段である。
+
+\par\smallskip
+\begin{center}
+\centering
+\IfFileExists{assets/generated_figures/ch08/fig-ch08-07.png}{\includegraphics[width=0.96\linewidth]{assets/generated_figures/ch08/fig-ch08-07.png}}{\fbox{\parbox[c][48mm][c]{0.9\linewidth}{\centering 画像生成待ち\\構成品目間の関係図}}}
+\par\smallskip
+\refstepcounter{figure}\label{fig:ch08-07}図 \thefigure: 構成品目間の関係図
+\end{center}
+図 \thefigure は、構成品目間の関係図を視覚的に整理したものである。
+\par\smallskip
+\subsubsection*{ソフトウェアライブラリ}
+\addcontentsline{toc}{subsubsection}{2.6 ソフトウェアライブラリ}
+ソフトウェアライブラリは、ソースコード、スクリプト、オブジェクトコード、文書、関連成果物を統制された形で保存する集合である。要求やテストケースはリポジトリに保存し、コードの基準版と関連付けるべきである。
+
+ソースコードは版管理システムに保存され、追跡可能性とセキュリティを支える。ビルドで得られるバイナリはリポジトリに保存され、ハッシュなどにより物理構成監査を支援する。決定版媒体ライブラリには、試験、ステージング、本番へ配備できる成果物のリリース基準版が含まれる。
+
+ライブラリ管理では、アクセス制御とバックアップが重要である。リリース管理は、配備される成果物をこれらのライブラリから正しく選ぶことに依存する。

@@ -4,23 +4,26 @@
 
 設計は、三つの段階に分けられる。
 \begin{itemize}
-  \item \textbf{アーキテクチャ設計}：システム全体の根本的な構造、主要構成要素、接続方式、支配的な品質方針を決める。
-  \item \textbf{高水準設計}：外部に向いた設計であり、主要構成要素と外部環境のやり取り、構成要素間のやり取りを決める。
-  \item \textbf{詳細設計}：内部に向いた設計であり、構成要素の内部構造、データ構造、アルゴリズム、内部モジュールを決める。
+  \item アーキテクチャ設計：システム全体の根本的な構造、主要構成要素、接続方式、支配的な品質方針を決める。
+  \item \term{高水準設計}{High-Level Design}：外部に向いた設計であり、主要構成要素と外部環境のやり取り、構成要素間のやり取りを決める。
+  \item \term{詳細設計}{Detailed Design}：内部に向いた設計であり、構成要素の内部構造、データ構造、アルゴリズム、内部モジュールを決める。
 \end{itemize}
 
 段階の境界は、プロジェクトやシステムの性質で変わる。たとえば、通常ならプログラマが選ぶソートアルゴリズムでも、極端な性能要求があるシステムでは、初期の設計段階で決める必要がある。このように、何をいつ決めるかは、その判断が要求達成にどれほど重要かで決まる。
 
-\begin{figure}[htbp]
+\par\smallskip
+\begin{center}
 \centering
 \IfFileExists{assets/generated_figures/ch03/fig-ch03-05.png}{\includegraphics[width=0.96\linewidth]{assets/generated_figures/ch03/fig-ch03-05.png}}{\fbox{\parbox[c][48mm][c]{0.9\linewidth}{\centering 画像生成待ち\\設計の三段階を示す図}}}
-\caption{設計の三段階を示す図}
-\label{fig:ch03-05}
-\end{figure}
+\par\smallskip
+\refstepcounter{figure}\label{fig:ch03-05}図 \thefigure: 設計の三段階を示す図
+\end{center}
+図 \thefigure は、設計の三段階を示す図を視覚的に整理したものである。
+\par\smallskip
 
 \subsubsection{高水準設計}
 
-\term{高水準設計}{High-Level Design} は、システムの主要構成要素が互いにどう関わり、外部環境とどうやり取りするかを決める設計である。外部環境には、利用者、外部システム、デバイス、ネットワーク、データベース、運用環境などが含まれる。
+高水準設計 は、システムの主要構成要素が互いにどう関わり、外部環境とどうやり取りするかを決める設計である。外部環境には、利用者、外部システム、デバイス、ネットワーク、データベース、運用環境などが含まれる。
 
 高水準設計では、主に次を扱う。
 \begin{itemize}
@@ -36,7 +39,7 @@
 
 \subsubsection{詳細設計}
 
-\term{詳細設計}{Detailed Design} は、主要構成要素の内部を実装できる水準まで具体化する設計である。これは、プログラマがコードを書くための直接的な手がかりになる。
+詳細設計 は、主要構成要素の内部を実装できる水準まで具体化する設計である。これは、プログラマがコードを書くための直接的な手がかりになる。
 
 詳細設計では、主に次を扱う。
 \begin{itemize}

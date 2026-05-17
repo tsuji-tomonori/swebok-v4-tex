@@ -1,0 +1,56 @@
+\subsection{ソフトウェアセキュリティの基礎}
+ソフトウェアセキュリティの基本的な考え方は、「後から修正を貼り付けるより、最初から設計に組み込む方がよい」ということである。セキュリティは、要求、設計、構築、テスト、保守のすべての段階で考慮する必要がある。
+
+保守中にもセキュリティ上の欠陥や抜け道は入り得る。したがって、リリース後も脆弱性情報を監視し、修正し、利用者や運用者に必要な情報を伝える仕組みが必要である。
+
+\par\smallskip
+\begin{center}
+\centering
+\IfFileExists{assets/generated_figures/ch13/fig-ch13-02.png}{\includegraphics[width=0.96\linewidth]{assets/generated_figures/ch13/fig-ch13-02.png}}{\fbox{\parbox[c][48mm][c]{0.9\linewidth}{\centering 画像生成待ち\\セキュリティ三概念の関係図}}}
+\par\smallskip
+\refstepcounter{figure}\label{fig:ch13-02}図 \thefigure: セキュリティ三概念の関係図
+\end{center}
+図 \thefigure は、セキュリティ三概念の関係図を視覚的に整理したものである。
+\par\smallskip
+\subsubsection{ソフトウェアセキュリティ}
+ソフトウェアセキュリティは、製品またはシステムが情報やデータを保護し、人、他の製品、他のシステムが、それぞれの権限の種類と水準に応じて適切にアクセスできる程度を表す品質特性である。
+
+初学者は、これを「誰が、何に、どこまでアクセスできるかを正しく守る性質」と理解するとよい。たとえば、一般利用者が管理者機能を使えないこと、他人の個人情報を見られないこと、攻撃者が内部データを変更できないことが該当する。
+
+\begin{notebox}{定義}ソフトウェアセキュリティとは、ソフトウェアが情報、機能、サービスを権限に応じて保護する品質特性である。\end{notebox}
+\subsubsection{情報セキュリティ}
+情報セキュリティは、情報の機密性、完全性、可用性を保つことである。これら三つは、頭文字を取ってCIAと呼ばれることが多い。ただし、真正性、説明責任、否認防止、信頼性なども関係する場合がある。
+
+\term{機密性}{Confidentiality}とは、権限のない人や処理に情報を開示しない性質である。完全性とは、情報が正確で完全である性質である。可用性とは、権限のある主体が必要なときに利用できる性質である。
+
+\par\smallskip\noindent\refstepcounter{table}\label{tab:ch13-02}表 \thetable: 情報セキュリティの整理\par\smallskip
+表 \thetable は、情報セキュリティの整理を比較・確認しやすい形で整理したものである。\par\smallskip
+\begin{longtable}{>{\raggedright\arraybackslash}p{0.25\linewidth}>{\raggedright\arraybackslash}p{0.35\linewidth}>{\raggedright\arraybackslash}p{0.35\linewidth}}
+\toprule
+性質 & 意味 & 失敗例 \\
+\midrule
+\endhead
+機密性 & 許可された人だけが見られる & 顧客情報が外部に漏れる \\
+完全性 & 改ざんされず正確である & 振込金額が不正に変更される \\
+可用性 & 必要なときに使える & 攻撃でサービスが停止する \\
+\bottomrule
+\end{longtable}
+\par\smallskip
+\begin{center}
+\centering
+\IfFileExists{assets/generated_figures/ch13/fig-ch13-03.png}{\includegraphics[width=0.96\linewidth]{assets/generated_figures/ch13/fig-ch13-03.png}}{\fbox{\parbox[c][48mm][c]{0.9\linewidth}{\centering 画像生成待ち\\CIA と追加性質の図}}}
+\par\smallskip
+\refstepcounter{figure}\label{fig:ch13-03}図 \thefigure: CIA と追加性質の図
+\end{center}
+図 \thefigure は、CIA と追加性質の図を視覚的に整理したものである。
+\par\smallskip
+\subsubsection{サイバーセキュリティ}
+サイバーセキュリティは、人、社会、組織、国家をサイバーリスクから守ることである。ここでいう「守る」とは、リスクを完全にゼロにすることではなく、許容できる水準に保つことである。
+
+サイバー空間での代表的な脅威には、ソーシャルエンジニアリング、ハッキング、悪意あるソフトウェア、その他の望ましくないソフトウェアがある。ソフトウェア技術者は、これらの脅威を緩和する設計や運用を開発の一部として考える必要がある。
+
+\begin{itemize}[leftmargin=2em]
+\item ソーシャルエンジニアリングは、人をだまして認証情報や操作権限を得る攻撃である。
+\item 悪意あるソフトウェアは、情報窃取、暗号化、遠隔操作、破壊などを行うプログラムである。
+\item セキュリティ対策は技術だけで完結しない。人の運用、組織の規則、教育、監視も関係する。
+\end{itemize}

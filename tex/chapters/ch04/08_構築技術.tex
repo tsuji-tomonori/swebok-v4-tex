@@ -10,12 +10,15 @@ API は、ライブラリやフレームワーク、サービスを利用する�
 
 Web API では、RESTful API や OpenAPI のような標準的な記述がよく使われる。API ファーストとは、アプリケーションの内部実装より先に API の契約を設計し、その契約に基づいてサーバ側とクライアント側を作る考え方である。
 
-\begin{figure}[htbp]
+\par\smallskip
+\begin{center}
 \centering
 \IfFileExists{assets/generated_figures/ch04/fig-ch04-08.png}{\includegraphics[width=0.96\linewidth]{assets/generated_figures/ch04/fig-ch04-08.png}}{\fbox{\parbox[c][48mm][c]{0.9\linewidth}{\centering 画像生成待ち\\API ファーストの流れ}}}
-\caption{API ファーストの流れ}
-\label{fig:ch04-08}
-\end{figure}
+\par\smallskip
+\refstepcounter{figure}\label{fig:ch04-08}図 \thefigure: API ファーストの流れ
+\end{center}
+図 \thefigure は、API ファーストの流れを視覚的に整理したものである。
+\par\smallskip
 
 \subsubsection{オブジェクト指向の実行時問題}
 
@@ -41,12 +44,15 @@ Web API では、RESTful API や OpenAPI のような標準的な記述がよく
 
 防御的プログラミングとは、不正な入力や想定外の状態から関数を守るために、入力値を検査し、異常な場合の処理を決めることである。防御的に書くことで、欠陥の影響を局所化しやすい。
 
-\begin{figure}[htbp]
+\par\smallskip
+\begin{center}
 \centering
 \IfFileExists{assets/generated_figures/ch04/fig-ch04-09.png}{\includegraphics[width=0.96\linewidth]{assets/generated_figures/ch04/fig-ch04-09.png}}{\fbox{\parbox[c][48mm][c]{0.9\linewidth}{\centering 画像生成待ち\\表明・契約・防御的プログラミングの関係図}}}
-\caption{表明・契約・防御的プログラミングの関係図}
-\label{fig:ch04-09}
-\end{figure}
+\par\smallskip
+\refstepcounter{figure}\label{fig:ch04-09}図 \thefigure: 表明・契約・防御的プログラミングの関係図
+\end{center}
+図 \thefigure は、表明・契約・防御的プログラミングの関係図を視覚的に整理したものである。
+\par\smallskip
 
 \subsubsection{エラー処理、例外処理、フォールトトレランス}
 
@@ -62,12 +68,15 @@ Web API では、RESTful API や OpenAPI のような標準的な記述がよく
 
 モデル駆動アーキテクチャでは、プラットフォーム非依存モデルとプラットフォーム固有モデルを区別する。プラットフォーム非依存モデルは、実装環境に依存しない解決策を表す。プラットフォーム固有モデルは、特定のハードウェアやソフトウェア環境の詳細を含む。変換器は、非依存モデルとプラットフォーム情報を組み合わせ、実装を生成する。
 
-\begin{figure}[htbp]
+\par\smallskip
+\begin{center}
 \centering
 \IfFileExists{assets/generated_figures/ch04/fig-ch04-10.png}{\includegraphics[width=0.96\linewidth]{assets/generated_figures/ch04/fig-ch04-10.png}}{\fbox{\parbox[c][48mm][c]{0.9\linewidth}{\centering 画像生成待ち\\実行可能モデル、PIM、PSM の関係図}}}
-\caption{実行可能モデル、PIM、PSM の関係図}
-\label{fig:ch04-10}
-\end{figure}
+\par\smallskip
+\refstepcounter{figure}\label{fig:ch04-10}図 \thefigure: 実行可能モデル、PIM、PSM の関係図
+\end{center}
+図 \thefigure は、実行可能モデル、PIM、PSM の関係図を視覚的に整理したものである。
+\par\smallskip
 
 \subsubsection{状態に基づく構築技法と表駆動構築技法}
 
@@ -75,12 +84,15 @@ Web API では、RESTful API や OpenAPI のような標準的な記述がよく
 
 表駆動方式は、複雑な \texttt{if} 文や \texttt{case} 文の代わりに、表を使って情報を表す方法である。条件と処理の対応を表にまとめると、ロジックが見通しやすく、変更もしやすくなることがある。表駆動では、何を表に入れるか、どのように効率よく表を参照するかが重要である。
 
-\begin{figure}[htbp]
+\par\smallskip
+\begin{center}
 \centering
 \IfFileExists{assets/generated_figures/ch04/fig-ch04-11.png}{\includegraphics[width=0.96\linewidth]{assets/generated_figures/ch04/fig-ch04-11.png}}{\fbox{\parbox[c][48mm][c]{0.9\linewidth}{\centering 画像生成待ち\\状態機械と表駆動の比較図}}}
-\caption{状態機械と表駆動の比較図}
-\label{fig:ch04-11}
-\end{figure}
+\par\smallskip
+\refstepcounter{figure}\label{fig:ch04-11}図 \thefigure: 状態機械と表駆動の比較図
+\end{center}
+図 \thefigure は、状態機械と表駆動の比較図を視覚的に整理したものである。
+\par\smallskip
 
 \subsubsection{実行時設定と国際化}
 
@@ -92,7 +104,7 @@ Web API では、RESTful API や OpenAPI のような標準的な記述がよく
 
 \subsubsection{文法に基づく入力処理}
 
-文法に基づく入力処理は、入力を字句や構文の規則に従って解析する技法である。代表的な例は、プログラミング言語、設定ファイル、数式、検索式、通信プロトコルの解析である。
+\term{文法}{Grammar}に基づく入力処理は、入力を字句や構文の規則に従って解析する技法である。代表的な例は、プログラミング言語、設定ファイル、数式、検索式、通信プロトコルの解析である。
 
 構文解析では、入力のトークン列から解析木または構文木と呼ばれるデータ構造を作る。解析木は、その入力がどのような構造を持つかを表す。構文解析の後、意味検査やシンボル表の確認を行い、計算処理や変換処理につなげる。
 
@@ -120,12 +132,15 @@ Web API では、RESTful API や OpenAPI のような標準的な記述がよく
 
 クラウド基盤ソフトウェアでは、マイクロサービス、コンテナ、API ゲートウェイ、サービス登録と発見、監視、自動スケーリングなどを考慮する。従来の分散トランザクションでは ACID 特性を重視することが多い。一方、マイクロサービスでは、すべてを強い整合性で統一するのが難しく、SAGA などによる結果整合性を使うことがある。
 
-\begin{figure}[htbp]
+\par\smallskip
+\begin{center}
 \centering
 \IfFileExists{assets/generated_figures/ch04/fig-ch04-12.png}{\includegraphics[width=0.96\linewidth]{assets/generated_figures/ch04/fig-ch04-12.png}}{\fbox{\parbox[c][48mm][c]{0.9\linewidth}{\centering 画像生成待ち\\分散・クラウド構築の概念図}}}
-\caption{分散・クラウド構築の概念図}
-\label{fig:ch04-12}
-\end{figure}
+\par\smallskip
+\refstepcounter{figure}\label{fig:ch04-12}図 \thefigure: 分散・クラウド構築の概念図
+\end{center}
+図 \thefigure は、分散・クラウド構築の概念図を視覚的に整理したものである。
+\par\smallskip
 
 \subsubsection{異種システムの構築}
 
@@ -143,12 +158,15 @@ Web API では、RESTful API や OpenAPI のような標準的な記述がよく
 まず測定し、ボトルネックを特定し、小さく変更し、再測定する。性能のために可読性を大きく下げる場合は、その理由と測定結果を残す必要がある。
 \end{keybox}
 
-\begin{figure}[htbp]
+\par\smallskip
+\begin{center}
 \centering
 \IfFileExists{assets/generated_figures/ch04/fig-ch04-13.png}{\includegraphics[width=0.96\linewidth]{assets/generated_figures/ch04/fig-ch04-13.png}}{\fbox{\parbox[c][48mm][c]{0.9\linewidth}{\centering 画像生成待ち\\性能分析とチューニングの流れ}}}
-\caption{性能分析とチューニングの流れ}
-\label{fig:ch04-13}
-\end{figure}
+\par\smallskip
+\refstepcounter{figure}\label{fig:ch04-13}図 \thefigure: 性能分析とチューニングの流れ
+\end{center}
+図 \thefigure は、性能分析とチューニングの流れを視覚的に整理したものである。
+\par\smallskip
 
 \subsubsection{プラットフォーム標準}
 
@@ -164,12 +182,15 @@ Web API では、RESTful API や OpenAPI のような標準的な記述がよく
 
 この方法は、テスト駆動開発としても知られる。テストを先に書くことで、プログラマは要求と設計を先に考える。これにより、要求や設計の問題が早く表面化する。欠陥も早く発見され、修正しやすい。
 
-\begin{figure}[htbp]
+\par\smallskip
+\begin{center}
 \centering
 \IfFileExists{assets/generated_figures/ch04/fig-ch04-14.png}{\includegraphics[width=0.96\linewidth]{assets/generated_figures/ch04/fig-ch04-14.png}}{\fbox{\parbox[c][48mm][c]{0.9\linewidth}{\centering 画像生成待ち\\テスト駆動開発のサイクル図}}}
-\caption{テスト駆動開発のサイクル図}
-\label{fig:ch04-14}
-\end{figure}
+\par\smallskip
+\refstepcounter{figure}\label{fig:ch04-14}図 \thefigure: テスト駆動開発のサイクル図
+\end{center}
+図 \thefigure は、テスト駆動開発のサイクル図を視覚的に整理したものである。
+\par\smallskip
 
 \subsubsection{構築のためのフィードバックループ}
 

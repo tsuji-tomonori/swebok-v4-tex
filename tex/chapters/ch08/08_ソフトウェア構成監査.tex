@@ -1,0 +1,39 @@
+\subsection*{ソフトウェア構成監査}
+\addcontentsline{toc}{subsection}{5 ソフトウェア構成監査}
+ソフトウェア監査は、成果物または成果物集合を独立に調べ、仕様、標準、契約、法規制などの基準に適合しているかを評価する活動である。構成監査は、構成品目が機能的・物理的特性の要求をどの程度満たしているかを確認する。
+
+\term{構成監査}{Configuration Audit}は、ライフサイクル中の重要な時点で非公式に行われることもある。契約や安全上の要求により、正式な機能構成監査と物理構成監査が必要になることもある。
+
+\subsubsection*{ソフトウェア機能構成監査}
+\addcontentsline{toc}{subsubsection}{5.1 ソフトウェア機能構成監査}
+ソフトウェア機能構成監査は、監査対象のソフトウェア品目が、支配的な仕様と整合していることを確認する。検証・妥当性確認活動の出力は、この監査の重要な入力になる。
+
+\subsubsection*{ソフトウェア物理構成監査}
+\addcontentsline{toc}{subsubsection}{5.2 ソフトウェア物理構成監査}
+ソフトウェア物理構成監査は、設計文書や参照文書が、実際に作られたソフトウェア製品と整合していることを確認する。簡単に言えば、機能構成監査は「仕様どおりに機能するか」、物理構成監査は「実物と文書が一致するか」を見る。
+
+\par\smallskip\noindent\refstepcounter{table}\label{tab:ch08-06}表 \thetable: ソフトウェア物理構成監査における監査・主に見ること・代表的な入力\par\smallskip
+表 \thetable は、ソフトウェア物理構成監査における監査・主に見ること・代表的な入力を比較・確認しやすい形で整理したものである。\par\smallskip
+\begin{longtable}{p{0.20\linewidth}p{0.25\linewidth}p{0.49\linewidth}}\toprule
+監査 & 主に見ること & 代表的な入力 \\ \midrule
+\endfirsthead\toprule
+監査 & 主に見ること & 代表的な入力 \\ \midrule
+\endhead
+\term{機能構成監査}{Functional Configuration Audit} & 仕様どおりの機能・性能を満たすか。 & 要求、仕様、検証・妥当性確認結果。 \\
+\term{物理構成監査}{Physical Configuration Audit} & 実物、設計文書、参照文書、リリース内容が一致するか。 & 設計文書、ソース、バイナリ、ハッシュ、版記述文書。 \\
+\bottomrule\end{longtable}
+\subsubsection*{ソフトウェア基準版のプロセス中監査}
+\addcontentsline{toc}{subsubsection}{5.3 ソフトウェア基準版のプロセス中監査}
+プロセス中監査は、開発途中で特定の構成要素の状態を調べるために行う。すべての基準版品目について、性能が仕様と整合しているか、発展中の文書が基準版品目と整合しているかを確認できる。
+
+構成識別で見つけた構成品目を継続的にレビューすると、ガバナンスや規制要求への適合を確認しやすい。構成監査レビューは、構成品目をレビューすべき時点ごとに、開発全体を通じて行われる。
+
+\par\smallskip
+\begin{center}
+\centering
+\IfFileExists{assets/generated_figures/ch08/fig-ch08-10.png}{\includegraphics[width=0.96\linewidth]{assets/generated_figures/ch08/fig-ch08-10.png}}{\fbox{\parbox[c][48mm][c]{0.9\linewidth}{\centering 画像生成待ち\\機能構成監査と物理構成監査の違いを示す図}}}
+\par\smallskip
+\refstepcounter{figure}\label{fig:ch08-10}図 \thefigure: 機能構成監査と物理構成監査の違いを示す図
+\end{center}
+図 \thefigure は、機能構成監査と物理構成監査の違いを示す図を視覚的に整理したものである。
+\par\smallskip

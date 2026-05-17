@@ -1,0 +1,115 @@
+\subsection{人工知能と機械学習}
+
+知能とは、情報や知識を獲得し、関連付け、特定の課題に対して適切な判断を行う能力である。人工知能（AI）は、計算機システムに人間のような知的振る舞いを実現させることを目指す。機械学習（ML）は、経験やデータから学習し、得た知識を使って判断する仕組みである。深層学習は、人工ニューラルネットワークを用いて学習と予測を行う方法である。
+
+\subsubsection{推論}
+
+推論は、利用可能な情報を分析し、状況の原因や結論を導く能力である。AIにおいて、推論の結果は次に何をすべきかを決める材料になる。
+
+\par\smallskip\noindent\refstepcounter{table}\label{tab:ch16-25}表 \thetable: 推論における推論・説明\par\smallskip
+表 \thetable は、推論における推論・説明を比較・確認しやすい形で整理したものである。\par\smallskip
+\begin{longtable}{>{\raggedright\arraybackslash}p{0.23\textwidth}>{\raggedright\arraybackslash}p{0.70\textwidth}}
+\toprule
+推論 & 説明 \\
+\midrule
+\endfirsthead
+\toprule
+推論 & 説明 \\
+\midrule
+\endhead
+演繹推論 & 前提が真で推論規則が正しければ、結論も真になる推論である。 \\
+帰納推論 & 観察事例から一般化する推論である。結論は確からしいが絶対ではない。 \\
+仮説推論 & 不完全な情報から、最もありそうな説明を導く推論である。 \\
+常識推論 & 過去の経験や一般常識から状況を判断する推論である。 \\
+単調推論 & 一度得た結論が、新しい情報で取り消されない推論である。 \\
+非単調推論 & 新しい知識により結論が変化する推論である。 \\
+\bottomrule
+\end{longtable}
+
+\subsubsection{学習}
+
+学習は、観察、実験、経験から得た情報を将来の判断に活用できるようにすることである。AIシステムでは、入力、出力、環境からのフィードバックを使って、予測や判断の能力を改善する。
+
+\par\smallskip\noindent\refstepcounter{table}\label{tab:ch16-26}表 \thetable: 学習における学習・説明・典型例\par\smallskip
+表 \thetable は、学習における学習・説明・典型例を比較・確認しやすい形で整理したものである。\par\smallskip
+\begin{longtable}{>{\raggedright\arraybackslash}p{0.23\textwidth}>{\raggedright\arraybackslash}p{0.50\textwidth}>{\raggedright\arraybackslash}p{0.22\textwidth}}
+\toprule
+学習 & 説明 & 典型例 \\
+\midrule
+\endfirsthead
+\toprule
+学習 & 説明 & 典型例 \\
+\midrule
+\endhead
+教師あり学習 & ラベル付きデータで訓練する。 & 分類、回帰。 \\
+教師なし学習 & ラベルなしデータから構造やパターンを見つける。 & クラスタリング、次元削減。 \\
+半教師あり学習 & ラベル付きとラベルなしの両方を使う。 & ラベル付けコストが高い場合。 \\
+強化学習 & 環境との相互作用から報酬や失敗を受け取り、試行錯誤で学ぶ。 & ゲーム、ロボット制御。 \\
+\bottomrule
+\end{longtable}
+
+\subsubsection{モデル}
+
+AIモデルは、関連データに基づいて判断を行う推論器またはアルゴリズムである。線形回帰、ロジスティック回帰、人工ニューラルネットワーク、決定木、ナイーブベイズ、サポートベクトル機械、ランダムフォレストなどがある。モデルごとに向くデータ、問題、説明可能性、必要データ量、計算量が異なる。
+
+\par\smallskip\noindent\refstepcounter{table}\label{tab:ch16-27}表 \thetable: モデルにおけるモデル・主な用途の直感\par\smallskip
+表 \thetable は、モデルにおけるモデル・主な用途の直感を比較・確認しやすい形で整理したものである。\par\smallskip
+\begin{longtable}{>{\raggedright\arraybackslash}p{0.30\textwidth}>{\raggedright\arraybackslash}p{0.64\textwidth}}
+\toprule
+モデル & 主な用途の直感 \\
+\midrule
+\endfirsthead
+\toprule
+モデル & 主な用途の直感 \\
+\midrule
+\endhead
+線形回帰 & 連続値を予測する。 \\
+ロジスティック回帰 & 分類や確率的判断に使う。 \\
+人工ニューラルネットワーク & 複雑な特徴を学習し、画像・音声・言語で使われる。 \\
+決定木 & 条件分岐で判断過程を表す。 \\
+ナイーブベイズ & 特徴の独立性を仮定し、分類に使う。 \\
+サポートベクトル機械 & 限られたデータで分類境界を作る。 \\
+ランダムフォレスト & 複数の決定木を組み合わせ、分類や回帰を行う。 \\
+\bottomrule
+\end{longtable}
+
+\par\smallskip
+\begin{center}
+\centering
+\IfFileExists{assets/generated_figures/ch16/fig-ch16-17.png}{\includegraphics[width=0.96\linewidth]{assets/generated_figures/ch16/fig-ch16-17.png}}{\fbox{\parbox[c][48mm][c]{0.9\linewidth}{\centering 画像生成待ち\\学習方法と代表モデルの対応図}}}
+\par\smallskip
+\refstepcounter{figure}\label{fig:ch16-17}図 \thefigure: 学習方法と代表モデルの対応図
+\end{center}
+図 \thefigure は、学習方法と代表モデルの対応図を視覚的に整理したものである。
+\par\smallskip
+
+\subsubsection{知覚と問題解決}
+
+AIにおける問題解決は、利用者の命令や環境から得た情報を理解し、知識ベースや推論機構を使って適切な行動を選ぶことである。外界を扱うAIシステムは、カメラ、マイク、温度、圧力、光などのセンサからデータを得て、分析し、行動する。
+
+AIシステムは、特定作業を知的に行う型、現在の状況に反応する型、自己認識や心の理論を想定する型などに整理されることがある。実務では、こうした分類を万能な成熟度表としてではなく、AIがどの範囲の状況を扱えるかを考える補助線として使うべきである。
+
+\subsubsection{自然言語処理}
+
+自然言語処理（NLP）は、人間が日常的に使う言語をAIシステムが理解し、命令や質問に応答できるようにする分野である。音声命令を扱う場合は、単語だけでなく、発音、言い回し、俗語、文脈を理解する必要がある。
+
+\subsubsection{AIとソフトウェア工学}
+
+AIとソフトウェア工学の関係は、主に二方向で整理できる。第一に、ソフトウェア工学へのAI応用である。これは、要求の曖昧性解消、欠陥予測、テストケース生成、脆弱性分析、保守性予測、工程評価などにAIを使う考え方である。第二に、AIシステムのためのソフトウェア工学である。AIシステムでは、振る舞いが明示的な規則だけでなく訓練データから得られるため、従来型システムとは異なる開発支援が必要になる。
+
+AIシステム開発では、データ科学者とソフトウェア技術者の協働、大規模で変化するデータセットを前提にした進化、倫理、公平性、説明可能性、データ品質に関する要求が重要になる。機械学習ソフトウェアの設計パターンのように、AIシステム向けの実践を形式化する動きもある。
+
+\begin{pointbox}{注意}
+AIを使えばソフトウェア工学上の判断が不要になるわけではない。AIの出力には不確実性があり、十分に構造化されたデータ、評価、監視、失敗時の扱いが必要である。AIシステムほど、要求、品質、セキュリティ、倫理を明示的に扱う必要がある。
+
+\end{pointbox}
+
+\par\smallskip
+\begin{center}
+\centering
+\IfFileExists{assets/generated_figures/ch16/fig-ch16-18.png}{\includegraphics[width=0.96\linewidth]{assets/generated_figures/ch16/fig-ch16-18.png}}{\fbox{\parbox[c][48mm][c]{0.9\linewidth}{\centering 画像生成待ち\\AI for SE と SE for AI の関係図}}}
+\par\smallskip
+\refstepcounter{figure}\label{fig:ch16-18}図 \thefigure: AI for SE と SE for AI の関係図
+\end{center}
+図 \thefigure は、AI for SE と SE for AI の関係図を視覚的に整理したものである。
+\par\smallskip

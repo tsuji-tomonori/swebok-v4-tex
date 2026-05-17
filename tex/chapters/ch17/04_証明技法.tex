@@ -1,0 +1,68 @@
+\subsection{証明技法}
+証明とは、ある主張が真であることを、仮定、定義、すでに証明された命題から厳密に導くことである。ソフトウェア開発では、証明という語を日常的に使わなくても、設計の正しさ、アルゴリズムの停止性、データ構造の性質、テストケースの十分性を考えるときに証明の考え方が必要になる。
+
+\par\smallskip\noindent\refstepcounter{table}\label{tab:ch17-04}表 \thetable: 証明技法における用語・説明\par\smallskip
+表 \thetable は、証明技法における用語・説明を比較・確認しやすい形で整理したものである。\par\smallskip
+\begin{longtable}{>{\raggedright\arraybackslash}p{0.26\linewidth} >{\raggedright\arraybackslash}p{0.68\linewidth}}
+\toprule
+用語 & 説明 \\
+\midrule
+\endfirsthead
+\toprule
+用語 & 説明 \\
+\midrule
+\endhead
+\term{公理・仮定}{Axiom and Assumption} & 証明の出発点として受け入れる前提である。 \\
+\term{定理}{Theorem} & 証明によって真であると示された主張である。 \\
+\term{補題}{Lemma} & 別の定理を証明するために使う小さな定理である。 \\
+\term{系}{Corollary} & 証明済みの定理から直接導かれる主張である。 \\
+\term{予想}{Conjecture} & 真偽がまだ確定していない主張である。 \\
+\bottomrule
+\end{longtable}
+\subsubsection{直接証明}
+\term{直接証明}{Direct Proof}は、「pならばq」を示すとき、pが真であると仮定し、定義や計算を使ってqが真であることを導く方法である。最も素直な証明方法であり、アルゴリズムの性質を説明するときにも使いやすい。
+
+\begin{notebox}{例}
+「nが奇数なら、nの2乗から1を引いた数は偶数である」を示すとき、n = 2k + 1 と置く。すると n\textasciicircum{}2 は 4k\textasciicircum{}2 + 4k + 1 となり、n\textasciicircum{}2 - 1 は 4k\textasciicircum{}2 + 4k である。これは2で割り切れるため偶数である。
+\end{notebox}
+\subsubsection{背理法と対偶証明}
+\term{背理法}{Proof by Contradiction}は、示したい主張が偽であると仮定し、その仮定から矛盾を導く方法である。矛盾が出るなら、最初の仮定が誤りであり、示したい主張は真であると結論づける。
+
+\term{対偶証明}{Proof by Contrapositive}は、「pならばq」を示す代わりに、「qでないならpでない」を示す方法である。論理的には、この二つは同値である。直接証明が難しいときに有効である。
+
+\subsubsection{数学的帰納法}
+\term{数学的帰納法}{Mathematical Induction}は、自然数で番号付けされた無限個の主張を証明するための技法である。第一に、最初の場合が成り立つことを示す。第二に、ある任意のkで成り立つと仮定したとき、k+1でも成り立つことを示す。この二つにより、すべての自然数について成り立つと結論できる。
+
+\par\smallskip\noindent\refstepcounter{table}\label{tab:ch17-05}表 \thetable: 数学的帰納法における段階・意味\par\smallskip
+表 \thetable は、数学的帰納法における段階・意味を比較・確認しやすい形で整理したものである。\par\smallskip
+\begin{longtable}{>{\raggedright\arraybackslash}p{0.26\linewidth} >{\raggedright\arraybackslash}p{0.68\linewidth}}
+\toprule
+段階 & 意味 \\
+\midrule
+\endfirsthead
+\toprule
+段階 & 意味 \\
+\midrule
+\endhead
+\term{基底段階}{Base Step} & 最初のケース、通常はn = 1またはn = 0で主張が成り立つことを示す。 \\
+\term{帰納法の仮定}{Induction Hypothesis} & 任意のkで主張が成り立つと仮定する。 \\
+\term{帰納段階}{Induction Step} & kで成り立つならk+1でも成り立つことを示す。 \\
+\bottomrule
+\end{longtable}
+\begin{notebox}{ソフトウェアでの見方}
+再帰関数、ループ不変条件、木構造の性質、リスト処理の正しさは、数学的帰納法と相性がよい。「空リストで正しい」「先頭を一つ処理して残りで正しいなら全体で正しい」という考え方は帰納法そのものである。
+\end{notebox}
+\subsubsection{例による証明}
+例による証明が有効なのは、「存在する」ことを示したい場合である。たとえば「条件を満たす入力が少なくとも一つある」を示すには、その入力例を一つ示せばよい。
+
+一方で、「すべての場合に成り立つ」ことは、いくつかの例だけでは証明できない。例を多く見せても、一般の証明にはならない。これは不適切な一般化と呼べる。テストで多数のケースが通っても、欠陥が存在しないことの証明にはならないという点にもつながる。
+
+\par\smallskip
+\begin{center}
+\centering
+\IfFileExists{assets/generated_figures/ch17/fig-ch17-04.png}{\includegraphics[width=0.96\linewidth]{assets/generated_figures/ch17/fig-ch17-04.png}}{\fbox{\parbox[c][48mm][c]{0.9\linewidth}{\centering 画像生成待ち\\証明技法の比較フロー}}}
+\par\smallskip
+\refstepcounter{figure}\label{fig:ch17-04}図 \thefigure: 証明技法の比較フロー
+\end{center}
+図 \thefigure は、証明技法の比較フローを視覚的に整理したものである。
+\par\smallskip

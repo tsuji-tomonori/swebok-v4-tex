@@ -1,0 +1,38 @@
+\subsection{離散確率}
+\term{確率}{Probability}は、偶然性を数学的に扱うための言葉である。離散確率は、サイコロの目、テストの合否、障害発生有無、リクエスト種別など、数え上げられる結果に確率を割り当てる。
+
+\par\smallskip\noindent\refstepcounter{table}\label{tab:ch17-18}表 \thetable: 離散確率における用語・説明\par\smallskip
+表 \thetable は、離散確率における用語・説明を比較・確認しやすい形で整理したものである。\par\smallskip
+\begin{longtable}{>{\raggedright\arraybackslash}p{0.26\linewidth} >{\raggedright\arraybackslash}p{0.68\linewidth}}
+\toprule
+用語 & 説明 \\
+\midrule
+\endfirsthead
+\toprule
+用語 & 説明 \\
+\midrule
+\endhead
+標本空間 & 起こり得るすべての結果の集合である。 \\
+事象 & 標本空間の部分集合である。 \\
+確率変数 & 結果に数値を割り当てる規則である。 \\
+離散確率変数 & 取り得る値を列挙できる確率変数である。 \\
+連続確率変数 & 値をすべて列挙できない範囲で扱う確率変数である。 \\
+確率分布 & 値とその値が起こる確率の対応である。 \\
+平均 & 長期的に期待される中心的な値である。 \\
+分散・標準偏差 & 値のばらつきの大きさを表す。 \\
+\bottomrule
+\end{longtable}
+離散確率分布では、各結果の確率は0以上1以下であり、すべての確率の総和は1である。たとえば、公平なサイコロでは、1から6までの各目の確率はすべて1/6である。
+
+\begin{notebox}{ソフトウェアでの見方}
+ランダムテスト、障害率、信頼性評価、負荷分散、機械学習、A/Bテストでは確率が必要である。確率は単なる予想ではなく、標本空間、事象、分布を定めた上で扱う数学的な記述である。
+\end{notebox}
+\par\smallskip
+\begin{center}
+\centering
+\IfFileExists{assets/generated_figures/ch17/fig-ch17-13.png}{\includegraphics[width=0.96\linewidth]{assets/generated_figures/ch17/fig-ch17-13.png}}{\fbox{\parbox[c][48mm][c]{0.9\linewidth}{\centering 画像生成待ち\\サイコロの離散確率分布}}}
+\par\smallskip
+\refstepcounter{figure}\label{fig:ch17-13}図 \thefigure: サイコロの離散確率分布
+\end{center}
+図 \thefigure は、サイコロの離散確率分布を視覚的に整理したものである。
+\par\smallskip

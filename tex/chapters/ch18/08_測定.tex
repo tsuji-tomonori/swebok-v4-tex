@@ -1,0 +1,95 @@
+\subsection{測定}
+測定では、何を測るか、どのように測るか、測定結果で何ができるか、なぜ測るかを理解する必要がある。測定は、抽象的な概念から始まり、操作的定義、測定方法、測定結果へ進む。どの段階も曖昧だと、使えるデータにならない。
+測定理論では、測定とは、対象の属性に値や記号を割り当てる活動である。ソフトウェアでは、規模、複雑さ、欠陥、信頼性、保守性などの属性が物理量ほど直感的でないため、操作的定義が特に重要である。
+\begin{notebox}{操作的定義}操作的定義とは、測定を実際に行う手順を明確にした定義である。たとえば「身長」を測るだけでも、靴を履くか、髪をどう扱うか、いつ測るか、どの精度で読むかを決めなければ値がばらつく。ソフトウェアの「規模」や「複雑さ」では、さらに明確な手順が必要である。\end{notebox}
+\subsubsection{測定水準（尺度）}
+測定値は、名義尺度、順序尺度、間隔尺度、比率尺度のいずれかとして理解できる。尺度によって、許される比較や演算が違う。数値で表されているからといって、足し算、平均、割り算をしてよいとは限らない。
+\par\smallskip\noindent\refstepcounter{table}\label{tab:ch18-09}表 \thetable: 測定水準（尺度）の整理\par\smallskip
+表 \thetable は、測定水準（尺度）の整理を比較・確認しやすい形で整理したものである。\par\smallskip
+\begin{longtable}{>{\raggedright\arraybackslash}p{0.14\linewidth}>{\raggedright\arraybackslash}p{0.26\linewidth}>{\raggedright\arraybackslash}p{0.32\linewidth}>{\raggedright\arraybackslash}p{0.20\linewidth}}
+\toprule
+尺度 & 意味 & 許される主な操作 & 例 \\
+\midrule
+\endfirsthead
+\toprule
+尺度 & 意味 & 許される主な操作 & 例 \\
+\midrule
+\endhead
+名義尺度 & 分類名を付けるだけの尺度である。順序はない。 & 同じか違うかを判定する。同じ分類の数を数える。 & 職名、車種、開発ライフサイクルの種類。 \\
+順序尺度 & 分類に順序がある尺度である。差の大きさは意味を持たない。 & 同じか違うか、大小比較、中央値の計算。加減乗除や平均は不適切である。 & 順位、重大度、同意度、CMMI成熟度段階。 \\
+間隔尺度 & 隣り合う値の差が一定の尺度である。ゼロは任意である。 & 大小比較、加減、平均、標準偏差、相関、回帰。乗除は意味を持たない。 & 摂氏・華氏温度、暦日、北米式靴サイズ。 \\
+比率尺度 & ゼロが属性の不在を表す尺度である。 & すべての算術演算と統計処理が可能である。 & ケルビン温度、金額、分岐構造の数。 \\
+絶対尺度 & 変換の余地がない比率尺度である。 & 数そのものを扱う。 & プロジェクトに参加する技術者数。 \\
+\bottomrule
+\end{longtable}
+\par\smallskip
+\begin{center}
+\centering
+\IfFileExists{assets/generated_figures/ch18/fig-ch18-10.png}{\includegraphics[width=0.96\linewidth]{assets/generated_figures/ch18/fig-ch18-10.png}}{\fbox{\parbox[c][48mm][c]{0.9\linewidth}{\centering 画像生成待ち\\測定尺度の階段図}}}
+\par\smallskip
+\refstepcounter{figure}\label{fig:ch18-10}図 \thefigure: 測定尺度の階段図
+\end{center}
+図 \thefigure は、測定尺度の階段図を視覚的に整理したものである。
+\par\smallskip
+\subsubsection{測定理論がプログラミング言語に与える含意}
+一般的なプログラミング言語は、整数、浮動小数点数、文字、文字列、列挙型などを提供する。しかし、多くの言語は測定理論を理解していない。整数型や浮動小数点型は、加減乗除や比較を自由に許す。
+たとえば、CMMI成熟度段階を1から5の整数で表すと、言語は平均や掛け算を許してしまう。しかし成熟度段階は順序尺度であり、段階4が段階2の二倍よいとは言えない。同様に、車種名を文字列で表すと辞書順比較は可能だが、その順序に意味があるとは限らない。
+将来の言語は、名義尺度、順序尺度、間隔尺度、比率尺度の意味を型として扱い、不適切な演算を警告または禁止するべきである。それまでは、技術者が測定尺度を理解し、コードレビューで不適切な操作を見つける必要がある。
+\par\smallskip
+\begin{center}
+\centering
+\IfFileExists{assets/generated_figures/ch18/fig-ch18-11.png}{\includegraphics[width=0.96\linewidth]{assets/generated_figures/ch18/fig-ch18-11.png}}{\fbox{\parbox[c][48mm][c]{0.9\linewidth}{\centering 画像生成待ち\\測定尺度とプログラミング型のずれを示す図}}}
+\par\smallskip
+\refstepcounter{figure}\label{fig:ch18-11}図 \thefigure: 測定尺度とプログラミング型のずれを示す図
+\end{center}
+図 \thefigure は、測定尺度とプログラミング型のずれを示す図を視覚的に整理したものである。
+\par\smallskip
+\subsubsection{直接測度と導出測度}
+直接測度は、対象から直接得る測度である。たとえば、見つかった欠陥数、コミット数、レビュー件数などである。導出測度は、複数の直接測度を組み合わせて得る。たとえば、欠陥1件あたりの平均修正時間、千行あたりの欠陥密度などである。
+導出測度では、元になった尺度の制約を守る必要がある。異なる尺度を組み合わせるとき、結果の尺度は最も低い尺度の制約を超えられない。高い尺度として扱いたければ、追加の定義や測定努力が必要である。
+\par\smallskip\noindent\refstepcounter{table}\label{tab:ch18-10}表 \thetable: 直接測度と導出測度の整理\par\smallskip
+表 \thetable は、直接測度と導出測度の整理を比較・確認しやすい形で整理したものである。\par\smallskip
+\begin{longtable}{>{\raggedright\arraybackslash}p{0.18\linewidth}>{\raggedright\arraybackslash}p{0.41\linewidth}>{\raggedright\arraybackslash}p{0.32\linewidth}}
+\toprule
+測度 & 説明 & 例 \\
+\midrule
+\endfirsthead
+\toprule
+測度 & 説明 & 例 \\
+\midrule
+\endhead
+直接測度 & 対象から直接数える、読む、測る。 & 欠陥数、処理時間、レビュー件数。 \\
+導出測度 & 複数の測度を組み合わせて作る。 & 欠陥密度、平均修正時間、稼働率。 \\
+\bottomrule
+\end{longtable}
+\subsubsection{信頼性と妥当性}
+測定方法を考えるときは、その方法がよい品質で概念を測っているかを問う必要がある。そのための基本概念が信頼性と妥当性である。
+\par\smallskip\noindent\refstepcounter{table}\label{tab:ch18-11}表 \thetable: 信頼性と妥当性の整理\par\smallskip
+表 \thetable は、信頼性と妥当性の整理を比較・確認しやすい形で整理したものである。\par\smallskip
+\begin{longtable}{>{\raggedright\arraybackslash}p{0.17\linewidth}>{\raggedright\arraybackslash}p{0.48\linewidth}>{\raggedright\arraybackslash}p{0.28\linewidth}}
+\toprule
+概念 & 説明 & 確認の観点 \\
+\midrule
+\endfirsthead
+\toprule
+概念 & 説明 & 確認の観点 \\
+\midrule
+\endhead
+信頼性 & 同じ対象を何度測っても一貫した結果が得られる程度である。 & 測定値のばらつきが小さいか。変動係数が小さいか。 \\
+妥当性 & 測りたい概念を本当に測っている程度である。 & 構成概念妥当性、基準妥当性、内容妥当性から見る。 \\
+\bottomrule
+\end{longtable}
+\subsubsection{信頼性の評価}
+信頼性の評価方法には、再検査法、代替形式法、折半法、内的一貫性法がある。最も単純なのは再検査法である。同じ対象に同じ測定方法を二回適用し、二回の結果の相関係数から測定方法の信頼性を評価する。
+\subsubsection{目標・質問・測度パラダイム：なぜ測るのか}
+目標・質問・測度パラダイム、すなわちGQMは、測定は意思決定を支えるために行うべきだという考え方である。まず目標を決め、その目標に答える質問を決め、質問に答えるための測度を決める。
+現実の組織では、測りやすいから、グラフにすると面白いからという理由だけで測定が集められることがある。これは単なる好奇心のための測定であり、意思決定に使われないなら時間と労力の浪費である。
+\par\smallskip
+\begin{center}
+\centering
+\IfFileExists{assets/generated_figures/ch18/fig-ch18-12.png}{\includegraphics[width=0.96\linewidth]{assets/generated_figures/ch18/fig-ch18-12.png}}{\fbox{\parbox[c][48mm][c]{0.9\linewidth}{\centering 画像生成待ち\\GQMの流れ図}}}
+\par\smallskip
+\refstepcounter{figure}\label{fig:ch18-12}図 \thefigure: GQMの流れ図
+\end{center}
+図 \thefigure は、GQMの流れ図を視覚的に整理したものである。
+\par\smallskip

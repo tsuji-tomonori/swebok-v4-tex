@@ -1,0 +1,111 @@
+\subsection{ソフトウェア品質の基礎}
+品質を確保するには、関係者全員が「何を品質とみなすか」を共有する必要がある。品質の合意が曖昧なままでは、開発者は何を優先して設計・実装・レビューすべきか判断できない。
+
+品質上の典型的な課題には、要求を明確に定義しにくいこと、顧客や利用者とのコミュニケーション不足、仕様からの逸脱、アーキテクチャや設計の誤り、コーディング誤り、プロセスや手順への不適合、不十分なレビューやテスト、文書の誤りがある。
+
+品質を扱ううえで、次の三つの用語を区別することが重要である。
+
+\noindent\par\smallskip\noindent\refstepcounter{table}\label{tab:ch12-02}表 \thetable: ソフトウェア品質の基礎の整理\par\smallskip
+表 \thetable は、ソフトウェア品質の基礎の整理を比較・確認しやすい形で整理したものである。\par\smallskip
+\begin{tabularx}{\textwidth}{@{}L{0.16\textwidth}L{0.18\textwidth}Y@{}}
+\toprule
+用語 & 英語 & 意味 \\
+\midrule
+\term{誤り}{Error} & error & 人間の行為が間違った結果を生むこと。例として、要求を誤解して設計する、条件式を取り違えるなどがある。 \\
+欠陥 & defect / fault & 作業成果物の中に埋め込まれた不完全さである。要求、設計、コード、テスト文書などが仕様や要求を満たさない状態を指す。 \\
+\term{故障}{Failure} & failure & 実行時や利用時に、システムが必要な機能を果たせない、または指定された範囲内で動作できない外部から見える現象である。 \\
+\bottomrule
+\end{tabularx}
+
+
+\begin{notebox}{注記}
+誤りは人間の行為であり、欠陥は成果物の中に潜む問題であり、故障は実行時に外から観測される問題である。レビューは欠陥を実行前に見つける活動であり、テストは故障を観測して欠陥の存在を示す活動である。
+\end{notebox}
+
+\par\smallskip
+\begin{center}
+\centering
+\IfFileExists{assets/generated_figures/ch12/fig-ch12-03.png}{\includegraphics[width=0.96\linewidth]{assets/generated_figures/ch12/fig-ch12-03.png}}{\fbox{\parbox[c][48mm][c]{0.9\linewidth}{\centering 画像生成待ち\\誤り・欠陥・故障の関係図}}}
+\par\smallskip
+\refstepcounter{figure}\label{fig:ch12-03}図 \thefigure: 誤り・欠陥・故障の関係図
+\end{center}
+図 \thefigure は、誤り・欠陥・故障の関係図を視覚的に整理したものである。
+\par\smallskip
+
+\subsubsection{ソフトウェア工学文化と倫理}
+組織文化は品質に強く影響する。たとえば、受託開発、組込み開発、量販ソフトウェア、クラウドサービスでは、品質への期待、リリース方法、レビューの重さ、運用責任が異なる。したがって、品質活動は一つの型をすべての組織へ機械的に当てはめるものではない。
+
+健全なソフトウェア工学文化では、費用、納期、品質のトレードオフを正直に扱う。品質上のリスクや制約を隠すことは、短期的には進捗がよく見えるかもしれないが、長期的には利用者、顧客、社会に損害を与える。倫理は品質の一部である。技術者は、品質に関する情報、状況、結果を正確に報告する責任を持つ。
+
+\subsubsection{品質の価値と費用}
+品質保証は費用がかかるため、軽視されることがある。しかし、品質活動を行わないことにも費用がかかる。むしろ、欠陥が後工程や納品後に見つかるほど、修正費用と社会的影響は大きくなる。
+
+\term{ソフトウェア品質コスト}{Cost of Software Quality, CoSQ}は、品質のために支払う費用と、品質が不足したために支払う費用を合わせて考える枠組みである。
+
+
+\noindent\par\smallskip\noindent\refstepcounter{table}\label{tab:ch12-03}表 \thetable: 品質の価値と費用の整理\par\smallskip
+表 \thetable は、品質の価値と費用の整理を比較・確認しやすい形で整理したものである。\par\smallskip
+\begin{tabularx}{\textwidth}{L{0.24\textwidth}Y}
+\toprule
+費用区分 & 説明 \\
+\midrule
+実装費用 & 計画、設計、開発など、通常の開発作業にかかる費用である。 \\
+予防費用 & 欠陥を作り込まないための費用である。プロセス改善、ツール、教育、標準整備などが該当する。 \\
+評価費用 & 欠陥を見つけるための費用である。レビュー、監査、テスト、検査などが該当する。 \\
+不適合・手戻り費用 & 見つかった欠陥を直す費用である。納品前の内部故障費用と、納品後の外部故障費用に分けられる。 \\
+\bottomrule
+\end{tabularx}
+
+
+\term{適合費用}{conformance cost}は、予防費用と評価費用の合計である。これは品質を作り込み、確認するために意図的に投資する費用である。\term{不適合費用}{nonconformance cost}は、欠陥や故障が見つかったあとに発生する費用である。納品後の故障は、修正費用だけでなく、顧客の生産性低下、データ損失、評判低下、環境や公共への影響も含み得る。
+
+\par\smallskip
+\begin{center}
+\centering
+\IfFileExists{assets/generated_figures/ch12/fig-ch12-04.png}{\includegraphics[width=0.96\linewidth]{assets/generated_figures/ch12/fig-ch12-04.png}}{\fbox{\parbox[c][48mm][c]{0.9\linewidth}{\centering 画像生成待ち\\ソフトウェア品質コストの構造図}}}
+\par\smallskip
+\refstepcounter{figure}\label{fig:ch12-04}図 \thefigure: ソフトウェア品質コストの構造図
+\end{center}
+図 \thefigure は、ソフトウェア品質コストの構造図を視覚的に整理したものである。
+\par\smallskip
+
+\subsubsection{標準・モデル・認証}
+標準、モデル、認証は、品質活動を個人の経験だけに依存させないために役立つ。たとえば、ISO/IEC/IEEE 12207 はソフトウェアライフサイクルプロセスを扱う。安全性が重要な領域では、ソフトウェア安全計画や信頼性に関する標準が使われることがある。
+
+一方、PDCA、CMMI、COBIT、PMBOK、BABOK、TOGAF などは、それぞれ異なる観点からプロセスやマネジメントの実践を整理する。ISO 9001 は品質マネジメント、ISO 27001 は情報セキュリティ、ISO 20000 はサービスマネジメントに関係する。スクラムや SAFe の認定は、アジャイル型の進め方に関する知識を示すことがある。
+
+\begin{notebox}{注記}
+標準や認証は、品質を自動的に保証する魔法ではない。重要なのは、対象の業界、リスク、契約、利用者への影響に合う標準を選び、実際のプロセスと成果物に反映することである。
+\end{notebox}
+
+\subsubsection{ソフトウェアのディペンダビリティと完全性レベル}
+安全重要システムでは、ソフトウェアの故障が人命、環境、設備、公共サービスに大きな損害を与える可能性がある。このようなシステムでは、品質活動は通常の業務アプリケーションよりも厳密に計画される。
+
+安全重要ソフトウェアには、システムに直接組み込まれる\term{直接ソフトウェア}{Direct Software}と、安全重要ソフトウェアを開発・試験するために使われる\term{間接ソフトウェア}{Indirect Software}がある。航空機の飛行制御ソフトウェアは直接ソフトウェアの例である。安全重要ソフトウェアの開発環境やテスト環境のツールは間接ソフトウェアの例である。
+
+故障リスクを下げる代表的な方法は、次の三つである。
+\begin{itemize}
+  \item \term{回避}{Avoidance}：欠陥を作り込まないようにする。
+  \item \term{検出と除去}{Detection and Removal}：レビュー、解析、テストで欠陥を早く見つけて取り除く。
+  \item \term{損害限定}{Damage Limitation}：故障が起きても被害が広がらないようにする。
+\end{itemize}
+
+\term{保証ケース}{assurance case}は、ある性質が満たされているという主張を、根拠、論理、証拠によって説明する成果物である。安全性やセキュリティのように説明責任が重い品質では、単に「テストした」だけでなく、「なぜ十分だと考えるのか」を構造化して示す必要がある。
+
+\paragraph{ディペンダビリティ}
+ディペンダビリティは、システムを信頼して使えることに関わる品質特性の集合である。可用性、信頼性、保守性、支援性、安全性、セキュリティなどが含まれる。故障が重大な結果を生むシステムでは、基本機能に加えてディペンダビリティが中心的な品質要求になる。
+
+\paragraph{ソフトウェア完全性レベル}
+\term{完全性レベル}{integrity level}は、複雑さ、重要性、リスク、安全性、セキュリティ、性能、信頼性などから、システムやソフトウェアの重要度を示す値である。完全性レベルが高いほど、レビュー、検証、妥当性確認、独立性、証拠の厳密さが強く求められる。
+
+完全性レベルは固定ではない。設計、実装、手順、技術上の対策によって上がることも下がることもある。取得者、供給者、開発者、独立した保証機関の合意によって決まることが多い。
+
+\par\smallskip
+\begin{center}
+\centering
+\IfFileExists{assets/generated_figures/ch12/fig-ch12-05.png}{\includegraphics[width=0.96\linewidth]{assets/generated_figures/ch12/fig-ch12-05.png}}{\fbox{\parbox[c][48mm][c]{0.9\linewidth}{\centering 画像生成待ち\\ディペンダビリティと完全性レベルの関係図}}}
+\par\smallskip
+\refstepcounter{figure}\label{fig:ch12-05}図 \thefigure: ディペンダビリティと完全性レベルの関係図
+\end{center}
+図 \thefigure は、ディペンダビリティと完全性レベルの関係図を視覚的に整理したものである。
+\par\smallskip

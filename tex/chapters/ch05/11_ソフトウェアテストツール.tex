@@ -7,10 +7,11 @@
 \subsubsection{ツールの分類}
 代表的なツール分類を表に示す。
 
-\par\smallskip\noindent\refstepcounter{table}\label{tab:ch05-03}\textbf{表 \thetable: 第05章 ソフトウェアテスト 表03}\par\smallskip
+\par\smallskip\noindent\refstepcounter{table}\label{tab:ch05-03}表 \thetable: ツールの分類の整理\par\smallskip
+表 \thetable は、ツールの分類の整理を比較・確認しやすい形で整理したものである。\par\smallskip
 \begin{longtable}{P{0.27\linewidth}P{0.63\linewidth}}
 \toprule
-\textbf{分類} & \textbf{主な役割} \\
+分類 & 主な役割 \\
 \midrule
 テストハーネス & ドライバやスタブにより、部分的な SUT を制御された環境で実行し、出力を記録する。\\
 テスト生成器 & ランダム、経路ベース、モデルベースなどによりテストケースを生成する。\\
@@ -33,9 +34,12 @@ API テストツール & API の機能、性能、信頼性、セキュリティ
 \bottomrule
 \end{longtable}
 
-\begin{figure}[htbp]
+\par\smallskip
+\begin{center}
 \centering
 \IfFileExists{assets/generated_figures/ch05/fig-ch05-15.png}{\includegraphics[width=0.96\linewidth]{assets/generated_figures/ch05/fig-ch05-15.png}}{\fbox{\parbox[c][48mm][c]{0.9\linewidth}{\centering 画像生成待ち\\テストツール分類図}}}
-\caption{テストツール分類図}
-\label{fig:ch05-15}
-\end{figure}
+\par\smallskip
+\refstepcounter{figure}\label{fig:ch05-15}図 \thefigure: テストツール分類図
+\end{center}
+図 \thefigure は、テストツール分類図を視覚的に整理したものである。
+\par\smallskip

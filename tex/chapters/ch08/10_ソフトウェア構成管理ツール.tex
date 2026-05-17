@@ -1,0 +1,29 @@
+\subsection*{ソフトウェア構成管理ツール}
+\addcontentsline{toc}{subsection}{7 ソフトウェア構成管理ツール}
+構成管理ツールは、構成管理活動を支援する技術と論理を提供する。SCM は他のプロセスや既存ツールと統合されるほど効果が高まる。ツールの範囲は、利用者、組織規模、製品の変種、規制要求、開発分散の程度によって変わる。
+
+\par\smallskip\noindent\refstepcounter{table}\label{tab:ch08-07}表 \thetable: ソフトウェア構成管理ツールにおけるツール分類・主な役割\par\smallskip
+表 \thetable は、ソフトウェア構成管理ツールにおけるツール分類・主な役割を比較・確認しやすい形で整理したものである。\par\smallskip
+\begin{longtable}{p{0.30\linewidth}p{0.64\linewidth}}\toprule
+ツール分類 & 主な役割 \\ \midrule
+\endfirsthead\toprule
+ツール分類 & 主な役割 \\ \midrule
+\endhead
+版管理ツール & ソースコード、設定、文書などの版を保存し、変更履歴を管理する。 \\
+ビルド自動化ツール & コンパイル、リンク、品質確認、テスト、成果物生成を自動化する。 \\
+変更統制ツール & 変更要求の登録、ワークフロー、承認、通知、状態追跡を支援する。 \\
+リポジトリ管理 & ビルドで生成されたバイナリ、ライブラリ、パッケージを保存する。 \\
+CMDB / 永続化基盤 & 構成情報、関係、状態、証跡を保存する。 \\
+リリース・配備ツール & 成果物の包装、配布、配備、ロールバック、署名を支援する。 \\
+\bottomrule\end{longtable}
+小規模な組織や、製品の変種を出さない開発グループでは、個別支援ツールで十分なことがある。大規模組織や複雑な製品では、ワークフロー、役割、承認要求まで含む全社的な支援ツールが必要になる。
+
+\par\smallskip
+\begin{center}
+\centering
+\IfFileExists{assets/generated_figures/ch08/fig-ch08-12.png}{\includegraphics[width=0.96\linewidth]{assets/generated_figures/ch08/fig-ch08-12.png}}{\fbox{\parbox[c][48mm][c]{0.9\linewidth}{\centering 画像生成待ち\\構成管理ツールの範囲を示すピラミッド}}}
+\par\smallskip
+\refstepcounter{figure}\label{fig:ch08-12}図 \thefigure: 構成管理ツールの範囲を示すピラミッド
+\end{center}
+図 \thefigure は、構成管理ツールの範囲を示すピラミッドを視覚的に整理したものである。
+\par\smallskip

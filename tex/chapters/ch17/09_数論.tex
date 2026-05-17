@@ -1,0 +1,44 @@
+\subsection{数論}
+\term{数論}{Number Theory}は、整数を中心に数の性質を扱う分野である。ソフトウェアでは、暗号、ハッシュ、乱数、剰余計算、符号化、アルゴリズム解析で重要になる。
+
+\subsubsection{数の種類}
+\par\smallskip\noindent\refstepcounter{table}\label{tab:ch17-16}表 \thetable: 数の種類における数の種類・説明\par\smallskip
+表 \thetable は、数の種類における数の種類・説明を比較・確認しやすい形で整理したものである。\par\smallskip
+\begin{longtable}{>{\raggedright\arraybackslash}p{0.26\linewidth} >{\raggedright\arraybackslash}p{0.68\linewidth}}
+\toprule
+数の種類 & 説明 \\
+\midrule
+\endfirsthead
+\toprule
+数の種類 & 説明 \\
+\midrule
+\endhead
+自然数 & 1, 2, 3, ... のように数えるための数である。ただし0を含めるかは流儀により異なる。 \\
+非負整数 & 0と自然数を合わせた集合である。 \\
+整数 & 負の数、0、正の数を含む集合である。 \\
+有理数 & 二つの整数の比として表せる数である。小数展開は有限または循環する。 \\
+無理数 & 整数の比で表せない数である。小数展開は有限でも循環でもない。 \\
+実数 & 有理数と無理数を合わせた数である。 \\
+虚数 & iを含む数である。iは2乗すると-1になる数として扱われる。 \\
+複素数 & 実部と虚部を持つa + biの形の数である。 \\
+\bottomrule
+\end{longtable}
+\par\smallskip
+\begin{center}
+\centering
+\IfFileExists{assets/generated_figures/ch17/fig-ch17-11.png}{\includegraphics[width=0.96\linewidth]{assets/generated_figures/ch17/fig-ch17-11.png}}{\fbox{\parbox[c][48mm][c]{0.9\linewidth}{\centering 画像生成待ち\\数の種類の包含図}}}
+\par\smallskip
+\refstepcounter{figure}\label{fig:ch17-11}図 \thefigure: 数の種類の包含図
+\end{center}
+図 \thefigure は、数の種類の包含図を視覚的に整理したものである。
+\par\smallskip
+\subsubsection{整除性・剰余・合同}
+整数aが整数bを割り切るとは、b = a × cとなる整数cが存在することである。これを整除性という。剰余は、割り算で余る値である。合同は、二つの数の差がある整数mで割り切れる関係であり、剰余計算を扱う基礎である。
+
+\begin{notebox}{ソフトウェアでの見方}
+剰余は、配列の循環、ハッシュテーブル、時刻計算、暗号、チェックディジットに現れる。たとえば「曜日」は7で割った余りとして扱える。
+\end{notebox}
+\subsubsection{素数と最大公約数}
+素数は、1と自分自身以外の正の約数を持たない1より大きい整数である。素数でない1より大きい整数は合成数である。大きな素数は公開鍵暗号などで重要である。
+
+最大公約数は、二つの整数をともに割り切る最大の整数である。最大公約数が1である二つの整数は互いに素である。互いに素という性質は、剰余演算や暗号アルゴリズムで重要である。

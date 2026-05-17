@@ -1,0 +1,141 @@
+\subsection{開始と範囲定義}
+開始と範囲定義は、ソフトウェアプロジェクトに着手するかどうかを判断し、目的、範囲、実現可能性、権限を確認する活動である。ここで確認すべき中心は、要求が何であり、その要求を満たす取り組みが現実的かどうかである。
+
+\subsubsection{要求の決定と交渉}
+要求の決定と交渉では、要求獲得、要求分析、要求仕様化、要求妥当性確認を通じて、プロジェクトが何を達成すべきかを合意する。要求は、その後の設計、実装、テスト、受け入れ、保守の基礎になる。
+
+実務では、要求はプロジェクト憲章や高水準の開始文書に記録されることが多い。ここで大切なのは、単に要求を集めることではなく、利害関係者の視点を調整し、優先度、制約、成功条件を明確にすることである。
+
+\par\smallskip
+\begin{center}
+\centering
+\IfFileExists{assets/generated_figures/ch09/fig-ch09-03.png}{\includegraphics[width=0.96\linewidth]{assets/generated_figures/ch09/fig-ch09-03.png}}{\fbox{\parbox[c][48mm][c]{0.9\linewidth}{\centering 画像生成待ち\\実現可能性分析の観点図}}}
+\par\smallskip
+\refstepcounter{figure}\label{fig:ch09-03}図 \thefigure: 実現可能性分析の観点図
+\end{center}
+図 \thefigure は、実現可能性分析の観点図を視覚的に整理したものである。
+\par\smallskip
+
+\subsubsection{要求のレビューと改訂のプロセス}
+要求と範囲は、開発中に変化する。したがって、開始時点で「どのように見直し、どのように変更を受け入れるか」を合意しておく必要がある。
+
+変更は、無秩序に受け入れてはならない。変更管理、影響分析、トレードオフ、反復のふりかえり、マイルストーンレビューなどの手順を定める。変更を受け入れる場合には、要求、設計、コード、テスト、文書への影響を追跡可能性で確認する。さらに、リスク分析を行い、費用、日程、品質、安全性、セキュリティへの影響を見積もる。
+
+\par\smallskip
+\begin{center}
+\centering
+\IfFileExists{assets/generated_figures/ch09/fig-ch09-04.png}{\includegraphics[width=0.96\linewidth]{assets/generated_figures/ch09/fig-ch09-04.png}}{\fbox{\parbox[c][48mm][c]{0.9\linewidth}{\centering 画像生成待ち\\予測型から適応型までのライフサイクル連続体}}}
+\par\smallskip
+\refstepcounter{figure}\label{fig:ch09-04}図 \thefigure: 予測型から適応型までのライフサイクル連続体
+\end{center}
+図 \thefigure は、予測型から適応型までのライフサイクル連続体を視覚的に整理したものである。
+\par\smallskip
+
+\subsubsection{プロセス計画}
+プロセス計画では、どのライフサイクルと方法を使うかを選ぶ。予測型ライフサイクルでは、詳細な要求、詳細な計画、比較的少ない反復を前提にする。適応型ライフサイクルでは、要求の出現や変更を前提にし、短い開発サイクルで計画を更新する。
+
+代表的なライフサイクルには、ウォーターフォール型、増分型、スパイラル型、各種アジャイル型がある。近年は、開発、セキュリティ、運用を統合する Dev/Sec/Ops も重要である。Dev/Sec/Ops は、計画、開発、ビルド、テスト、リリース、配備、運用、監視の各段階で、自動化、継続的監視、セキュリティ適用を行う文化と方法である。
+
+\par\smallskip\noindent\refstepcounter{table}\label{tab:ch09-03}表 \thetable: プロセス計画における観点・予測型・適応型\par\smallskip
+表 \thetable は、プロセス計画における観点・予測型・適応型を比較・確認しやすい形で整理したものである。\par\smallskip
+\begin{longtable}{>{\raggedright\arraybackslash}p{0.25\linewidth}>{\raggedright\arraybackslash}p{0.35\linewidth}>{\raggedright\arraybackslash}p{0.35\linewidth}}
+\toprule
+観点 & 予測型 & 適応型 \\
+\midrule
+\endfirsthead
+\toprule
+観点 & 予測型 & 適応型 \\
+\midrule
+\endhead
+要求 & 早い段階で詳細化する。 & 反復を通じて漸進的に詳細化する。 \\
+計画 & 初期に詳細計画を作る。 & 初期計画を置き、実行しながら更新する。 \\
+リスク低減 & 詳細計画と既知の制約で減らす。 & 短い反復、早期フィードバック、段階的な学習で減らす。 \\
+利害関係者関与 & マイルストーンごとの関与が多い。 & 継続的な関与が多い。 \\
+向く状況 & 要求が安定し、規制や契約が強い場合。 & 要求の不確実性が高く、迅速な学習が必要な場合。 \\
+\bottomrule
+\end{longtable}
+
+プロセス計画では、プロジェクトで用いる方法、ツール、標準も選ぶ。要求管理、設計、実装、テスト、構成管理、品質管理、保守、進捗管理などに使うツールは、技術面だけでなく管理面からも検討する必要がある。
+
+\subsubsection{成果物の決定}
+成果物とは、プロジェクト活動から生まれる測定可能で確認可能な仕事の産物である。ソフトウェアアーキテクチャ記述、設計文書、検査報告、テスト済みソフトウェア、運用手順、移行計画などが該当する。
+
+成果物を決めるときは、過去プロジェクトの部品再利用、市販製ソフトウェア、オープンソースソフトウェア、外部委託、SaaS の利用可能性も評価する。成果物を自作するのか、取得するのか、供給者に作らせるのかによって、計画、リスク、契約、品質確認の方法が変わる。
+
+\subsubsection{工数・日程・費用見積り}
+\term{見積り}{Estimation}は、ソフトウェアプロジェクトで誤りやすい活動である。理由は、ソフトウェア開発の工数が、人の経験、能力、チーム相互作用、組織文化、要求変化、技術変化に大きく左右されるからである。
+
+一つの方法だけで見積もるのは危険である。過去データに基づく推定モデル、類似プロジェクトとの比較、作業者によるボトムアップ見積り、専門家判断などを組み合わせ、差を調整する必要がある。
+
+\par\smallskip\noindent\refstepcounter{table}\label{tab:ch09-04}表 \thetable: 工数・日程・費用見積りにおける見積り対象・実務で見ること\par\smallskip
+表 \thetable は、工数・日程・費用見積りにおける見積り対象・実務で見ることを比較・確認しやすい形で整理したものである。\par\smallskip
+\begin{longtable}{>{\raggedright\arraybackslash}p{0.25\linewidth}>{\raggedright\arraybackslash}p{0.70\linewidth}}
+\toprule
+見積り対象 & 実務で見ること \\
+\midrule
+\endfirsthead
+\toprule
+見積り対象 & 実務で見ること \\
+\midrule
+\endhead
+工数 & どの作業に、どのスキルの人が、どれだけ必要かを見る。 \\
+日程 & タスク依存関係、並行可能性、開始・終了時期、反復回数を考える。 \\
+費用 & 人件費、ツール、設備、ライセンス、取得費、外注費、運用準備費を含める。 \\
+不確実性 & 見積りを一点ではなく範囲で考え、前提条件とリスクを明記する。 \\
+合意形成 & 利害関係者と、利用可能な資源と期限について合意する。 \\
+\bottomrule
+\end{longtable}
+
+\par\smallskip
+\begin{center}
+\centering
+\IfFileExists{assets/generated_figures/ch09/fig-ch09-05.png}{\includegraphics[width=0.96\linewidth]{assets/generated_figures/ch09/fig-ch09-05.png}}{\fbox{\parbox[c][48mm][c]{0.9\linewidth}{\centering 画像生成待ち\\ソフトウェア取得の種類と契約管理の図}}}
+\par\smallskip
+\refstepcounter{figure}\label{fig:ch09-05}図 \thefigure: ソフトウェア取得の種類と契約管理の図
+\end{center}
+図 \thefigure は、ソフトウェア取得の種類と契約管理の図を視覚的に整理したものである。
+\par\smallskip
+
+\subsubsection{測定プロセスの実施}
+計画された測定プロセスは、プロジェクト実行中に実施する。目的は、関連性があり、役に立つデータを集めることである。測定は、後述する「測定プロセス計画」と「測定プロセス実行」に基づいて行う。
+
+\subsubsection{監視プロセス}
+監視プロセスでは、範囲、計画、支援計画への適合を継続的に確認する。各タスクの成果物と完了基準も評価する。工数消費、日程遵守、費用、資源使用状況、品質測定値、リスク状態を分析する。
+
+差異分析は、計画値と実績値のずれを調べる活動である。費用超過、日程遅延、欠陥密度の悪化、脆弱性の増加などを早期に発見する。しきい値を超えたときには、関係者へ報告し、制御プロセスにつなげる。
+
+\subsubsection{制御プロセス}
+制御プロセスでは、監視結果に基づいて判断し、必要な対応を行う。対応には、是正処置、追加活動、計画改訂、要求仕様改訂、プロトタイピングの導入、追加テスト、リスク対応、場合によってはプロジェクト中止が含まれる。
+
+変更を行うときは、ソフトウェア構成管理と構成制御の手順に従う。判断を記録し、関係者に伝え、計画を必要に応じて改訂し、関連データを残す。
+
+\par\smallskip
+\begin{center}
+\centering
+\IfFileExists{assets/generated_figures/ch09/fig-ch09-06.png}{\includegraphics[width=0.96\linewidth]{assets/generated_figures/ch09/fig-ch09-06.png}}{\fbox{\parbox[c][48mm][c]{0.9\linewidth}{\centering 画像生成待ち\\監視・制御・報告のフィードバックループ}}}
+\par\smallskip
+\refstepcounter{figure}\label{fig:ch09-06}図 \thefigure: 監視・制御・報告のフィードバックループ
+\end{center}
+図 \thefigure は、監視・制御・報告のフィードバックループを視覚的に整理したものである。
+\par\smallskip
+
+\subsubsection{報告}
+報告は、合意された時点で、組織内と外部利害関係者に向けて行う。報告は、詳細な内部ステータスをそのまま流すのではなく、対象者の情報ニーズに合わせる必要がある。
+
+\par\smallskip\noindent\refstepcounter{table}\label{tab:ch09-05}表 \thetable: 報告における報告先・知りたいこと\par\smallskip
+表 \thetable は、報告における報告先・知りたいことを比較・確認しやすい形で整理したものである。\par\smallskip
+\begin{longtable}{>{\raggedright\arraybackslash}p{0.25\linewidth}>{\raggedright\arraybackslash}p{0.70\linewidth}}
+\toprule
+報告先 & 知りたいこと \\
+\midrule
+\endfirsthead
+\toprule
+報告先 & 知りたいこと \\
+\midrule
+\endhead
+プロジェクトチーム & 当面の作業、課題、依存関係、阻害要因、次の反復での対応。 \\
+管理委員会 & 日程、費用、リスク、範囲変更、意思決定が必要な事項。 \\
+顧客・利用者 & 要求充足状況、デモ可能な成果、受け入れ判断に必要な情報。 \\
+供給者 & 契約上の成果物、品質基準、変更要求、連携タスク。 \\
+\bottomrule
+\end{longtable}

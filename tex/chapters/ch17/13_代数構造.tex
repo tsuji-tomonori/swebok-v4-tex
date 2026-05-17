@@ -1,0 +1,41 @@
+\subsection{代数構造}
+\term{代数構造}{Algebraic Structure}は、集合と演算を組み合わせ、その演算が満たす規則を調べる枠組みである。抽象的に見えるが、データ型、演算の合成、暗号、形式手法、関数型プログラミング、仕様記述で役立つ。
+
+\subsubsection{群・半群・モノイド}
+群は、集合と一つの二項演算からなる構造であり、閉包性、結合性、単位元、逆元を満たす。演算順序を入れ替えても結果が同じ群は可換群またはアーベル群である。
+
+\par\smallskip\noindent\refstepcounter{table}\label{tab:ch17-20}表 \thetable: 群・半群・モノイドにおける構造・満たす条件の概要\par\smallskip
+表 \thetable は、群・半群・モノイドにおける構造・満たす条件の概要を比較・確認しやすい形で整理したものである。\par\smallskip
+\begin{longtable}{>{\raggedright\arraybackslash}p{0.26\linewidth} >{\raggedright\arraybackslash}p{0.68\linewidth}}
+\toprule
+構造 & 満たす条件の概要 \\
+\midrule
+\endfirsthead
+\toprule
+構造 & 満たす条件の概要 \\
+\midrule
+\endhead
+半群 & 閉包性と結合性を持つ集合と二項演算である。 \\
+モノイド & 半群に単位元を加えた構造である。文字列連結と空文字、自然数の加算と0などが例である。 \\
+群 & モノイドに加えて、各要素に逆元が存在する構造である。整数の加算は群である。 \\
+部分群 & 大きな群の中に含まれ、同じ演算で群になる部分集合である。 \\
+巡回群 & 一つの生成元からすべての要素を生成できる群である。 \\
+\bottomrule
+\end{longtable}
+\begin{notebox}{ソフトウェアでの見方}
+モノイドは実務でも現れやすい。ログ文字列の連結、リストの結合、集計値の合成、設定のマージなどは、「結合できる」「空の値がある」という性質を持つことが多い。分散処理で部分結果を安全に合成する考え方にもつながる。
+\end{notebox}
+\subsubsection{環・体}
+環は、集合に二つの演算を定めた構造である。第一の演算でアーベル群になり、第二の演算が結合的で、第二の演算が第一の演算に対して分配的である。整数全体に通常の加算と乗算を入れた構造は環である。
+
+体は、0を除く要素が第二の演算についてアーベル群になる環である。有理数に通常の加算と乗算を入れた構造は体である。
+
+\par\smallskip
+\begin{center}
+\centering
+\IfFileExists{assets/generated_figures/ch17/fig-ch17-15.png}{\includegraphics[width=0.96\linewidth]{assets/generated_figures/ch17/fig-ch17-15.png}}{\fbox{\parbox[c][48mm][c]{0.9\linewidth}{\centering 画像生成待ち\\代数構造の関係図}}}
+\par\smallskip
+\refstepcounter{figure}\label{fig:ch17-15}図 \thefigure: 代数構造の関係図
+\end{center}
+図 \thefigure は、代数構造の関係図を視覚的に整理したものである。
+\par\smallskip

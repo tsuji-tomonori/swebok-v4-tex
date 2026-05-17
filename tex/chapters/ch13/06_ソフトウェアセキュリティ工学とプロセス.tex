@@ -1,0 +1,21 @@
+\subsection{ソフトウェアセキュリティ工学とプロセス}
+ソフトウェアは、開発プロセス以上には安全になりにくい。セキュリティを確保するには、ソフトウェア工学の活動そのものにセキュリティを組み込む必要がある。
+
+\subsubsection{セキュア開発ライフサイクル}
+セキュア開発ライフサイクル（SDLC）は、セキュリティを要求、設計、開発、テスト、リリース、保守の各段階に組み込む考え方である。生産後に後付けするのではなく、設計と開発の時点からセキュリティを内在させる。
+
+SDLC は、セキュリティ関連の欠陥に対する信頼性を高め、保守費用を下げることを目指す。近年は DevSecOps も重視される。DevSecOps は、開発、セキュリティ、運用を分離せず、文化、自動化、プラットフォーム設計の中でセキュリティを継続的に扱う。
+
+\par\smallskip
+\begin{center}
+\centering
+\IfFileExists{assets/generated_figures/ch13/fig-ch13-04.png}{\includegraphics[width=0.96\linewidth]{assets/generated_figures/ch13/fig-ch13-04.png}}{\fbox{\parbox[c][48mm][c]{0.9\linewidth}{\centering 画像生成待ち\\SDLC と DevSecOps の流れ}}}
+\par\smallskip
+\refstepcounter{figure}\label{fig:ch13-04}図 \thefigure: SDLC と DevSecOps の流れ
+\end{center}
+図 \thefigure は、SDLC と DevSecOps の流れを視覚的に整理したものである。
+\par\smallskip
+\subsubsection{情報技術セキュリティ評価のコモンクライテリア}
+コモンクライテリア（Common Criteria, CC）は、IT 製品のセキュリティ機能と保証手段を評価するための国際的な枠組みである。評価結果は、利用者が製品のセキュリティ要求や標準適合を判断する助けになる。
+
+CC は、資産を不正な開示、変更、利用不能から守ることに関わる。これは情報セキュリティの機密性、完全性、可用性に対応する。調達や評価が重視される製品では、要求定義や設計時に CC の考え方を参照することがある。

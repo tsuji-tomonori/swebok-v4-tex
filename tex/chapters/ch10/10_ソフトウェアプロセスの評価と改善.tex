@@ -1,0 +1,85 @@
+\subsection{ソフトウェアプロセスの評価と改善}
+\subsubsection{ソフトウェアプロセス評価と改善の概要}
+実行されたプロセスは改善できる、という考え方は、シェwhart＝デミングの PDCA、すなわち計画・実行・確認・改善の循環に表れている。ソフトウェア工学プロセスでも、プロセスを評価し、改善するための多くの方法が発展してきた。
+
+PDCA の重要性は、意思決定に経験的証拠を使う点にある。どのライフサイクルを選ぶか、プロセスをどう評価するか、どの改善を行うかといった判断は、観察や測定に基づくべきである。
+
+プロセス評価は、監査のためだけの活動ではない。目的は、チームや組織がよりよい成果物を安定して作れるようにすることである。評価結果が改善行動につながらなければ、測定は形式的な作業になってしまう。
+
+\par\smallskip
+\begin{center}
+\centering
+\IfFileExists{assets/generated_figures/ch10/fig-ch10-09.png}{\includegraphics[width=0.96\linewidth]{assets/generated_figures/ch10/fig-ch10-09.png}}{\fbox{\parbox[c][48mm][c]{0.9\linewidth}{\centering 画像生成待ち\\PDCA によるプロセス改善の図}}}
+\par\smallskip
+\refstepcounter{figure}\label{fig:ch10-09}図 \thefigure: PDCA によるプロセス改善の図
+\end{center}
+図 \thefigure は、PDCA によるプロセス改善の図を視覚的に整理したものである。
+\par\smallskip
+\subsubsection{GQM：目標・質問・メトリクス}
+GQM は Goal-Question-Metric の略であり、日本語では目標・質問・メトリクスと呼べる。測定を闇雲に始めるのではなく、まず何を達成したいかという目標を定める。次に、その目標が達成されたかを判断するための質問を作る。最後に、その質問に答えるための測定値を定める。
+
+GQM は Basili の品質改善パラダイムに基づく。測定可能な目標を設定し、何かを変え、その変化の効果を評価する。評価が肯定的であれば、改善が起きたと判断できる。
+
+初学者が誤解しやすい点は、メトリクスが先ではないということだ。測れるものを集めるのではなく、改善したい目標から逆算して測るべきものを決める。
+
+\paragraph{表9：GQM の例}
+\par\smallskip\noindent\refstepcounter{table}\label{tab:ch10-09}表 \thetable: 表9：GQM の例における段階・例\par\smallskip
+表 \thetable は、表9：GQM の例における段階・例を比較・確認しやすい形で整理したものである。\par\smallskip
+\begin{longtable}{>{\raggedright\arraybackslash}p{0.28\linewidth}>{\raggedright\arraybackslash}p{0.64\linewidth}}
+\toprule
+段階 & 例\\
+\midrule
+\endfirsthead
+\toprule
+段階 & 例\\
+\midrule
+\endhead
+目標 & リリース前に重大欠陥をより早く見つけたい。\\
+質問 & 重大欠陥はどの工程で検出されているか。レビューで検出できる割合は増えているか。\\
+メトリクス & 重大欠陥数、工程別検出件数、レビュー検出率、修正リードタイム。\\
+\bottomrule
+\end{longtable}
+\par\smallskip
+\begin{center}
+\centering
+\IfFileExists{assets/generated_figures/ch10/fig-ch10-10.png}{\includegraphics[width=0.96\linewidth]{assets/generated_figures/ch10/fig-ch10-10.png}}{\fbox{\parbox[c][48mm][c]{0.9\linewidth}{\centering 画像生成待ち\\GQM の階層図}}}
+\par\smallskip
+\refstepcounter{figure}\label{fig:ch10-10}図 \thefigure: GQM の階層図
+\end{center}
+図 \thefigure は、GQM の階層図を視覚的に整理したものである。
+\par\smallskip
+\subsubsection{枠組みに基づく方法}
+プロセス評価方法の中には、プロセス参照モデルと評価参照モデルを使う枠組みに基づくものがある。代表例には、CMM、CMMI、ISO/IEC 33000 系列、いわゆる SPICE がある。
+
+ISO/IEC 33000 枠組みは、プロセス品質特性を評価する枠組みであり、その一つがプロセス能力である。また、組織成熟度の評価にも関係する。対象は、情報技術領域におけるシステムの開発、保守、利用、さらにサービスの設計、移行、提供、改善を含む。
+
+プロセス参照モデルは、ある適用領域のプロセスを、目的と成果、およびプロセス間関係の構造として定義するモデルである。プロセス評価モデルは、一つ以上のプロセス参照モデルに基づき、特定のプロセス品質特性を評価するために適したモデルである。
+
+この種の枠組みは、組織が現在どの程度の能力を持つか、どの能力を強化すべきか、改善が継続的に進んでいるかを考えるために使われる。
+
+\paragraph{表10：枠組みに基づく評価で見る観点}
+\par\smallskip\noindent\refstepcounter{table}\label{tab:ch10-10}表 \thetable: 表10：枠組みに基づく評価で見る観点における観点・説明\par\smallskip
+表 \thetable は、表10：枠組みに基づく評価で見る観点における観点・説明を比較・確認しやすい形で整理したものである。\par\smallskip
+\begin{longtable}{>{\raggedright\arraybackslash}p{0.28\linewidth}>{\raggedright\arraybackslash}p{0.64\linewidth}}
+\toprule
+観点 & 説明\\
+\midrule
+\endfirsthead
+\toprule
+観点 & 説明\\
+\midrule
+\endhead
+プロセス能力 & 個々のプロセスが目的を達成できる程度である。\\
+組織成熟度 & 組織としてプロセスを安定的に運用し改善できる程度である。\\
+プロセス参照モデル & プロセスの目的、成果、関係を定義する基準である。\\
+プロセス評価モデル & 参照モデルに基づき、特定の品質特性を評価するためのモデルである。\\
+\bottomrule
+\end{longtable}
+\subsubsection{アジャイルにおけるプロセス評価と改善}
+アジャイル手法では、各反復の終わりにふりかえりを行うことが多い。ふりかえりの目的は、うまくいったこと、うまくいかなかったこと、その理由を分析し、学習と改善のための行動を決めることである。
+
+この実践により、チームは継続的な学習ループの中に入る。名称や範囲は異なるが、このような事後レビューやポストモーテムレビューの考え方は、ソフトウェア工学において以前から存在していた。
+
+重要なのは、ふりかえりを感想会にしないことである。観察事実、測定値、起きた問題、仮説、次の実験を明確にし、次の反復で確かめる必要がある。
+
+\begin{pointbox}{ふりかえりの実務ポイント}「誰が悪いか」ではなく、「どのプロセス条件が望ましくない結果を生んだか」を見る。改善行動は、次の反復で実施できる小さな実験として定義するとよい。\end{pointbox}

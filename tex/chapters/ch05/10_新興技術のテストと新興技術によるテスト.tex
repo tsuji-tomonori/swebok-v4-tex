@@ -1,12 +1,15 @@
 \subsection{新興技術のテストと新興技術によるテスト}
 新興技術は、テスト対象として新しい課題を生む一方で、テスト活動を支援する手段にもなる。この章では、「新興技術をテストする」と「新興技術を使ってテストする」を分けて理解する。
 
-\begin{figure}[htbp]
+\par\smallskip
+\begin{center}
 \centering
 \IfFileExists{assets/generated_figures/ch05/fig-ch05-14.png}{\includegraphics[width=0.96\linewidth]{assets/generated_figures/ch05/fig-ch05-14.png}}{\fbox{\parbox[c][48mm][c]{0.9\linewidth}{\centering 画像生成待ち\\Testing of と Testing through の対比図}}}
-\caption{Testing of と Testing through の対比図}
-\label{fig:ch05-14}
-\end{figure}
+\par\smallskip
+\refstepcounter{figure}\label{fig:ch05-14}図 \thefigure: Testing of と Testing through の対比図
+\end{center}
+図 \thefigure は、Testing of と Testing through の対比図を視覚的に整理したものである。
+\par\smallskip
 
 \subsubsection{新興技術をテストする}
 AI、機械学習、深層学習を使ったシステムでは、非決定性、データ依存性、オラクル問題が大きな課題になる。欠陥は、学習データ、学習プログラム、モデル、フレームワーク、推論環境のどこにでもあり得る。オフラインでは交差検証などでモデルを評価し、配備後はオンラインテストで利用者行動との相互作用を評価する。
@@ -16,7 +19,7 @@ AI、機械学習、深層学習を使ったシステムでは、非決定性、
 クラウドでは、クラウド上に配備されたアプリケーションやインフラの機能・非機能品質を確認する。性能、拡張性、弾力性、セキュリティ、互換性、相互運用性が重要である。分散・並行アプリケーションでは、複数 OS、ブラウザ、ハードウェア、利用者、依存関係、継続的配備がテストを複雑にする。
 
 \subsubsection{新興技術を使ってテストする}
-機械学習は、テストケース設計、オラクル問題、テスト評価、優先順位付け、ミューテーションテスト自動化、欠陥分類、トリアージに使われる。大量データから傾向を抽出し、保守労力を減らす可能性がある。
+\term{機械学習}{Machine Learning}は、テストケース設計、オラクル問題、テスト評価、優先順位付け、ミューテーションテスト自動化、欠陥分類、トリアージに使われる。大量データから傾向を抽出し、保守労力を減らす可能性がある。
 
 ブロックチェーンは、分散した関係者が信頼できる形でテスト活動を調整する手段になり得る。改ざん耐性、監査可能性、分散データ管理、要求順守の自動確認に役立つ可能性がある。クラウドは、大規模シミュレーションや弾力的資源を必要とするテスト環境として利用できる。
 

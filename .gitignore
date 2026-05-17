@@ -13,3 +13,12 @@ __pycache__/
 
 *.zip
 .working/
+
+# TeX build outputs
+tex/*.aux
+tex/*.log
+tex/*.out
+tex/*.toc
+tex/*.pdf
+tex/.figure-build/
+tex/.texmf-var/

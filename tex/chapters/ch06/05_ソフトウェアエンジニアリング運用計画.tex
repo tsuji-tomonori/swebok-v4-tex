@@ -12,7 +12,8 @@
 
 新しいソフトウェアを開発すると決めた時点で、運用と保守の要求を考慮すべきである。概念文書、運用保守計画、運用構想（Concept of Operations, CONOPS）を作り、利用者が変更要求や問題報告をどのように出すか、誰が受け付けるか、どのように優先順位を付けるか、どのようにリリースへ反映するかを明らかにする。
 
-\par\smallskip\noindent\refstepcounter{table}\label{tab:ch06-04}\textbf{表 \thetable: 第06章 ソフトウェアエンジニアリング運用 表04}\par\smallskip
+\par\smallskip\noindent\refstepcounter{table}\label{tab:ch06-04}表 \thetable: 運用計画における運用計画で扱う項目・説明\par\smallskip
+表 \thetable は、運用計画における運用計画で扱う項目・説明を比較・確認しやすい形で整理したものである。\par\smallskip
 \begin{longtable}{L{45mm}L{105mm}}
 \toprule
 運用計画で扱う項目 & 説明 \\
@@ -29,12 +30,15 @@
 
 個々の問題報告や変更要求のレベルでは、対象となるリリース日、次版の内容、潜在的な衝突、リスク、ロールバック計画、データ移行計画、関係者への通知を扱う。
 
-\begin{figure}[htbp]
+\par\smallskip
+\begin{center}
 \centering
 \IfFileExists{assets/generated_figures/ch06/fig-ch06-03.png}{\includegraphics[width=0.96\linewidth]{assets/generated_figures/ch06/fig-ch06-03.png}}{\fbox{\parbox[c][48mm][c]{0.9\linewidth}{\centering 画像生成待ち\\運用計画とCONOPSの関係}}}
-\caption{運用計画とCONOPSの関係}
-\label{fig:ch06-03}
-\end{figure}
+\par\smallskip
+\refstepcounter{figure}\label{fig:ch06-03}図 \thefigure: 運用計画とCONOPSの関係
+\end{center}
+図 \thefigure は、運用計画とCONOPSの関係を視覚的に整理したものである。
+\par\smallskip
 
 \paragraph{供給者管理}
 
@@ -46,7 +50,8 @@
 
 ソフトウェアプロセスでは、開発環境、試験環境または品質保証環境、事前本番環境、本番環境が使われる。品質を作り込み、本番リリースのリスクを下げるには、これらの環境が一貫しており、本番環境と同期している必要がある。
 
-\par\smallskip\noindent\refstepcounter{table}\label{tab:ch06-05}\textbf{表 \thetable: 第06章 ソフトウェアエンジニアリング運用 表05}\par\smallskip
+\par\smallskip\noindent\refstepcounter{table}\label{tab:ch06-05}表 \thetable: 開発環境と運用環境における環境・目的\par\smallskip
+表 \thetable は、開発環境と運用環境における環境・目的を比較・確認しやすい形で整理したものである。\par\smallskip
 \begin{longtable}{L{35mm}L{115mm}}
 \toprule
 環境 & 目的 \\
@@ -60,16 +65,19 @@
 
 DevOpsでは、これらの環境を単一のコードリポジトリから自動的に作成することが推奨される。すべての環境が同じコード源から作られれば、環境差分による不具合を減らせる。これがインフラストラクチャのコード化につながる。
 
-\begin{figure}[htbp]
+\par\smallskip
+\begin{center}
 \centering
 \IfFileExists{assets/generated_figures/ch06/fig-ch06-04.png}{\includegraphics[width=0.96\linewidth]{assets/generated_figures/ch06/fig-ch06-04.png}}{\fbox{\parbox[c][48mm][c]{0.9\linewidth}{\centering 画像生成待ち\\環境の流れ}}}
-\caption{環境の流れ}
-\label{fig:ch06-04}
-\end{figure}
+\par\smallskip
+\refstepcounter{figure}\label{fig:ch06-04}図 \thefigure: 環境の流れ
+\end{center}
+図 \thefigure は、環境の流れを視覚的に整理したものである。
+\par\smallskip
 
 \subsubsection{ソフトウェア可用性、継続性、サービス水準}
 
-可用性とは、必要なときにサービスが利用可能である度合いである。継続性とは、大きな障害や災害が発生してもサービスを維持または復旧できる能力である。サービス水準とは、可用性、性能、応答時間、復旧時間などについて合意された水準である。
+\term{可用性}{Availability}とは、必要なときにサービスが利用可能である度合いである。継続性とは、大きな障害や災害が発生してもサービスを維持または復旧できる能力である。サービス水準とは、可用性、性能、応答時間、復旧時間などについて合意された水準である。
 
 運用担当技術者は、プロジェクト初期に非機能要求として定義された可用性と継続性を満たすため、適切なインフラを計画、設計、実装、試験する。可用性は測定され、記録され、予定外の停止は調査される。サービス報告では、合意されたサービス水準に対して、実際の運用がどうだったかを示す。
 
@@ -93,12 +101,15 @@ SLAは、運用サービスの義務を明確にするために有効である�
 
 重要なのは、バックアップを取ることではなく、復旧できることである。災害復旧とフェイルオーバーは、計画され、定期的にリハーサルされる必要がある。ソフトウェア側にも障害処理の論理が必要であり、これは開発時に計画されなければならない。
 
-\begin{figure}[htbp]
+\par\smallskip
+\begin{center}
 \centering
 \IfFileExists{assets/generated_figures/ch06/fig-ch06-05.png}{\includegraphics[width=0.96\linewidth]{assets/generated_figures/ch06/fig-ch06-05.png}}{\fbox{\parbox[c][48mm][c]{0.9\linewidth}{\centering 画像生成待ち\\バックアップ・災害復旧・フェイルオーバーの流れ}}}
-\caption{バックアップ・災害復旧・フェイルオーバーの流れ}
-\label{fig:ch06-05}
-\end{figure}
+\par\smallskip
+\refstepcounter{figure}\label{fig:ch06-05}図 \thefigure: バックアップ・災害復旧・フェイルオーバーの流れ
+\end{center}
+図 \thefigure は、バックアップ・災害復旧・フェイルオーバーの流れを視覚的に整理したものである。
+\par\smallskip
 
 \subsubsection{ソフトウェアとデータの安全性、セキュリティ、完全性、保護、統制}
 
@@ -108,9 +119,12 @@ SLAは、運用サービスの義務を明確にするために有効である�
 
 DevOpsの発展に伴い、開発運用セキュリティ連携（DevSecOps）が重要になっている。DevSecOpsでは、セキュリティを後工程で追加するのではなく、開発と運用の最初から組み込み、セキュリティ問題の検出と修正をできるだけ早く自動化する。
 
-\begin{figure}[htbp]
+\par\smallskip
+\begin{center}
 \centering
 \IfFileExists{assets/generated_figures/ch06/fig-ch06-06.png}{\includegraphics[width=0.96\linewidth]{assets/generated_figures/ch06/fig-ch06-06.png}}{\fbox{\parbox[c][48mm][c]{0.9\linewidth}{\centering 画像生成待ち\\DevOps・IaC・SRE・プラットフォーム工学の関係}}}
-\caption{DevOps・IaC・SRE・プラットフォーム工学の関係}
-\label{fig:ch06-06}
-\end{figure}
+\par\smallskip
+\refstepcounter{figure}\label{fig:ch06-06}図 \thefigure: DevOps・IaC・SRE・プラットフォーム工学の関係
+\end{center}
+図 \thefigure は、DevOps・IaC・SRE・プラットフォーム工学の関係を視覚的に整理したものである。
+\par\smallskip

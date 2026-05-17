@@ -1,0 +1,43 @@
+\subsection{モデルの種類}
+\subsubsection{モデルはサブモデルの集まりである}
+典型的なモデルは、一つの図だけで構成されるわけではない。複数のサブモデルの集まりである。サブモデルは、特定の目的のために作られた部分的な説明であり、一つ以上の図や表を含むことがある。
+
+統一モデリング言語（UML）は、多くの図を提供する。UMLの図は、主に構造を表す図と振る舞いを表す図に分けられる。システムモデリング言語（SysML）では、さらに要求モデルやパラメトリックモデルなども扱う。
+
+\subsubsection{構造モデリング}
+構造モデリングは、ソフトウェアの物理的または論理的な構成を表す。何が存在し、どのような関係を持ち、どこがシステムと外部環境の境界かを明確にする。
+
+構造モデリングでよく使う考え方には、構成、分解、一般化、特殊化、関連、多重度、インタフェースなどがある。UMLの構造図には、クラス図、コンポーネント図、オブジェクト図、配置図、パッケージ図などがある。
+
+\begin{pointbox}{構造モデルの見方}
+構造モデルを見るときは、「どの部品があるか」「どの部品がどの部品を知っているか」「どの部品が外部とつながるか」「多重度や制約は正しいか」を確認するとよい。
+\end{pointbox}
+
+情報モデリングも構造モデリングの一種である。情報モデルは、データ実体、性質、関係、制約を抽象的に表す。概念情報モデルは、実装方法ではなく、問題領域の見方を表す。そこから、論理データモデル、物理データモデルへと変換される。
+
+\subsubsection{振る舞いモデリング}
+振る舞いモデリングは、ソフトウェアが何をし、どのように状態や処理を変えるかを表す。代表的には、状態機械、制御フローモデル、データフローモデルがある。
+
+\par\smallskip\noindent\refstepcounter{table}\label{tab:ch11-06}表 \thetable: 振る舞いモデリングの整理\par\smallskip
+表 \thetable は、振る舞いモデリングの整理を比較・確認しやすい形で整理したものである。\par\smallskip
+\begin{longtable}{>{\raggedright\arraybackslash}p{0.26\textwidth}>{\raggedright\arraybackslash}p{0.68\textwidth}}
+\toprule
+種類 & 説明 \\
+\midrule
+状態機械 & ソフトウェアを、状態、イベント、遷移の集合として表す。たとえば「未承認」「承認済み」「出荷済み」のような状態を扱う。\\
+制御フローモデル & どの処理がどの順序で有効化・無効化されるかを表す。処理手順の理解に向く。\\
+データフローモデル & データがどの処理を通り、どのデータストアや出力へ流れるかを表す。情報処理の流れを確認するのに向く。\\
+\bottomrule
+\end{longtable}
+
+UMLの振る舞い図には、ユースケース図、活動図、状態機械図、相互作用図がある。相互作用図には、シーケンス図、コミュニケーション図、タイミング図、相互作用概要図などが含まれる。
+
+\par\smallskip
+\begin{center}
+\centering
+\IfFileExists{assets/generated_figures/ch11/fig-ch11-05.png}{\includegraphics[width=0.96\linewidth]{assets/generated_figures/ch11/fig-ch11-05.png}}{\fbox{\parbox[c][48mm][c]{0.9\linewidth}{\centering 画像生成待ち\\構造モデルと振る舞いモデルの比較図}}}
+\par\smallskip
+\refstepcounter{figure}\label{fig:ch11-05}図 \thefigure: 構造モデルと振る舞いモデルの比較図
+\end{center}
+図 \thefigure は、構造モデルと振る舞いモデルの比較図を視覚的に整理したものである。
+\par\smallskip

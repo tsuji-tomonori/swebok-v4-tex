@@ -1,0 +1,31 @@
+\subsection{工学プロセス}
+工学プロセスは、すべての工学分野に共通する高水準の問題解決手順である。単純な一本道ではなく、途中で得た知識によって前の段階へ戻る反復的な流れである。見積りや仮説は誤ることがあるため、選んだ解の実世界での性能を監視し、必要なら別の案を再検討する。
+\par\smallskip\noindent\refstepcounter{table}\label{tab:ch18-03}表 \thetable: 工学プロセスの整理\par\smallskip
+表 \thetable は、工学プロセスの整理を比較・確認しやすい形で整理したものである。\par\smallskip
+\begin{longtable}{>{\raggedright\arraybackslash}p{0.26\linewidth}>{\raggedright\arraybackslash}p{0.66\linewidth}}
+\toprule
+段階 & 考えること \\
+\midrule
+\endfirsthead
+\toprule
+段階 & 考えること \\
+\midrule
+\endhead
+真の問題を理解する & 依頼された問題が、実際に解くべき問題とは限らない。根本原因分析を使い、背後にある本当の問題を探す。 \\
+選定基準を定義する & 費用、便益、納期、品質、安全性、標準、運用性など、候補解を比較する基準を明確にする。 \\
+技術的に実現可能な候補解を挙げる & 最初に思いついた案だけで決めない。複数の実現可能な案を出し、よりよい案を見落とさない。 \\
+候補解を基準に照らして評価する & 各案が、必要をどれだけ満たし、各基準をどれだけ満たすかを比較する。 \\
+望ましい案を選ぶ & 基準に対して最もよい案を選択する。ただし、選択は推定に基づくため絶対ではない。 \\
+選んだ案の性能を監視する & 実際に使った結果を観察し、期待と違えば原因を調べ、必要なら選択を見直す。 \\
+\bottomrule
+\end{longtable}
+\par\smallskip
+\begin{center}
+\centering
+\IfFileExists{assets/generated_figures/ch18/fig-ch18-02.png}{\includegraphics[width=0.96\linewidth]{assets/generated_figures/ch18/fig-ch18-02.png}}{\fbox{\parbox[c][48mm][c]{0.9\linewidth}{\centering 画像生成待ち\\工学プロセスの流れ図}}}
+\par\smallskip
+\refstepcounter{figure}\label{fig:ch18-02}図 \thefigure: 工学プロセスの流れ図
+\end{center}
+図 \thefigure は、工学プロセスの流れ図を視覚的に整理したものである。
+\par\smallskip
+\begin{notebox}{ソフトウェアでの例}障害対応では、再起動してサービスを戻すだけでは工学プロセスとして不十分である。真の問題がメモリリーク、設定ミス、負荷見積りの誤り、監視設計の不足のいずれかを調べ、複数の対策を比較し、実施後に再発率や復旧時間を監視する必要がある。\end{notebox}

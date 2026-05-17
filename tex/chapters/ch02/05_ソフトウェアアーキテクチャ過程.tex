@@ -18,13 +18,14 @@
 \paragraph{アーキテクチャと設計の関係}
 アーキテクチャと設計の境界は、しばしば曖昧である。アーキテクチャはソフトウェア設計から発展してきた分野であり、設計の一部として扱われることもある。しかし、実務上は区別して考えると理解しやすい。
 
-\par\smallskip\noindent\refstepcounter{table}\label{tab:ch02-05}\textbf{表 \thetable: 第02章 ソフトウェアアーキテクチャ 表05}\par\smallskip
+\par\smallskip\noindent\refstepcounter{table}\label{tab:ch02-05}表 \thetable: アーキテクチャと設計の関係における観点・アーキテクチャ・設計\par\smallskip
+表 \thetable は、アーキテクチャと設計の関係における観点・アーキテクチャ・設計を比較・確認しやすい形で整理したものである。\par\smallskip
 \begin{longtable}{P{0.22\linewidth}P{0.38\linewidth}P{0.32\linewidth}}
 \toprule
 観点 & アーキテクチャ & 設計 \\
 \midrule
 扱う範囲 & システム全体、環境、主要構成、品質特性、進化原則である。 & 構成要素の詳細、データ構造、アルゴリズム、実装方法である。 \\
-要求との関係 & 要求を受けるだけでなく、利害関係者との交渉を通じて要求を形作ることがある。 & 既に定義された要求とアーキテクチャ制約を満たす方法を具体化する。 \\
+\term{要求との関係}{Relationship to Requirements} & 要求を受けるだけでなく、利害関係者との交渉を通じて要求を形作ることがある。 & 既に定義された要求とアーキテクチャ制約を満たす方法を具体化する。 \\
 変更影響 & 後から変更すると広範囲に影響しやすい。 & 比較的局所的に変更できる場合が多い。 \\
 主な成果物 & アーキテクチャ記述、ビュー、意思決定記録、原則である。 & 詳細設計、インタフェース仕様、クラス設計、アルゴリズム設計である。 \\
 \bottomrule
@@ -48,7 +49,7 @@
   \item 安全性やセキュリティのような全体横断的関心事への対応である。
 \end{itemize}
 
-アーキテクチャ設計は、\keyterm{分析}、\keyterm{統合}、\keyterm{評価}の三つの活動を反復する。
+アーキテクチャ設計は、\term{分析}{Analysis}、\term{統合}{Integration}、\term{評価}{Evaluation}の三つの活動を反復する。
 
 \paragraph{アーキテクチャ分析}
 アーキテクチャ分析は、アーキテクチャ上重要な要求、すなわち ASR を集め、整理する活動である。ASR は、アーキテクチャに影響する要求である。たとえば、厳しい応答時間、大量アクセスへの拡張性、高い可用性、法規制への適合、強いセキュリティ、外部システムとの接続方式などが該当する。
@@ -63,12 +64,15 @@
 \paragraph{アーキテクチャ評価}
 アーキテクチャ評価は、選んだ候補解が ASR を満たすかを確認し、手戻りが必要な箇所を見つける活動である。評価は最後に一度だけ行うものではない。分析と統合の途中で繰り返し行い、問題を早く見つけるほど、修正費用を抑えられる。
 
-\begin{figure}[htbp]
+\par\smallskip
+\begin{center}
 \centering
 \IfFileExists{assets/generated_figures/ch02/fig-ch02-07.png}{\includegraphics[width=0.96\linewidth]{assets/generated_figures/ch02/fig-ch02-07.png}}{\fbox{\parbox[c][48mm][c]{0.9\linewidth}{\centering 画像生成待ち\\アーキテクチャ分析・統合・評価の反復サイクル}}}
-\caption{アーキテクチャ分析・統合・評価の反復サイクル}
-\label{fig:ch02-07}
-\end{figure}
+\par\smallskip
+\refstepcounter{figure}\label{fig:ch02-07}図 \thefigure: アーキテクチャ分析・統合・評価の反復サイクル
+\end{center}
+図 \thefigure は、アーキテクチャ分析・統合・評価の反復サイクルを視覚的に整理したものである。
+\par\smallskip
 
 \subsubsection{アーキテクチャの実践、方法、戦術}
 アーキテクチャの実践には、多くの方法がある。方法とは、関心事の発見、要求整理、候補解作成、文書化、レビュー、評価をどの順序で行うかを定める作業手順である。戦術とは、特定の品質特性を満たすための小さな設計上の手段である。
@@ -84,10 +88,10 @@
 
 このような文脈では、次の活動が重要になる。
 \begin{itemize}
-  \item \keyterm{アーキテクチャ実装管理}：実装がアーキテクチャに従っているかを確認する。
-  \item \keyterm{アーキテクチャ保守}：実装後もアーキテクチャを管理し、拡張する。
-  \item \keyterm{アーキテクチャ管理}：組織内の複数アーキテクチャの関係を管理する。
-  \item \keyterm{アーキテクチャ知識管理}：意思決定、教訓、仕様、文書などを再利用可能な資産として残す。
+  \item \term{アーキテクチャ実装管理}{Architecture Implementation Management}：実装がアーキテクチャに従っているかを確認する。
+  \item \term{アーキテクチャ保守}{Architecture Maintenance}：実装後もアーキテクチャを管理し、拡張する。
+  \item \term{アーキテクチャ管理}{Architecture Management}：組織内の複数アーキテクチャの関係を管理する。
+  \item \term{アーキテクチャ知識管理}{Architecture Knowledge Management}：意思決定、教訓、仕様、文書などを再利用可能な資産として残す。
 \end{itemize}
 
 大規模なアーキテクチャ活動では、個別システムの最適化だけでは不十分である。組織全体で一貫性、相互運用性、再利用性、進化可能性を保つ必要がある。

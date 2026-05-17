@@ -1,0 +1,31 @@
+\subsection{ソフトウェア品質ツール}
+ツールは品質活動を支援する。単純なものでは、要求追跡行列、レビュー用チェックリスト、コードレビュー用チェックリストがある。自動化ツールでは、Git のようなバージョン管理、プルリクエストによるコードレビュー、CI/CD、コード品質評価、自動テスト、オンデマンド環境が品質に貢献する。
+
+品質ツールは、静的解析ツールと動的解析ツールに大きく分けられる。静的解析ツールは、ソースコード、モデル、文書を入力し、実行せずに構文的・意味的な分析を行う。動的解析ツールは、実行時の振る舞いを観察する。
+
+代表的な品質ツールカテゴリは次のとおりである。
+
+\noindent\par\smallskip\noindent\refstepcounter{table}\label{tab:ch12-05}表 \thetable: ソフトウェア品質ツールの整理\par\smallskip
+表 \thetable は、ソフトウェア品質ツールの整理を比較・確認しやすい形で整理したものである。\par\smallskip
+\begin{tabularx}{\textwidth}{@{}L{0.28\textwidth}Y@{}}
+\toprule
+ツールカテゴリ & 役割 \\
+\midrule
+レビュー・検査支援ツール & 文書やコードのレビュー作業を割り当て、コメント、欠陥記録、承認状態を管理する。 \\
+安全ハザード分析支援ツール & FMEA や FTA などの安全分析を支援する。 \\
+問題追跡ツール & テストや運用で見つかった異常を記録し、分析、処置、解決状態を追跡する。 \\
+品質データ分析ツール & 欠陥密度、欠陥注入・除去率、傾向、予測をグラフや表で可視化する。 \\
+CI/CD・自動テストツール & ビルド、テスト、デプロイ、品質ゲートを自動化し、早いフィードバックを与える。 \\
+\bottomrule
+\end{tabularx}
+
+
+\par\smallskip
+\begin{center}
+\centering
+\IfFileExists{assets/generated_figures/ch12/fig-ch12-15.png}{\includegraphics[width=0.96\linewidth]{assets/generated_figures/ch12/fig-ch12-15.png}}{\fbox{\parbox[c][48mm][c]{0.9\linewidth}{\centering 画像生成待ち\\品質ツールの分類図}}}
+\par\smallskip
+\refstepcounter{figure}\label{fig:ch12-15}図 \thefigure: 品質ツールの分類図
+\end{center}
+図 \thefigure は、品質ツールの分類図を視覚的に整理したものである。
+\par\smallskip

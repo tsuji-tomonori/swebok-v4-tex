@@ -1,0 +1,116 @@
+\subsection{ソフトウェアシステムのセキュリティ工学}
+この節は、ソフトウェアシステムを安全に作るための中核である。セキュリティ要求、セキュリティ設計、セキュリティパターン、セキュリティを考慮した構築、セキュリティテスト、脆弱性管理を順に扱う。
+
+\par\smallskip
+\begin{center}
+\centering
+\IfFileExists{assets/generated_figures/ch13/fig-ch13-05.png}{\includegraphics[width=0.96\linewidth]{assets/generated_figures/ch13/fig-ch13-05.png}}{\fbox{\parbox[c][48mm][c]{0.9\linewidth}{\centering 画像生成待ち\\セキュリティ要求から脆弱性管理までの追跡図}}}
+\par\smallskip
+\refstepcounter{figure}\label{fig:ch13-05}図 \thefigure: セキュリティ要求から脆弱性管理までの追跡図
+\end{center}
+図 \thefigure は、セキュリティ要求から脆弱性管理までの追跡図を視覚的に整理したものである。
+\par\smallskip
+\subsubsection{セキュリティ要求}
+セキュリティ要求工学は、セキュリティ要求を引き出し、仕様化し、優先順位を付ける活動である。通常の機能要求と同じように見える要求でも、攻撃者、脅威、リスク、法令、監査、運用を考慮しなければならない。
+
+具体的には、誤用事例や悪用事例、攻撃主体、セキュリティリスク評価、仕様化方法、優先順位付け、レビュー、改訂を扱う。ソフトウェア改訂がある場合には、セキュリティ要求も見直す必要がある。
+
+セキュリティ要求の追跡可能性は重要である。要求が設計、コード、テスト、脆弱性対応にどうつながるかをたどれなければ、変更時にどこを直すべきか分からなくなる。
+
+\begin{notebox}{例}「管理者だけが利用者権限を変更できる」はセキュリティ要求である。「認証失敗が5回続いたら一定時間ログインを制限する」もセキュリティ要求である。\end{notebox}
+\subsubsection{セキュリティ設計}
+セキュリティ設計は、情報や資源への不正な開示、作成、変更、削除、アクセス拒否を防ぐ設計である。また、攻撃や方針違反が起きたときに被害を限定し、サービス継続、修復、復旧、安全な失敗を実現する設計でもある。
+
+\term{アクセス制御}{Access Control}は、セキュリティ設計の基本概念である。多くの制御は、暗号アルゴリズム、鍵などの暗号材料、鍵の作成・配布・管理に依存する。これらは慎重に選ばなければならない。
+
+設計段階では、脅威モデリングを行い、システムがどのように攻撃されるかを考え、緩和策を設計する。認証、認可、監査ログ、暗号化、入力検証、失敗時の状態復元などは、後から断片的に追加するのではなく、設計として整合させる必要がある。
+
+\par\smallskip
+\begin{center}
+\centering
+\IfFileExists{assets/generated_figures/ch13/fig-ch13-06.png}{\includegraphics[width=0.96\linewidth]{assets/generated_figures/ch13/fig-ch13-06.png}}{\fbox{\parbox[c][48mm][c]{0.9\linewidth}{\centering 画像生成待ち\\脅威モデリングの基本図}}}
+\par\smallskip
+\refstepcounter{figure}\label{fig:ch13-06}図 \thefigure: 脅威モデリングの基本図
+\end{center}
+図 \thefigure は、脅威モデリングの基本図を視覚的に整理したものである。
+\par\smallskip
+\subsubsection{セキュリティパターン}
+セキュリティパターンとは、特定の文脈で繰り返し現れるセキュリティ問題と、それに対する実績ある一般的な解決策をまとめたものである。
+
+たとえば、認証、認可、監査、セッション管理、入力検証、境界防御、最小権限などは、個別システムごとに一から考えるより、既知のパターンや実践に基づいて設計した方がよい場合が多い。パターンは、設計者同士が同じ語彙で議論する助けにもなる。
+
+\subsubsection{セキュリティを考慮した構築}
+セキュリティを考慮した構築とは、プログラムコードを書く段階で、セキュリティ上の問題を作り込まないようにすることである。ただし、この語には二つの意味が混ざりやすい。一つは「特定の処理を安全にコード化すること」であり、もう一つは「ソフトウェアにセキュリティ機能を実装すること」である。
+
+現実には、あるコード片がすべての処理系、命令セット、コンパイラ最適化で同じセキュリティ上の意味を持つとは限らない。そのため、実務では、推奨規則に従い、危険な書き方を避け、前提を明示し、特権を限定することが重要になる。
+
+\begin{itemize}[leftmargin=2em]
+\item 特権が必要な処理は小さなモジュールに分離し、そのモジュールに必要最小限の仕事だけをさせる。
+\item プログラム中の前提は検証する。検証できない前提は、導入担当者や保守担当者に分かるように文書化する。
+\item 可能な限り、他のプログラムとメモリ上の対象を共有しない。
+\item 関数のエラー状態を確認し、原因や影響がセキュリティに関係する場合には不用意に回復しない。
+\end{itemize}
+\par\smallskip\noindent\refstepcounter{table}\label{tab:ch13-03}表 \thetable: セキュリティを考慮した構築の整理\par\smallskip
+表 \thetable は、セキュリティを考慮した構築の整理を比較・確認しやすい形で整理したものである。\par\smallskip
+\begin{longtable}{>{\raggedright\arraybackslash}p{0.25\linewidth}>{\raggedright\arraybackslash}p{0.7\linewidth}}
+\toprule
+実践 & 意味 \\
+\midrule
+\endhead
+入力を検証する & 外部から来る値を信頼しない。 \\
+コンパイラ警告を無視しない & 未定義動作や危険な書き方の兆候を見逃さない。 \\
+セキュリティ方針に沿って設計する & コードの前に方針と設計を決める。 \\
+単純に保つ & 複雑さは脆弱性の温床になりやすい。 \\
+既定では拒否する & 許可したものだけを通す。 \\
+最小権限を守る & 必要最小限の権限だけを与える。 \\
+外部へ送るデータを無害化する & 別ソフトウェアに渡す前に危険な表現を取り除く。 \\
+多層防御を行う & 一つの防御が破られても次の防御で止める。 \\
+有効な品質保証を使う & レビュー、分析、テストを組み合わせる。 \\
+安全な構築標準を採用する & 言語や組織に合う安全コーディング規約を使う。 \\
+\bottomrule
+\end{longtable}
+\subsubsection{セキュリティテスト}
+セキュリティテストは、実装されたソフトウェアがセキュリティ要求を満たしていることを確認し、既知の脆弱性が含まれていないことを検証する活動である。セキュリティ要求の確認には一般的なテスト技法が役立つが、既知脆弱性の検出にはセキュリティ固有の方法が必要になる。
+
+セキュリティ固有のテストには大きく二つの方向がある。第一は静的分析である。ソースコードやコンパイル済みバイナリを調べ、言語や実装に特有の脆弱性、コンパイラ最適化や第三者部品に隠れた脆弱性を探す。第二は動的テストである。脆弱性診断やペネトレーションテストを用いて、実行時の振る舞いから弱点を探す。
+
+ツールによる自動化は重要であるが、結果の解釈、誤検知の判定、適切な設定には専門知識が必要である。また、ペネトレーションテストは、適切な許可と法的範囲の中で行わなければならない。無断で実施すれば、違法な攻撃行為と区別できない。
+
+\par\smallskip
+\begin{center}
+\centering
+\IfFileExists{assets/generated_figures/ch13/fig-ch13-07.png}{\includegraphics[width=0.96\linewidth]{assets/generated_figures/ch13/fig-ch13-07.png}}{\fbox{\parbox[c][48mm][c]{0.9\linewidth}{\centering 画像生成待ち\\静的分析と動的テストの比較図}}}
+\par\smallskip
+\refstepcounter{figure}\label{fig:ch13-07}図 \thefigure: 静的分析と動的テストの比較図
+\end{center}
+図 \thefigure は、静的分析と動的テストの比較図を視覚的に整理したものである。
+\par\smallskip
+\subsubsection{脆弱性管理}
+脆弱性管理は、システム本体と第三者部品に存在する脆弱性の影響を緩和し、報告、評価、修正、公開、追跡を行う活動である。安全なコーディング実践は実装時に入る欠陥を減らすが、脆弱性をゼロにはできない。
+
+よく知られた脆弱性や弱点は、CVE、CWE、CAPEC などのデータベースで分類・共有される。CVSS は、脆弱性の特徴と深刻度を表すために使われる。開発者は、実装時と保守時にこれらの情報を参照する必要がある。
+
+脆弱性対応には、発見者が報告できる開示プロセスも関係する。報告を受け取る窓口、影響範囲の調査、修正版の提供、利用者への通知、第三者部品の更新判断がなければ、脆弱性は放置されやすい。
+
+\par\smallskip\noindent\refstepcounter{table}\label{tab:ch13-04}表 \thetable: 脆弱性管理の整理\par\smallskip
+表 \thetable は、脆弱性管理の整理を比較・確認しやすい形で整理したものである。\par\smallskip
+\begin{longtable}{>{\raggedright\arraybackslash}p{0.25\linewidth}>{\raggedright\arraybackslash}p{0.35\linewidth}>{\raggedright\arraybackslash}p{0.35\linewidth}}
+\toprule
+名称 & 日本語での説明 & 使いどころ \\
+\midrule
+\endhead
+CVE & 共通脆弱性識別子 & 個別の既知脆弱性を識別する。 \\
+CWE & 共通弱点一覧 & 設計や実装にありがちな弱点の種類を知る。 \\
+CAPEC & 共通攻撃パターン分類 & 攻撃者がどのように弱点を悪用するかを知る。 \\
+CVSS & 共通脆弱性評価システム & 脆弱性の深刻度や優先度を判断する。 \\
+\bottomrule
+\end{longtable}
+\par\smallskip
+\begin{center}
+\centering
+\IfFileExists{assets/generated_figures/ch13/fig-ch13-08.png}{\includegraphics[width=0.96\linewidth]{assets/generated_figures/ch13/fig-ch13-08.png}}{\fbox{\parbox[c][48mm][c]{0.9\linewidth}{\centering 画像生成待ち\\脆弱性データベースと対応プロセスの図}}}
+\par\smallskip
+\refstepcounter{figure}\label{fig:ch13-08}図 \thefigure: 脆弱性データベースと対応プロセスの図
+\end{center}
+図 \thefigure は、脆弱性データベースと対応プロセスの図を視覚的に整理したものである。
+\par\smallskip

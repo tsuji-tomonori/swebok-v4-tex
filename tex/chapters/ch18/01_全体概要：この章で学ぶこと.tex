@@ -1,0 +1,61 @@
+\subsection{全体概要：この章で学ぶこと}
+この章は、ソフトウェア工学を単なるプログラミング技術ではなく、工学の一分野として理解するための基礎を扱う。工学では、現実の制約の中で問題を見極め、複数の解を考え、根拠を持って選び、実世界での結果を監視する。ソフトウェアでも同じである。要求、設計、実装、テスト、保守、運用のどの場面でも、抽象化、実験、統計、測定、標準、根本原因分析を使う必要がある。
+\begin{notebox}{到達目標}この章を読み終えると、工学プロセスの反復的な流れを説明できる。工学設計が一つの正解を探す活動ではなく、制約下でよい解を選ぶ活動であることを説明できる。抽象化、カプセル化、階層、代替的な抽象化を区別できる。経験的方法、統計分析、測定理論をソフトウェア工学に適用する理由を説明できる。標準、根本原因分析、インダストリー4.0とソフトウェア工学の関係を説明できる。\end{notebox}
+\par\smallskip
+\begin{center}
+\centering
+\IfFileExists{assets/generated_figures/ch18/fig-ch18-01.png}{\includegraphics[width=0.96\linewidth]{assets/generated_figures/ch18/fig-ch18-01.png}}{\fbox{\parbox[c][48mm][c]{0.9\linewidth}{\centering 画像生成待ち\\第18章の全体地図}}}
+\par\smallskip
+\refstepcounter{figure}\label{fig:ch18-01}図 \thefigure: 第18章の全体地図
+\end{center}
+図 \thefigure は、第18章の全体地図を視覚的に整理したものである。
+\par\smallskip
+\subsubsection{最初に必要な用語}
+\par\smallskip\noindent\refstepcounter{table}\label{tab:ch18-01}表 \thetable: 最初に必要な用語の整理\par\smallskip
+表 \thetable は、最初に必要な用語の整理を比較・確認しやすい形で整理したものである。\par\smallskip
+\begin{longtable}{>{\raggedright\arraybackslash}p{0.23\linewidth}>{\raggedright\arraybackslash}p{0.69\linewidth}}
+\toprule
+用語 & 初学者向けの説明 \\
+\midrule
+\endfirsthead
+\toprule
+用語 & 初学者向けの説明 \\
+\midrule
+\endhead
+\term{工学}{Engineering} & 現実世界の問題を、体系的・規律的・測定可能な方法で解く活動である。制約の中で有用な解を作る点が重要である。 \\
+\term{工学プロセス}{Engineering Process} & 問題を理解し、基準を決め、候補解を挙げ、評価し、選び、実際の性能を監視する流れである。 \\
+\term{工学設計}{Engineering Design} & 望まれる必要や仕様を満たすシステム、構成要素、過程を、制約の中で考案する活動である。 \\
+抽象化 & 細部を一時的に隠し、重要な概念や関係に注目すること。曖昧にすることではなく、扱う水準を明確にすることである。 \\
+カプセル化 & 抽象化した対象の内部詳細を隠し、外部から使うための窓口だけを示す仕組みである。 \\
+経験的方法 & 観察、実験、過去データの分析など、実際のデータに基づいて判断する方法である。 \\
+\term{統計分析}{Statistical Analysis} & 標本から母集団を推測し、ばらつきや関係を理解するための技法である。 \\
+測定 & 属性を定めた方法で値や記号に対応させること。測った値をどの演算に使えるかは尺度に依存する。 \\
+標準 & 要求、仕様、指針、用語、品質水準などを共有するための合意済みの基準である。 \\
+根本原因分析 & 望ましくない結果の表面的な症状ではなく、再発を防ぐための深い原因を特定する方法群である。 \\
+\term{インダストリー4.0}{Industry 4.0} & 製造業におけるデジタル化、AI、IoT、クラウド、ビッグデータなどを活用した新しい産業構造である。 \\
+\bottomrule
+\end{longtable}
+\subsubsection{略語}
+\par\smallskip\noindent\refstepcounter{table}\label{tab:ch18-02}表 \thetable: 略語の整理\par\smallskip
+表 \thetable は、略語の整理を比較・確認しやすい形で整理したものである。\par\smallskip
+\begin{longtable}{>{\raggedright\arraybackslash}p{0.13\linewidth}>{\raggedright\arraybackslash}p{0.32\linewidth}>{\raggedright\arraybackslash}p{0.47\linewidth}}
+\toprule
+略語 & 英語 & 日本語での意味 \\
+\midrule
+\endfirsthead
+\toprule
+略語 & 英語 & 日本語での意味 \\
+\midrule
+\endhead
+\term{CAD}{Computer-Aided Design} & Computer-Aided Design & コンピュータ支援設計。設計図やモデルをコンピュータで作るための方法・道具である。 \\
+CMMI & Capability Maturity Model Integration & 能力成熟度モデル統合。組織のプロセス成熟度を段階的に表す枠組みである。 \\
+\term{PDF}{Probability Density Function} & Probability Density Function & 確率密度関数。連続型の確率変数の分布を表す関数である。 \\
+\term{PMF}{Probability Mass Function} & Probability Mass Function & 確率質量関数。離散型の確率変数が特定値を取る確率を表す関数である。 \\
+\term{RCA}{Root Cause Analysis} & Root Cause Analysis & 根本原因分析。再発防止のため、望ましくない結果の深い原因を調べる方法群である。 \\
+SDLC & Software Development Life Cycle & ソフトウェア開発ライフサイクル。企画から保守までの開発活動の流れである。 \\
+\bottomrule
+\end{longtable}
+\subsubsection{導入：なぜソフトウェア工学に工学基礎が必要か}
+ソフトウェア工学は、コンピュータ科学の知識を使うだけでは成立しない。現実の問題を解くには、費用、納期、品質、安全性、標準、運用、社会的影響などを同時に扱う必要がある。これは他の工学分野と共通する。
+第18章の目的は、他の知識領域を支える工学共通の考え方を整理することである。特に、問題解決としての工学プロセス、設計、抽象化、実験、統計、モデル、測定、標準、根本原因分析を、ソフトウェア工学で使える形で理解することに焦点がある。
+\begin{notebox}{重要}この章は、個別のプログラミング技術ではなく、ソフトウェア技術者が判断を誤らないための土台を扱う。工学基礎を理解すると、なぜ測るのか、なぜモデルを作るのか、なぜ標準に従うのか、なぜ根本原因まで調べるのかが見える。\end{notebox}

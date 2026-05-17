@@ -1,0 +1,76 @@
+\subsection{ソフトウェア保守プロセス}
+ソフトウェア保守には、ISO/IEC/IEEE 14764 などに示される標準的な活動に加え、保守担当者に固有の活動がある。保守は、ISO/IEC/IEEE 12207 で扱われる技術的ライフサイクルプロセスの一つでもある。\par
+\subsubsection{ソフトウェア保守プロセス}
+\term{保守プロセス}{Maintenance Process}は、運用中ソフトウェアを支援するための活動、入力、出力を提供する。代表的なプロセスには、保守準備、保守実施、物流的支援、保守と支援結果の管理がある。\par
+\par\smallskip\noindent\refstepcounter{table}\label{tab:ch07-09}表 \thetable: ソフトウェア保守プロセスにおけるプロセス・説明\par\smallskip
+表 \thetable は、ソフトウェア保守プロセスにおけるプロセス・説明を比較・確認しやすい形で整理したものである。\par\smallskip
+\begin{longtable}{p{0.30\linewidth}p{0.64\linewidth}}
+\toprule
+プロセス & 説明 \\
+\midrule
+\endhead
+保守準備 & 保守体制、手順、環境、契約、知識移転を整える。 \\
+保守実施 & 変更要求や問題報告を処理し、修正、テスト、リリースを行う。 \\
+物流的支援 & ソフトウェア配布、導入、資源、支援物品、環境を扱う。 \\
+結果管理 & 保守結果、支援状況、顧客満足、測定値、改善点を管理する。 \\
+\bottomrule
+\end{longtable}
+近年は、軽量なアジャイル手法も保守に適用される。利用者が保守サービスに速い応答を求めるためである。保守プロセスの改善には、保守成熟度モデルや継続的改善の考え方が役立つ。\par
+\par\smallskip
+\begin{center}
+\centering
+\IfFileExists{assets/generated_figures/ch07/fig-ch07-06.png}{\includegraphics[width=0.96\linewidth]{assets/generated_figures/ch07/fig-ch07-06.png}}{\fbox{\parbox[c][48mm][c]{0.9\linewidth}{\centering 画像生成待ち\\ソフトウェア保守プロセス図}}}
+\par\smallskip
+\refstepcounter{figure}\label{fig:ch07-06}図 \thefigure: ソフトウェア保守プロセス図
+\end{center}
+図 \thefigure は、ソフトウェア保守プロセス図を視覚的に整理したものである。
+\par\smallskip
+\subsubsection{ソフトウェア保守活動とタスク}
+保守プロセスには、既存ソフトウェアシステムを完全性を保ちながら運用・変更するための活動とタスクが含まれる。保守担当者は、開発と同様に、分析、設計、コーディング、テスト、文書化を行う。要求を追跡し、基準となる成果物が変われば文書も更新する。\par
+\par\smallskip\noindent\refstepcounter{table}\label{tab:ch07-10}表 \thetable: ソフトウェア保守活動とタスクにおける保守に特徴的な活動・説明\par\smallskip
+表 \thetable は、ソフトウェア保守活動とタスクにおける保守に特徴的な活動・説明を比較・確認しやすい形で整理したものである。\par\smallskip
+\begin{longtable}{p{0.30\linewidth}p{0.64\linewidth}}
+\toprule
+保守に特徴的な活動 & 説明 \\
+\midrule
+\endhead
+プログラム理解 & ソフトウェアが何を行い、各部分がどう連携するかを理解する活動である。 \\
+移行 & 開発チームから運用・保守チームへ、ソフトウェアを段階的に移す管理された活動である。 \\
+変更要求の受理・却下 & 合意された規模、労力、複雑さを超える依頼を、保守ではなく開発へ戻す判断を含む。 \\
+保守ヘルプデスク & 利用者支援と保守調整を行い、要求や障害の評価、優先度付け、費用見積りを起動する。 \\
+影響分析 & 変更が影響する領域を特定する活動である。 \\
+サービス水準管理 & SLI、SLO、SLA、ライセンス、契約を通じて、支援内容と品質目標を管理する。 \\
+\bottomrule
+\end{longtable}
+\paragraph{支援・監視活動}
+保守担当者は、文書化、構成管理、検証と妥当性確認、問題解決、ソフトウェア品質保証、レビュー、脆弱性評価、監査などの継続的支援活動を行う。顧客満足の監視も、保守結果の管理として重要である。\par
+\paragraph{計画活動}
+保守では計画が重要である。開発プロジェクトは数か月から数年で終わることが多いが、保守はソフトウェアが廃止されるまで続く。したがって、保守計画は新しいソフトウェアを開発する判断の時点から始めるべきである。\par
+\par\smallskip\noindent\refstepcounter{table}\label{tab:ch07-11}表 \thetable: 計画活動における計画の階層・説明\par\smallskip
+表 \thetable は、計画活動における計画の階層・説明を比較・確認しやすい形で整理したものである。\par\smallskip
+\begin{longtable}{p{0.30\linewidth}p{0.64\linewidth}}
+\toprule
+計画の階層 & 説明 \\
+\midrule
+\endhead
+事業計画 & 組織レベルで、予算、顧客、サービス方針、保守体制を決める。 \\
+保守計画 & 移行レベルで、保守範囲、プロセス、ツール、体制、費用を決める。 \\
+リリース・版計画 & ソフトウェアレベルで、次のリリース内容、日程、リスク、撤退計画を決める。 \\
+変更要求計画 & 個別要求レベルで、影響分析、実施工数、優先度、完了時期を決める。 \\
+\bottomrule
+\end{longtable}
+\par\smallskip
+\begin{center}
+\centering
+\IfFileExists{assets/generated_figures/ch07/fig-ch07-07.png}{\includegraphics[width=0.96\linewidth]{assets/generated_figures/ch07/fig-ch07-07.png}}{\fbox{\parbox[c][48mm][c]{0.9\linewidth}{\centering 画像生成待ち\\保守計画の四層図}}}
+\par\smallskip
+\refstepcounter{figure}\label{fig:ch07-07}図 \thefigure: 保守計画の四層図
+\end{center}
+図 \thefigure は、保守計画の四層図を視覚的に整理したものである。
+\par\smallskip
+\paragraph{構成管理}
+\term{構成管理}{Configuration Management}は、保守プロセスを支えるシステムまたはサービスである。変更の識別、承認、実装、リリース、検証、妥当性確認、監査を管理する。保守では、変更要求や問題報告だけでなく、ソフトウェア製品、その基盤、文書、テスト、設定も管理しなければならない。\par
+保守における構成管理は、運用環境で発生する多数の小さな変更を統制する点で難しい。保守担当者は構成管理計画と運用手順に従い、構成管理委員会などで次のリリース内容を判断する。\par
+\paragraph{ソフトウェア品質}
+保守を行えば自動的に品質が上がるわけではない。保守担当者は有効な品質プログラムを持つ必要がある。品質保証、検証と妥当性確認、レビュー、監査の活動と技法は、他のプロセスと整合させて選択する。\par
+運用と保守は、開発プロセスの成果物を再利用すべきである。たとえば、テストツール、文書、テスト結果は保守にも役立つ。開発時に保守を意識して成果物を残すことが、長期的な品質を支える。\par

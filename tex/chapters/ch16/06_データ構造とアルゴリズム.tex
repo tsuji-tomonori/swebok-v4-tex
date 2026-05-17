@@ -1,0 +1,153 @@
+\subsection{データ構造とアルゴリズム}
+
+データ構造は、データを効果的に表し、保存し、探索し、更新するための形である。アルゴリズムは、そのデータに対して目的の処理を行う手順である。すべてのプログラムはデータを受け取り、処理し、出力を作るため、データ構造とアルゴリズムの選択は性能、保守性、拡張性、安全性に直接影響する。
+
+\subsubsection{データ構造の種類}
+
+データ型はデータの性質を表す属性である。基本データ型には文字、整数、実数、真偽値、ポインタなどがある。複合データ型は、複数の基本データ型または複合データ型を組み合わせる。抽象データ型は、内部表現よりも、利用者から見える値と操作によって定義される。
+
+\par\smallskip\noindent\refstepcounter{table}\label{tab:ch16-07}表 \thetable: データ構造の種類における分類・例・使いどころ\par\smallskip
+表 \thetable は、データ構造の種類における分類・例・使いどころを比較・確認しやすい形で整理したものである。\par\smallskip
+\begin{longtable}{>{\raggedright\arraybackslash}p{0.23\textwidth}>{\raggedright\arraybackslash}p{0.40\textwidth}>{\raggedright\arraybackslash}p{0.30\textwidth}}
+\toprule
+分類 & 例 & 使いどころ \\
+\midrule
+\endfirsthead
+\toprule
+分類 & 例 & 使いどころ \\
+\midrule
+\endhead
+基本データ型 & 文字、整数、実数、真偽値、ポインタ。 & 値そのものを表す最小単位として使う。 \\
+線形データ構造 & 配列、文字列、連結リスト、スタック、キュー、ハッシュ表。 & 順序や先頭・末尾の操作が重要な処理に使う。 \\
+階層・非線形データ構造 & 木、二分木、B木、ヒープ、グラフ。 & 探索、関係表現、優先順位、依存関係の表現に使う。 \\
+抽象データ型 & スタック、キュー、集合、辞書などを操作の集合として定義する。 & 実装を隠し、利用側は操作の意味だけを考えられる。 \\
+\bottomrule
+\end{longtable}
+
+\par\smallskip
+\begin{center}
+\centering
+\IfFileExists{assets/generated_figures/ch16/fig-ch16-05.png}{\includegraphics[width=0.96\linewidth]{assets/generated_figures/ch16/fig-ch16-05.png}}{\fbox{\parbox[c][48mm][c]{0.9\linewidth}{\centering 画像生成待ち\\データ構造の分類ツリー}}}
+\par\smallskip
+\refstepcounter{figure}\label{fig:ch16-05}図 \thefigure: データ構造の分類ツリー
+\end{center}
+図 \thefigure は、データ構造の分類ツリーを視覚的に整理したものである。
+\par\smallskip
+
+\subsubsection{データ構造への操作}
+
+基本操作は、作成、読み取り、更新、削除である。これらは英語の頭文字から CRUD と呼ばれる。複合データでは、操作の前に目的の要素をたどる必要があるため、走査が重要になる。木構造では前順、中順、後順の走査、グラフでは深さ優先探索や幅優先探索などが使われる。
+
+挿入や削除では、データ構造が守るべき規則を壊さないことが重要である。たとえば、二分探索木では左側が小さく右側が大きいという規則を守る必要がある。データベースでは、主キーや外部キーの整合性を壊してはならない。
+
+\subsubsection{アルゴリズムとその属性}
+
+アルゴリズムの良し悪しは、速さだけでは決まらない。正しく動くこと、異常入力に強いこと、保守しやすいこと、利用者や開発者が理解しやすいこと、拡張しやすいことも重要である。性能は重要な属性だが、性能だけを追うと可読性や保守性を損なうことがある。
+
+\par\smallskip\noindent\refstepcounter{table}\label{tab:ch16-08}表 \thetable: アルゴリズムとその属性における属性・意味\par\smallskip
+表 \thetable は、アルゴリズムとその属性における属性・意味を比較・確認しやすい形で整理したものである。\par\smallskip
+\begin{longtable}{>{\raggedright\arraybackslash}p{0.23\textwidth}>{\raggedright\arraybackslash}p{0.70\textwidth}}
+\toprule
+属性 & 意味 \\
+\midrule
+\endfirsthead
+\toprule
+属性 & 意味 \\
+\midrule
+\endhead
+正しさ & 想定された入力に対して要求された出力を返す。 \\
+堅ろう性 & 異常入力や境界条件でも破綻しにくい。 \\
+効率 & 必要な時間と記憶領域が少ない。 \\
+単純性 & 仕組みを説明しやすく、誤実装しにくい。 \\
+保守性 & 後から変更しやすい。 \\
+拡張性 & 新しい条件や規模の増加に対応しやすい。 \\
+\bottomrule
+\end{longtable}
+
+\subsubsection{アルゴリズムの計算量}
+
+計算量は、入力の大きさが増えたときに、処理時間や記憶領域の使用量がどのように増えるかを表す。実行時間そのものはハードウェアや実装にも左右されるため、通常は入力サイズ n に対する増え方で比較する。
+
+\subsubsection{計算量の測定}
+
+\par\smallskip\noindent\refstepcounter{table}\label{tab:ch16-09}表 \thetable: 計算量の測定における記法・意味・初学者向けの理解\par\smallskip
+表 \thetable は、計算量の測定における記法・意味・初学者向けの理解を比較・確認しやすい形で整理したものである。\par\smallskip
+\begin{longtable}{>{\raggedright\arraybackslash}p{0.19\textwidth}>{\raggedright\arraybackslash}p{0.38\textwidth}>{\raggedright\arraybackslash}p{0.38\textwidth}}
+\toprule
+記法 & 意味 & 初学者向けの理解 \\
+\midrule
+\endfirsthead
+\toprule
+記法 & 意味 & 初学者向けの理解 \\
+\midrule
+\endhead
+大O記法 & 最悪の場合の上限を表す。 & これ以上には増えにくい、という粗い上限である。 \\
+小o記法 & 厳密ではない上限を表す。 & 上限ではあるが、ぴったりではない。 \\
+大Ω記法 & 最良の場合の下限を表す。 & 少なくともこれくらいは必要、という下限である。 \\
+小ω記法 & 厳密ではない下限を表す。 & ゆるい意味での下限である。 \\
+Θ記法 & 上限と下限が同程度であることを表す。 & 平均的または代表的な増え方の把握に使いやすい。 \\
+\bottomrule
+\end{longtable}
+
+\par\smallskip\noindent\refstepcounter{table}\label{tab:ch16-10}表 \thetable: 計算量の測定における増え方・記法例・意味\par\smallskip
+表 \thetable は、計算量の測定における増え方・記法例・意味を比較・確認しやすい形で整理したものである。\par\smallskip
+\begin{longtable}{>{\raggedright\arraybackslash}p{0.21\textwidth}>{\raggedright\arraybackslash}p{0.23\textwidth}>{\raggedright\arraybackslash}p{0.50\textwidth}}
+\toprule
+増え方 & 記法例 & 意味 \\
+\midrule
+\endfirsthead
+\toprule
+増え方 & 記法例 & 意味 \\
+\midrule
+\endhead
+定数 & O(1) & 入力が増えても手順数がほぼ一定である。 \\
+線形 & O(n) & 入力の大きさに比例して増える。 \\
+二乗 & O(n\textasciicircum{}2) & 入力が倍になると処理が約4倍になる。 \\
+三乗 & O(n\textasciicircum{}3) & 三重ループなどで現れやすい。 \\
+指数 & O(2\textasciicircum{}n), O(n!) & 入力が少し増えるだけで急増する。 \\
+対数 & O(log n), O(n log n) & 二分探索や効率的なソートで現れる。 \\
+\bottomrule
+\end{longtable}
+
+\par\smallskip
+\begin{center}
+\centering
+\IfFileExists{assets/generated_figures/ch16/fig-ch16-06.png}{\includegraphics[width=0.96\linewidth]{assets/generated_figures/ch16/fig-ch16-06.png}}{\fbox{\parbox[c][48mm][c]{0.9\linewidth}{\centering 画像生成待ち\\計算量の増え方を比較するグラフ}}}
+\par\smallskip
+\refstepcounter{figure}\label{fig:ch16-06}図 \thefigure: 計算量の増え方を比較するグラフ
+\end{center}
+図 \thefigure は、計算量の増え方を比較するグラフを視覚的に整理したものである。
+\par\smallskip
+
+\subsubsection{アルゴリズム設計}
+
+アルゴリズムを選ぶときは、対象アプリケーションの目的と性能要求を考える。逐次処理か並列処理か、単一スレッドか複数スレッドか、暗号やグラフ処理のような専門領域かによって、適切な方法は変わる。代表的な設計法には、総当たり、再帰、分割統治、動的計画法、貪欲法、バックトラック、乱択法がある。
+
+\begin{pointbox}{設計の観点}
+良いアルゴリズム設計とは、速い手順を選ぶことだけではない。データ構造、入力の性質、実装のしやすさ、メモリ制約、失敗時の影響、保守担当者の理解しやすさを同時に考えることである。
+
+\end{pointbox}
+
+\subsubsection{ソート技法}
+
+ソートは、データ項目を特定の順序に並べる処理である。代表的なソートには、バブルソート、クイックソート、マージソート、ヒープソート、基数ソート、バケットソート、木ソートなどがある。どのソートがよいかは、データの大きさ、すでにどの程度並んでいるか、メモリ制約、安定性の必要性によって変わる。
+
+\subsubsection{探索技法}
+
+探索は、データ集合の中から目的の項目を見つける処理である。線形探索は先頭から順番に調べる。二分探索は整列済みデータを半分ずつ絞る。木探索やハッシュ探索は、データ構造を工夫して高速化する。探索方法は、データが整列されているか、更新が多いか、メモリをどれだけ使えるかによって選ぶ。
+
+\subsubsection{ハッシュ}
+
+ハッシュは、任意の大きさのデータから固定長の値を作り、その値を使って表の位置を決める技法である。関数をハッシュ関数、得られる値をハッシュ値またはハッシュキーと呼ぶ。辞書、集合、キャッシュ、データベース索引、暗号処理で広く使われる。
+
+ハッシュでは衝突、つまり異なる入力が同じハッシュ値になる問題が避けられない。線形探索法、二次探索法、別鎖法、開番地法などの衝突解決技法を理解する必要がある。暗号用途では、通常の高速なハッシュ関数ではなく、暗号学的性質を持つハッシュ関数を使う。
+
+\par\smallskip
+\begin{center}
+\centering
+\IfFileExists{assets/generated_figures/ch16/fig-ch16-07.png}{\includegraphics[width=0.96\linewidth]{assets/generated_figures/ch16/fig-ch16-07.png}}{\fbox{\parbox[c][48mm][c]{0.9\linewidth}{\centering 画像生成待ち\\ソート・探索・ハッシュの使い分け図}}}
+\par\smallskip
+\refstepcounter{figure}\label{fig:ch16-07}図 \thefigure: ソート・探索・ハッシュの使い分け図
+\end{center}
+図 \thefigure は、ソート・探索・ハッシュの使い分け図を視覚的に整理したものである。
+\par\smallskip

@@ -1,0 +1,60 @@
+name: Build master PDF
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - ".github/workflows/build-pdf.yml"
+      - "AGENTS.md"
+      - "tex/**"
+      - "work/**"
+  pull_request:
+    paths:
+      - ".github/workflows/build-pdf.yml"
+      - "AGENTS.md"
+      - "tex/**"
+      - "work/**"
+  workflow_dispatch:
+
+jobs:
+  build-pdf:
+    name: Build SWEBOK Japanese master PDF
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install TeX dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends \
+            ghostscript \
+            poppler-utils \
+            texlive-fonts-recommended \
+            texlive-lang-japanese \
+            texlive-latex-extra \
+            texlive-latex-recommended \
+            texlive-luatex \
+            texlive-pictures
+
+      - name: Generate integrated TeX
+        run: python3 tex/build_integrated_document.py
+
+      - name: Generate missing figure assets
+        run: python3 tex/generate_missing_figure_assets.py
+
+      - name: Build PDF
+        working-directory: tex
+        run: |
+          export TEXMFVAR="$PWD/.texmf-var"
+          lualatex -interaction=nonstopmode -halt-on-error swebok_v4_ch01_18_ja_master.tex
+          lualatex -interaction=nonstopmode -halt-on-error swebok_v4_ch01_18_ja_master.tex
+
+      - name: Upload PDF artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: swebok-v4-ch01-18-ja-master-pdf
+          path: tex/swebok_v4_ch01_18_ja_master.pdf
+          if-no-files-found: error

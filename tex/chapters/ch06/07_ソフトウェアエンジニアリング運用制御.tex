@@ -10,7 +10,7 @@
 
 \subsubsection{変更管理}
 
-変更管理とは、すべての変更を評価、承認、実装、レビューされた状態で行うためのプロセスである。変更要求は記録され、緊急、至急、重大、軽微などに分類される。変更管理では、変更のリスク、ロールバック戦略の必要性、関係者への通知、変更スケジュールを扱う。
+\term{変更管理}{Change Management}とは、すべての変更を評価、承認、実装、レビューされた状態で行うためのプロセスである。変更要求は記録され、緊急、至急、重大、軽微などに分類される。変更管理では、変更のリスク、ロールバック戦略の必要性、関係者への通知、変更スケジュールを扱う。
 
 従来型の開発では、多くの変更をまとめて定期リリースとして提供することが多かった。DevOpsでは、小さな変更単位を独立に、必要に応じて届けることを目指す。そのためには、ソフトウェアが小さく独立した配備に向くように設計されている必要がある。
 
@@ -18,7 +18,8 @@
 
 運用では、容量、継続性、可用性を監視する。DevOpsの考え方では、希望的観測に頼ってはならない。システム品質と運用状態を、証拠に基づいて判断する必要がある。
 
-\par\smallskip\noindent\refstepcounter{table}\label{tab:ch06-07}\textbf{表 \thetable: 第06章 ソフトウェアエンジニアリング運用 表07}\par\smallskip
+\par\smallskip\noindent\refstepcounter{table}\label{tab:ch06-07}表 \thetable: 監視、測定、追跡、レビューにおける測定対象・意味\par\smallskip
+表 \thetable は、監視、測定、追跡、レビューにおける測定対象・意味を比較・確認しやすい形で整理したものである。\par\smallskip
 \begin{longtable}{L{55mm}L{95mm}}
 \toprule
 測定対象 & 意味 \\
@@ -33,12 +34,15 @@
 \bottomrule
 \end{longtable}
 
-\begin{figure}[htbp]
+\par\smallskip
+\begin{center}
 \centering
 \IfFileExists{assets/generated_figures/ch06/fig-ch06-09.png}{\includegraphics[width=0.96\linewidth]{assets/generated_figures/ch06/fig-ch06-09.png}}{\fbox{\parbox[c][48mm][c]{0.9\linewidth}{\centering 画像生成待ち\\監視とテレメトリのデータ層}}}
-\caption{監視とテレメトリのデータ層}
-\label{fig:ch06-09}
-\end{figure}
+\par\smallskip
+\refstepcounter{figure}\label{fig:ch06-09}図 \thefigure: 監視とテレメトリのデータ層
+\end{center}
+図 \thefigure は、監視とテレメトリのデータ層を視覚的に整理したものである。
+\par\smallskip
 
 \subsubsection{運用支援}
 
@@ -52,9 +56,12 @@
 
 典型的な報告項目には、サービス水準目標に対する性能、セキュリティ侵害、トランザクション量、資源使用量、インシデントと失敗、傾向情報、満足度分析がある。測定を自動化し、収集、分析、報告、制御を調整できる枠組みとツールを選定することが重要である。
 
-\begin{figure}[htbp]
+\par\smallskip
+\begin{center}
 \centering
 \IfFileExists{assets/generated_figures/ch06/fig-ch06-10.png}{\includegraphics[width=0.96\linewidth]{assets/generated_figures/ch06/fig-ch06-10.png}}{\fbox{\parbox[c][48mm][c]{0.9\linewidth}{\centering 画像生成待ち\\インシデント・問題・変更管理の関係}}}
-\caption{インシデント・問題・変更管理の関係}
-\label{fig:ch06-10}
-\end{figure}
+\par\smallskip
+\refstepcounter{figure}\label{fig:ch06-10}図 \thefigure: インシデント・問題・変更管理の関係
+\end{center}
+図 \thefigure は、インシデント・問題・変更管理の関係を視覚的に整理したものである。
+\par\smallskip

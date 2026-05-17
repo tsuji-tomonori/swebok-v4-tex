@@ -1,0 +1,127 @@
+\subsection{ソフトウェア品質保証プロセス}
+\term{ソフトウェア品質保証}{Software Quality Assurance, SQA}は、ソフトウェアプロセスが適切であり、意図された用途に適した品質のソフトウェア製品を生み出せるという信頼を確立するための活動である。
+
+SQA は単なるテストではない。テストは重要だが、品質保証は、品質目標、プロセス、作業成果物、レビュー、監査、構成管理、測定、報告、是正処置を含む。特に重要システムでは、SQA 機能は技術的、管理的、財務的な圧力から独立していることが望まれる。
+
+\par\smallskip
+\begin{center}
+\centering
+\IfFileExists{assets/generated_figures/ch12/fig-ch12-10.png}{\includegraphics[width=0.96\linewidth]{assets/generated_figures/ch12/fig-ch12-10.png}}{\fbox{\parbox[c][48mm][c]{0.9\linewidth}{\centering 画像生成待ち\\SQA が「テストだけではない」ことを示す図}}}
+\par\smallskip
+\refstepcounter{figure}\label{fig:ch12-10}図 \thefigure: SQA が「テストだけではない」ことを示す図
+\end{center}
+図 \thefigure は、SQA が「テストだけではない」ことを示す図を視覚的に整理したものである。
+\par\smallskip
+
+\subsubsection{品質保証の準備}
+\term{ソフトウェア品質計画}{software quality plan}または\term{ソフトウェア品質保証計画}{Software Quality Assurance Plan, SQAP}は、特定の製品について、要求、利用者ニーズ、費用、納期、リスクに見合う品質を確保するための活動とタスクを定義する。
+
+SQAP には、品質目標、品質活動、費用、資源、目的、スケジュール、参照する文書・標準・慣行・規約、測定値、統計的技法、問題報告と是正処置、ツール、技法、方法論、物理媒体のセキュリティ、教育、SQA 報告、文書化などが含まれる。
+
+SQAP は、供給者ソフトウェアの調達、市販ソフトウェアの導入、納品後サービス、受け入れ基準なども扱うことがある。また、ソフトウェア構成管理計画と矛盾してはならない。構成管理、テスト、監査は相互補完的な活動である。
+
+\par\smallskip
+\begin{center}
+\centering
+\IfFileExists{assets/generated_figures/ch12/fig-ch12-11.png}{\includegraphics[width=0.96\linewidth]{assets/generated_figures/ch12/fig-ch12-11.png}}{\fbox{\parbox[c][48mm][c]{0.9\linewidth}{\centering 画像生成待ち\\SQAP の構成要素図}}}
+\par\smallskip
+\refstepcounter{figure}\label{fig:ch12-11}図 \thefigure: SQAP の構成要素図
+\end{center}
+図 \thefigure は、SQAP の構成要素図を視覚的に整理したものである。
+\par\smallskip
+
+\subsubsection{プロセス保証の実施}
+プロセス保証は、開発や保守のプロセスが、必要な品質の成果物を生み出すように定義され、実施され、記録されているかを確認する活動である。プロセス品質は最終製品品質に直接影響する。
+
+プロセス保証では、組織の方針、プロセス、手順、役割、責任が明確であるかを見る。ライフサイクル活動の各節目で、文書レビュー、コードレビュー、V\&V、テスト、監査などの品質保証活動を計画し、実行し、記録する。
+
+ソフトウェア構成管理もプロセス保証に関わる。構成項目の識別、変更管理、変更状態の記録、要求への適合確認を通じて、作業成果物とソフトウェアの品質を守る。
+
+\subsubsection{製品保証の実施}
+製品保証では、作るべきソフトウェアの本当の目的を確認する。利害関係者要求、機能要求、品質要求を正しく把握し、品質目標を測定可能な形で定義する必要がある。
+
+ISO/IEC 25010 の品質モデルでは、ソフトウェア製品品質に関する代表的な特性として、機能適合性、性能効率性、互換性、使用性、信頼性、セキュリティ、保守性、移植性が扱われる。これらは単独で最適化できるとは限らない。たとえば、データ暗号化でセキュリティを高めると、性能に影響する場合がある。
+
+製品保証の対象は、最終製品だけではない。要求仕様、設計記述、ソースコード、テスト文書、テスト報告書などの\term{作業成果物}{work product}も対象である。中間成果物の欠陥を早く見つけることで、後工程の大きな手戻りを防ぐ。
+
+\par\smallskip
+\begin{center}
+\centering
+\IfFileExists{assets/generated_figures/ch12/fig-ch12-12.png}{\includegraphics[width=0.96\linewidth]{assets/generated_figures/ch12/fig-ch12-12.png}}{\fbox{\parbox[c][48mm][c]{0.9\linewidth}{\centering 画像生成待ち\\プロセス保証と製品保証の違いを示す図}}}
+\par\smallskip
+\refstepcounter{figure}\label{fig:ch12-12}図 \thefigure: プロセス保証と製品保証の違いを示す図
+\end{center}
+図 \thefigure は、プロセス保証と製品保証の違いを示す図を視覚的に整理したものである。
+\par\smallskip
+
+\subsubsection{V\&V とテスト}
+検証は、「正しく作っているか」を確認する活動である。あるライフサイクル段階の出力が、その段階の開始時に課された条件を満たしているかを見る。
+
+妥当性確認は、「正しいものを作っているか」を確認する活動である。ソフトウェアが意図された利用目的や利用者ニーズを満たすかを見る。
+
+V\&V の目的は、ライフサイクル全体を通じて品質を作り込むことである。テストは V\&V に含まれる重要な活動である。しかし、多くの場合、テストだけでは「意図した用途に適している」という十分な信頼を確立できない。要求が正確、完全、一貫、テスト可能であるかを早期に評価する必要がある。
+
+重要システムでは、\term{独立検証妥当性確認}{Independent Verification and Validation, IV\&V}が行われることがある。これは、開発組織から技術的、管理的、財務的に独立した組織が V\&V を行うことである。
+
+\paragraph{静的解析技法}
+\term{静的解析}{static analysis}は、ソフトウェアを実行せずに、要求、インタフェース仕様、設計、モデル、ソースコードなどの内容や構造を調べる技法である。コードリーディング、ピアレビュー、制御フローの静的解析、静的解析ツールによる検査などが含まれる。
+
+実行されないコードは、動的テストでは直接確認できない。したがって、静的解析は、到達不能コード、構造的な問題、規約違反、潜在的な脆弱性を発見するうえで重要である。
+
+\paragraph{動的解析技法}
+\term{動的解析}{dynamic analysis}は、ソフトウェアを実行またはシミュレーションして、誤りや欠陥を探す技法である。多くのテスト技法は動的解析である。ブラックボックステストでは、入力を与え、その出力を分析して要求への適合を判断する。
+
+シミュレーション、モデル解析、モデル検査も、対象を実行・探索する意味で動的解析に含まれることがある。
+
+\paragraph{形式的解析技法}
+\term{形式的解析}{formal analysis}は、数学的に定義されたモデルや仕様を用いて、誤りや不整合を探す方法である。安全性やセキュリティのように、特定性質を強く保証したい場合に使われることが多い。
+
+形式的解析は強力だが、専門知識とコストが必要である。したがって、全体に一律適用するのではなく、リスクの高い部分や完全性レベルの高い機能に重点的に使うのが現実的である。
+
+\paragraph{品質制御とテスト}
+\term{ソフトウェア品質制御}{Software Quality Control, SQC}は、プロジェクト成果物の品質を測定、評価、報告する活動である。テストは代表的な品質制御活動であり、開発成果物が入力要求を満たしていることを確認する検証活動の一部である。
+
+品質活動では、テストレベル、テスト技法、測定、ツール、完了基準を計画する必要がある。重要システムでは、開発チームから独立した評価や、目標環境での適格性確認が求められることがある。
+
+\paragraph{技術レビューと監査}
+レビューは、作業成果物の欠陥を早期に見つけるために有効である。コードが書かれたあとに欠陥を直すより、要求や設計段階で見つける方が安い。\term{ピアレビュー}{peer review}は、作業成果物を同僚が確認し、欠陥を除去するための活動である。近年の開発では、プルリクエストを使ったコードレビューがその一例である。
+
+レビューには、目的、独立性、技法、役割、対象によってさまざまな種類がある。
+
+
+\noindent\par\smallskip\noindent\refstepcounter{table}\label{tab:ch12-04}表 \thetable: 技術レビューと監査の整理\par\smallskip
+表 \thetable は、技術レビューと監査の整理を比較・確認しやすい形で整理したものである。\par\smallskip
+\begin{tabularx}{\textwidth}{L{0.25\textwidth}Y}
+\toprule
+レビュー種類 & 説明 \\
+\midrule
+アドホックレビュー & 構造化されておらず、レビュー担当者ができるだけ多くの欠陥を見つける。 \\
+チェックリストベースレビュー & チェックリストに基づいて系統的に問題を探す。 \\
+シナリオベースレビュー & 特定の読み方やシナリオに沿って成果物を確認する。 \\
+観点ベースレビュー & セキュリティ、保守、利用者など特定の技術観点から確認する。 \\
+役割ベースレビュー & 利害関係者の役割を想定して確認する。 \\
+\bottomrule
+\end{tabularx}
+
+
+監査は、レビューより形式性が高く、独立性を確保するために第三者が行うことが多い。技術レビューや監査は、プロジェクト計画に組み込み、承認され、実施され、記録されるべきである。
+
+\par\smallskip
+\begin{center}
+\centering
+\IfFileExists{assets/generated_figures/ch12/fig-ch12-13.png}{\includegraphics[width=0.96\linewidth]{assets/generated_figures/ch12/fig-ch12-13.png}}{\fbox{\parbox[c][48mm][c]{0.9\linewidth}{\centering 画像生成待ち\\静的解析・動的解析・形式的解析の比較図}}}
+\par\smallskip
+\refstepcounter{figure}\label{fig:ch12-13}図 \thefigure: 静的解析・動的解析・形式的解析の比較図
+\end{center}
+図 \thefigure は、静的解析・動的解析・形式的解析の比較図を視覚的に整理したものである。
+\par\smallskip
+
+\par\smallskip
+\begin{center}
+\centering
+\IfFileExists{assets/generated_figures/ch12/fig-ch12-14.png}{\includegraphics[width=0.96\linewidth]{assets/generated_figures/ch12/fig-ch12-14.png}}{\fbox{\parbox[c][48mm][c]{0.9\linewidth}{\centering 画像生成待ち\\レビューと監査の厳密さのスペクトラム図}}}
+\par\smallskip
+\refstepcounter{figure}\label{fig:ch12-14}図 \thefigure: レビューと監査の厳密さのスペクトラム図
+\end{center}
+図 \thefigure は、レビューと監査の厳密さのスペクトラム図を視覚的に整理したものである。
+\par\smallskip

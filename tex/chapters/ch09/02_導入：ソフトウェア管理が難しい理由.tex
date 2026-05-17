@@ -1,0 +1,45 @@
+\subsection{導入：ソフトウェア管理が難しい理由}
+ソフトウェアエンジニアリング管理は、ソフトウェア製品とソフトウェアエンジニアリングサービスを、効率的かつ効果的に、利害関係者の利益に合うように届けるための作業活動の集合である。活動には、計画、見積り、測定、制御、調整、指導、リスク管理が含まれる。
+
+ソフトウェアプロジェクトは、橋や機械装置のような物理的対象のプロジェクトと似ている部分を持つ。しかし、ソフトウェアには独自性がある。ソフトウェアは無形であり、アルゴリズムやデータ構造として表される。また、変更しやすい。ただし、変更しやすいからといって、望む効果を正しく得ることが簡単という意味ではない。むしろ、変更が容易に見えるため、要求変更や手戻りが頻発しやすい。
+
+\subsubsection{ソフトウェアプロジェクトを複雑にする典型要因}
+\begin{itemize}[leftmargin=2em]
+  \item 顧客は、何が必要か、何が実現可能かを最初から明確に知らないことが多い。
+  \item 理解が進むほど、新しい要求や変更要求が生じる。
+  \item 顧客は、要求変更が設計、実装、テスト、日程、費用に及ぼす影響を過小評価しやすい。
+  \item ソフトウェアは可鍛性が高いため、線形工程よりも反復的に構築されることが多い。
+  \item ソフトウェアは一度納品して終わりではなく、長期に支援され、継続的に改善される能力である。
+  \item ソフトウェア構築では、実装中にも設計判断が行われる。物理製品のように、製造前に設計を完全に固定しにくい。
+  \item 創造性と規律の両方が必要であり、この均衡を取ることが難しい。
+  \item 技術の変化が速く、開発者の知識更新、ツール選定、保守戦略に影響する。
+  \item 長さや重量のような物理的単位をそのまま使えないため、見積り、監視、制御が難しい。
+  \item 速度とサイクル時間が重要であり、事業やミッションの要求に合わせて継続的に能力を届ける必要がある。
+\end{itemize}
+\subsubsection{三つの管理レベル}
+\par\smallskip\noindent\refstepcounter{table}\label{tab:ch09-02}表 \thetable: 三つの管理レベルにおける管理レベル・何を扱うか・実務で見ること\par\smallskip
+表 \thetable は、三つの管理レベルにおける管理レベル・何を扱うか・実務で見ることを比較・確認しやすい形で整理したものである。\par\smallskip
+\begin{longtable}{>{\raggedright\arraybackslash}p{0.25\linewidth}>{\raggedright\arraybackslash}p{0.35\linewidth}>{\raggedright\arraybackslash}p{0.35\linewidth}}
+\toprule
+管理レベル & 何を扱うか & 実務で見ること \\
+\midrule
+\endfirsthead
+\toprule
+管理レベル & 何を扱うか & 実務で見ること \\
+\midrule
+\endhead
+組織・基盤管理 & 組織方針、人材育成、標準、ツール基盤、再利用戦略、ポートフォリオを扱う。 & 組織標準、採用・育成方針、共通ツール、過去データ、再利用資産。 \\
+プロジェクト管理 & 個別プロジェクトの範囲、日程、費用、品質、資源、リスク、供給者を扱う。 & プロジェクト憲章、計画、WBS、見積り、リスク登録簿、進捗報告。 \\
+測定プログラム管理 & 測定要求、データ収集、分析、報告、改善を扱う。 & 測定計画、測定量、ダッシュボード、情報製品、改善記録。 \\
+\bottomrule
+\end{longtable}
+
+\par\smallskip
+\begin{center}
+\centering
+\IfFileExists{assets/generated_figures/ch09/fig-ch09-02.png}{\includegraphics[width=0.96\linewidth]{assets/generated_figures/ch09/fig-ch09-02.png}}{\fbox{\parbox[c][48mm][c]{0.9\linewidth}{\centering 画像生成待ち\\ソフトウェア管理が難しい理由の因果図}}}
+\par\smallskip
+\refstepcounter{figure}\label{fig:ch09-02}図 \thefigure: ソフトウェア管理が難しい理由の因果図
+\end{center}
+図 \thefigure は、ソフトウェア管理が難しい理由の因果図を視覚的に整理したものである。
+\par\smallskip

@@ -1,0 +1,156 @@
+\subsection{データベース管理}
+
+データベースは、関連するデータ要素を整理して保存し、一つ以上のアプリケーションが高速かつ容易にアクセスできるようにした集合である。データ項目同士の関係はスキーマによって定義される。ソフトウェア技術者は、データ量、アクセス頻度、一貫性、可用性、キー、データモデル、保存モデル、利用者数を考え、適切なデータベースを選ぶ必要がある。
+
+データベースには、関係データベース、NoSQL、列指向、オブジェクト指向、キー値、文書、階層、グラフ、時系列、ネットワーク型などがある。どれが最適かは、データの形、問い合わせ、更新頻度、一貫性要求によって変わる。
+
+\subsubsection{スキーマ}
+
+スキーマは、データ項目、テーブル、関係、索引、関数、手続き、ビュー、整合性規則を表す構造である。物理スキーマはファイルや保存構成の設計を説明し、論理スキーマはテーブルや関係の定義を説明する。
+
+\par\smallskip\noindent\refstepcounter{table}\label{tab:ch16-17}表 \thetable: スキーマにおけるキー・意味\par\smallskip
+表 \thetable は、スキーマにおけるキー・意味を比較・確認しやすい形で整理したものである。\par\smallskip
+\begin{longtable}{>{\raggedright\arraybackslash}p{0.23\textwidth}>{\raggedright\arraybackslash}p{0.70\textwidth}}
+\toprule
+キー & 意味 \\
+\midrule
+\endfirsthead
+\toprule
+キー & 意味 \\
+\midrule
+\endhead
+主キー & 行を一意に識別するためのキーである。 \\
+代替キー & 主キー以外で一意性を持つ候補である。 \\
+外部キー & 別の表の主キーなどを参照し、表同士を関連付ける。 \\
+複合キー & 複数の列を組み合わせて一意性を作る。 \\
+代理キー & 業務上の意味とは別に、システムが付与する識別子である。 \\
+候補キー & 主キーになり得る一意な列または列集合である。 \\
+\bottomrule
+\end{longtable}
+
+\par\smallskip
+\begin{center}
+\centering
+\IfFileExists{assets/generated_figures/ch16/fig-ch16-12.png}{\includegraphics[width=0.96\linewidth]{assets/generated_figures/ch16/fig-ch16-12.png}}{\fbox{\parbox[c][48mm][c]{0.9\linewidth}{\centering 画像生成待ち\\スキーマとキーの関係図}}}
+\par\smallskip
+\refstepcounter{figure}\label{fig:ch16-12}図 \thefigure: スキーマとキーの関係図
+\end{center}
+図 \thefigure は、スキーマとキーの関係図を視覚的に整理したものである。
+\par\smallskip
+
+\subsubsection{データモデルと保存モデル}
+
+データモデルは、データ構造の論理面を表す。保存モデルは、データ構造の物理面を表す。データベースでは、高い一貫性と高い可用性を同時に達成することが難しい場合がある。
+
+\par\smallskip\noindent\refstepcounter{table}\label{tab:ch16-18}表 \thetable: データモデルと保存モデルにおけるモデル・正式名・特徴\par\smallskip
+表 \thetable は、データモデルと保存モデルにおけるモデル・正式名・特徴を比較・確認しやすい形で整理したものである。\par\smallskip
+\begin{longtable}{>{\raggedright\arraybackslash}p{0.16\textwidth}>{\raggedright\arraybackslash}p{0.26\textwidth}>{\raggedright\arraybackslash}p{0.33\textwidth}>{\raggedright\arraybackslash}p{0.19\textwidth}}
+\toprule
+モデル & 正式名 & 特徴 & 向く用途 \\
+\midrule
+\endfirsthead
+\toprule
+モデル & 正式名 & 特徴 & 向く用途 \\
+\midrule
+\endhead
+ACID & 原子性、一貫性、分離性、永続性 & トランザクションを厳密に扱い、一貫性を重視する。 & 金融、在庫、決済など。 \\
+BASE & 基本的可用性、ソフト状態、結果整合性 & 柔軟で可用性を重視し、最終的な整合を受け入れる。 & 大規模分散、NoSQL、ログ、SNS系データなど。 \\
+\bottomrule
+\end{longtable}
+
+\par\smallskip\noindent\refstepcounter{table}\label{tab:ch16-19}表 \thetable: データモデルと保存モデルにおける保存モデル・説明\par\smallskip
+表 \thetable は、データモデルと保存モデルにおける保存モデル・説明を比較・確認しやすい形で整理したものである。\par\smallskip
+\begin{longtable}{>{\raggedright\arraybackslash}p{0.28\textwidth}>{\raggedright\arraybackslash}p{0.66\textwidth}}
+\toprule
+保存モデル & 説明 \\
+\midrule
+\endfirsthead
+\toprule
+保存モデル & 説明 \\
+\midrule
+\endhead
+直接接続記憶 & 記憶装置が処理するコンピュータに直接接続される。 \\
+ネットワーク接続記憶 & ネットワーク上の記憶装置に複数のコンピュータがアクセスする。 \\
+記憶領域ネットワーク & 複数サーバの記憶資源をネットワーク経由で効率よく提供する。 \\
+\bottomrule
+\end{longtable}
+
+\subsubsection{データベース管理システム}
+
+データベース管理システム（DBMS）は、データの保存、検索、保護、権限管理、同時アクセス、整合性維持を支援するソフトウェアである。代表的な構成要素には、データベースエンジン、データベースマネージャ、実行時データベースマネージャ、データベース言語、問い合わせ処理器、報告機能がある。
+
+\par\smallskip\noindent\refstepcounter{table}\label{tab:ch16-20}表 \thetable: データベース管理システムにおける構成要素・役割\par\smallskip
+表 \thetable は、データベース管理システムにおける構成要素・役割を比較・確認しやすい形で整理したものである。\par\smallskip
+\begin{longtable}{>{\raggedright\arraybackslash}p{0.30\textwidth}>{\raggedright\arraybackslash}p{0.64\textwidth}}
+\toprule
+構成要素 & 役割 \\
+\midrule
+\endfirsthead
+\toprule
+構成要素 & 役割 \\
+\midrule
+\endhead
+データベースエンジン & データの保存と検索の中核を担う。 \\
+データベースマネージャ & 作成、削除、バックアップ、保守、更新などの機能を提供する。 \\
+実行時データベースマネージャ & 認証、権限、同時アクセス、整合性を実行時に管理する。 \\
+データベース言語 & 定義、操作、アクセス制御、トランザクション制御を記述する。 \\
+問い合わせ処理器 & 利用者の問い合わせを解釈し、効率よく実行する。 \\
+報告機能 & 条件に合うデータを抽出し、指定形式で提示する。 \\
+\bottomrule
+\end{longtable}
+
+\subsubsection{関係データベース管理システムと正規化}
+
+関係データベース管理システム（RDBMS）は、データを表として格納し、表同士の関係を扱う。従来の単純なファイル管理に比べ、冗長性、一貫性、同時アクセス、検索、権限管理で利点がある。
+
+正規化は、データの冗長性や不整合を減らすために表を整理する過程である。正規化により表の数が増え、問い合わせ時間が増える場合もある。その場合は、要求に応じてあえて冗長性を戻す非正規化を行うことがある。
+
+\par\smallskip\noindent\refstepcounter{table}\label{tab:ch16-21}表 \thetable: 関係データベース管理システムと正規化における正規形・要点\par\smallskip
+表 \thetable は、関係データベース管理システムと正規化における正規形・要点を比較・確認しやすい形で整理したものである。\par\smallskip
+\begin{longtable}{>{\raggedright\arraybackslash}p{0.28\textwidth}>{\raggedright\arraybackslash}p{0.66\textwidth}}
+\toprule
+正規形 & 要点 \\
+\midrule
+\endfirsthead
+\toprule
+正規形 & 要点 \\
+\midrule
+\endhead
+第1正規形 & 各セルが単一値を持ち、重複を減らす。 \\
+第2正規形 & 第1正規形を満たし、部分関数従属性をなくす。 \\
+第3正規形 & 第2正規形を満たし、推移的従属性をなくす。 \\
+ボイス・コッド正規形 & 第3正規形を強め、決定項がスーパーキーであることを求める。 \\
+第4正規形 & 多値従属性を排除する。 \\
+第5正規形 & 情報を失わずにさらに分解できない状態を目指す。 \\
+第6正規形・ドメインキー正規形 & 結合従属性やドメイン制約をより厳密に扱う。 \\
+\bottomrule
+\end{longtable}
+
+\par\smallskip
+\begin{center}
+\centering
+\IfFileExists{assets/generated_figures/ch16/fig-ch16-13.png}{\includegraphics[width=0.96\linewidth]{assets/generated_figures/ch16/fig-ch16-13.png}}{\fbox{\parbox[c][48mm][c]{0.9\linewidth}{\centering 画像生成待ち\\正規化で表が分かれる様子}}}
+\par\smallskip
+\refstepcounter{figure}\label{fig:ch16-13}図 \thefigure: 正規化で表が分かれる様子
+\end{center}
+図 \thefigure は、正規化で表が分かれる様子を視覚的に整理したものである。
+\par\smallskip
+
+\subsubsection{構造化問い合わせ言語}
+
+構造化問い合わせ言語（SQL）は、データベースの作成、更新、削除、検索に用いられる標準的な言語である。句、式、述語、問い合わせ、文などの構成要素を持ち、表の作成、ビューの作成、検索、集計、更新、削除、権限管理を行う。
+
+SQL は標準化されているが、各データベース製品が持つ関数や細部の構文は異なる。実務では、静的SQL、埋め込みSQL、動的SQL、単純ビュー、複雑ビューを使い分ける必要がある。
+
+\subsubsection{データマイニングとデータウェアハウス}
+
+データウェアハウスは、複数のデータベースからデータを抽出し、分析しやすい共通の場所へ蓄積する仕組みである。データマイニングは、その蓄積データからパターンや知見を抽出する。関連分析、クラスタリング、分類、系列パターン、予測などが代表的な技法である。
+
+\subsubsection{データベースのバックアップと回復}
+
+データベースは故障や破損の影響を受ける。トランザクション更新では、コミット、取り消し、遅延更新、即時更新、キャッシュ、シャドウページングなどを考慮する。バックアップには、全体バックアップ、差分バックアップ、トランザクションログバックアップがある。
+
+\begin{pointbox}{実務での注意}
+データベース設計では、正規化だけを目的にしない。一貫性、性能、更新頻度、可用性、監査、障害回復、利用者権限を含めて判断する必要がある。
+
+\end{pointbox}

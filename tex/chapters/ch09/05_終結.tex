@@ -1,0 +1,83 @@
+\subsection{終結}
+\term{終結}{Closure}は、プロジェクト全体、主要フェーズ、または反復サイクルが完了し、完了基準が満たされたことを確認する活動である。終結後には、アーカイブ、ふりかえり、プロセス改善を行う。
+
+\subsubsection{終結判定}
+終結は、指定されたタスクが完了し、完了基準の満足が確認されたときに起こる。ソフトウェア要求が満たされたかどうか、目標達成の程度はどの程度かを判定する。
+
+終結プロセスには、関連する利害関係者を含める。受け入れを文書化し、既知の問題を記録する。未解決の問題を隠して終結すると、運用・保守で重大な混乱を生む。
+
+\subsubsection{終結活動}
+終結が確認されたら、プロジェクト資料を、合意された方法、保管場所、保管期間に従って保存する。機密情報、ソフトウェア、記録媒体の破棄が必要な場合もある。
+
+組織の測定データベースには、関連するプロジェクトデータを追加する。さらに、プロジェクト、フェーズ、反復のふりかえりを行い、遭遇した問題、リスク、機会を分析する。教訓は、組織の学習と改善に接続する。
+
+\par\smallskip
+\begin{center}
+\centering
+\IfFileExists{assets/generated_figures/ch09/fig-ch09-07.png}{\includegraphics[width=0.96\linewidth]{assets/generated_figures/ch09/fig-ch09-07.png}}{\fbox{\parbox[c][48mm][c]{0.9\linewidth}{\centering 画像生成待ち\\情報ニーズから情報製品までの測定モデル}}}
+\par\smallskip
+\refstepcounter{figure}\label{fig:ch09-07}図 \thefigure: 情報ニーズから情報製品までの測定モデル
+\end{center}
+図 \thefigure は、情報ニーズから情報製品までの測定モデルを視覚的に整理したものである。
+\par\smallskip
+
+\subsubsection{測定コミットメントの確立と維持}
+測定を成功させるには、組織とプロジェクトが測定にコミットする必要がある。測定要求は、組織目標とプロジェクト目標から導く。たとえば「市場投入を早める」という目標があれば、サイクル時間、リードタイム、リリース頻度などの測定が必要になる。
+
+測定の範囲も定める。対象は、単一プロジェクト、単一部門、拠点、組織全体などである。時間的範囲も重要である。見積りモデルを較正するためには、過去から現在までの時系列データが必要になることがある。
+
+\par\smallskip\noindent\refstepcounter{table}\label{tab:ch09-06}表 \thetable: 測定コミットメントの確立と維持におけるコミットメント項目・説明\par\smallskip
+表 \thetable は、測定コミットメントの確立と維持におけるコミットメント項目・説明を比較・確認しやすい形で整理したものである。\par\smallskip
+\begin{longtable}{>{\raggedright\arraybackslash}p{0.25\linewidth}>{\raggedright\arraybackslash}p{0.70\linewidth}}
+\toprule
+コミットメント項目 & 説明 \\
+\midrule
+\endfirsthead
+\toprule
+コミットメント項目 & 説明 \\
+\midrule
+\endhead
+測定要求の確立 & 測定は組織目標とプロジェクト目標に基づく。 \\
+測定範囲の確立 & どの組織単位、期間、プロジェクト、成果物を測るか決める。 \\
+チームの合意 & 測定の目的、使い方、責任を明確にし、形式的に支援する。 \\
+資源の割当て & 担当者、分析者、データ管理者、ツール、教育、予算を確保する。 \\
+\bottomrule
+\end{longtable}
+
+\subsubsection{測定プロセスの計画}
+測定プロセスの計画では、情報ニーズを明確にする。情報ニーズとは、利害関係者が判断するために必要な情報である。たとえば、納期が守れるか、品質が十分か、リスクが増えていないか、要求が満たされているかなどである。
+
+次に、情報ニーズから測定量を選ぶ。測定量には、欠陥数、欠陥密度、要求変更数、未解決リスク数、消費工数、完了率、リードタイム、ビルド失敗率、テスト合格率などがある。測定量は、収集可能で、解釈可能で、行動につながるものでなければならない。
+
+\par\smallskip\noindent\refstepcounter{table}\label{tab:ch09-07}表 \thetable: 測定プロセスの計画における情報ニーズ・測定量の例・使い方\par\smallskip
+表 \thetable は、測定プロセスの計画における情報ニーズ・測定量の例・使い方を比較・確認しやすい形で整理したものである。\par\smallskip
+\begin{longtable}{>{\raggedright\arraybackslash}p{0.25\linewidth}>{\raggedright\arraybackslash}p{0.35\linewidth}>{\raggedright\arraybackslash}p{0.35\linewidth}}
+\toprule
+\term{情報ニーズ}{Information Need} & 測定量の例 & 使い方 \\
+\midrule
+\endfirsthead
+\toprule
+情報ニーズ & 測定量の例 & 使い方 \\
+\midrule
+\endhead
+日程は守れそうか & 完了タスク数、残作業量、リードタイム、速度。 & 計画の更新、資源調整、範囲調整に使う。 \\
+品質は十分か & 欠陥密度、再発欠陥数、テスト合格率、失敗率。 & 追加レビュー、追加テスト、リリース判断に使う。 \\
+リスクは増えていないか & 未解決リスク数、高優先度リスク数、発生兆候。 & リスク対応、予備計画、意思決定に使う。 \\
+要求は満たされているか & 要求充足率、未実装要求数、変更要求数。 & 受け入れ判断、範囲調整、優先順位見直しに使う。 \\
+\bottomrule
+\end{longtable}
+
+\subsubsection{測定プロセスの実行}
+測定プロセスの実行では、データを収集し、検証し、保存し、分析する。データ収集は、自動化できる場合がある。たとえば、課題管理、構成管理、テスト管理、CI/CD、監視ツールからデータを取得できる。
+
+データは、目的に応じた厳密さで集計、変換、記録する。分析の結果は、グラフ、数値、指標、結論、推奨事項として情報製品になる。情報製品は、利害関係者が行動できる形で伝える必要がある。
+
+\par\smallskip
+\begin{center}
+\centering
+\IfFileExists{assets/generated_figures/ch09/fig-ch09-08.png}{\includegraphics[width=0.96\linewidth]{assets/generated_figures/ch09/fig-ch09-08.png}}{\fbox{\parbox[c][48mm][c]{0.9\linewidth}{\centering 画像生成待ち\\管理ツールの情報連携図}}}
+\par\smallskip
+\refstepcounter{figure}\label{fig:ch09-08}図 \thefigure: 管理ツールの情報連携図
+\end{center}
+図 \thefigure は、管理ツールの情報連携図を視覚的に整理したものである。
+\par\smallskip

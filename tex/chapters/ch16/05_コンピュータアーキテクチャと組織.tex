@@ -1,0 +1,124 @@
+\subsection{コンピュータアーキテクチャと組織}
+
+コンピュータアーキテクチャは、コンピュータシステムの構成要素と、それが外から見てどのような役割を果たすかを表す。コンピュータ組織は、それらの構成要素が内部でどのように接続され、相互作用し、命令を実行するかを表す。前者が「何を提供するか」、後者が「どう実現するか」に近い。
+
+システム設計では、入力・出力装置、必要なメモリ量、処理能力、補助プロセッサ、通信の帯域などを考え、要求を満たす構成を選ぶ。特に性能やリアルタイム性が重要なソフトウェアでは、ハードウェア構成の理解が設計品質に直結する。
+
+\subsubsection{コンピュータアーキテクチャ}
+
+典型的な計算システムは、記憶装置、入力・出力装置、中央処理装置（CPU）から成る。これらはバスと呼ばれる信号線で接続される。主なバスには、記憶位置や入出力装置を指定するアドレスバス、データを読み書きするデータバス、読み書きや割り込みなどの制御信号を送る制御バスがある。
+
+\par\smallskip\noindent\refstepcounter{table}\label{tab:ch16-03}表 \thetable: コンピュータアーキテクチャにおけるバス・役割・例として見るべきこと\par\smallskip
+表 \thetable は、コンピュータアーキテクチャにおけるバス・役割・例として見るべきことを比較・確認しやすい形で整理したものである。\par\smallskip
+\begin{longtable}{>{\raggedright\arraybackslash}p{0.22\textwidth}>{\raggedright\arraybackslash}p{0.42\textwidth}>{\raggedright\arraybackslash}p{0.30\textwidth}}
+\toprule
+バス & 役割 & 例として見るべきこと \\
+\midrule
+\endfirsthead
+\toprule
+バス & 役割 & 例として見るべきこと \\
+\midrule
+\endhead
+アドレスバス & どの記憶位置または装置を対象にするかを指定する。 & 扱える記憶空間の上限に影響する。 \\
+データバス & データの読み書きを運ぶ。 & 同時に運べるデータ幅や転送量に影響する。 \\
+制御バス & 読み書き、割り込み、状態、リセットなどの制御を運ぶ。 & 装置同士の同期や制御に影響する。 \\
+\bottomrule
+\end{longtable}
+
+\subsubsection{コンピュータアーキテクチャの種類}
+
+\paragraph{ノイマン型アーキテクチャ}
+
+ノイマン型アーキテクチャは、命令とデータを同じ記憶空間に置き、算術論理装置、記憶装置、入力装置、出力装置、制御装置で構成される基本的な構成である。多くの汎用コンピュータの理解の出発点になる。
+
+\paragraph{ハーバード型アーキテクチャ}
+
+ハーバード型アーキテクチャは、命令用記憶とデータ用記憶を分ける構成である。命令とデータを別に扱えるため、同時アクセスや保護に利点がある。修正版では、物理的には一つの記憶領域を用いながら、命令領域とデータ領域を分けて扱うこともある。
+
+\paragraph{命令セットアーキテクチャ}
+
+命令セットアーキテクチャ（ISA）は、CPU がどのような命令、レジスタ、データ型、アドレス指定、入出力方式を持つかを定める抽象モデルである。代表的な分類に、縮小命令セットコンピュータ（RISC）と複合命令セットコンピュータ（CISC）がある。
+
+\par\smallskip\noindent\refstepcounter{table}\label{tab:ch16-04}表 \thetable: 命令セットアーキテクチャにおける分類・特徴・設計上の意味\par\smallskip
+表 \thetable は、命令セットアーキテクチャにおける分類・特徴・設計上の意味を比較・確認しやすい形で整理したものである。\par\smallskip
+\begin{longtable}{>{\raggedright\arraybackslash}p{0.17\textwidth}>{\raggedright\arraybackslash}p{0.45\textwidth}>{\raggedright\arraybackslash}p{0.32\textwidth}}
+\toprule
+分類 & 特徴 & 設計上の意味 \\
+\midrule
+\endfirsthead
+\toprule
+分類 & 特徴 & 設計上の意味 \\
+\midrule
+\endhead
+RISC & 命令が比較的単純で、1命令が一つの仕事を行う。命令数は増えやすいが、命令実行は単純化しやすい。 & 汎用プロセッサでよく見られる。コンパイラ設計やパイプライン化を考えるときに重要である。 \\
+CISC & 一つの命令が複数の処理をまとめて行うことがある。命令数は少なくできるが、命令実行は複雑になりやすい。 & 特定目的の処理や互換性を重視する場面で理解が必要になる。 \\
+\bottomrule
+\end{longtable}
+
+\paragraph{Flynnの分類}
+
+Flynn の分類は、命令列とデータ列の数に着目して、並行・並列計算の構成を整理する。単一命令・単一データ（SISD）、単一命令・複数データ（SIMD）、複数命令・単一データ（MISD）、複数命令・複数データ（MIMD）が代表である。並列処理、配列処理、複数コア、分散計算を考える入口になる。
+
+\par\smallskip\noindent\refstepcounter{table}\label{tab:ch16-05}表 \thetable: Flynnの分類における分類・読み方・直感的な例\par\smallskip
+表 \thetable は、Flynnの分類における分類・読み方・直感的な例を比較・確認しやすい形で整理したものである。\par\smallskip
+\begin{longtable}{>{\raggedright\arraybackslash}p{0.14\textwidth}>{\raggedright\arraybackslash}p{0.42\textwidth}>{\raggedright\arraybackslash}p{0.38\textwidth}}
+\toprule
+分類 & 読み方 & 直感的な例 \\
+\midrule
+\endfirsthead
+\toprule
+分類 & 読み方 & 直感的な例 \\
+\midrule
+\endhead
+SISD & 一つの命令列が一つのデータ列を処理する。 & 古典的な逐次処理。 \\
+SIMD & 一つの命令列が複数のデータ列を同時に処理する。 & 画像処理やベクトル演算。 \\
+MISD & 複数の命令列が一つのデータ列を処理する。 & 一般的ではないが、冗長化や特殊処理の議論で登場する。 \\
+MIMD & 複数の命令列が複数のデータ列を処理する。 & マルチコア、分散処理、クラスタ処理。 \\
+\bottomrule
+\end{longtable}
+
+\paragraph{システムアーキテクチャ}
+
+システムアーキテクチャは、ハードウェア、ソフトウェア、モジュール、インタフェース、データ管理、通信を含む全体設計である。典型的には、統合型、分散型、プール型、コンバージド型などがある。統合型は一つの箱に機能を集める。分散型は計算と保存を別の装置に置く。プール型は共有資源を需要に応じて割り当てる。コンバージド型は分散型とプール型の利点を組み合わせ、敏捷性と拡張性を狙う。
+
+\par\smallskip
+\begin{center}
+\centering
+\IfFileExists{assets/generated_figures/ch16/fig-ch16-03.png}{\includegraphics[width=0.96\linewidth]{assets/generated_figures/ch16/fig-ch16-03.png}}{\fbox{\parbox[c][48mm][c]{0.9\linewidth}{\centering 画像生成待ち\\代表的なコンピュータ構成の比較図}}}
+\par\smallskip
+\refstepcounter{figure}\label{fig:ch16-03}図 \thefigure: 代表的なコンピュータ構成の比較図
+\end{center}
+図 \thefigure は、代表的なコンピュータ構成の比較図を視覚的に整理したものである。
+\par\smallskip
+
+\subsubsection{マイクロアーキテクチャまたはコンピュータ組織}
+
+マイクロアーキテクチャは、命令セットが実際の装置内でどのように実現されるかを扱う。算術論理装置、記憶装置、入力・出力装置、制御装置の理解は、性能、割り込み、メモリ制約、装置制御を考える基礎である。
+
+\par\smallskip\noindent\refstepcounter{table}\label{tab:ch16-06}表 \thetable: マイクロアーキテクチャまたはコンピュータ組織における構成要素・役割・ソフトウェア技術者が気にする点\par\smallskip
+表 \thetable は、マイクロアーキテクチャまたはコンピュータ組織における構成要素・役割・ソフトウェア技術者が気にする点を比較・確認しやすい形で整理したものである。\par\smallskip
+\begin{longtable}{>{\raggedright\arraybackslash}p{0.19\textwidth}>{\raggedright\arraybackslash}p{0.39\textwidth}>{\raggedright\arraybackslash}p{0.36\textwidth}}
+\toprule
+構成要素 & 役割 & ソフトウェア技術者が気にする点 \\
+\midrule
+\endfirsthead
+\toprule
+構成要素 & 役割 & ソフトウェア技術者が気にする点 \\
+\midrule
+\endhead
+算術論理装置 & 算術演算と論理演算を行う。浮動小数点装置や専用処理装置を持つこともある。 & 数値計算、画像処理、暗号処理などの性能に影響する。 \\
+記憶装置 & プログラムやデータを保存し、CPU がアクセスする。 & 容量、階層、キャッシュ、揮発性、アクセス速度が性能に影響する。 \\
+入力・出力装置 & 外界とのデータの出入りを担う。 & 装置ドライバ、割り込み、メモリマップ入出力、DMA を理解する必要がある。 \\
+制御装置 & 命令を解釈し、装置間のデータ移動と同期を制御する。 & 命令実行の順序、制御信号、装置の有効化・リセットに関係する。 \\
+\bottomrule
+\end{longtable}
+
+\par\smallskip
+\begin{center}
+\centering
+\IfFileExists{assets/generated_figures/ch16/fig-ch16-04.png}{\includegraphics[width=0.96\linewidth]{assets/generated_figures/ch16/fig-ch16-04.png}}{\fbox{\parbox[c][48mm][c]{0.9\linewidth}{\centering 画像生成待ち\\CPU、メモリ、入出力、制御装置の関係図}}}
+\par\smallskip
+\refstepcounter{figure}\label{fig:ch16-04}図 \thefigure: CPU、メモリ、入出力、制御装置の関係図
+\end{center}
+図 \thefigure は、CPU、メモリ、入出力、制御装置の関係図を視覚的に整理したものである。
+\par\smallskip

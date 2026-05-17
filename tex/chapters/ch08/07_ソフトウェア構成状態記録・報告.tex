@@ -1,0 +1,31 @@
+\subsection*{ソフトウェア構成状態記録・報告}
+\addcontentsline{toc}{subsection}{4 ソフトウェア構成状態記録・報告}
+\term{ソフトウェア構成状態記録・報告}{Software Configuration Status Accounting}は、構成品目、基準版、構成品目間の関係について、構成を有効に管理するために必要な情報を記録し、報告する活動である。これは、構成識別で定めた論理的方式に従って実施する。
+
+\subsubsection*{ソフトウェア構成状態情報}
+\addcontentsline{toc}{subsubsection}{4.1 ソフトウェア構成状態情報}
+SCSA は、ライフサイクルの進行に伴って必要な情報を取得し、検証し、妥当性を確認し、報告する仕組みを設計・運用する。必要に応じて、状態情報そのものも保護する必要がある。
+
+\begin{itemize}
+\item 現在有効な構成識別と承認済み構成識別。
+\item 変更の現在の実施状況。
+\item 影響を受ける構成品目と関連システム。
+\item 逸脱と免除。
+\item 検証・妥当性確認活動の証跡。
+\item 完全性の指標、セキュリティ状態、基準版状態、構成品目ごとの変更要求数、変更実施の平均時間。
+\end{itemize}
+\subsubsection*{ソフトウェア構成状態報告}
+\addcontentsline{toc}{subsubsection}{4.2 ソフトウェア構成状態報告}
+報告情報は、開発チーム、運用、セキュリティ、保守、プロジェクト管理、品質保証など、さまざまな組織要素に使われる。報告には、自動レポート、特定質問に対する随時照会、定期レポートがある。
+
+SCSA がライフサイクル全体で生む情報は、品質保証、セキュリティ、規制、ガバナンスへの適合を示す証拠になる。したがって、状態記録は単なる管理表ではなく、説明責任を支える証跡である。
+
+\par\smallskip
+\begin{center}
+\centering
+\IfFileExists{assets/generated_figures/ch08/fig-ch08-09.png}{\includegraphics[width=0.96\linewidth]{assets/generated_figures/ch08/fig-ch08-09.png}}{\fbox{\parbox[c][48mm][c]{0.9\linewidth}{\centering 画像生成待ち\\状態記録・報告が証跡になる流れ}}}
+\par\smallskip
+\refstepcounter{figure}\label{fig:ch08-09}図 \thefigure: 状態記録・報告が証跡になる流れ
+\end{center}
+図 \thefigure は、状態記録・報告が証跡になる流れを視覚的に整理したものである。
+\par\smallskip

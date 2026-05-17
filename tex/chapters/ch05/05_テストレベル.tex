@@ -14,12 +14,15 @@
 \paragraph{受入テスト}
 受入テストは、システムが要求とエンドユーザの期待を満たし、利用または配備に進めるかを確認する活動である。利用者や顧客とともに実施されることが多い。運用受入、使いやすさ確認、業務シナリオ確認などを含む。受け入れテスト駆動開発では、機能を実装する前に受入条件を定義する。
 
-\begin{figure}[htbp]
+\par\smallskip
+\begin{center}
 \centering
 \IfFileExists{assets/generated_figures/ch05/fig-ch05-04.png}{\includegraphics[width=0.96\linewidth]{assets/generated_figures/ch05/fig-ch05-04.png}}{\fbox{\parbox[c][48mm][c]{0.9\linewidth}{\centering 画像生成待ち\\テストレベルの四層図}}}
-\caption{テストレベルの四層図}
-\label{fig:ch05-04}
-\end{figure}
+\par\smallskip
+\refstepcounter{figure}\label{fig:ch05-04}図 \thefigure: テストレベルの四層図
+\end{center}
+図 \thefigure は、テストレベルの四層図を視覚的に整理したものである。
+\par\smallskip
 
 \subsubsection{テスト目的}
 テスト目的は、何を確認したいかを表す。目的を明確にすると、テストケースの選び方、測り方、終了判断が決めやすくなる。
@@ -45,10 +48,11 @@
 \paragraph{非機能テスト}
 非機能テストは、性能、使いやすさ、信頼性などの非機能面を確認する。代表的な種類を表に示す。
 
-\par\smallskip\noindent\refstepcounter{table}\label{tab:ch05-02}\textbf{表 \thetable: 第05章 ソフトウェアテスト 表02}\par\smallskip
+\par\smallskip\noindent\refstepcounter{table}\label{tab:ch05-02}表 \thetable: 非機能テストの整理\par\smallskip
+表 \thetable は、非機能テストの整理を比較・確認しやすい形で整理したものである。\par\smallskip
 \begin{longtable}{P{0.24\linewidth}P{0.66\linewidth}}
 \toprule
-\textbf{種類} & \textbf{確認すること} \\
+種類 & 確認すること \\
 \midrule
 性能テスト & 応答時間、処理能力、容量など、性能要求を満たすかを確認する。\\
 負荷テスト & 多数の要求や高負荷時に、デッドロック、競合、メモリ漏れ、安定性問題が出ないかを確認する。\\
@@ -80,9 +84,12 @@
 \paragraph{使いやすさと人間コンピュータ相互作用テスト}
 使いやすさテストは、エンドユーザがソフトウェアを学び、使い、誤りから回復できるかを確認する。機能、文書、画面、操作手順、エラー回復が対象になる。
 
-\begin{figure}[htbp]
+\par\smallskip
+\begin{center}
 \centering
 \IfFileExists{assets/generated_figures/ch05/fig-ch05-05.png}{\includegraphics[width=0.96\linewidth]{assets/generated_figures/ch05/fig-ch05-05.png}}{\fbox{\parbox[c][48mm][c]{0.9\linewidth}{\centering 画像生成待ち\\テスト目的の地図}}}
-\caption{テスト目的の地図}
-\label{fig:ch05-05}
-\end{figure}
+\par\smallskip
+\refstepcounter{figure}\label{fig:ch05-05}図 \thefigure: テスト目的の地図
+\end{center}
+図 \thefigure は、テスト目的の地図を視覚的に整理したものである。
+\par\smallskip

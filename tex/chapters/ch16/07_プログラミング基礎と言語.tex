@@ -1,0 +1,170 @@
+\subsection{プログラミング基礎と言語}
+
+コンピュータプログラムは、入力に対して命令列を実行し、目的の出力を得るための手順である。ソフトウェア技術者は、問題、実行環境、保守性、性能、開発者の熟練度を踏まえて、適切なプログラミング言語と実装方法を選ぶ必要がある。
+
+\subsubsection{プログラミング言語の種類}
+
+プログラミング言語には、マイクロプログラミング、機械語、アセンブリ言語、高水準言語がある。高水準言語は英語に近い記述でプログラムを書けるため、開発と保守を容易にする。代表的なパラダイムには、関数型、手続き型、オブジェクト指向、スクリプト、論理型がある。
+
+\par\smallskip\noindent\refstepcounter{table}\label{tab:ch16-11}表 \thetable: プログラミング言語の種類における分類・説明・例・注意点\par\smallskip
+表 \thetable は、プログラミング言語の種類における分類・説明・例・注意点を比較・確認しやすい形で整理したものである。\par\smallskip
+\begin{longtable}{>{\raggedright\arraybackslash}p{0.23\textwidth}>{\raggedright\arraybackslash}p{0.42\textwidth}>{\raggedright\arraybackslash}p{0.28\textwidth}}
+\toprule
+分類 & 説明 & 例・注意点 \\
+\midrule
+\endfirsthead
+\toprule
+分類 & 説明 & 例・注意点 \\
+\midrule
+\endhead
+マイクロプログラミング & プロセッサ内部で命令を実現する低い層の制御である。 & 通常の業務開発では直接触れないが、CPU の理解に関係する。 \\
+機械語 & CPU が直接実行できる命令である。 & 人間が直接扱うには難しい。 \\
+アセンブリ言語 & 機械語に対応する記号表現である。 & 装置制御や組込みで理解が必要になる。 \\
+高水準言語 & 人間が読み書きしやすい抽象度の高い言語である。 & C、C++、Java、Python、JavaScript など。 \\
+\bottomrule
+\end{longtable}
+
+C、C++、Java のようにコンパイラで実行形式を作る言語もあれば、JavaScript、Ruby、Python のように実行時に解釈される言語もある。実際には、仮想機械や実行時最適化を組み合わせる言語も多い。
+
+\subsubsection{構文、意味論、型システム}
+
+構文は、言語の文法である。コンパイラやインタプリタは、宣言、文、式、制御構造、関数などが文法に合っているかを調べる。意味論は、その文が何を意味するかである。同じ記号列でも、実行時の値や型によって意味が変わる場合がある。
+
+型システムは、変数、式、関数などに型を割り当て、許される操作を制御する仕組みである。静的型付けでは、型がコンパイル時に確認される。動的型付けでは、型が実行時に決まる。型は、誤りの早期発見、実行時安全性、可読性、最適化に関係する。
+
+\par\smallskip\noindent\refstepcounter{table}\label{tab:ch16-12}表 \thetable: 構文、意味論、型システムにおける型付け・特徴・代表例\par\smallskip
+表 \thetable は、構文、意味論、型システムにおける型付け・特徴・代表例を比較・確認しやすい形で整理したものである。\par\smallskip
+\begin{longtable}{>{\raggedright\arraybackslash}p{0.19\textwidth}>{\raggedright\arraybackslash}p{0.52\textwidth}>{\raggedright\arraybackslash}p{0.23\textwidth}}
+\toprule
+型付け & 特徴 & 代表例 \\
+\midrule
+\endfirsthead
+\toprule
+型付け & 特徴 & 代表例 \\
+\midrule
+\endhead
+静的型付け & 型が主にコンパイル時に確認される。早く誤りを見つけやすい。 & C、C++、Java など。 \\
+動的型付け & 型が実行時に決まる。柔軟だが、実行して初めて分かる誤りもある。 & Python、Ruby、PHP、Perl など。 \\
+\bottomrule
+\end{longtable}
+
+\par\smallskip
+\begin{center}
+\centering
+\IfFileExists{assets/generated_figures/ch16/fig-ch16-08.png}{\includegraphics[width=0.96\linewidth]{assets/generated_figures/ch16/fig-ch16-08.png}}{\fbox{\parbox[c][48mm][c]{0.9\linewidth}{\centering 画像生成待ち\\ソースコードが実行されるまでの流れ}}}
+\par\smallskip
+\refstepcounter{figure}\label{fig:ch16-08}図 \thefigure: ソースコードが実行されるまでの流れ
+\end{center}
+図 \thefigure は、ソースコードが実行されるまでの流れを視覚的に整理したものである。
+\par\smallskip
+
+\subsubsection{サブプログラムとコルーチン}
+
+サブプログラムまたは関数は、大きなプログラムを小さな処理単位に分けるための部品である。重複を減らし、可読性と保守性を高める。値を返すものを関数、値を返さないものを手続きと呼ぶことがある。
+
+引数の渡し方には、値渡し、参照渡し、名前渡し、結果渡し、結果値渡しなどがある。再帰では、サブプログラムが自分自身を呼び出す。再帰は木の処理などに自然だが、終了条件を明確にしなければならない。
+
+コルーチンは、複数の入口や再開点を持つサブプログラムである。前回停止した場所を覚え、後でそこから再開する。非同期処理、イテレータ、協調的な処理の記述に役立つ。
+
+\par\smallskip
+\begin{center}
+\centering
+\IfFileExists{assets/generated_figures/ch16/fig-ch16-09.png}{\includegraphics[width=0.96\linewidth]{assets/generated_figures/ch16/fig-ch16-09.png}}{\fbox{\parbox[c][48mm][c]{0.9\linewidth}{\centering 画像生成待ち\\サブルーチンとコルーチンの制御の違いを示す図}}}
+\par\smallskip
+\refstepcounter{figure}\label{fig:ch16-09}図 \thefigure: サブルーチンとコルーチンの制御の違いを示す図
+\end{center}
+図 \thefigure は、サブルーチンとコルーチンの制御の違いを示す図を視覚的に整理したものである。
+\par\smallskip
+
+\subsubsection{オブジェクト指向プログラミング}
+
+オブジェクト指向プログラミングは、データとそのデータに対する処理を一体として扱う考え方である。クラスは属性と操作を定義する雛形であり、オブジェクトはその実体である。たとえば「車両」というクラスから、乗用車、バス、トラックというオブジェクトを考えられる。
+
+\par\smallskip\noindent\refstepcounter{table}\label{tab:ch16-13}表 \thetable: オブジェクト指向プログラミングにおける性質・意味・設計上の利点\par\smallskip
+表 \thetable は、オブジェクト指向プログラミングにおける性質・意味・設計上の利点を比較・確認しやすい形で整理したものである。\par\smallskip
+\begin{longtable}{>{\raggedright\arraybackslash}p{0.19\textwidth}>{\raggedright\arraybackslash}p{0.42\textwidth}>{\raggedright\arraybackslash}p{0.33\textwidth}}
+\toprule
+性質 & 意味 & 設計上の利点 \\
+\midrule
+\endfirsthead
+\toprule
+性質 & 意味 & 設計上の利点 \\
+\midrule
+\endhead
+抽象化 & 利用者に必要な性質だけを見せ、詳細を隠す。 & 複雑さを減らし、利用側の理解を助ける。 \\
+カプセル化 & データと操作をまとめ、不要なアクセスを制限する。 & データ破壊や誤用を減らす。 \\
+継承 & 既存のクラスの性質を受け継ぎ、差分を追加する。 & 共通性を再利用できるが、依存関係を深くしすぎると理解しにくい。 \\
+多態性 & 同じインタフェースで異なる型を扱う。 & 利用側を具体的な実装から切り離せる。 \\
+\bottomrule
+\end{longtable}
+
+\begin{pointbox}{注意}
+オブジェクト指向は、クラスを使えば自動的に良い設計になるという意味ではない。対象領域の概念、責務の分担、依存関係の管理を考える設計姿勢が必要である。
+
+\end{pointbox}
+
+\par\smallskip
+\begin{center}
+\centering
+\IfFileExists{assets/generated_figures/ch16/fig-ch16-10.png}{\includegraphics[width=0.96\linewidth]{assets/generated_figures/ch16/fig-ch16-10.png}}{\fbox{\parbox[c][48mm][c]{0.9\linewidth}{\centering 画像生成待ち\\オブジェクト指向の四要素を示す図}}}
+\par\smallskip
+\refstepcounter{figure}\label{fig:ch16-10}図 \thefigure: オブジェクト指向の四要素を示す図
+\end{center}
+図 \thefigure は、オブジェクト指向の四要素を示す図を視覚的に整理したものである。
+\par\smallskip
+
+\subsubsection{分散プログラミングと並列プログラミング}
+
+分散プログラミングは、ネットワークで接続された複数のコンピュータ上で、ソフトウェアの複数部分を実行し、共通の目的を達成する方法である。並列プログラミングは、一つまたは複数のコンピュータ上で処理を同時に進め、同じ目的を速く達成する方法である。
+
+\par\smallskip\noindent\refstepcounter{table}\label{tab:ch16-14}表 \thetable: 分散プログラミングと並列プログラミングにおける観点・分散プログラミング・並列プログラミング\par\smallskip
+表 \thetable は、分散プログラミングと並列プログラミングにおける観点・分散プログラミング・並列プログラミングを比較・確認しやすい形で整理したものである。\par\smallskip
+\begin{longtable}{>{\raggedright\arraybackslash}p{0.17\textwidth}>{\raggedright\arraybackslash}p{0.39\textwidth}>{\raggedright\arraybackslash}p{0.39\textwidth}}
+\toprule
+観点 & 分散プログラミング & 並列プログラミング \\
+\midrule
+\endfirsthead
+\toprule
+観点 & 分散プログラミング & 並列プログラミング \\
+\midrule
+\endhead
+実行場所 & 複数のコンピュータや拠点に分かれる。 & 複数のプロセッサ、コア、スレッドで同時実行する。 \\
+記憶 & 各コンピュータが独自の記憶を持つことが多い。 & 共有記憶または分散記憶を使う。 \\
+通信 & ネットワーク通信が中心である。 & バス、共有記憶、プロセス間通信を使う。 \\
+利点 & 可用性、拡張性、地理的分散に強い。 & 計算時間を短縮しやすい。 \\
+難しさ & ネットワーク遅延、部分故障、一貫性が課題である。 & 同期、競合、デッドロック、負荷分散が課題である。 \\
+\bottomrule
+\end{longtable}
+
+\subsubsection{デバッグ}
+
+デバッグは、プログラムの誤りを見つけ、原因を突き止め、修正する活動である。代表的な誤りには、構文誤り、実行時誤り、論理誤りがある。構文誤りはコンパイラが見つけやすい。実行時誤りはゼロ除算、メモリ不足、不正なアドレス参照などで現れる。論理誤りは、プログラムが動くが期待と違う結果を出す誤りであり、最も見つけにくいことが多い。
+
+\par\smallskip\noindent\refstepcounter{table}\label{tab:ch16-15}表 \thetable: デバッグにおける誤り・例・見つけ方\par\smallskip
+表 \thetable は、デバッグにおける誤り・例・見つけ方を比較・確認しやすい形で整理したものである。\par\smallskip
+\begin{longtable}{>{\raggedright\arraybackslash}p{0.19\textwidth}>{\raggedright\arraybackslash}p{0.39\textwidth}>{\raggedright\arraybackslash}p{0.36\textwidth}}
+\toprule
+誤り & 例 & 見つけ方 \\
+\midrule
+\endfirsthead
+\toprule
+誤り & 例 & 見つけ方 \\
+\midrule
+\endhead
+構文誤り & 括弧の不足、予約語の誤用、型宣言の誤り。 & コンパイラや構文チェックで検出しやすい。 \\
+実行時誤り & ゼロ除算、メモリオーバーフロー、不正アクセス。 & 境界値や異常値を含むテストで検出する。 \\
+論理誤り & 条件式の向き違い、計算式の誤り、仕様解釈の誤り。 & デバッガ、ログ、テスト、レビューで原因を追う。 \\
+\bottomrule
+\end{longtable}
+
+\subsubsection{標準と指針}
+
+大規模なソフトウェアでは、多くの開発者が関わる。個人ごとの書き方がばらばらだと、統合、レビュー、保守が難しくなる。そのため、品質を重視する組織は、コーディング標準、命名規則、コメント規則、インデント、禁止すべき書き方、レビュー方法を定める。
+
+\begin{itemize}[leftmargin=2em]
+\item 対象システムに合う標準や指針を選ぶ。
+\item CERT や MISRA のような公開または業界標準を必要に応じて参考にする。
+\item 開発者が標準を理解し、実際に守れるよう教育する。
+\item ツールとレビューで標準の遵守を確認する。
+\item プロジェクトの経験から標準を定期的に見直す。
+\end{itemize}

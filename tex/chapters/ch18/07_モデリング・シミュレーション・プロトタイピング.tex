@@ -1,0 +1,36 @@
+\subsection{モデリング・シミュレーション・プロトタイピング}
+モデリング、シミュレーション、プロトタイピングはいずれも抽象化の技法である。モデルはシステムの一部の側面を表す。シミュレーションはモデルを使って実験する。プロトタイプは関心のある側面を具体化した部分的な実体である。
+\subsubsection{モデリング}
+モデルは、現実または想像上の対象の抽象表現である。物理的な模型もモデルであり、CAD図面、数式、UML図、業務フロー図もモデルである。モデルは、何を知っているか、何をまだ知らないかを明らかにする。
+\par\smallskip\noindent\refstepcounter{table}\label{tab:ch18-08}表 \thetable: モデリングの整理\par\smallskip
+表 \thetable は、モデリングの整理を比較・確認しやすい形で整理したものである。\par\smallskip
+\begin{longtable}{>{\raggedright\arraybackslash}p{0.17\linewidth}>{\raggedright\arraybackslash}p{0.48\linewidth}>{\raggedright\arraybackslash}p{0.28\linewidth}}
+\toprule
+モデルの種類 & 説明 & 例 \\
+\midrule
+\endfirsthead
+\toprule
+モデルの種類 & 説明 & 例 \\
+\midrule
+\endhead
+類像モデル & 見た目が対象に似ているが、不完全な表現である。 & 地図、地球儀、橋の縮尺模型。 \\
+類推モデル & 見た目は似ていなくても、機能的に似た振る舞いをする。 & 風洞実験用の模型飛行機、製造過程のシミュレーション。 \\
+記号モデル & 数式や記号を使って対象を高い抽象度で表す。 & 運動方程式、確率モデル、性能モデル。 \\
+\bottomrule
+\end{longtable}
+\subsubsection{シミュレーション}
+シミュレーションは、現実を単純化したモデルを使って実験する方法である。どの情報を抽象化し、どの情報を残すかを誤ると、シミュレーション結果は無効になる。
+シミュレーションには連続シミュレーションと離散シミュレーションがある。ソフトウェア工学では、イベント、キュー、資源、状態、時刻を扱う離散シミュレーションが特に重要である。
+離散シミュレーションでは、初期化が大きな問題になる。たとえばキューを空で開始するか、実運用に近い混雑状態から開始するかで結果が変わる。初期条件の選び方は、分析結果に影響する。
+\subsubsection{プロトタイピング}
+プロトタイピングは、設計中にシステムの初期版や部分版を作り、実現可能性や使い勝手を調べる方法である。要求獲得、利用者インタフェースの設計、機能要求の妥当性確認に使える。
+ソフトウェアのプロトタイプは、完成品と同じ品質を持つとは限らない。性能、アーキテクチャ、保守性、安全性は、完成版の水準に達していない場合がある。したがって、何を確認するためのプロトタイプかを明確にし、計画し、監視し、管理する必要がある。
+\par\smallskip
+\begin{center}
+\centering
+\IfFileExists{assets/generated_figures/ch18/fig-ch18-09.png}{\includegraphics[width=0.96\linewidth]{assets/generated_figures/ch18/fig-ch18-09.png}}{\fbox{\parbox[c][48mm][c]{0.9\linewidth}{\centering 画像生成待ち\\モデル・シミュレーション・プロトタイプの関係図}}}
+\par\smallskip
+\refstepcounter{figure}\label{fig:ch18-09}図 \thefigure: モデル・シミュレーション・プロトタイプの関係図
+\end{center}
+図 \thefigure は、モデル・シミュレーション・プロトタイプの関係図を視覚的に整理したものである。
+\par\smallskip
