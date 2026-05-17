@@ -1,0 +1,488 @@
+\documentclass[a4paper,11pt]{ltjsarticle}
+\usepackage[top=24mm,bottom=25mm,left=24mm,right=24mm]{geometry}
+\usepackage{array,longtable,booktabs,tabularx,multicol}
+\usepackage{enumitem}
+\usepackage[most]{tcolorbox}
+\usepackage{fancyhdr}
+\usepackage{lastpage}
+\usepackage{titlesec}
+\usepackage{hyperref}
+\usepackage{xcolor}
+\usepackage{amsmath}
+\hypersetup{unicode=true,colorlinks=false,pdfborder={0 0 0}}
+
+\setlength{\parindent}{1em}
+\setlength{\parskip}{0.55em}
+\renewcommand{\baselinestretch}{1.18}
+\setlist[itemize]{leftmargin=2.0em,itemsep=0.25em,topsep=0.35em}
+\setlist[enumerate]{leftmargin=2.0em,itemsep=0.25em,topsep=0.35em}
+\titleformat{\section}{\Large\bfseries}{\thesection}{0.8em}{}
+\titleformat{\subsection}{\large\bfseries}{\thesubsection}{0.8em}{}
+\titleformat{\subsubsection}{\normalsize\bfseries}{\thesubsubsection}{0.8em}{}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\small 第11章 ソフトウェア工学モデルと方法}
+\fancyhead[R]{\small SWEBOK v4.0a 日本語まとめ}
+\fancyfoot[C]{\small \thepage/\pageref{LastPage}}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0pt}
+
+\newtcolorbox{pointbox}[1]{breakable,colback=white,colframe=black,boxrule=0.4pt,arc=0pt,left=5pt,right=5pt,top=4pt,bottom=4pt,title=\textbf{#1},fonttitle=\bfseries,coltitle=black,colbacktitle=white}
+\newtcolorbox{todobox}[2]{breakable,colback=white,colframe=black,boxrule=0.45pt,arc=0pt,left=5pt,right=5pt,top=4pt,bottom=4pt,title=\textbf{TODO（図）　#1},fonttitle=\bfseries,coltitle=black,colbacktitle=white,
+underlay unbroken and first={}}
+\newcommand{\prompt}[1]{\par\noindent\textbf{画像生成用プロンプト}\par\small #1\normalsize}
+\newcommand{\term}[2]{\textbf{#1}（#2）}
+\newcommand{\en}[1]{\textsf{#1}}
+
+\begin{document}
+\thispagestyle{empty}
+\begin{center}
+  {\LARGE\bfseries 第11章 ソフトウェア工学モデルと方法}\par\vspace{0.8em}
+  {\large Software Engineering Models and Methods の日本語まとめ}\par\vspace{0.7em}
+  {SWEBOK Guide v4.0a Chapter 11 を初学者向けに再構成}\par\vspace{0.7em}
+  {作成日：2026年5月12日}\par
+\end{center}
+\vspace{0.5em}\hrule\vspace{0.7em}
+
+\noindent\textbf{この資料の主張}\par
+ソフトウェア工学モデルと方法は、開発作業を場当たり的な作業から、説明可能で、反復可能で、改善しやすい作業へ変えるための道具である。モデルは、対象をすべて写し取るものではなく、意思決定に必要な側面を抽象化した表現である。方法は、要求、設計、実装、テスト、検証を体系的に進めるための手順である。したがって、この章の中心は「何をモデル化し、どう読み、どう確かめ、どの方法で進めるか」を判断できるようになることである。
+
+\begin{pointbox}{この資料の読み方}
+専門用語は原則として日本語で示し、必要に応じて英語を括弧内に併記する。英語名は、元資料、ツール、論文、標準で確認するときの手がかりとして残す。初学者が前提知識なしに読めるように、各節では「何のための概念か」「どの失敗を防ぐのか」「実務では何を見るか」を重視する。文体は、だである調で統一する。
+\end{pointbox}
+
+\vspace{1.0em}
+\tableofcontents
+\clearpage
+
+\section*{全体概要：この章で学ぶこと}
+\addcontentsline{toc}{section}{全体概要：この章で学ぶこと}
+この章は、ソフトウェア開発で使われる「モデル」と「方法」を扱う。モデルとは、対象を理解し、判断し、関係者へ説明するための抽象表現である。方法とは、開発を体系的に進めるための考え方、手順、成果物、確認方法のまとまりである。
+
+SWEBOK 第11章は、次の四つの領域に分けて説明している。
+\begin{enumerate}
+  \item \textbf{モデリング}：モデルとは何か、どのような原則で作るか、構文・意味・実用上の読み方をどう扱うかを学ぶ。
+  \item \textbf{モデルの種類}：構造モデルと振る舞いモデルを中心に、モデルが何を表すかを学ぶ。
+  \item \textbf{モデルの分析}：完全性、整合性、正しさ、追跡可能性、相互作用を確認する方法を学ぶ。
+  \item \textbf{ソフトウェア工学方法}：経験則に基づく方法、形式手法、プロトタイピング、アジャイル方法を学ぶ。
+\end{enumerate}
+
+\noindent\textbf{到達目標}\par
+この章を読み終えると、次のことができるようになる。
+\begin{itemize}
+  \item モデルを「対象の縮小版」ではなく「目的を持つ抽象表現」として説明できる。
+  \item 構造モデルと振る舞いモデルの違いを説明できる。
+  \item 構文、意味論、語用論の違いを説明できる。
+  \item 事前条件、事後条件、不変条件を簡単な例で説明できる。
+  \item モデルの完全性、整合性、正しさ、追跡可能性、相互作用を確認する観点を説明できる。
+  \item 経験則的方法、形式手法、プロトタイピング、アジャイル方法の使い分けを説明できる。
+\end{itemize}
+
+\begin{todobox}{第11章の全体地図を入れる}{overview}
+\prompt{白背景、モノクロ、A4本文幅に収まる横長の学習用図解を作成する。中央に「ソフトウェア工学モデルと方法」を置き、周囲に「モデリング」「モデルの種類」「モデルの分析」「ソフトウェア工学方法」を配置する。「モデリング」には「原則」「性質」「構文・意味・語用」「事前条件・事後条件・不変条件」を、「モデルの分析」には「完全性」「整合性」「正しさ」「追跡可能性」「相互作用」を小要素として置く。ラベルは日本語、細線、講義ノート風、余白を広めにする。}
+\end{todobox}
+
+\section*{最初に必要な用語}
+\addcontentsline{toc}{section}{最初に必要な用語}
+\begin{longtable}{>{\raggedright\arraybackslash}p{0.27\textwidth}>{\raggedright\arraybackslash}p{0.68\textwidth}}
+\toprule
+\textbf{用語} & \textbf{初学者向けの説明} \\
+\midrule
+ソフトウェア工学 & ソフトウェアを、経験だけでなく、体系的・定量的・再現可能な方法で開発、運用、保守する分野である。\\
+モデル & 対象の重要な側面だけを取り出して表したもの。図、表、数式、文章、形式仕様などの形をとる。\\
+モデリング & モデルを作り、読み、分析し、関係者と共有する活動である。\\
+方法 & 開発を進めるための体系化された進め方である。何を作り、どの順序で確認するかを含む。\\
+抽象化 & 細部をあえて省き、重要な点だけを残すこと。モデルの基本である。\\
+利害関係者 & ソフトウェアの開発結果に関心を持つ人や組織。利用者、顧客、開発者、認証機関、運用担当などである。\\
+構文 & 表現が文法として正しいかを決める規則である。\\
+意味論 & 表現が何を意味するかを決める規則である。\\
+語用論 & 表現が文脈の中でどのように使われ、どう伝わるかに関する考え方である。\\
+検証 & 作ったものが仕様や要求に合っているかを確認すること。\\
+\bottomrule
+\end{longtable}
+
+\section*{導入：モデルと方法が重要な理由}
+\addcontentsline{toc}{section}{導入：モデルと方法が重要な理由}
+ソフトウェア開発では、多くの人が同時に異なる観点で考える。利用者は業務の流れを考え、設計者は構造を考え、開発者はコードの形を考え、テスト担当者は確認方法を考える。これらが頭の中だけにあると、誤解や抜け漏れが起きやすい。
+
+モデルは、この問題に対する強力な道具である。モデルは対象の全体を完全に写すのではなく、目的に合わせて重要な側面を選び取る。たとえば、注文管理システムを考えるとき、データ構造を考えるなら「注文」「商品」「顧客」の関係を図にする。処理の流れを考えるなら「注文受付」「在庫確認」「支払い」「出荷」の順序を図にする。どちらも同じシステムのモデルだが、見ている側面が違う。
+
+方法は、モデルや成果物をどの順序で作り、どのように確認し、どう次の作業へ渡すかを決める枠組みである。経験則に基づく方法、形式手法、プロトタイピング、アジャイル方法は、いずれも「よりよく作る」ための方法だが、適している状況が異なる。
+
+\begin{pointbox}{重要}
+この章でいうモデルは、きれいな図を描くこと自体が目的ではない。モデルの目的は、考える、説明する、確認する、合意する、変更の影響を追うことである。使われないモデルは価値が低い。
+\end{pointbox}
+
+\section{モデリング}
+\subsection{モデリングの考え方}
+モデリングとは、ソフトウェアの重要な側面を、関係者が理解し、議論し、判断できるように表す活動である。モデルは、要求、設計、実装、テスト、運用のさまざまな場面で使われる。
+
+モデルは、対象の完全な複製ではない。完全な複製であれば、複雑さは元の対象と同じになってしまう。モデルの価値は、目的に不要な情報を取り除き、判断に必要な情報を見やすくする点にある。
+
+\subsection{モデリング原則}
+SWEBOK 第11章では、モデリングを導く一般的な原則として、次の三つを示している。
+
+\begin{longtable}{>{\raggedright\arraybackslash}p{0.27\textwidth}>{\raggedright\arraybackslash}p{0.68\textwidth}}
+\toprule
+\textbf{原則} & \textbf{説明} \\
+\midrule
+本質をモデル化する & すべてを表すのではなく、答えたい問いに関係する側面だけを表す。これによりモデルは扱いやすくなる。\\
+視点を与える & 構造、振る舞い、時間、組織、配置など、関心事ごとに見方を分ける。視点を分けることで、議論すべきことが明確になる。\\
+効果的なコミュニケーションを可能にする & 対象領域の語彙、モデリング言語、文脈上の意味を使って、関係者間の理解を助ける。\\
+\bottomrule
+\end{longtable}
+
+\begin{pointbox}{例：病院予約システムのモデル}
+医師、患者、予約枠の関係を考えるときは構造モデルが役立つ。一方、患者が予約を変更する流れを考えるときは振る舞いモデルが役立つ。同じシステムでも、問いが違えば必要なモデルも違う。
+\end{pointbox}
+
+\begin{todobox}{モデリング三原則の図を入れる}{principles}
+\prompt{白背景、モノクロ、A4本文幅に収まる三分割図を作成する。上部に「よいモデルの三原則」と書く。左に「本質をモデル化する」、中央に「視点を与える」、右に「効果的なコミュニケーションを可能にする」を置き、それぞれの下に短い説明を入れる。中央下に「目的に合う抽象化」と注記する。日本語ラベル、細線、講義ノート風。}
+\end{todobox}
+
+\subsection{モデルの性質と表現}
+モデルの性質とは、そのモデルがどの程度よくできているかを判断する特徴である。代表的な性質は、完全性、整合性、正しさである。
+
+\begin{longtable}{>{\raggedright\arraybackslash}p{0.25\textwidth}>{\raggedright\arraybackslash}p{0.70\textwidth}}
+\toprule
+\textbf{性質} & \textbf{説明} \\
+\midrule
+完全性 & 必要な要求がモデルに含まれ、検証できる状態になっている度合いである。\\
+整合性 & 要求、制約、機能、構成要素の記述が互いに矛盾していない度合いである。\\
+正しさ & モデルが要求や設計仕様を満たし、欠陥を含まない度合いである。\\
+\bottomrule
+\end{longtable}
+
+モデルは、通常、\textbf{実体}と\textbf{関係}で表される。実体は、センサー、ロボット、画面、ソフトウェア部品、通信プロトコルなどである。関係は、実体同士の接続、依存、利用、継承、データの流れ、呼び出しなどである。実体や関係は、図形、線、文字、演算子、表などで表される。
+
+自動化されたモデリング環境では、モデルの構文の誤り、未接続の要素、矛盾の一部を機械的に検出できる。ただし、ツールが役立つ範囲は、モデリング言語の厳密さ、意味の定義、ツール支援の程度に依存する。
+
+\subsection{構文・意味論・語用論}
+モデルを正しく扱うには、構文、意味論、語用論を区別する必要がある。
+
+\begin{longtable}{>{\raggedright\arraybackslash}p{0.24\textwidth}>{\raggedright\arraybackslash}p{0.45\textwidth}>{\raggedright\arraybackslash}p{0.24\textwidth}}
+\toprule
+\textbf{観点} & \textbf{意味} & \textbf{例} \\
+\midrule
+構文 & モデルの書き方が文法として正しいかを扱う。 & UMLのクラス図で、許される記号と接続を使っているか。\\
+意味論 & 記号や関係が何を意味するかを扱う。 & 二つの箱を線で結んだとき、それが関連、依存、制御フローのどれを意味するか。\\
+語用論 & そのモデルが文脈の中でどう理解され、どう使われるかを扱う。 & 利用者向け説明図として十分か、開発者向け設計図として十分か。\\
+\bottomrule
+\end{longtable}
+
+構文が正しいモデルでも、意味が間違っていることはある。たとえば、図としては正しいクラス図でも、業務上は存在しない関係を表していれば、意味としては誤りである。また、意味が正しくても、読む相手に伝わらなければ実務上は役に立たない。この伝わり方が語用論の問題である。
+
+\begin{pointbox}{注意}
+一つのモデルを見ただけで、対象を完全に理解した気になることがある。これは危険である。多くの場合、完全な理解には、複数のサブモデル、複数の視点、前提条件、対象領域の文脈が必要である。
+\end{pointbox}
+
+\begin{todobox}{構文・意味論・語用論の違いを示す図を入れる}{syntax-semantics-pragmatics}
+\prompt{白背景、モノクロ、A4本文幅の横長図を作成する。左から「構文」「意味論」「語用論」の三つの箱を並べる。構文には「書き方が正しいか」、意味論には「何を意味するか」、語用論には「文脈でどう伝わるか」と説明を入れる。下に同じ二つの箱と一本の線の小さな例を置き、「クラス図なら関連」「活動図なら流れ」のように文脈で意味が変わることを示す。日本語、細線、講義ノート風。}
+\end{todobox}
+
+\subsection{事前条件・事後条件・不変条件}
+関数やメソッドをモデル化するときは、実行前、実行後、実行中に変わらず守られる条件を明確にする必要がある。これらは、正しい動作を考えるための基礎である。
+
+\begin{longtable}{>{\raggedright\arraybackslash}p{0.24\textwidth}>{\raggedright\arraybackslash}p{0.70\textwidth}}
+\toprule
+\textbf{用語} & \textbf{説明} \\
+\midrule
+事前条件 & 関数やメソッドを実行する前に満たされていなければならない条件である。満たされない場合、結果が誤る可能性がある。\\
+事後条件 & 関数やメソッドが正常に完了した後に成り立つことが保証される条件である。\\
+不変条件 & 実行の前後を通じて変わらず成り立つ条件である。対象の正しい動作に必要な制約である。\\
+\bottomrule
+\end{longtable}
+
+たとえば、銀行口座から出金する処理を考える。事前条件は「口座が存在する」「出金額が0より大きい」「残高が出金額以上である」などである。事後条件は「残高が出金額だけ減る」「取引記録が作成される」などである。不変条件は「残高は負にならない」「口座番号は処理中に変わらない」などである。
+
+\begin{todobox}{事前条件・事後条件・不変条件の時間軸図を入れる}{pre-post-invariant}
+\prompt{白背景、モノクロ、A4本文幅の時間軸図を作成する。左に「実行前」、中央に「関数・メソッドの実行」、右に「実行後」を置く。実行前の上に「事前条件」、実行後の上に「事後条件」、時間軸全体をまたぐ帯として「不変条件」を描く。例として「出金処理」「残高は負にならない」を添える。日本語ラベル、講義ノート風。}
+\end{todobox}
+
+\section{モデルの種類}
+\subsection{モデルはサブモデルの集まりである}
+典型的なモデルは、一つの図だけで構成されるわけではない。複数のサブモデルの集まりである。サブモデルは、特定の目的のために作られた部分的な説明であり、一つ以上の図や表を含むことがある。
+
+統一モデリング言語（UML）は、多くの図を提供する。UMLの図は、主に構造を表す図と振る舞いを表す図に分けられる。システムモデリング言語（SysML）では、さらに要求モデルやパラメトリックモデルなども扱う。
+
+\subsection{構造モデリング}
+構造モデリングは、ソフトウェアの物理的または論理的な構成を表す。何が存在し、どのような関係を持ち、どこがシステムと外部環境の境界かを明確にする。
+
+構造モデリングでよく使う考え方には、構成、分解、一般化、特殊化、関連、多重度、インタフェースなどがある。UMLの構造図には、クラス図、コンポーネント図、オブジェクト図、配置図、パッケージ図などがある。
+
+\begin{pointbox}{構造モデルの見方}
+構造モデルを見るときは、「どの部品があるか」「どの部品がどの部品を知っているか」「どの部品が外部とつながるか」「多重度や制約は正しいか」を確認するとよい。
+\end{pointbox}
+
+情報モデリングも構造モデリングの一種である。情報モデルは、データ実体、性質、関係、制約を抽象的に表す。概念情報モデルは、実装方法ではなく、問題領域の見方を表す。そこから、論理データモデル、物理データモデルへと変換される。
+
+\subsection{振る舞いモデリング}
+振る舞いモデリングは、ソフトウェアが何をし、どのように状態や処理を変えるかを表す。代表的には、状態機械、制御フローモデル、データフローモデルがある。
+
+\begin{longtable}{>{\raggedright\arraybackslash}p{0.26\textwidth}>{\raggedright\arraybackslash}p{0.68\textwidth}}
+\toprule
+\textbf{種類} & \textbf{説明} \\
+\midrule
+状態機械 & ソフトウェアを、状態、イベント、遷移の集合として表す。たとえば「未承認」「承認済み」「出荷済み」のような状態を扱う。\\
+制御フローモデル & どの処理がどの順序で有効化・無効化されるかを表す。処理手順の理解に向く。\\
+データフローモデル & データがどの処理を通り、どのデータストアや出力へ流れるかを表す。情報処理の流れを確認するのに向く。\\
+\bottomrule
+\end{longtable}
+
+UMLの振る舞い図には、ユースケース図、活動図、状態機械図、相互作用図がある。相互作用図には、シーケンス図、コミュニケーション図、タイミング図、相互作用概要図などが含まれる。
+
+\begin{todobox}{構造モデルと振る舞いモデルの比較図を入れる}{structural-behavioral}
+\prompt{白背景、モノクロ、A4本文幅に収まる左右比較図を作成する。左を「構造モデル：何があるか」、右を「振る舞いモデル：どう動くか」とする。左には「クラス」「部品」「関係」「配置」を小箱で置く。右には「状態」「イベント」「処理順序」「データの流れ」を小箱で置く。中央に同じシステムを別の視点で見ることを示す矢印を描く。日本語ラベル、講義ノート風。}
+\end{todobox}
+
+\section{モデルの分析}
+モデルは作るだけでは不十分である。モデルが目的に対して十分か、矛盾していないか、正しいか、他の成果物とつながっているか、相互作用が期待どおりかを分析する必要がある。
+
+\subsection{完全性の分析}
+完全性とは、指定された要求がモデルに含まれ、実装や検証へつながっている度合いである。完全性は、要求獲得からコード実装まで重要である。
+
+完全性の確認には、モデリングツールによる構造分析や状態空間到達可能性分析が使われることがある。状態空間到達可能性分析とは、モデル上の状態や経路に、正しい入力の集合から到達できるかを調べる考え方である。手作業では、レビューやインスペクションで抜け漏れを探す。
+
+\subsection{整合性の分析}
+整合性とは、要求、表明、制約、機能、構成要素の記述が衝突していない度合いである。たとえば、あるモデルで「利用者は退会後にログインできない」と書き、別のモデルで「退会後も注文履歴をログインして閲覧できる」と書いていれば、整合性の問題がある。
+
+整合性確認は、ツールで自動的に行える場合がある。ただし、業務的な矛盾や意味上の矛盾は、人によるレビューが必要になることが多い。
+
+\subsection{正しさの分析}
+正しさとは、モデルがソフトウェア要求や設計仕様を満たし、欠陥がない度合いである。正しさには、構文上の正しさと意味上の正しさがある。
+
+構文上の正しさは、モデリング言語の文法や記号の使い方が正しいかである。意味上の正しさは、モデルが対象領域の意味を正しく表しているかである。構文はツールで検出しやすいが、意味は関係者の知識やレビューが重要になる。
+
+\subsection{追跡可能性の分析}
+ソフトウェア開発では、計画書、プロセス仕様、要求、図、設計、擬似コード、コード、テストケース、テスト報告、ファイル、データなど、多数の作業成果物が作られる。これらの間には、利用する、実装する、検証する、依存する、といった関係がある。
+
+追跡可能性とは、これらの関係をたどれることである。要求から設計、設計からコード、コードからテストへたどれると、要求が満たされていることを説明しやすい。また、変更時には影響範囲を把握しやすい。モデリングツールは、要求、設計、コード、テスト実体の間の追跡リンクを自動または手動で管理することがある。
+
+\subsection{相互作用の分析}
+相互作用分析は、あるタスクや機能を実現するために、モデル内の実体がどのように通信し、制御を受け渡すかを調べる。対象は、アプリケーション内部の部品だけではない。オペレーティングシステム、ミドルウェア、他アプリケーション、利用者インタフェースとの関係も含まれる。
+
+モデリング環境によっては、シミュレーション機能を使って動的な振る舞いを確認できる。シミュレーションを一歩ずつ進めると、部品同士が意図どおり協調しているかを確認しやすい。
+
+\begin{todobox}{モデル分析の五観点を示す図を入れる}{model-analysis}
+\prompt{白背景、モノクロ、A4本文幅の放射状図を作成する。中央に「モデル分析」を置き、周囲に「完全性」「整合性」「正しさ」「追跡可能性」「相互作用」の五つの箱を配置する。各箱に「抜け漏れ」「矛盾」「要求適合」「成果物間リンク」「動的協調」と短い説明を添える。日本語、細線、講義ノート風。}
+\end{todobox}
+
+\section{ソフトウェア工学方法}
+ソフトウェア工学方法は、対象コンピュータ向けのソフトウェアを開発するための組織化された体系的な進め方である。方法の選択は、プロジェクトの成功に大きく影響する。
+
+SWEBOK 第11章では、代表的な方法を、経験則的方法、形式手法、プロトタイピング方法、アジャイル方法に分けて説明している。
+
+\subsection{経験則的方法}
+経験則的方法とは、実務経験に基づいて広く使われている方法である。ここでいう経験則は、単なる勘ではない。過去の開発で有効だった表現、分解、設計、確認のやり方を体系化したものである。
+
+\subsubsection{構造化分析・設計方法}
+構造化分析・設計方法は、主に機能や振る舞いの視点からモデルを作る。高水準のソフトウェアモデルから始め、データ要素や制御要素を含む構成要素を段階的に分解していく。詳細化が進むと、手作業または自動生成でコード化し、ビルドし、テストし、検証できる仕様に近づく。
+
+\subsubsection{データモデリング方法}
+データモデリング方法は、使われるデータや情報を中心にモデルを作る。データ表、実体、属性、関係を定義し、データ要求やデータベース設計を支援する。業務ソフトウェアでは、データが事業上の資源や資産として管理されるため、データモデリングは特に重要である。
+
+\subsubsection{オブジェクト指向分析・設計方法}
+オブジェクト指向分析・設計方法は、データと振る舞いをまとめたオブジェクトの集合としてソフトウェアを考える。オブジェクトは、現実世界の対象でも、仮想的な対象でもよい。オブジェクトはメソッドを通じて相互作用する。
+
+モデルは複数の図で構成され、段階的に詳細設計へ洗練される。詳細設計は、反復を通じて発展する場合もあれば、実装ビューへ変換される場合もある。代表的な方法には統一プロセス（Unified Process）や、その具体化であるRational Unified Processがある。
+
+\subsubsection{アスペクト指向開発方法}
+アスペクト指向開発は、横断的関心事を分離して扱う方法である。横断的関心事とは、ログ記録、認証、トランザクション、例外処理、監視など、複数の部品にまたがって現れる関心事である。
+
+横断的関心事を通常の部品の中に散らばらせると、関心事の散乱と絡まりが起こる。アスペクトは、こうした横断的関心事をカプセル化する単位である。ソフトウェアレベルでは、ウィーバが、指定された結合点に助言を織り込む。
+
+\subsubsection{モデル駆動開発・モデルベース開発方法}
+モデル駆動開発（MDD）は、モデルを開発プロセスの主要成果物として使う方法である。実装や他のモデルは、モデルから半自動または自動で変換されることがある。
+
+モデルベース開発（MBD）は、モデルを用いてシステムを分析する方法である。モデルが必ずしも主要成果物とは限らない。制御、信号処理、通信などの動的システムでは、実行可能仕様やシミュレーションに焦点を当てることがある。モデルからテストケースを生成する場合もある。
+
+\begin{todobox}{経験則的方法の分類図を入れる}{heuristic-methods}
+\prompt{白背景、モノクロ、A4本文幅のツリー図を作成する。最上位に「経験則的方法」を置き、下位に「構造化分析・設計」「データモデリング」「オブジェクト指向分析・設計」「アスペクト指向開発」「モデル駆動・モデルベース開発」を配置する。各箱に一行説明を添える。日本語ラベル、細線、講義ノート風。}
+\end{todobox}
+
+\subsection{形式手法}
+形式手法とは、厳密な数学的記法と言語を使って、ソフトウェアを仕様化し、開発し、検証する方法である。仕様言語を使うことで、モデルの整合性、完全性、正しさを自動または半自動で確認できる場合がある。
+
+形式手法は、曖昧さを減らしたい場面、安全性やセキュリティが重要な場面、通常のテストだけでは十分な確信を得にくい場面で価値が高い。一方で、数学的な表現を理解する負担があるため、すべてのプロジェクトに同じ程度で適用すればよいわけではない。
+
+\subsubsection{仕様言語}
+仕様言語は、形式手法の数学的基盤を提供する。仕様言語は、要求分析や設計の段階で、入出力の振る舞いを厳密に表すために使われる。通常の第3世代プログラミング言語とは異なり、直接実行するための言語ではないことが多い。記法、構文、意味論、許される関係の集合を含む。
+
+\subsubsection{プログラム洗練と導出}
+プログラム洗練とは、高水準の仕様を、変換の列によって低水準で詳細な仕様へ近づけることである。変換を重ねることで、最終的に実行可能な表現へ導く。これが可能になるのは、仕様の意味が精密に定義されているからである。
+
+\subsubsection{形式検証}
+形式検証は、モデルが特定の性質を持つことを数学的に確かめる方法である。モデル検査は形式検証の一例であり、状態空間探索や到達可能性分析を用いる。たとえば、イベントやメッセージの到着順がどのように入れ替わっても、正しい振る舞いを保つかを確認する。
+
+\subsubsection{論理推論}
+論理推論は、重要な設計ブロックの周りに事前条件と事後条件を定め、すべての入力に対してそれらが成り立つことを数学的論理で示す方法である。これにより、ソフトウェアを実行しなくても振る舞いを予測できる。
+
+\subsubsection{軽量形式手法}
+軽量形式手法は、実用性と厳密な検証のバランスを取る方法である。たとえば Alloy は、精密で表現力のある記法を用いつつ、定理証明ではなく自動分析によってすばやいフィードバックを与える。ただし、有限の範囲だけを調べるため、完全な証明ではない。
+
+\begin{todobox}{形式手法の流れを示す図を入れる}{formal-methods}
+\prompt{白背景、モノクロ、A4本文幅の工程図を作成する。左から「形式仕様」「洗練」「形式検証」「実装・テスト」を箱で並べる。上部に「数学的に意味が定義された記法」と注記する。下部に「整合性」「完全性」「正しさ」を確認する矢印を置く。軽量形式手法として「有限範囲の自動分析」を吹き出しで入れる。日本語ラベル、講義ノート風。}
+\end{todobox}
+
+\subsection{プロトタイピング方法}
+プロトタイピングとは、不完全または最小限の機能を持つソフトウェアの試作品を作り、理解や確認に使う活動である。目的は、新機能の試行、要求や利用者インタフェースへのフィードバック獲得、設計や実装選択肢の探索などである。
+
+プロトタイピングの特徴は、最もよく理解されていない部分から先に扱う点である。通常の開発方法では、よく理解された部分から始めることが多い。プロトタイプは、広範な再作業やリファクタリングなしに最終製品になるとは限らない。
+
+\begin{longtable}{>{\raggedright\arraybackslash}p{0.24\textwidth}>{\raggedright\arraybackslash}p{0.70\textwidth}}
+\toprule
+\textbf{観点} & \textbf{説明} \\
+\midrule
+プロトタイピング様式 & 使い捨てコード、紙の試作品、動く設計の発展形、実行可能仕様などがある。必要な結果、品質、緊急度に応じて選ぶ。\\
+プロトタイピング対象 & 要求仕様、アーキテクチャ要素、アルゴリズム、人間機械インタフェースなど、確認したい具体的対象である。\\
+評価技法 & 要求に照らして試す、実装と比較する、将来の設計モデルとして使うなど、作成目的に応じて評価する。\\
+\bottomrule
+\end{longtable}
+
+\begin{pointbox}{プロトタイプ利用時の注意}
+プロトタイプは理解を早めるが、利用者が「もう完成している」と誤解することがある。試作品の目的、捨てる範囲、最終製品との違いを明確にしておく必要がある。
+\end{pointbox}
+
+\begin{todobox}{プロトタイピングの三観点を示す図を入れる}{prototyping}
+\prompt{白背景、モノクロ、A4本文幅の三角形図を作成する。三角形の頂点に「様式」「対象」「評価」を置く。中央に「プロトタイピング」と書く。様式の近くに「使い捨て、発展型、紙、実行可能仕様」、対象の近くに「要求、UI、アルゴリズム、アーキテクチャ」、評価の近くに「フィードバック、比較、将来モデル」と入れる。日本語、講義ノート風。}
+\end{todobox}
+
+\subsection{アジャイル方法}
+アジャイル方法は、重厚で計画中心の方法に伴う大きな負担を減らすため、1990年代に発展した。短い反復サイクル、自己組織化チーム、単純な設計、コードのリファクタリング、テスト駆動開発、頻繁な顧客関与、各サイクルで動く製品を示すことを重視する。
+
+アジャイル方法は、Plan-Do-Check-Act（PDCA）の改善サイクルをソフトウェア工学へ適用したものとして見ることもできる。EVOは、PDCAを増分的に実装する早期のアジャイル方法の一つとして説明できる。
+
+\subsubsection{代表的なアジャイル方法}
+\begin{longtable}{>{\raggedright\arraybackslash}p{0.20\textwidth}>{\raggedright\arraybackslash}p{0.74\textwidth}}
+\toprule
+\textbf{方法} & \textbf{要点} \\
+\midrule
+RAD & 主にデータ集約型の業務システムで使われる。専用のデータベース開発ツールによって、業務アプリケーションを素早く開発、テスト、展開する。\\
+XP & ストーリーやシナリオで要求を扱い、先にテストを作り、顧客が直接関与し、ペアプログラミング、継続的リファクタリング、継続的統合を行う。\\
+Scrum & プロジェクト管理に向いたアジャイル方法である。スプリントは最大30日程度で、プロダクトオーナー、スクラムマスター、プロダクトバックログ、日次スクラムなどを用いる。\\
+FDD & モデル駆動で短い反復を行う方法である。全体モデル、機能一覧、機能開発計画、機能ごとの設計、コード化・テスト・統合の五段階を重視する。\\
+Lean & トヨタ生産方式に由来するリーン製造の考え方をソフトウェア開発へ適用する。最小実用製品を出し、利用者から学び、全体の価値の流れを最適化する。Kanbanはワークフロー管理と可視化を重視する軽量な方法である。\\
+\bottomrule
+\end{longtable}
+
+\subsubsection{アジャイル方法と計画駆動方法の使い分け}
+アジャイル方法が有効な場面もあれば、重厚で計画駆動の方法が必要な場面もある。方法選択は、組織の事業上の必要、規制、安全性、契約、チーム規模、要求の安定性、変更の頻度によって決まる。
+
+近年は、アジャイルと計画駆動方法を組み合わせる方法も増えている。大規模アジャイルや企業全体のアジャイルは、多数のアジャイルチームを調整しつつ、アジャイルの利点を保つことを目指す。
+
+\subsubsection{リリースエンジニアリングとDevOps}
+アジャイル方法は短いリリースサイクルにつながる。リリースエンジニアリングは、ソースコードをコンパイルし、組み立て、完成した製品や部品として届けることに関わる下位分野である。統合、ビルド、テストが中心になる。
+
+DevOpsは、アジャイルや継続的デプロイと混同されることがある。区別して考えるためには、リリース管理を、開発と運用の協働の隙間を埋める方法として見るとよい。継続的統合システムのような自動化管理ツールは、展開スケジュールに合わせてリリースを管理するうえで重要である。
+
+\begin{todobox}{アジャイル方法の比較図を入れる}{agile-comparison}
+\prompt{白背景、モノクロ、A4本文幅の比較表風図を作成する。列に「RAD」「XP」「Scrum」「FDD」「Lean/Kanban」を置く。行に「主な狙い」「要求の扱い」「反復」「特徴的な実践」を置く。各セルは短い日本語。下に「方法選択は組織の事業上の必要で決まる」と注記する。講義ノート風、細線、印刷で読みやすい。}
+\end{todobox}
+
+\begin{todobox}{アジャイル、リリースエンジニアリング、DevOpsの関係図を入れる}{agile-release-devops}
+\prompt{白背景、モノクロ、A4本文幅の流れ図を作成する。左から「開発反復」「統合」「ビルド」「テスト」「リリース」「運用」を箱で並べる。上に「アジャイル：短い反復で動く製品を示す」、中央に「リリースエンジニアリング：組み立てと提供を管理する」、下に「DevOps：開発と運用の協働を支える」と帯で示す。継続的統合システムを自動化ツールとして描く。日本語ラベル、講義ノート風。}
+\end{todobox}
+
+\section{実務での使い分け}
+モデルや方法の選択で最も大切なのは、目的に合っているかである。すべてのプロジェクトで同じモデルを作る必要はない。逆に、必要なモデルを作らないと、後で誤解、欠陥、変更コストとして戻ってくる。
+
+\begin{longtable}{>{\raggedright\arraybackslash}p{0.31\textwidth}>{\raggedright\arraybackslash}p{0.64\textwidth}}
+\toprule
+\textbf{状況} & \textbf{向きやすい選択} \\
+\midrule
+業務データが複雑で、関係の誤りが重大である & 情報モデル、概念データモデル、構造モデルを重視する。\\
+状態遷移や例外処理が多い & 状態機械、活動図、シーケンス図などの振る舞いモデルを重視する。\\
+安全性やセキュリティが重要で、曖昧さを減らしたい & 形式手法、軽量形式手法、モデル検査、事前条件・事後条件の記述を検討する。\\
+利用者が要求を言語化しにくい & プロトタイピング、ユーザインタフェース試作、シナリオ確認を使う。\\
+要求が変わりやすく、顧客から頻繁に学ぶ必要がある & アジャイル方法、短い反復、継続的フィードバックを使う。\\
+規制、契約、安全認証が強い & 計画駆動方法、追跡可能性、形式的なレビュー、記録の管理を重視する。\\
+\bottomrule
+\end{longtable}
+
+\begin{pointbox}{実務上の判断基準}
+モデルや方法は、作る負担だけで評価してはいけない。誤解を減らす効果、欠陥を早期に見つける効果、関係者の合意を助ける効果、変更時の影響分析を容易にする効果も含めて評価する必要がある。
+\end{pointbox}
+
+\section{トピックと参考文献の対応}
+この表は、SWEBOK 第11章の「トピック対参考資料の行列」を、学習用に簡略化したものである。詳しく学ぶときは、各トピックに対応する文献を読む。
+
+\begin{longtable}{>{\raggedright\arraybackslash}p{0.42\textwidth}>{\raggedright\arraybackslash}p{0.53\textwidth}}
+\toprule
+\textbf{トピック} & \textbf{主な参考資料} \\
+\midrule
+モデリング原則 & Budgen; Mellor and Balcer; Sommerville \\
+モデルの性質と表現 & Budgen; Sommerville \\
+構文・意味論・語用論 & Mellor and Balcer; Sommerville \\
+事前条件・事後条件・不変条件 & Mellor and Balcer; Page-Jones \\
+構造モデリング & Budgen; Sommerville; Page-Jones; ISO/IEC 19505-1 \\
+振る舞いモデリング & Budgen; Mellor and Balcer; Sommerville; Selic and Gerard \\
+完全性・整合性の分析 & Sommerville; Wing \\
+正しさの分析 & Wing \\
+追跡可能性の分析 & Sommerville \\
+相互作用の分析 & Mellor and Balcer; Sommerville; Page-Jones \\
+経験則的方法 & Budgen; Sommerville; Selic and Gerard; Brambilla et al.; Aarenstrup; Larman; Kiczales et al. \\
+形式手法 & Budgen; Sommerville; Wing; Jackson \\
+プロトタイピング方法 & Budgen; Sommerville; Brookshear \\
+アジャイル方法 & Sommerville; Brookshear; Boehm and Turner; Poppendieck; Ohno; Anderson; Goodpasture; ISO/IEC/IEEE 32675 \\
+\bottomrule
+\end{longtable}
+
+\section{参考文献}
+\begin{enumerate}
+  \item D. Budgen, \textit{Software Design: Creating Solutions for Ill-Structured Problems}, 3rd Edition, CRC Press, 2021.
+  \item S. J. Mellor and M. J. Balcer, \textit{Executable UML: A Foundation for Model-Driven Architecture}, Addison-Wesley, 2002.
+  \item I. Sommerville, \textit{Software Engineering}, 10th ed., Addison-Wesley, 2016.
+  \item M. Page-Jones, \textit{Fundamentals of Object-Oriented Design in UML}, Addison-Wesley, 1999.
+  \item J. M. Wing, ``A Specifier's Introduction to Formal Methods,'' \textit{Computer}, 1990.
+  \item J. G. Brookshear, \textit{Computer Science: An Overview}, 10th ed., Addison-Wesley, 2008.
+  \item B. Boehm and R. Turner, \textit{Balancing Agility and Discipline: A Guide for the Perplexed}, Addison-Wesley, 2003.
+  \item B. Selic and S. Gerard, \textit{Modeling and Analysis of Real-Time and Embedded Systems with UML and MARTE}, Morgan Kaufmann, 2013.
+  \item M. Brambilla, J. Cabot, and M. Wimmer, \textit{Model-Driven Software Engineering in Practice}, Morgan and Claypool Publishers, 2017.
+  \item D. Jackson, \textit{Software Abstractions}, revised edition, The MIT Press, 2016.
+  \item R. Aarenstrup, \textit{Managing Model-Based Design}, CreateSpace Independent Publishing Platform, 2015.
+  \item C. Larman, \textit{Applying UML and Patterns}, Prentice Hall PTR, 2005.
+  \item M. Poppendieck and T. Poppendieck, \textit{Lean Software Development: An Agile Toolkit}, Addison-Wesley Professional, 2003.
+  \item T. Ohno, \textit{Toyota Production System: Beyond Large-Scale Production}, Taylor and Francis Distribution, 2021.
+  \item D. J. Anderson, \textit{Kanban: Successful Evolutionary Change for Your Technology Business}, Blue Hole Press, 2010.
+  \item J. Goodpasture, \textit{Project Management the Agile Way: Making It Work in the Enterprise}, J. Ross Publishing, 2010.
+  \item ISO/IEC 19505-1:2012, Information technology -- Object Management Group Unified Modeling Language (OMG UML) -- Part 1: Infrastructure.
+  \item ISO/IEC/IEEE 32675:2022, Information technology -- DevOps -- Building reliable and secure systems including application build, package and deployment.
+  \item G. Kiczales et al., ``Aspect-oriented programming,'' ECOOP 1997.
+\end{enumerate}
+
+\section{画像TODO一覧}
+本文に配置した画像TODOを再掲する。実際に図を作る場合は、各TODOのプロンプトをそのまま画像生成に使うと、A4資料に合う図を作りやすい。
+\begin{enumerate}
+  \item 第11章の全体地図。
+  \item モデリング三原則の図。
+  \item 構文・意味論・語用論の違いを示す図。
+  \item 事前条件・事後条件・不変条件の時間軸図。
+  \item 構造モデルと振る舞いモデルの比較図。
+  \item モデル分析の五観点を示す図。
+  \item 経験則的方法の分類図。
+  \item 形式手法の流れを示す図。
+  \item プロトタイピングの三観点を示す図。
+  \item アジャイル方法の比較図。
+  \item アジャイル、リリースエンジニアリング、DevOpsの関係図。
+\end{enumerate}
+
+\section{章末確認問題}
+\begin{enumerate}
+  \item モデルが「対象の完全な複製」ではなく「目的を持つ抽象表現」である理由を説明せよ。
+  \item モデリング原則の三つ、本質をモデル化する、視点を与える、効果的なコミュニケーションを可能にする、を自分の言葉で説明せよ。
+  \item 構文、意味論、語用論の違いを、二つの箱を一本の線で結んだ図を例に説明せよ。
+  \item 出金処理を例に、事前条件、事後条件、不変条件をそれぞれ一つずつ挙げよ。
+  \item 構造モデルと振る舞いモデルの違いを説明せよ。
+  \item モデルの完全性、整合性、正しさは、それぞれ何を確認する観点か。
+  \item 追跡可能性が、変更時の影響分析に役立つ理由を説明せよ。
+  \item 形式手法が有効になりやすい状況と、導入時の注意点を説明せよ。
+  \item プロトタイピングが、通常の開発方法と異なり「よく理解されていない部分」から始める理由を説明せよ。
+  \item RAD、XP、Scrum、FDD、Leanの違いを、目的または特徴的な実践に注目して説明せよ。
+\end{enumerate}
+
+\begin{pointbox}{解答の方向性}
+1は「必要な側面だけを残して複雑さを下げる」と説明できる。2は「何を省くか、どの視点で見るか、誰に伝えるか」を軸に考える。3は「文法、意味、文脈」の区別である。4は「実行前に必要な条件、実行後に保証される条件、前後で変わらない条件」である。5以降は、本文の「何があるか」「どう動くか」「抜け漏れ」「矛盾」「要求適合」「成果物間リンク」「動的協調」という語を使うと説明しやすい。
+\end{pointbox}
+
+\end{document}

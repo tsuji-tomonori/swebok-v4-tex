@@ -1,0 +1,705 @@
+% !TeX program = xelatex
+\documentclass[a4paper,11pt]{article}
+
+\usepackage{geometry}
+\geometry{top=22mm,bottom=24mm,left=22mm,right=22mm}
+\usepackage{fontspec}
+\usepackage{xeCJK}
+\setmainfont{TeXGyrePagella}
+\setsansfont{TeXGyreHeros}
+\setmonofont{DejaVu Sans Mono}
+\setCJKmainfont{Noto Serif CJK JP}
+\setCJKsansfont{Noto Sans CJK JP}
+\setCJKmonofont{Noto Sans Mono CJK JP}
+\XeTeXlinebreaklocale "ja"
+\XeTeXlinebreakskip=0pt plus 1pt
+
+\usepackage{amsmath,amssymb}
+\usepackage{array,booktabs,longtable,tabularx,multirow}
+\usepackage[most]{tcolorbox}
+\usepackage{enumitem}
+\usepackage{titlesec}
+\usepackage{fancyhdr}
+\usepackage{lastpage}
+\usepackage{hyperref}
+\usepackage{xurl}
+\usepackage{caption}
+\usepackage{etoolbox}
+\usepackage{ragged2e}
+
+\hypersetup{
+  colorlinks=true,
+  linkcolor=black,
+  urlcolor=black,
+  citecolor=black,
+  pdfauthor={ChatGPT},
+  pdftitle={SWEBOK v4.0a Chapter 15 Japanese Summary},
+  pdfsubject={Software Engineering Economics}
+}
+
+\pagestyle{fancy}
+\setlength{\headheight}{14pt}
+\fancyhf{}
+\lhead{15 章 ソフトウェア工学経済}
+\rhead{SWEBOK v4.0a 日本語まとめ}
+\cfoot{\thepage/\pageref{LastPage}}
+\renewcommand{\headrulewidth}{0.4pt}
+
+\titleformat{\section}{\Large\bfseries\sffamily}{\thesection}{0.7em}{}
+\titleformat{\subsection}{\large\bfseries\sffamily}{\thesubsection}{0.7em}{}
+\titleformat{\subsubsection}{\normalsize\bfseries\sffamily}{\thesubsubsection}{0.7em}{}
+\titlespacing*{\section}{0pt}{1.4em}{0.6em}
+\titlespacing*{\subsection}{0pt}{1.0em}{0.4em}
+\titlespacing*{\subsubsection}{0pt}{0.8em}{0.3em}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.55em}
+\setlist[itemize]{leftmargin=1.8em,topsep=0.2em,itemsep=0.2em}
+\setlist[enumerate]{leftmargin=1.8em,topsep=0.2em,itemsep=0.2em}
+\renewcommand{\arraystretch}{1.25}
+
+\newcolumntype{Y}{>{\RaggedRight\arraybackslash}X}
+\newcolumntype{L}[1]{>{\RaggedRight\arraybackslash}p{#1}}
+
+\tcbset{
+  enhanced,
+  boxrule=0.45pt,
+  sharp corners,
+  left=1.1mm,
+  right=1.1mm,
+  top=0.8mm,
+  bottom=0.8mm,
+  before skip=0.6em,
+  after skip=0.7em
+}
+\newtcolorbox{claimbox}{colback=black!3,colframe=black!70,title=この資料の主張,fonttitle=\bfseries\sffamily}
+\newtcolorbox{readbox}{colback=black!2,colframe=black!55,title=この資料の読み方,fonttitle=\bfseries\sffamily}
+\newtcolorbox{defbox}[1]{colback=black!2,colframe=black!65,title={定義：#1},fonttitle=\bfseries\sffamily}
+\newtcolorbox{importantbox}{colback=black!4,colframe=black!80,title=重要,fonttitle=\bfseries\sffamily}
+\newtcolorbox{examplebox}{colback=black!2,colframe=black!50,title=例,fonttitle=\bfseries\sffamily}
+\newtcolorbox{todobox}{colback=black!1,colframe=black!45,title=TODO（図）,fonttitle=\bfseries\sffamily}
+\newtcolorbox{promptbox}{colback=white,colframe=black!35,title=画像生成用プロンプト,fonttitle=\bfseries\sffamily}
+\newtcolorbox{termnote}{colback=black!3,colframe=black!55,title=用語の見分け方,fonttitle=\bfseries\sffamily}
+
+\newcommand{\jaen}[2]{#1（#2）}
+\newcommand{\smallterm}[1]{\textbf{#1}}
+
+\begin{document}
+
+\begin{center}
+  {\Huge\bfseries\sffamily 15 章 ソフトウェア工学経済}\\[0.6em]
+  {\Large Software Engineering Economics の日本語まとめ}\\[0.4em]
+  {SWEBOK Guide v4.0a Chapter 15 を初学者向けに再構成}\\[0.8em]
+  {作成日：2026 年 5 月 12 日}
+\end{center}
+
+\begin{claimbox}
+ソフトウェア工学経済とは、ソフトウェアに関する技術的な選択を、組織の価値・費用・リスク・戦略に結び付けて判断する考え方である。単に「安いものを選ぶ」ための知識ではない。限られた人員、時間、資金をどの案に投入すれば最も価値を生むかを考えるための知識である。
+\end{claimbox}
+
+\begin{readbox}
+専門用語は原則として日本語で示し、初出では英語を括弧内に併記する。英語名は、元資料、標準、ツール、参考文献を確認するときの手がかりとして残す。本文はだである調で統一し、初学者が前提知識なしに読めるよう、概念の目的、見分け方、実務での使い所を中心に説明する。
+\end{readbox}
+
+\tableofcontents
+\newpage
+
+\section*{全体概要：この章で学ぶこと}
+\addcontentsline{toc}{section}{全体概要：この章で学ぶこと}
+
+この章は、ソフトウェア開発を「技術だけの活動」と見なさず、「限られた資源を使って価値を作る活動」として扱う。開発するかしないか、買うか作るか、保守するか置き換えるか、品質をどこまで高めるか、どの要求を優先するかといった判断には、必ず経済的な側面がある。
+
+\textbf{到達目標} この章を読み終えると、次のことができるようになる。
+\begin{itemize}
+  \item ソフトウェア工学経済が、金銭だけでなく価値・リスク・無形資産を扱うことを説明できる。
+  \item 提案、キャッシュフロー、時間価値、等価性、比較基準、代替案を区別できる。
+  \item 工学的意思決定の流れを、問題理解、候補案、選択基準、評価、選択、監視として説明できる。
+  \item 営利、非営利、現在時点、複数属性の意思決定技法を使い分けられる。
+  \item 見積りが意思決定のための予測であり、不確実性を伴うことを説明できる。
+  \item 会計、費用、財務、効率、有効性、生産性、製品ライフサイクルなどの関連概念を説明できる。
+\end{itemize}
+
+\begin{todobox}
+15 章の全体地図を入れる。
+\end{todobox}
+\begin{promptbox}
+白背景、モノクロ、A4 本文幅に収まる横長の学習用図解を作成する。中央に「ソフトウェア工学経済」を置き、周囲に「基礎」「工学的意思決定」「営利判断」「非営利判断」「現在時点判断」「複数属性判断」「無形資産」「見積り」「実務上の考慮」「関連概念」を配置する。矢印で「技術判断を事業価値へ結び付ける」と示す。ラベルは日本語、細線、講義ノート風、余白を広めにする。
+\end{promptbox}
+
+\section*{最初に必要な用語}
+\addcontentsline{toc}{section}{最初に必要な用語}
+
+\begin{longtable}{L{0.27\linewidth} L{0.68\linewidth}}
+\toprule
+\textbf{用語} & \textbf{初学者向けの説明} \\
+\midrule
+ソフトウェア工学経済 & 技術案を費用、価値、リスク、時間、組織目標の観点から比較し、よりよい選択を行うための知識である。 \\
+提案 & 実行するかどうかを判断する一つの選択肢である。例は「新規開発する」「既存製品を購入する」「レガシーシステムを置き換える」である。 \\
+キャッシュフロー & 提案を実行した結果、いつ、いくらの資金が出入りするかを表す流れである。 \\
+時間価値 & 同じ金額でも、今日の金額と将来の金額では価値が異なるという考え方である。 \\
+等価性 & 異なる時点の金額を、同じ時点の価値に換算して比較できる状態である。 \\
+比較基準 & 提案を同じ土俵で比べるための基準である。現在価値、将来価値、内部収益率などがある。 \\
+無形資産 & 物理的な形はないが価値を持つ知識、文化、手順、経験、ノウハウ、仕様、ツールなどである。 \\
+見積り & まだ正確には分からない量を、根拠に基づいて予測することである。 \\
+総所有費用 & 取得費だけでなく、導入、運用、保守、廃止までを含めた総費用である。 \\
+\bottomrule
+\end{longtable}
+
+\section*{頭字語}
+\addcontentsline{toc}{section}{頭字語}
+\begin{longtable}{L{0.20\linewidth} L{0.34\linewidth} L{0.40\linewidth}}
+\toprule
+\textbf{略語} & \textbf{英語} & \textbf{日本語での意味} \\
+\midrule
+IRR & Internal Rate of Return & 内部収益率。投資案の収益性を示す利率である。 \\
+MARR & Minimum Acceptable Rate of Return & 許容最低収益率。組織が投資として受け入れる最低限の収益率である。 \\
+SDLC & Software Development Life Cycle & ソフトウェア開発ライフサイクル。開発活動の流れである。 \\
+SPLC & Software Product Life Cycle & ソフトウェア製品ライフサイクル。企画、開発、運用、保守、廃止までを含む。 \\
+ROI & Return on Investment & 投資収益率。投資に対する利益の割合である。 \\
+SEI & Software Engineering Institute & ソフトウェア工学研究所。 \\
+TCO & Total Cost of Ownership & 総所有費用。取得から運用・保守までの総費用である。 \\
+\bottomrule
+\end{longtable}
+
+\section{導入：なぜ経済性が必要なのか}
+
+ソフトウェアは多くの組織にとって、単なる業務補助ではなく、事業目標を達成するための手段である。売上を伸ばす、顧客体験を改善する、業務の再作業を減らす、保守の手戻りを減らす、競争力を高めるといった目標は、ソフトウェアの技術的な設計や運用判断と直接つながる。
+
+工学経済は「お金の学問」だけではなく、「選択の学問」である。すなわち、限られた資源をこの技術的活動へ投入すべきか、それとも別の活動へ投入した方がよいかを考える。したがって、技術的に実現可能であることと、経済的に受け入れ可能であることのバランスを探す活動である。
+
+\begin{importantbox}
+技術的に優れた案が、組織にとって最良の案とは限らない。高性能な設計、最新の技術、完全な作り直しは、費用、納期、リスク、運用負荷、組織の無形資産との適合性を考えると不利になることがある。
+\end{importantbox}
+
+ソフトウェア工学経済は、開発前の投資判断だけでなく、ソフトウェア製品ライフサイクル全体に関係する。例として、次のような問いはすべて経済的な側面を持つ。
+\begin{itemize}
+  \item ある機能は買うべきか、作るべきか。
+  \item ある要求を今回の範囲に含めるべきか。
+  \item どの設計が最も費用対効果が高いか。
+  \item クラウド環境で、応答時間を満たしつつ過剰な運用費を避ける構成はどれか。
+  \item リスクに基づくテストはどこまで行えば十分か。
+  \item 技術的負債の大きいコードを、リファクタリングするか、再開発するか、そのまま維持するか。
+\end{itemize}
+
+価値は金銭に限らない。企業市民としての責任、従業員の幸福、環境への配慮、顧客ロイヤルティ、ブランド信頼など、数値化しにくい価値も意思決定に影響する。このため、ソフトウェア工学経済では財務的な指標だけでなく、無形の基準も扱う必要がある。
+
+\section{ソフトウェア工学経済の基礎}
+
+\subsection{提案}
+
+\begin{defbox}{提案}
+提案とは、検討対象となる一つの行動案である。ソフトウェア開発プロジェクトを実施する、既存部品を拡張する、別製品に置き換える、あるアルゴリズムを採用する、といった案が提案である。
+\end{defbox}
+
+提案は、実行するかしないかを判断する単位である。意思決定の目的は、組織の目標に最も合う提案を見つけることにある。提案は大規模プロジェクトだけではなく、設計、実装、テスト、運用の細かな選択にも現れる。
+
+\subsection{キャッシュフロー}
+
+キャッシュフローは、提案を実行した結果として組織に入る資金と出る資金の時系列である。ある月にサーバを購入すれば支出が発生し、製品の販売が始まれば収入が発生する。これらの個々の出入りをキャッシュフロー事象と呼び、一定期間にわたる全体の流れをキャッシュフロー列と呼ぶ。
+
+\begin{todobox}
+キャッシュフロー図を入れる。
+\end{todobox}
+\begin{promptbox}
+白背景、モノクロ、A4 本文幅の横長図を作成する。横軸を「時間」とし、0 年から 7 年までの目盛を置く。上向き矢印を「収入」、下向き矢印を「支出」とする。0 年に大きな下向き矢印「初期投資」、1 年以降に上向き矢印「売上」「保守削減効果」などを配置する。矢印の長さで金額の大小を表す。日本語ラベル、細線、講義ノート風。
+\end{promptbox}
+
+\subsection{お金の時間価値}
+
+お金には時間価値がある。同じ 100 万円でも、現在受け取る 100 万円と 3 年後に受け取る 100 万円は同じ価値ではない。現在の資金は投資でき、利息や収益を生む可能性があるためである。
+
+基本的な現在価値の式は次のように表せる。
+\[
+PV = \frac{FV}{(1+i)^n}
+\]
+ここで、$PV$ は現在価値、$FV$ は将来価値、$i$ は利率、$n$ は期間である。初学者は、将来のお金を現在の価値へ割り引いて比較するための式だと理解すればよい。
+
+\subsection{等価性}
+
+等価性とは、異なる時点のキャッシュフローを同じ時点の価値に換算し、比較可能にする考え方である。時間価値を無視して「合計金額」だけを比べると、誤った判断になることがある。
+
+\begin{examplebox}
+案 A は今すぐ 100 万円の利益を生む。案 B は 5 年後に 110 万円の利益を生む。単純合計では案 B が大きく見えるが、現在価値へ換算すると案 A の方が有利な場合がある。
+\end{examplebox}
+
+\subsection{比較基準}
+
+比較基準とは、複数のキャッシュフロー列を同じ土俵で比べるための枠組みである。主な基準には次がある。
+
+\begin{longtable}{L{0.30\linewidth} L{0.65\linewidth}}
+\toprule
+\textbf{比較基準} & \textbf{意味} \\
+\midrule
+現在価値 & すべての収入と支出を現在時点の価値に換算して比べる。 \\
+将来価値 & すべての収入と支出を将来のある時点の価値に換算して比べる。 \\
+年等価額 & 複数年の効果を、毎年同じ金額が発生するものとして比べる。 \\
+内部収益率 & 提案の収益性を表す利率で比べる。 \\
+割引回収期間 & 初期投資を、時間価値を考慮して何年で回収できるかを見る。 \\
+\bottomrule
+\end{longtable}
+
+\subsection{代替案}
+
+代替案とは、互いに比較して選択できる案の集合である。提案同士には依存関係や排他関係があることが多い。たとえば、提案 Y は提案 X を実行しなければ実行できないかもしれない。あるいは、提案 P と提案 Q は同時に実行できないかもしれない。
+
+意思決定では、提案の関係を整理し、互いに排他的な代替案へ変換することが重要である。特に、何もしない代替案も重要である。これは本当に何もしないという意味ではなく、「この候補群のどれも実行せず、別のことをする」という選択肢である。
+
+\subsection{無形資産}
+
+\begin{defbox}{無形資産}
+無形資産とは、物理的な形はないが、組織の成果や財務に影響する知識、経験、手順、文化、仕様、ツール、ノウハウなどである。知識資産とも呼ばれる。
+\end{defbox}
+
+ソフトウェアの提案は、無形資産に影響を受ける。たとえば、組織に高度な業務知識があるなら、その知識を活かす設計が価値を生む。逆に、現場の暗黙知を無視して導入したシステムは、技術的には正しくても業務に適合しない可能性がある。
+
+\subsection{ビジネスモデル}
+
+ビジネスモデルは、顧客は誰か、顧客は何に価値を感じるか、組織はどのように収益や持続可能性を得るか、どの費用構造で価値を届けるかを説明する枠組みである。
+
+\begin{importantbox}
+提案を評価するときは、ソフトウェア単体だけを見るのではなく、組織のビジネスモデルと無形資産を見る必要がある。これにより、隠れたリスクや機会を発見できる。
+\end{importantbox}
+
+\section{工学的意思決定プロセス}
+
+\subsection{プロセス概要}
+
+工学的意思決定は、次の流れで考えると理解しやすい。
+\begin{enumerate}
+  \item 本当の問題を理解する。
+  \item 技術的に実現可能な候補案を洗い出す。
+  \item 選択基準を定義する。
+  \item 各代替案を選択基準に照らして評価する。
+  \item 望ましい代替案を選ぶ。
+  \item 選んだ代替案の成果を監視する。
+\end{enumerate}
+
+実務では、この手順は完全な一直線ではない。候補案を考える途中で問題理解に戻ることもあり、評価中に選択基準を見直すこともある。ただし、各ステップを飛ばすと、判断の根拠が弱くなる。
+
+\begin{todobox}
+工学的意思決定プロセス図を入れる。
+\end{todobox}
+\begin{promptbox}
+白背景、モノクロ、A4 本文幅のフローチャートを作成する。左から「本当の問題を理解」「候補案を洗い出す」「選択基準を定義」「代替案を評価」「望ましい案を選択」「成果を監視」を箱で並べる。途中に戻り矢印を入れ、反復的に進むことを示す。上部に「工学的意思決定」、下部に「技術、費用、価値、リスクを同時に見る」と注記する。
+\end{promptbox}
+
+\subsection{本当の問題を理解する}
+
+最良の解は、本当の問題を理解しなければ選べない。表面的な要求や解決策をそのまま受け入れると、根本原因を外した案を選ぶ危険がある。
+
+実務では「5 つのなぜ」が有効である。なぜ必要なのかを繰り返し問うことで、要求の背後にある目的や制約を明らかにできる。また、デザイン思考の共感段階や、ビジネスモデルの確認も、問題の背景を理解する助けになる。
+
+\subsection{技術的に実現可能な候補案を洗い出す}
+
+候補案の集合に最良案が含まれていなければ、最良案を選ぶことはできない。したがって、重大な判断では創造的に候補案を探す必要がある。
+
+技術的実現可能性を確認するには、試作やピアレビューが有効である。候補案を増やすほど最良案を含む可能性は高まるが、評価コストも増える。そのため、候補案の数は判断の重要度に応じて調整する。
+
+\subsection{選択基準を定義する}
+
+選択基準は、代替案を比べるための物差しである。金銭は重要な基準だが、唯一の基準とは限らない。たとえば環境配慮、利用者満足、セキュリティ、安全性、法令順守、従業員の負荷、ブランド信頼なども基準になり得る。
+
+選択基準はできるだけ客観的に表す。ただし、すべてを金銭に換算できるわけではない。金銭で表せない基準は、測定不能なもの、還元不能なもの、無形のものとして扱い、複数属性意思決定で考える。
+
+\subsection{各代替案を選択基準に照らして評価する}
+
+代替案を評価するときは、同じ視点、同じ期間、同じ費用項目、同じ比較基準を使う必要がある。片方の案だけ 3 年分の費用を見て、もう片方の案だけ 5 年分の費用を見ると、不公平な比較になる。
+
+\subsection{望ましい代替案を選ぶ}
+
+金銭だけが基準であれば、現在価値、将来価値、内部収益率などで最もよい案を選ぶ。複数の基準がある場合は、複数属性意思決定技法を使う。
+
+見積りには不確実性がある。不確実性が判断結果を変える可能性があるときは、見積り範囲を考える、感度分析を行う、最終判断を遅らせるといった対応が必要である。複数の将来結果がある場合には、リスク下の意思決定や不確実性下の意思決定を使う。
+
+\begin{termnote}
+\smallterm{リスク下の意思決定}は、各結果の確率をある程度割り当てられる場合である。\smallterm{不確実性下の意思決定}は、確率を割り当てられない場合である。
+\end{termnote}
+
+\subsection{選択した代替案の成果を監視する}
+
+選択後は、実績を見積りと比較する。これを行わなければ、見積りが良かったのか悪かったのかが分からない。実績との差を分析することで、次回以降の見積りと意思決定を改善できる。
+
+\section{営利組織の意思決定}
+
+営利組織では、利益を生むことが重要な目標である。そのため、投資案の財務的な望ましさを評価する技法が使われる。
+
+\subsection{許容最低収益率}
+
+\begin{defbox}{許容最低収益率}
+許容最低収益率とは、組織が「投資として受け入れられる」と考える最低限の内部収益率である。英語では Minimum Acceptable Rate of Return、略して MARR である。
+\end{defbox}
+
+ある案の収益率が 10\% で、他の投資で確実に 20\% が期待できるなら、前者を選ぶ理由は弱い。MARR は機会費用を表す。ある案へ資金を投じることは、同じ資金を別の案へ投じる機会を捨てることでもある。
+
+\subsection{経済寿命}
+
+経済寿命とは、資産を使い続ける総費用が最小になる期間である。初期には、投資された資産の費用が大きい。一方、時間が経つほど運用費や保守費が増える。両者の合計が最小になる期間が、経済的に望ましい寿命である。
+
+\subsection{計画対象期間}
+
+提案の寿命が異なる場合、同じ期間で比較する必要がある。4 年の案と 6 年の案を比較するなら、どの期間を共通の分析期間とするかを決める。この共通期間が計画対象期間である。
+
+\subsection{置換判断}
+
+置換判断とは、既存資産を別の資産に置き換えるかどうかの判断である。レガシーソフトウェアを保守し続けるか、再開発するか、既製品へ移行するかといった判断が該当する。
+
+置換判断では、埋没費用と残存価値を意識する。埋没費用は、すでに発生して回収できない費用である。経済的な判断では、過去に投じた費用への感情ではなく、将来の価値と費用を見なければならない。
+
+\subsection{撤退判断}
+
+撤退判断とは、ある活動から完全に離れる判断である。ソフトウェア製品の販売を終了する、特定サービスの提供をやめる、古いプラットフォームの対応を終了する、といった例がある。撤退は事前に計画されることもあれば、業績や技術状況の変化で急に必要になることもある。
+
+\subsection{高度な営利判断の考慮事項}
+
+判断の影響が大きい場合には、インフレーション、デフレーション、減価償却、税金なども考慮する必要がある。初学者は、金額だけでなく「会計上どう扱われるか」「時間とともに価値がどう変わるか」も意思決定に影響すると理解すればよい。
+
+\begin{todobox}
+営利組織の意思決定フローを入れる。
+\end{todobox}
+\begin{promptbox}
+白背景、モノクロ、A4 本文幅のフローチャートを作成する。「代替案を初期投資が小さい順に並べる」から始め、「現在最良案を仮置き」「次の候補と比較」「次候補が厳密に良いか」「現在最良案を更新」「全候補を比較済みか」「最良案を選択」へ進む。判断ひし形と戻り矢印を用いる。日本語ラベル、細線、講義ノート風。
+\end{promptbox}
+
+\section{非営利組織の意思決定}
+
+非営利組織、政府、公共部門では、利益最大化が目的ではない。目的は、一定の費用で社会的便益を最大化すること、または一定の目的を最小費用で達成することにある。
+
+\subsection{便益費用分析}
+
+便益費用分析は、提案がもたらす便益を費用で割り、比率で評価する方法である。便益費用比が 1 より小さい提案は、通常、費用の方が便益より大きいため退けられる。ただし、複数の提案を同時に考える場合には、追加的な分析が必要である。
+
+\subsection{費用効果分析}
+
+費用効果分析には二つの形がある。固定費用型では、決められた上限費用の中で便益を最大化する。固定効果型では、決められた成果を達成するための費用を最小化する。
+
+\begin{examplebox}
+自治体が住民向けオンライン申請システムを導入する場合、収益ではなく、待ち時間の削減、来庁回数の減少、職員負荷の軽減、住民満足度の向上などが便益になる。
+\end{examplebox}
+
+\section{現在時点の経済的意思決定}
+
+現在時点の経済的意思決定は、時間価値を扱わない判断である。将来の利率や割引ではなく、現在の費用関数や資源配分を使って判断する。
+
+\subsection{損益分岐分析}
+
+損益分岐分析は、複数案の費用が等しくなる点を見つける方法である。利用量が分岐点より小さい場合は案 A が安く、利用量が分岐点より大きい場合は案 B が安い、といった判断に使う。
+
+\begin{examplebox}
+クラウド事業者 A は月額固定費が低いが利用量単価が高い。事業者 B は月額固定費が高いが利用量単価が低い。この場合、利用量が少なければ A、多ければ B が有利になる。両者の費用が同じになる利用量が損益分岐点である。
+\end{examplebox}
+
+\subsection{最適化分析}
+
+最適化分析は、一つ以上の費用関数を調べ、総費用が最小になる点を見つける方法である。古典的な例は、空間と時間のトレードオフである。高速なアルゴリズムは多くのメモリを使うことがあり、メモリ費用と実行時間短縮の価値を比較する必要がある。
+
+\begin{todobox}
+損益分岐点と最適化の概念図を入れる。
+\end{todobox}
+\begin{promptbox}
+白背景、モノクロ、A4 本文幅の 2 段図を作成する。上段は横軸「利用量」、縦軸「費用」とし、案 A と案 B の直線が交わる点を「損益分岐点」と示す。下段は横軸「性能水準」、縦軸「総費用」とし、U 字型曲線の最小点を「最適点」と示す。日本語ラベル、細線、講義ノート風。
+\end{promptbox}
+
+\section{複数属性意思決定}
+
+これまでの多くの技法は、金銭という単一基準で判断する。しかし、実務の判断では、金銭だけでは不十分である。セキュリティ、利用者満足、環境負荷、保守性、社会的責任、組織文化への適合性など、多くの属性が同時に関係する。
+
+\subsection{補償型技法}
+
+補償型技法は、複数の基準を一つの評価値へまとめる方法である。ある基準の低い点数を、別の基準の高い点数で補うことができる。代表例には、無次元化、加重和、階層分析法がある。
+
+\begin{examplebox}
+案 A は費用が高いが信頼性が非常に高い。案 B は費用が低いが信頼性が低い。補償型技法では、費用と信頼性に重みを付け、総合点で比較できる。
+\end{examplebox}
+
+\subsection{非補償型技法}
+
+非補償型技法は、基準間の代替を認めない方法である。たとえば「安全基準を満たさない案は、どれほど安くても採用しない」といった判断である。代表例には、支配、満足化、辞書式順序がある。
+
+\begin{termnote}
+重大な安全性、法令順守、倫理的制約は、補償型で扱うと危険である。費用が安いから安全基準未達を許す、という判断は成立しない場合が多い。
+\end{termnote}
+
+\section{無形資産の識別と特徴付け}
+
+無形資産は、組織の見えない側にある価値である。従業員が持つ業務知識、暗黙知、文書化された手順、標準、テンプレート、経験、文化などが含まれる。これらは、氷山の水面下の部分のように見えにくいが、ソフトウェアの適合性に大きく影響する。
+
+\subsection{プロセスを識別し、事業目標を定義する}
+
+まず、組織の業務プロセスと事業目標を理解する。文書化されたプロセスがある場合はそれを使い、ない場合は調査する。事業目標には、成長と継続、財務目標、従業員への責任、社会への責任、市場地位の維持などが含まれる。
+
+\subsection{事業目標に結び付く無形資産を識別する}
+
+次に、事業目標を支える無形資産を洗い出す。方針、業務プロセス、チェックリスト、教訓、テンプレート、標準、手順、計画、研修資料などが候補になる。無形資産ごとに重要度を付けると、どの資産が事業目標へ強く貢献するかを把握しやすい。
+
+\subsection{無形資産を支えるソフトウェア製品を識別する}
+
+どのソフトウェア製品が、どの無形資産を支えるかを対応付ける。ひとつの製品が複数の無形資産を支えることもあり、ひとつの無形資産が複数の製品によって支えられることもある。
+
+\subsection{指標を定義し測定する}
+
+無形資産の状態を判断するために、指標を定義する。品質指標は、無形資産そのものの質を測る。影響指標は、無形資産が業務プロセスや事業目標へどれだけ貢献するかを測る。指標は比較可能にするため、正規化や標準化が必要である。
+
+\subsection{無形資産を特徴付ける}
+
+無形資産は、品質と影響の二つの観点で特徴付けられる。品質も影響も良い資産は安定している。品質は良いが影響が低い資産は置換可能かもしれない。品質が低く影響も低い資産は警告状態である。品質が低いが影響が高い資産は改善しながら進化させる必要がある。
+
+\begin{todobox}
+無形資産の品質・影響マトリクスを入れる。
+\end{todobox}
+\begin{promptbox}
+白背景、モノクロ、A4 本文幅の 2 軸マトリクスを作成する。横軸を「影響」、縦軸を「品質」とし、それぞれ低いから高いへ向かう。4 象限に「警告」「進化中」「置換可能」「安定」を配置する。縦のしきい値を「影響しきい値」、横のしきい値を「品質しきい値」とする。日本語ラベル、細線、講義ノート風。
+\end{promptbox}
+
+\subsection{無形資産をビジネスモデルと結び付ける}
+
+無形資産の状態をビジネスモデル上に配置すると、提案されたソフトウェアがどの資産を改善し、どの事業目標へ貢献するかを説明しやすくなる。これは、意思決定者に対して「なぜこのソフトウェア案が事業価値を生むのか」を示すために重要である。
+
+\subsection{意思決定}
+
+最終的には、開発すべきソフトウェア製品を優先順位付けし、選ぶ。判断基準には、無形資産の重要度、事業目標への影響、現在の特徴付け、競合への影響、ビジネスモデルへの影響、実装費用、実装期間、複雑さなどがある。これは典型的な複数属性意思決定である。
+
+\section{見積り}
+
+\begin{defbox}{見積り}
+見積りとは、まだ正確には分からない量を、分析的に予測することである。規模、費用、期間、品質、利用量、欠陥数などが対象になる。
+\end{defbox}
+
+ソフトウェア技術者は、見積りのために見積るのではない。意思決定に必要な量がまだ分からないために見積るのである。見積りは予測であるため、必ず不確実性を持つ。重要なのは、完全に正確な見積りではなく、意思決定を誤らせない程度に十分な見積りである。
+
+\subsection{専門家判断}
+
+専門家判断は、専門家の経験と判断に基づく見積りである。最も簡単で、いつでも使える。しかし、単独では精度が低くなりやすい。ワイドバンドデルファイやプランニングポーカーのような集団見積りと組み合わせると精度を高めやすい。
+
+\subsection{類推}
+
+類推は、過去に実績が分かっている類似事例を基準にし、差分を調整して見積る方法である。新しい対象を理解し、似た事例を探し、差分を列挙し、差分の大きさを見積り、基準事例の実績へ調整を加える。適切な過去事例がある場合には、専門家判断より精度が高くなりやすい。
+
+\subsection{分解}
+
+分解は、対象を小さな部分へ分け、各部分を見積り、合計して全体を求める方法である。ボトムアップ見積りとも呼ばれる。細かく見るため納得感は高いが、作業量が大きい。下位見積りが一方向に偏ると、全体見積りも偏る。
+
+\subsection{パラメトリック見積り}
+
+パラメトリック見積りは、観測可能な要因と見積り対象の数学的関係を使う方法である。たとえば、床面積から建設費を求めるように、ソフトウェアでは機能規模、画面数、インターフェース数、複雑度などを使って費用や工数を求める。
+
+この方法は、式が検証されていれば精度が高く、説明しやすい。一方で、式を作るには正確な過去データと統計的な検証が必要である。
+
+\subsection{複数見積り}
+
+重要な判断では、ひとつの見積りだけに頼らず、複数の技法や複数の見積り者で見積る。結果が収束していれば信頼しやすい。結果が大きく異なる場合は、重要な要因を見落としている可能性がある。差異の原因を探して再見積りすることで、よりよい意思決定につながる。
+
+\begin{todobox}
+見積り技法の比較表を入れる。
+\end{todobox}
+\begin{promptbox}
+白背景、モノクロ、A4 本文幅の比較表を作成する。列は「技法」「使う根拠」「強み」「弱み」。行は「専門家判断」「類推」「分解」「パラメトリック」「複数見積り」。各セルは短い日本語で記述する。講義ノート風、細線、印刷で読みやすい。
+\end{promptbox}
+
+\section{実務上の考慮}
+
+\subsection{ビジネスケース}
+
+ビジネスケースとは、推奨される業務上の判断を、費用、便益、リスクなど複数の観点からまとめた文書である。投資判断の土台として使われる。単なる説得資料ではなく、意思決定者が判断に必要な情報を整理した成果物である。
+
+\subsection{複数通貨分析}
+
+国境をまたぐ意思決定では、為替変動を考慮する必要がある。過去データを使うことも多いが、為替には不確実性がある。したがって、複数通貨の分析では、為替前提、変動幅、リスク対応を明示することが重要である。
+
+\subsection{システム思考}
+
+ソフトウェア技術者が関わる環境は複雑である。システム思考は、個別の部品ではなく、全体の関係、相互作用、フィードバック、時間遅れを考える方法である。これにより、ソフトウェアが組織にどのように価値をもたらすかを、より広い視点で説明できる。
+
+\begin{todobox}
+ビジネスケースの構成図を入れる。
+\end{todobox}
+\begin{promptbox}
+白背景、モノクロ、A4 本文幅の概念図を作成する。中央に「ビジネスケース」を置き、周囲に「費用」「便益」「リスク」「前提条件」「代替案」「無形価値」「実施計画」「判断根拠」を配置する。矢印でそれらが意思決定へ集約されることを示す。日本語ラベル、講義ノート風。
+\end{promptbox}
+
+\section{関連概念}
+
+\subsection{会計}
+
+会計は、組織の資金がどのように使われ、どのような成果を生んだかを測定し、利害関係者へ伝える活動である。営利組織では投資収益率、非営利組織や政府では持続可能性や資金使用の妥当性に関係する。会計システムは、見積りに使う過去データの重要な源泉でもある。
+
+\subsection{費用と原価計算}
+
+費用とは、何かを得るために使われ、別用途には使えなくなった資源である。経済学的には、ある選択によって諦めた代替案も費用である。
+
+埋没費用は、すでに発生して回収できない費用である。機会費用は、ある案を選ぶことで諦めた別案の価値である。原価計算は、開発、製造、配布、再作業、保守などにかかる費用を把握する活動である。
+
+総所有費用は、取得、導入、運用、保守、廃止まで含めた総費用である。ソフトウェアでは初期開発費だけを見ると誤る。運用、保守、教育、移行、障害対応、セキュリティ対応、廃止費用まで考える必要がある。
+
+\subsection{財務}
+
+財務は、資源を調達、配分、管理、投資する活動である。時間、資金、リスクの関係を扱い、組織の戦略、資金調達、ポートフォリオ、キャッシュフロー、財務業績の測定に関わる。ソフトウェアは現代の組織の財務に大きく影響するため、技術者も財務の基本を理解する必要がある。
+
+\subsection{統制}
+
+統制とは、実績を測定し、計画との差を把握し、必要な修正を行うことである。費用統制では、計画費用と実費用の差を検出する。ソフトウェア工学では、プロセスや製品の状態を測定し、組織目標と整合するよう改善することに関係する。
+
+\subsection{効率と有効性}
+
+効率は「正しく行う」ことである。少ない資源で期待される成果を出すことに関係する。有効性は「正しいことを行う」ことである。定義された目的を達成したかを見る。
+
+\begin{termnote}
+効率だけを高めても、そもそも価値のない機能を速く作っているなら意味は小さい。有効性だけを見ても、過剰な資源を使っていれば持続しにくい。生産性は、効率と有効性を価値の観点で結び付ける。
+\end{termnote}
+
+\subsection{生産性}
+
+生産性は、入力に対する出力の比率である。出力は提供された価値であり、入力は費やされた人員、時間、資金などである。生産性を高めるには、より高い価値をより少ない資源で生む必要がある。
+
+ソフトウェア開発では、再作業が最大の資源消費になることが多い。欠陥を早期に見つける、欠陥の影響拡大を抑える、欠陥を最初から防ぐといった品質改善は、生産性向上に直結する。
+
+\subsection{製品またはサービス}
+
+製品は、入力を変換して作られる有形または経済的な成果物である。サービスは、コンサルティングのような無形の資源提供である。ソフトウェアは、社内 IT ソリューション、外販アプリケーション、組込み部品、クラウドサービスなど、製品とサービスの両方の性質を持つことがある。
+
+\subsection{プロジェクト}
+
+プロジェクトは、独自の製品、サービス、結果を作るための一時的な取り組みである。ソフトウェア製品のライフサイクル中には、企画、初期開発、機能追加、保守、移行、廃止など、複数のプロジェクトが含まれる。
+
+\subsection{プログラム}
+
+プログラムは、関連する複数のプロジェクトや活動を調整して管理する単位である。個々のプロジェクトを独立に管理するだけでは得られない便益を得るために使う。
+
+\subsection{ポートフォリオ}
+
+ポートフォリオは、戦略目標を達成するために、プロジェクト、プログラム、サブポートフォリオ、運用活動をまとめて管理する単位である。あるプロジェクトへ資源を配分することは、他のプロジェクトへ同じ資源を使えないことを意味する。したがって、ポートフォリオ視点は機会費用の理解に役立つ。
+
+\subsection{製品ライフサイクル}
+
+ソフトウェア製品ライフサイクルは、製品やサービスを定義、構築、運用、保守、廃止するすべての活動を含む。初期開発だけではなく、運用、保守、廃止の方が長期的には多くの資源を消費することが多い。したがって、経済性は初期開発費だけでは判断できない。
+
+\subsection{プロジェクトライフサイクル}
+
+プロジェクトライフサイクルは、開始、計画、実行、監視と統制、終結などの活動を含む。アジャイル開発では、複数の反復が成果物を増分的に作る。製品ライフサイクルには、複数の開発ライフサイクルが含まれることがある。
+
+\subsection{価格と価格設定}
+
+価格は、財やサービスと引き換えに支払われるものである。価格設定は、企業が製品やサービスの対価として何を受け取るかを決める活動である。製造費、競争、市場状態、品質、販売キャンペーン、数量割引、サービス内容などが影響する。
+
+\subsection{優先順位付け}
+
+優先順位付けは、共通基準に基づいて代替案を並べ、最も価値の高い順に扱うことである。要求の優先順位付けは、限られた納期、予算、人員、技術制約の中で、顧客へ最も価値を届けるために使われる。
+
+\begin{todobox}
+SDLC と SPLC の違いを示す図を入れる。
+\end{todobox}
+\begin{promptbox}
+白背景、モノクロ、A4 本文幅のタイムライン図を作成する。上段に「SDLC：開発ライフサイクル」として「要求」「設計」「実装」「テスト」「リリース」を短い範囲で並べる。下段に「SPLC：製品ライフサイクル」として「企画」「開発」「運用」「保守」「更新」「廃止」を長い範囲で並べる。SPLC の中に複数の SDLC が含まれることを入れ子で示す。日本語ラベル、講義ノート風。
+\end{promptbox}
+
+\section{トピックと参考資料の対応}
+
+この表は、SWEBOK の「トピック対参考資料の行列」を学習用に簡略化したものである。詳しく学ぶときは、各トピックに対応する文献を読む。
+
+\begin{longtable}{L{0.42\linewidth} L{0.53\linewidth}}
+\toprule
+\textbf{トピック} & \textbf{主な参考資料} \\
+\midrule
+ソフトウェア工学経済の基礎 & Tockey, \textit{Return on Software}; Engineering Economy \\
+提案、キャッシュフロー、時間価値、等価性、比較基準、代替案 & Tockey, \textit{Return on Software} \\
+無形資産とビジネスモデル & Sanchez-Segura らの無形資産研究、Business Model 関連文献 \\
+工学的意思決定プロセス & Tockey, \textit{Return on Software}; ISO/IEC/IEEE 12207; ISO/IEC/IEEE 15288 \\
+営利組織の意思決定 & Tockey, \textit{Return on Software} \\
+置換判断、撤退判断 & Tockey; ISO/IEC/IEEE 15288 \\
+非営利組織の意思決定 & Tockey, \textit{Return on Software} \\
+現在時点の経済的意思決定 & Tockey, \textit{Return on Software} \\
+複数属性意思決定 & Tockey; Gilb; ATAM \\
+無形資産の識別と特徴付け & SIPAC 関連文献、Value Proposition Design \\
+見積り & Tockey; McConnell, \textit{Software Estimation}; Stutzke \\
+実務上の考慮 & PMBOK Guide; Software Extension to PMBOK; systems thinking 文献 \\
+関連概念 & Sommerville; Fairley; PMBOK Guide \\
+\bottomrule
+\end{longtable}
+
+\section{発展的な読み物}
+
+\begin{longtable}{L{0.36\linewidth} L{0.59\linewidth}}
+\toprule
+\textbf{文献} & \textbf{読むと得られること} \\
+\midrule
+Project Management Institute, PMBOK Guide & プロジェクト管理の用語、プロジェクトライフサイクル、プロセス群を体系的に学べる。 \\
+Software Extension to the PMBOK Guide & ソフトウェアプロジェクト、とくに適応型ライフサイクルに合わせたプロジェクト管理を学べる。 \\
+Boehm, \textit{Software Engineering Economics} & ソフトウェア工学経済の古典的な考え方を学べる。例は古いが、事業視点の基本を理解しやすい。 \\
+Ebert and Dumke, \textit{Software Measurement} & 測定理論、定量的なソフトウェア工学、性能管理、事業判断を学べる。 \\
+Reifer, \textit{Making the Software Business Case} & ソフトウェアや IT のビジネスケースを作る方法を具体例で学べる。 \\
+McConnell, \textit{Software Estimation} & ソフトウェア見積りの実践的技法と不確実性の扱いを学べる。 \\
+Sterman, \textit{Business Dynamics} & 複雑な組織や事業をシステム思考で理解する方法を学べる。 \\
+\bottomrule
+\end{longtable}
+
+\section{参考文献}
+
+\begin{enumerate}
+  \item E. DeGarmo et al., \textit{Engineering Economy}, 9th ed., Prentice Hall, 1993.
+  \item P. Rodriguez, C. Urquhart, and E. Mendes, ``A Theory of Value for Value-Based Feature Selection in Software Engineering,'' \textit{IEEE Transactions on Software Engineering}, 2020.
+  \item S. Tockey, \textit{Return on Software: Maximizing the Return on Your Software Investment}, Addison-Wesley, 2005.
+  \item International Valuation Standards Council, \textit{International Valuation Standards}, 2019.
+  \item K. Voigt, O. Buliga, and K. Michl, \textit{Business Model Pioneers}, Springer, 2017.
+  \item M.-I. Sanchez-Segura et al., ``Exploring How The Intangible Side of an Organization Impacts its Business Model,'' \textit{Kybernetes}, 2021.
+  \item ISO/IEC/IEEE 12207-2:2020, \textit{Systems and software engineering - Software life cycle processes}.
+  \item ISO/IEC/IEEE 15288:2023, \textit{Systems and Software Engineering - System Life Cycle Processes}.
+  \item T. Brown and B. Katz, \textit{Change by Design}, Harper Collins, 2019.
+  \item I. Sommerville, \textit{Software Engineering}, 10th ed., Addison-Wesley, 2016.
+  \item T. Gilb, \textit{Competitive Engineering}, Elsevier Butterworth-Heinemann, 2005.
+  \item R. Kazman, M. Klein, and P. Clements, ``ATAM: Method for Architecture Evaluation,'' CMU/SEI-2000-TR-004, 2000.
+  \item M.I. Sanchez-Segura et al., ``Strategic Characterization of Process Assets Based on Asset Quality and Business Impact,'' \textit{Industrial Management and Data Systems}, 2017.
+  \item A. Osterwalder et al., \textit{Value Proposition Design}, Wiley, 2015.
+  \item D. Gotterbarn, K. Miller, and S. Rogerson, ``Software Engineering Code of Ethics,'' \textit{Communications of the ACM}, 1997.
+  \item S. McConnell, \textit{Software Estimation: Demystifying the Black Art}, Microsoft Press, 2009.
+  \item R.D. Stutzke, \textit{Estimating Software-Intensive Systems Projects, Products, and Processes}, Addison-Wesley, 2005.
+  \item J. Sterman, \textit{Business Dynamics: Systems Thinking and Modeling for a Complex World}, McGraw-Hill, 2000.
+  \item R.E. Fairley, \textit{Managing and Leading Software Projects}, Wiley, 2009.
+  \item Project Management Institute, \textit{A Guide to the Project Management Body of Knowledge}, 7th ed., 2021.
+  \item Project Management Institute and IEEE Computer Society, \textit{Software Extension to the PMBOK Guide}, 2013.
+  \item B.W. Boehm, \textit{Software Engineering Economics}, Prentice Hall, 1981.
+  \item C. Ebert and R. Dumke, \textit{Software Measurement}, Springer, 2007.
+  \item D.J. Reifer, \textit{Making the Software Business Case: Improvement by the Numbers}, Addison-Wesley, 2002.
+\end{enumerate}
+
+\section{画像 TODO 一覧}
+
+本文に配置した画像 TODO を再掲する。実際に図を作る場合は、各 TODO のプロンプトをそのまま画像生成に使うと、A4 資料に合う図を作りやすい。
+
+\begin{enumerate}
+  \item 15 章の全体地図。
+  \item キャッシュフロー図。
+  \item 工学的意思決定プロセス図。
+  \item 営利組織の意思決定フロー。
+  \item 損益分岐点と最適化の概念図。
+  \item 無形資産の品質・影響マトリクス。
+  \item 見積り技法の比較表。
+  \item ビジネスケースの構成図。
+  \item SDLC と SPLC の違いを示す図。
+\end{enumerate}
+
+\section{章末確認問題}
+
+\begin{enumerate}
+  \item ソフトウェア工学経済は、なぜ単なる「費用削減」の話ではないのか。
+  \item 提案、代替案、何もしない代替案の違いを説明せよ。
+  \item キャッシュフローを時間軸で表す理由を説明せよ。
+  \item お金の時間価値を無視すると、どのような判断ミスが起こるか。
+  \item 許容最低収益率が機会費用を表す理由を説明せよ。
+  \item 営利組織と非営利組織では、意思決定技法がなぜ異なるのか。
+  \item 損益分岐分析がクラウドサービス選択に役立つ例を説明せよ。
+  \item 補償型技法と非補償型技法の違いを説明せよ。
+  \item 無形資産を考慮しないソフトウェア提案には、どのようなリスクがあるか。
+  \item 専門家判断、類推、分解、パラメトリック見積りの違いを説明せよ。
+  \item 総所有費用が、初期開発費だけの比較より重要になる理由を説明せよ。
+  \item 効率、有効性、生産性の違いを、自分の言葉で説明せよ。
+\end{enumerate}
+
+\begin{importantbox}
+\textbf{解答の方向性} 1 は価値、リスク、無形資産、組織目標を含めて説明する。2 は、単一の行動案、相互排他的な選択肢、候補群を選ばない選択肢として区別する。5 は、ある案に資源を投じると別の投資機会を失う点を述べる。8 は、ある基準の不足を他基準で補えるかどうかで区別する。12 は、効率が資源消費、有効性が目的達成、生産性が価値と資源の比であることを述べる。
+\end{importantbox}
+
+\section*{出典と位置付け}
+\addcontentsline{toc}{section}{出典と位置付け}
+
+本資料は、\textit{Guide to the Software Engineering Body of Knowledge} v4.0a の Chapter 15 ``Software Engineering Economics'' を、初学者向けの日本語学習資料として再構成した要約である。原文の逐語訳ではない。章構成、主要トピック、用語の対応は原資料に基づく。第 01 章日本語まとめ PDF の構成を参考に、表、定義欄、TODO 図、章末確認問題を加えている。
+
+\end{document}

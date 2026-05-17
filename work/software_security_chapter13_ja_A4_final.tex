@@ -1,0 +1,379 @@
+\documentclass[uplatex,dvipdfmx,a4paper,11pt]{jsarticle}
+\usepackage[margin=22mm]{geometry}
+\usepackage{array,longtable,booktabs,tabularx}
+\usepackage[dvipdfmx]{hyperref}
+\usepackage{enumitem}
+\usepackage{xcolor}
+\usepackage{fancyhdr}
+\hypersetup{colorlinks=true,linkcolor=black,urlcolor=black}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.55em}
+\renewcommand{\arraystretch}{1.25}
+\setcounter{secnumdepth}{0}
+\setcounter{tocdepth}{2}
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{13 章 ソフトウェアセキュリティ SWEBOK v4.0a 日本語まとめ}
+\rfoot{\thepage}
+\newcommand{\infobox}[2]{\vspace{0.5em}\noindent\fbox{\begin{minipage}{0.96\linewidth}\textbf{#1}\\#2\end{minipage}}\vspace{0.5em}}
+\newcommand{\todobox}[2]{\vspace{0.5em}\noindent\fbox{\begin{minipage}{0.96\linewidth}\textbf{TODO（図）} #1\\\textbf{画像生成用プロンプト}\\#2\end{minipage}}\vspace{0.5em}}
+\begin{document}
+\begin{titlepage}
+\begin{center}
+{\Huge \textbf{13 章 ソフトウェアセキュリティ}}\\[8mm]
+{\Large Software Security の日本語まとめ}\\[4mm]
+{SWEBOK Guide v4.0a Chapter 13 を初学者向けに再構成}\\[8mm]
+{作成日：2026 5 6}
+\end{center}
+\vfill
+\infobox{この資料の主張}{ソフトウェアセキュリティは、完成後に追加する「防犯部品」ではない。要求、設計、実装、テスト、保守、運用にまたがって、攻撃者に悪用される誤りを作り込まないようにし、見つかった脆弱性を継続的に扱う活動である。第13章の中心は、セキュリティを個人の注意や最後の診断に任せるのではなく、組織、開発プロセス、設計判断、ツール、領域別のリスク管理として組み込むことである。}
+\infobox{この資料の読み方}{専門用語は原則として日本語で示し、必要に応じて英語を括弧内に併記する。英語名は、元資料、規格、ツール、脆弱性データベースを調べるための手がかりとして残す。初学者が前提知識なしに読めるように、「何を守る概念か」「開発では何をすればよいか」「どこで失敗しやすいか」を重視する。文体はだである調に統一する。}
+\vfill
+\end{titlepage}
+\tableofcontents
+\clearpage
+\section{全体概要：この章で学ぶこと}
+この章は、ソフトウェア開発におけるセキュリティの考え方を扱う。セキュリティは、正しさや信頼性とは別に後で確認する付録ではない。攻撃者、誤用、悪意ある入力、第三者部品、運用中の変更を前提に、開発ライフサイクル全体で扱うべき品質特性である。
+
+到達目標は、ソフトウェアセキュリティ、情報セキュリティ、サイバーセキュリティの違いを説明できること、セキュリティ要求・設計・実装・テスト・脆弱性管理の流れを説明できること、クラウド、IoT、機械学習のような領域固有の注意点を説明できることである。
+
+\begin{itemize}[leftmargin=2em]
+\item セキュリティは、要求段階で何を守るかを決め、設計段階で守り方を決め、実装段階で危険な書き方を避け、テスト段階で脆弱性を探し、保守段階で新しい脆弱性に対応する活動である。
+\item 脆弱性は、攻撃者が悪用できる誤りである。ソフトウェア本体だけでなく、ライブラリ、市販既製ソフトウェア（COTS）、オペレーティングシステムにも入り得る。
+\end{itemize}
+\todobox{13 章の全体地図を入れる。}{白背景、モノクロ、A4本文幅に収まる横長の学習用図解を作成する。中央に「ソフトウェアセキュリティ」を置き、周囲に「基礎」「管理と組織」「セキュリティ工学とプロセス」「ソフトウェアシステムのセキュリティ工学」「セキュリティツール」「領域別セキュリティ」を配置する。要求、設計、実装、テスト、保守を一本の流れでつなぎ、「後付けではなくライフサイクル全体で組み込む」と注記する。日本語ラベル、細線、講義ノート風、余白を広めにする。}
+\section{最初に必要な用語}
+\begin{longtable}{>{\raggedright\arraybackslash}p{0.25\linewidth}>{\raggedright\arraybackslash}p{0.7\linewidth}}
+\toprule
+\textbf{用語} & \textbf{初学者向けの説明} \\
+\midrule
+\endhead
+ソフトウェアセキュリティ & 情報やデータを、権限に応じて適切に守るソフトウェアの品質特性である。 \\
+情報セキュリティ & 情報の機密性、完全性、可用性を保つことを中心にした考え方である。 \\
+サイバーセキュリティ & サイバー空間におけるリスクを許容できる水準に保つため、人、組織、社会、国家を守る活動である。 \\
+脆弱性 & 攻撃者が悪用できる誤り、弱点、設定不備である。 \\
+攻撃者 & システムを不正利用しようとする人、組織、自動化されたプログラムなどである。 \\
+脅威 & 攻撃や事故によって、守るべき資産に損害を与える可能性である。 \\
+資産 & 守る価値がある情報、機能、サービス、鍵、ログ、信用、設備などである。 \\
+SDLC & セキュア開発ライフサイクル。開発の各段階にセキュリティ活動を組み込む考え方である。 \\
+DevSecOps & 開発、セキュリティ、運用を統合し、継続的な自動化と改善の中でセキュリティを扱う考え方である。 \\
+静的分析 & プログラムを実行せず、ソースコードやバイナリを調べて弱点を探す方法である。 \\
+動的テスト & ソフトウェアを実行し、入力や操作に対する振る舞いから弱点を探す方法である。 \\
+ペネトレーションテスト & 許可された範囲で実際の攻撃に近い操作を行い、侵入可能性や悪用経路を確認する試験である。 \\
+\bottomrule
+\end{longtable}
+\section{導入：なぜセキュリティを開発で扱うのか}
+コンピュータシステムは、誤用、悪意ある活動、金銭目的の攻撃、情報漏えい、サービス停止の標的になる。したがって、開発者は通常の正しさや信頼性だけでなく、攻撃されても守るべきものを守れるかを考えなければならない。
+
+安全なソフトウェア開発とは、確立された規則や推奨実践に従い、セキュリティを作り込むことである。安全な保守とは、保守変更で新しいセキュリティ問題を入れないこと、発見された脆弱性をライフサイクル中に扱えるようにすることである。
+
+第13章は、セキュリティを「最後に診断する項目」ではなく、「要求、設計、構築、テスト、保守、組織運営に埋め込む活動」として説明している。
+
+\infobox{重要}{セキュリティ上の失敗は、機能が動かない失敗とは違う。普段は問題なく動くソフトウェアでも、悪意ある入力、権限の濫用、第三者部品の脆弱性、設定不備によって破られることがある。}
+\section{1 ソフトウェアセキュリティの基礎}
+ソフトウェアセキュリティの基本的な考え方は、「後から修正を貼り付けるより、最初から設計に組み込む方がよい」ということである。セキュリティは、要求、設計、構築、テスト、保守のすべての段階で考慮する必要がある。
+
+保守中にもセキュリティ上の欠陥や抜け道は入り得る。したがって、リリース後も脆弱性情報を監視し、修正し、利用者や運用者に必要な情報を伝える仕組みが必要である。
+
+\todobox{セキュリティ三概念の関係図を入れる。}{白背景、モノクロ、A4本文幅の概念図を作成する。左から「ソフトウェアセキュリティ」「情報セキュリティ」「サイバーセキュリティ」の三つの円を重なりを持たせて配置する。ソフトウェアセキュリティには「製品・システムが情報を守る品質」、情報セキュリティには「機密性・完全性・可用性」、サイバーセキュリティには「人・組織・社会をサイバーリスクから守る」と短く書く。日本語ラベル、講義ノート風。}
+\subsection{1.1 ソフトウェアセキュリティ}
+ソフトウェアセキュリティは、製品またはシステムが情報やデータを保護し、人、他の製品、他のシステムが、それぞれの権限の種類と水準に応じて適切にアクセスできる程度を表す品質特性である。
+
+初学者は、これを「誰が、何に、どこまでアクセスできるかを正しく守る性質」と理解するとよい。たとえば、一般利用者が管理者機能を使えないこと、他人の個人情報を見られないこと、攻撃者が内部データを変更できないことが該当する。
+
+\infobox{定義}{ソフトウェアセキュリティとは、ソフトウェアが情報、機能、サービスを権限に応じて保護する品質特性である。}
+\subsection{1.2 情報セキュリティ}
+情報セキュリティは、情報の機密性、完全性、可用性を保つことである。これら三つは、頭文字を取ってCIAと呼ばれることが多い。ただし、真正性、説明責任、否認防止、信頼性なども関係する場合がある。
+
+機密性とは、権限のない人や処理に情報を開示しない性質である。完全性とは、情報が正確で完全である性質である。可用性とは、権限のある主体が必要なときに利用できる性質である。
+
+\begin{longtable}{>{\raggedright\arraybackslash}p{0.25\linewidth}>{\raggedright\arraybackslash}p{0.35\linewidth}>{\raggedright\arraybackslash}p{0.35\linewidth}}
+\toprule
+\textbf{性質} & \textbf{意味} & \textbf{失敗例} \\
+\midrule
+\endhead
+機密性 & 許可された人だけが見られる & 顧客情報が外部に漏れる \\
+完全性 & 改ざんされず正確である & 振込金額が不正に変更される \\
+可用性 & 必要なときに使える & 攻撃でサービスが停止する \\
+\bottomrule
+\end{longtable}
+\todobox{CIA と追加性質の図を入れる。}{白背景、モノクロ、A4本文幅の三角形図を作成する。三角形の頂点に「機密性」「完全性」「可用性」を置く。周囲に「真正性」「説明責任」「否認防止」「信頼性」を補助要素として配置する。各語に短い説明を添える。日本語、細線、初学者向けの講義ノート風。}
+\subsection{1.3 サイバーセキュリティ}
+サイバーセキュリティは、人、社会、組織、国家をサイバーリスクから守ることである。ここでいう「守る」とは、リスクを完全にゼロにすることではなく、許容できる水準に保つことである。
+
+サイバー空間での代表的な脅威には、ソーシャルエンジニアリング、ハッキング、悪意あるソフトウェア、その他の望ましくないソフトウェアがある。ソフトウェア技術者は、これらの脅威を緩和する設計や運用を開発の一部として考える必要がある。
+
+\begin{itemize}[leftmargin=2em]
+\item ソーシャルエンジニアリングは、人をだまして認証情報や操作権限を得る攻撃である。
+\item 悪意あるソフトウェアは、情報窃取、暗号化、遠隔操作、破壊などを行うプログラムである。
+\item セキュリティ対策は技術だけで完結しない。人の運用、組織の規則、教育、監視も関係する。
+\end{itemize}
+\section{2 セキュリティ管理と組織}
+セキュリティ統治と管理は、個別の開発者の努力だけに依存すると弱い。組織の文化、行動、手順、責任分担に組み込まれているときに有効になる。プロジェクト管理者は、ソフトウェアセキュリティを単独の技術課題ではなく、組織全体の課題として扱う必要がある。
+
+\subsection{2.1 能力成熟度モデル}
+能力成熟度モデルとは、組織がどの程度一貫して、測定可能に、改善可能にセキュリティ活動を実行できるかを評価する考え方である。第13章では、システムセキュリティ工学能力成熟度モデル（SSE-CMM）が紹介される。
+
+開発者、サービス提供者、システム統合者、システム管理者、セキュリティ専門家など、さまざまな役割がセキュリティ工学の方法を理解する必要がある。成熟度モデルは、リスク評価などを行う組織能力を測る道具として役立つ。
+
+\subsection{2.2 情報セキュリティ管理システム}
+情報セキュリティ管理システム（ISMS）は、組織の文脈で情報セキュリティを確立し、実施し、維持し、継続的に改善するための仕組みである。ISO/IEC 27001:2022 は、その要求事項を定める規格である。
+
+ISMS は、技術に関わるセキュリティを管理する文書化された計画と考えられる。リスクを記録し、対応策を実施し、監視し、継続的に見直す。ISMS によって、新しいソフトウェアセキュリティ要求や、既存要求の変更が生じることもある。
+
+\infobox{実務で見る点}{セキュリティ要求は、顧客の希望だけから出るとは限らない。法令、規制、契約、監査、組織標準、ISMS のリスク評価からも生じる。}
+\subsection{2.3 アジャイルにおけるソフトウェアセキュリティ実践}
+アジャイルチームは、変化の速い開発の中でもセキュリティ実践を理解し、システムのセキュリティに責任を持つ必要がある。セキュリティ専門家も、変更を拒む立場ではなく、速く反復的に働き、リスクを小さな単位で扱う必要がある。
+
+成功するアジャイルセキュリティには、セキュリティチームと開発者の関与、開発者が自分で実行できる支援、自動化、アジャイルチームの速度についていく俊敏性が必要である。セキュリティは「止める役割」ではなく、安全に進めるための「実現要因」であるべきである。
+
+\section{3 ソフトウェアセキュリティ工学とプロセス}
+ソフトウェアは、開発プロセス以上には安全になりにくい。セキュリティを確保するには、ソフトウェア工学の活動そのものにセキュリティを組み込む必要がある。
+
+\subsection{3.1 セキュア開発ライフサイクル}
+セキュア開発ライフサイクル（SDLC）は、セキュリティを要求、設計、開発、テスト、リリース、保守の各段階に組み込む考え方である。生産後に後付けするのではなく、設計と開発の時点からセキュリティを内在させる。
+
+SDLC は、セキュリティ関連の欠陥に対する信頼性を高め、保守費用を下げることを目指す。近年は DevSecOps も重視される。DevSecOps は、開発、セキュリティ、運用を分離せず、文化、自動化、プラットフォーム設計の中でセキュリティを継続的に扱う。
+
+\todobox{SDLC と DevSecOps の流れを入れる。}{白背景、モノクロ、A4本文幅の横長工程図を作成する。左から「要求」「設計」「実装」「テスト」「リリース」「運用・保守」を並べ、各工程の下に「セキュリティ要求」「脅威モデリング」「安全なコーディング」「静的分析・動的テスト」「承認済みリリース」「脆弱性対応」を配置する。下段にDevSecOpsのループとして「自動化」「監視」「フィードバック」「改善」を円環で描く。日本語ラベル、講義ノート風。}
+\subsection{3.2 情報技術セキュリティ評価のコモンクライテリア}
+コモンクライテリア（Common Criteria, CC）は、IT 製品のセキュリティ機能と保証手段を評価するための国際的な枠組みである。評価結果は、利用者が製品のセキュリティ要求や標準適合を判断する助けになる。
+
+CC は、資産を不正な開示、変更、利用不能から守ることに関わる。これは情報セキュリティの機密性、完全性、可用性に対応する。調達や評価が重視される製品では、要求定義や設計時に CC の考え方を参照することがある。
+
+\section{4 ソフトウェアシステムのセキュリティ工学}
+この節は、ソフトウェアシステムを安全に作るための中核である。セキュリティ要求、セキュリティ設計、セキュリティパターン、セキュリティを考慮した構築、セキュリティテスト、脆弱性管理を順に扱う。
+
+\todobox{セキュリティ要求から脆弱性管理までの追跡図を入れる。}{白背景、モノクロ、A4本文幅の横長図を作成する。左から「セキュリティ要求」「脅威モデル」「セキュリティ設計」「安全な実装」「セキュリティテスト」「脆弱性管理」を箱で並べ、矢印でつなぐ。上段に「守る資産」、下段に「攻撃者視点」を配置し、各工程に影響することを点線で示す。日本語、細線、講義ノート風。}
+\subsection{4.1 セキュリティ要求}
+セキュリティ要求工学は、セキュリティ要求を引き出し、仕様化し、優先順位を付ける活動である。通常の機能要求と同じように見える要求でも、攻撃者、脅威、リスク、法令、監査、運用を考慮しなければならない。
+
+具体的には、誤用事例や悪用事例、攻撃主体、セキュリティリスク評価、仕様化方法、優先順位付け、レビュー、改訂を扱う。ソフトウェア改訂がある場合には、セキュリティ要求も見直す必要がある。
+
+セキュリティ要求の追跡可能性は重要である。要求が設計、コード、テスト、脆弱性対応にどうつながるかをたどれなければ、変更時にどこを直すべきか分からなくなる。
+
+\infobox{例}{「管理者だけが利用者権限を変更できる」はセキュリティ要求である。「認証失敗が5回続いたら一定時間ログインを制限する」もセキュリティ要求である。}
+\subsection{4.2 セキュリティ設計}
+セキュリティ設計は、情報や資源への不正な開示、作成、変更、削除、アクセス拒否を防ぐ設計である。また、攻撃や方針違反が起きたときに被害を限定し、サービス継続、修復、復旧、安全な失敗を実現する設計でもある。
+
+アクセス制御は、セキュリティ設計の基本概念である。多くの制御は、暗号アルゴリズム、鍵などの暗号材料、鍵の作成・配布・管理に依存する。これらは慎重に選ばなければならない。
+
+設計段階では、脅威モデリングを行い、システムがどのように攻撃されるかを考え、緩和策を設計する。認証、認可、監査ログ、暗号化、入力検証、失敗時の状態復元などは、後から断片的に追加するのではなく、設計として整合させる必要がある。
+
+\todobox{脅威モデリングの基本図を入れる。}{白背景、モノクロ、A4本文幅の概念図を作成する。中央に「システム」を置き、内側に「守る資産」を配置する。外側に「攻撃者」を置き、「入力画面」「API」「ネットワーク」「第三者ライブラリ」「管理機能」を入口として矢印を描く。各入口に「検証」「認証」「認可」「ログ」「暗号化」の防御を小さな箱で示す。日本語ラベル、講義ノート風。}
+\subsection{4.3 セキュリティパターン}
+セキュリティパターンとは、特定の文脈で繰り返し現れるセキュリティ問題と、それに対する実績ある一般的な解決策をまとめたものである。
+
+たとえば、認証、認可、監査、セッション管理、入力検証、境界防御、最小権限などは、個別システムごとに一から考えるより、既知のパターンや実践に基づいて設計した方がよい場合が多い。パターンは、設計者同士が同じ語彙で議論する助けにもなる。
+
+\subsection{4.4 セキュリティを考慮した構築}
+セキュリティを考慮した構築とは、プログラムコードを書く段階で、セキュリティ上の問題を作り込まないようにすることである。ただし、この語には二つの意味が混ざりやすい。一つは「特定の処理を安全にコード化すること」であり、もう一つは「ソフトウェアにセキュリティ機能を実装すること」である。
+
+現実には、あるコード片がすべての処理系、命令セット、コンパイラ最適化で同じセキュリティ上の意味を持つとは限らない。そのため、実務では、推奨規則に従い、危険な書き方を避け、前提を明示し、特権を限定することが重要になる。
+
+\begin{itemize}[leftmargin=2em]
+\item 特権が必要な処理は小さなモジュールに分離し、そのモジュールに必要最小限の仕事だけをさせる。
+\item プログラム中の前提は検証する。検証できない前提は、導入担当者や保守担当者に分かるように文書化する。
+\item 可能な限り、他のプログラムとメモリ上の対象を共有しない。
+\item 関数のエラー状態を確認し、原因や影響がセキュリティに関係する場合には不用意に回復しない。
+\end{itemize}
+\begin{longtable}{>{\raggedright\arraybackslash}p{0.25\linewidth}>{\raggedright\arraybackslash}p{0.7\linewidth}}
+\toprule
+\textbf{実践} & \textbf{意味} \\
+\midrule
+\endhead
+入力を検証する & 外部から来る値を信頼しない。 \\
+コンパイラ警告を無視しない & 未定義動作や危険な書き方の兆候を見逃さない。 \\
+セキュリティ方針に沿って設計する & コードの前に方針と設計を決める。 \\
+単純に保つ & 複雑さは脆弱性の温床になりやすい。 \\
+既定では拒否する & 許可したものだけを通す。 \\
+最小権限を守る & 必要最小限の権限だけを与える。 \\
+外部へ送るデータを無害化する & 別ソフトウェアに渡す前に危険な表現を取り除く。 \\
+多層防御を行う & 一つの防御が破られても次の防御で止める。 \\
+有効な品質保証を使う & レビュー、分析、テストを組み合わせる。 \\
+安全な構築標準を採用する & 言語や組織に合う安全コーディング規約を使う。 \\
+\bottomrule
+\end{longtable}
+\subsection{4.5 セキュリティテスト}
+セキュリティテストは、実装されたソフトウェアがセキュリティ要求を満たしていることを確認し、既知の脆弱性が含まれていないことを検証する活動である。セキュリティ要求の確認には一般的なテスト技法が役立つが、既知脆弱性の検出にはセキュリティ固有の方法が必要になる。
+
+セキュリティ固有のテストには大きく二つの方向がある。第一は静的分析である。ソースコードやコンパイル済みバイナリを調べ、言語や実装に特有の脆弱性、コンパイラ最適化や第三者部品に隠れた脆弱性を探す。第二は動的テストである。脆弱性診断やペネトレーションテストを用いて、実行時の振る舞いから弱点を探す。
+
+ツールによる自動化は重要であるが、結果の解釈、誤検知の判定、適切な設定には専門知識が必要である。また、ペネトレーションテストは、適切な許可と法的範囲の中で行わなければならない。無断で実施すれば、違法な攻撃行為と区別できない。
+
+\todobox{静的分析と動的テストの比較図を入れる。}{白背景、モノクロ、A4本文幅の比較図を作成する。左側を「静的分析」、右側を「動的テスト」とする。静的分析には「ソースコード」「バイナリ」「実行しない」「コードパターン・論理欠陥」を配置する。動的テストには「実行環境」「脆弱性診断」「ペネトレーションテスト」「ファジング」を配置する。中央に「専門家による結果確認が必要」と注記する。日本語ラベル、講義ノート風。}
+\subsection{4.6 脆弱性管理}
+脆弱性管理は、システム本体と第三者部品に存在する脆弱性の影響を緩和し、報告、評価、修正、公開、追跡を行う活動である。安全なコーディング実践は実装時に入る欠陥を減らすが、脆弱性をゼロにはできない。
+
+よく知られた脆弱性や弱点は、CVE、CWE、CAPEC などのデータベースで分類・共有される。CVSS は、脆弱性の特徴と深刻度を表すために使われる。開発者は、実装時と保守時にこれらの情報を参照する必要がある。
+
+脆弱性対応には、発見者が報告できる開示プロセスも関係する。報告を受け取る窓口、影響範囲の調査、修正版の提供、利用者への通知、第三者部品の更新判断がなければ、脆弱性は放置されやすい。
+
+\begin{longtable}{>{\raggedright\arraybackslash}p{0.25\linewidth}>{\raggedright\arraybackslash}p{0.35\linewidth}>{\raggedright\arraybackslash}p{0.35\linewidth}}
+\toprule
+\textbf{名称} & \textbf{日本語での説明} & \textbf{使いどころ} \\
+\midrule
+\endhead
+CVE & 共通脆弱性識別子 & 個別の既知脆弱性を識別する。 \\
+CWE & 共通弱点一覧 & 設計や実装にありがちな弱点の種類を知る。 \\
+CAPEC & 共通攻撃パターン分類 & 攻撃者がどのように弱点を悪用するかを知る。 \\
+CVSS & 共通脆弱性評価システム & 脆弱性の深刻度や優先度を判断する。 \\
+\bottomrule
+\end{longtable}
+\todobox{脆弱性データベースと対応プロセスの図を入れる。}{白背景、モノクロ、A4本文幅の横長図を作成する。左に「脆弱性報告」、中央に「評価」「優先度付け」「修正」「リリース」、右に「利用者通知」「監視」を並べる。下段に「CVE」「CWE」「CAPEC」「CVSS」の四つの箱を置き、評価と優先度付けに矢印でつなぐ。日本語ラベル、講義ノート風。}
+\section{5 ソフトウェアセキュリティツール}
+セキュリティツールは、弱点を見つける、攻撃経路を確認する、開発者に早くフィードバックするために使われる。ただし、ツールは万能ではない。発見できる弱点はツールの方法と設定に依存し、結果の確認には専門知識が必要である。
+
+\subsection{5.1 セキュリティ脆弱性確認ツール}
+セキュリティ脆弱性確認ツールには、ソースコード解析器やバイナリ解析ツールがある。ソースコード解析器は、注入の欠陥、バッファオーバーフロー、安全でないライブラリ使用など、コードの書き方や論理に関係する弱点を探す。
+
+バイナリ解析ツールは、コンパイル済みコードや第三者ライブラリを調べ、ソースコードでは見えにくい脆弱性や、コンパイル過程で生じる問題を探す。これらのツールは有用だが、発生条件が非常に特殊な状態や例外的な状況で現れる脆弱性まですべて見つけることはできない。
+
+\subsection{5.2 ペネトレーションテストツール}
+ペネトレーションテストツールは、運用環境またはそれに近い環境で、制御された攻撃を行い、脆弱性や弱点を見つけるために使われる。代表的な技法には、異常な入力やランダムな入力を与えるファジングがある。
+
+ペネトレーションテストの価値は、実際の攻撃者がどのようにシステムを悪用し得るかについて洞察を得られる点にある。ただし、ツールを動かすだけでは不十分である。範囲、許可、ログ取得、影響の管理、結果の解釈が必要である。
+
+\infobox{注意}{ペネトレーションテストは必ず明示的な許可を得て行う。許可のない診断、侵入試行、スキャンは、学習目的であっても相手に被害を与え、法的問題を引き起こす可能性がある。}
+\section{6 領域別ソフトウェアセキュリティ}
+セキュリティの基本原則は共通だが、利用領域によって注意すべき攻撃面や運用上の弱点は変わる。第13章では、コンテナとクラウド、IoT、機械学習アプリケーションが例として扱われる。
+
+\subsection{6.1 コンテナとクラウドのセキュリティ}
+クラウド基盤とサービスは、安価で簡単に準備できる。その反面、世界中に資産が散らばり、忘れられたまま残ることがある。忘れられた資産は、後でセキュリティ事故につながる時限爆弾のような存在になる。
+
+クラウドでは、データセンターの物理的な資産管理や入退室管理の多くをクラウド提供者に委ねられる。一方で、利用者側には、アカウント、権限、ネットワーク設定、鍵、コンテナイメージ、公開ストレージ、ログ、構成管理を正しく扱う責任が残る。
+
+\todobox{クラウド資産の散在と管理責任の図を入れる。}{白背景、モノクロ、A4本文幅の概念図を作成する。中央に「クラウド利用組織」、周囲に「仮想サーバ」「コンテナ」「ストレージ」「鍵」「アカウント」「API」「ログ」を小さな資産として散らす。いくつかに「忘れられた資産」と点線の警告を付ける。下に「物理防御は提供者」「設定・権限・監視は利用者」と責任分担を示す。日本語ラベル、講義ノート風。}
+\subsection{6.2 IoT ソフトウェアのセキュリティ}
+IoT では、多数の機器がネットワークにつながり、バックエンドシステムとも連携する。業務 IT に存在する既知の脆弱性を通じて攻撃者が侵入すると、弱く保護された産業用 IoT 機器にも到達し得る。その結果、安全上の事故を含む深刻な損害が起こり得る。
+
+消費者環境や産業環境に大量の端点が追加されると、弱いリンクが攻撃されやすくなる。端点の強化、機器間通信の保護、機器と情報の信頼性確認、IoT プラットフォームのリスク分析と脅威分析が重要である。
+
+\todobox{IoT の攻撃面を示す図を入れる。}{白背景、モノクロ、A4本文幅のネットワーク図を作成する。左に「多数のIoT端点」、中央に「ゲートウェイ」、右に「バックエンド業務IT」を配置する。攻撃者から「ブラウザ脆弱性」「弱い端点」「通信盗聴」「不正更新」の矢印を描く。防御として「端点強化」「機器間通信の保護」「認証」「リスク分析」を配置する。日本語ラベル、講義ノート風。}
+\subsection{6.3 機械学習に基づくアプリケーションのセキュリティ}
+機械学習は多くのシステムで使われるが、固有の脆弱性を持つ。攻撃者は、機械学習モデルの判断を変えようとすることがある。代表的な攻撃には、学習データを狙うモデル汚染と、学習済みモデルへの入力を狙う回避攻撃がある。
+
+モデル汚染では、訓練データに悪意あるデータを混ぜ、モデルが誤った規則を学ぶようにする。回避攻撃では、学習済みモデルに対して、人間にはほとんど同じに見えるがモデルの判断を変える入力を与える。したがって、機械学習システムでは、データの由来、学習過程、入力検証、監視、再学習の管理が重要になる。
+
+\begin{longtable}{>{\raggedright\arraybackslash}p{0.25\linewidth}>{\raggedright\arraybackslash}p{0.35\linewidth}>{\raggedright\arraybackslash}p{0.35\linewidth}}
+\toprule
+\textbf{攻撃} & \textbf{狙う対象} & \textbf{初学者向けの説明} \\
+\midrule
+\endhead
+モデル汚染 & 学習データ & 学習前または学習中のデータを汚し、モデルに誤った判断を学ばせる。 \\
+回避攻撃 & 学習済みモデルへの入力 & 入力を細工して、モデルの分類や判断を意図的に変えさせる。 \\
+\bottomrule
+\end{longtable}
+\todobox{機械学習への二種類の攻撃を示す図を入れる。}{白背景、モノクロ、A4本文幅の二分割図を作成する。左を「モデル汚染」とし、「訓練データ」から「学習」へ向かう矢印に攻撃者が悪意あるデータを混ぜる様子を描く。右を「回避攻撃」とし、「学習済みモデル」への入力を攻撃者が細工し、誤分類に至る様子を描く。日本語ラベル、講義ノート風、初学者向け。}
+\section{7 トピックと参考文献の対応}
+この表は、SWEBOK が示す「トピック対参考資料の行列」を、学習用に簡略化したものである。詳しく学ぶときは、各トピックに対応する文献、規格、公開データベースを確認するとよい。
+
+\begin{longtable}{>{\raggedright\arraybackslash}p{0.25\linewidth}>{\raggedright\arraybackslash}p{0.7\linewidth}}
+\toprule
+\textbf{トピック} & \textbf{主な参考資料} \\
+\midrule
+\endhead
+1. 基礎 & ISO/IEC 25010, ISO/IEC 27000, ISO/IEC 27032, Easttom, Diogenes and Ozkaya \\
+2. 管理と組織 & Allen et al.; Bishop; ISO/IEC 27001; ISO/IEC 21827; Agile Application Security \\
+3. セキュリティ工学とプロセス & Allen et al.; Howard and Lipner; DoD Enterprise DevSecOps; ISO/IEC 15408 \\
+4.1 セキュリティ要求 & Allen et al.; McGraw; Bishop; Firesmith \\
+4.2 セキュリティ設計 & Allen et al.; Swiderski and Snyder; Bishop; security design references \\
+4.3 セキュリティパターン & Fernandez-Buglioni; Nagappan et al.; Schumacher et al. \\
+4.4 セキュリティを考慮した構築 & Seacord; CERT secure coding references; Allen et al.; Bishop \\
+4.5 セキュリティテスト & Allen et al.; McGraw; Bishop; NIST SP800-115; PCI DSS \\
+4.6 脆弱性管理 & CVE; CWE; CAPEC; CVSS; Bishop \\
+5. ツール & Allen et al.; Erickson; McGraw; Dotson \\
+6. 領域別セキュリティ & Dotson; IEEE IoT Security Best Practices; IEC IoT 2020; Chio and Freeman \\
+\bottomrule
+\end{longtable}
+\section{8 発展的な読み物}
+第13章で紹介される読み物を、日本語で読む目的に合わせて整理する。
+
+\begin{longtable}{>{\raggedright\arraybackslash}p{0.25\linewidth}>{\raggedright\arraybackslash}p{0.7\linewidth}}
+\toprule
+\textbf{文献} & \textbf{読むと得られること} \\
+\midrule
+\endhead
+Viega, Building Secure Software & 安全なソフトウェアを作り、保守する活動の全体像を学べる。監査やサービス監視も含む。 \\
+Kohnfelder, Designing Secure Software & 設計と実装の段階でのセキュリティ活動、安全なプログラミング、ウェブセキュリティを学べる。 \\
+Axelrod, Engineering Safe and Secure Software Systems & リスク管理の観点から、安全でセキュアなソフトウェアシステムを工学的に扱う方法を学べる。 \\
+Allen et al., Software Security Engineering & プロジェクト管理者向けに、セキュリティ工学を開発プロジェクトへ組み込む方法を学べる。 \\
+Bishop, Computer Security & コンピュータセキュリティの基礎理論、アクセス制御、脆弱性、攻撃、評価を広く学べる。 \\
+Dotson, Practical Cloud Security & クラウド環境の資産、権限、ネットワーク、運用上の注意点を実務的に学べる。 \\
+\bottomrule
+\end{longtable}
+\section{9 参考文献}
+以下は、SWEBOK Guide v4.0a 第13章の参考文献を学習用に整理したものである。URL は変化し得るため、正式な参照では発行元の最新版を確認することが望ましい。
+
+\begin{itemize}[leftmargin=2em]
+\item 1. J.H. Allen, S.J. Barnum, R.J. Ellison, G. McGraw, and N.R. Mead, Software Security Engineering: A Guide for Project Managers, Addison-Wesley Professional, 2008.
+\item 2. G. McGraw, Software Security: Building Security In, Addison-Wesley Professional, 2006.
+\item 3. M. Bishop, Computer Security, 2nd Edition, Addison-Wesley Professional, 2019.
+\item 4. L. Bell, M. Brunton-Spall, R. Smith, and J. Bird, Agile Application Security, O’Reilly, 2017.
+\item 5. T. Hsiang-Chih Hsu, Hands-On Security in DevOps, Packt Publishing, 2018.
+\item 6. T. Hsiang-Chih Hsu, Practical Security Automation and Testing, Packt Publishing, 2019.
+\item 7. G. Wilson, DevSecOps: A leader’s guide to producing secure software, Rethink Press, 2020.
+\item 8. L. Rice, Container Security, O’Reilly \& Associates Inc., 2020.
+\item 9. ISO/IEC/JTC1 SC27 Standards: Trustworthiness, Cryptography, Data security, Security evaluation and testing, Security control, Identity management and privacy technologies.
+\item 10. ISO/IEC 25010:2023 Systems and software Quality Requirements and Evaluation (SQuaRE) — Product quality model.
+\item 11. ISO/IEC 27000:2018 Information technology — Security techniques — Information security management systems — Overview and vocabulary.
+\item 12. ISO/IEC 27032:2012 Information technology — Security techniques — Guidelines for cybersecurity.
+\item 13. ISO/IEC 19770-1:2017 Information technology — IT asset management — Part 1: IT asset management systems — Requirements.
+\item 14. ISO/IEC 21827:2008 Information technology — Security techniques — Systems Security Engineering — Capability Maturity Model (SSE-CMM).
+\item 15. ISO/IEC 27001:2022 Information security, cybersecurity and privacy protection — Information security management systems — Requirements.
+\item 16. M. Howard and S. Lipner, The Security Development Lifecycle, Microsoft Press, 2006.
+\item 17. F. Swiderski and W. Snyder, Threat Modeling: Design for Security, Wiley, 2014.
+\item 18. D. Firesmith, “Security use cases,” Journal of Object Technology, Vol. 2, No. 1, pp. 53-64, 2003.
+\item 19. E. Fernandez-Buglioni, Security Patterns in Practice, Wiley, 2013.
+\item 20. C. Nagappan, R. Lai, and R. Steel, Core Security Patterns, Prentice Hall, 2005.
+\item 21. M. Schumacher, E. Fernandez-Buglioni, D. Hybertson, F. Buschmann, and P. Sommerlad, Security Patterns, Wiley, 2006.
+\item 22. R.C. Seacord, The CERT C Secure Coding Standard, Addison-Wesley Professional, 2008.
+\item 23. R.C. Seacord, Secure Coding in C and C++, Addison-Wesley Professional, 2013.
+\item 24. D. Long, F. Mohindra, D. Seacord, R.C. Sutherland, and D.F. Svoboda, The CERT Oracle Secure Coding Standard for Java, 2011.
+\item 25. J. Erickson, Hacking: The Art of Exploitation, 2nd Edition, No Starch Press, 2008.
+\item 26. K. Scarfone, M. Souppaya, A. Cody, and A. Orebaugh, Technical Guide to Information Security Testing and Assessment, NIST SP800-115, 2008.
+\item 27. PCI Security Standards Council, PCI DSS: Payment Card Industry Data Security Standard, Version 3.2, 2017.
+\item 28. MITRE, Common Vulnerabilities and Exposures (CVE).
+\item 29. MITRE, Common Weakness Enumeration (CWE).
+\item 30. MITRE, Common Attack Pattern Enumeration and Classification (CAPEC).
+\item 31. C. Dotson, Practical Cloud Security, O’Reilly, 2019.
+\item 32. IEEE, Internet of Things Security Best Practices, 2017.
+\item 33. IEC, IoT 2020: Smart and secure IoT platform, 2016.
+\item 34. ISO/IEC 15408-1:2022 Information security, cybersecurity and privacy protection — Evaluation criteria for IT security — Part 1.
+\item 35. ISO/IEC 18045:2008 Information technology — Security techniques — Methodology for IT security evaluation.
+\item 36. DoD Enterprise DevSecOps, Fundamentals.
+\item 37. C. Easttom, Computer Security Fundamentals, 4th Edition, Pearson IT Certification, 2019.
+\item 38. Y. Diogenes and E. Ozkaya, Cybersecurity — Attack and Defense Strategies, Second Edition, Packt Publishing, 2019.
+\item 39. C. Chio and D. Freeman, Machine Learning and Security, O’Reilly, 2018.
+\end{itemize}
+\section{10 画像 TODO 一覧}
+本文に配置した画像 TODO を再掲する。実際に図を作る場合は、各 TODO のプロンプトをそのまま画像生成に使うと、A4 資料に合う図を作りやすい。
+
+\begin{itemize}[leftmargin=2em]
+\item 1. 13 章の全体地図を入れる。
+\item 2. セキュリティ三概念の関係図を入れる。
+\item 3. CIA と追加性質の図を入れる。
+\item 4. SDLC と DevSecOps の流れを入れる。
+\item 5. セキュリティ要求から脆弱性管理までの追跡図を入れる。
+\item 6. 脅威モデリングの基本図を入れる。
+\item 7. 静的分析と動的テストの比較図を入れる。
+\item 8. 脆弱性データベースと対応プロセスの図を入れる。
+\item 9. クラウド資産の散在と管理責任の図を入れる。
+\item 10. IoT の攻撃面を示す図を入れる。
+\item 11. 機械学習への二種類の攻撃を示す図を入れる。
+\end{itemize}
+\section{11 章末確認問題}
+\begin{itemize}[leftmargin=2em]
+\item 1. ソフトウェアセキュリティ、情報セキュリティ、サイバーセキュリティの違いを説明せよ。
+\item 2. 機密性、完全性、可用性を、それぞれ一つの失敗例とともに説明せよ。
+\item 3. 脆弱性が、ソフトウェア本体だけでなく第三者部品からも入る理由を説明せよ。
+\item 4. ISMS がソフトウェアセキュリティ要求を生むことがある理由を説明せよ。
+\item 5. アジャイル開発でセキュリティが「ブロッカー」ではなく「実現要因」であるべき理由を説明せよ。
+\item 6. SDLC と DevSecOps の違いを説明せよ。
+\item 7. セキュリティ要求、セキュリティ設計、セキュリティテストの関係を説明せよ。
+\item 8. 静的分析と動的テストの違いを説明せよ。
+\item 9. CVE、CWE、CAPEC、CVSS の役割を説明せよ。
+\item 10. クラウド、IoT、機械学習アプリケーションのうち一つを選び、その領域固有のセキュリティ上の注意点を説明せよ。
+\end{itemize}
+\infobox{解答の方向性}{1 は守る対象と範囲の違いを述べる。2 は CIA の三要素を使う。3 はライブラリ、COTS、OS の脆弱性を含める。4 は法令、規制、リスク評価、監査から要求が生じることを述べる。5 は開発速度に合わせた支援、自動化、開発者の責任を述べる。6 はライフサイクル段階への組込みと、開発・運用・セキュリティの継続的統合の違いを述べる。7 以降は、本文の「要求から設計・実装・テスト・脆弱性管理へつなぐ」という観点で説明できる。}
+\end{document}

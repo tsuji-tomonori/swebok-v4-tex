@@ -22,3 +22,6 @@ tex/*.toc
 tex/*.pdf
 tex/.figure-build/
 tex/.texmf-var/
+
+# Windows alternate data stream metadata
+*:Zone.Identifier

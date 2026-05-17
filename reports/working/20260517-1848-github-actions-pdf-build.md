@@ -19,11 +19,14 @@
 - `.github/workflows/build-pdf.yml` を追加し、`swebok_v4_ch01_18_ja_master.pdf` をGitHub Actions artifactとして生成・アップロードするようにした。
 - `.gitignore` にTeXの中間生成物とPDF、TeXキャッシュディレクトリを追加した。
 - `tex/generate_missing_figure_assets.py` をコミット対象にし、CI上で不足図版PNGを生成できるようにした。
+- `work/*.tex` をコミット対象にし、CI上で統合生成スクリプトが章ソースを読めるようにした。
 - PDFを含むローカルコミットを巻き戻し、PDFをコミット対象から外した。
+- 初回Actions失敗の原因が `work/` 配下の章ソース不足だったため、follow-up commitで生成入力を追加した。
 
 ## 成果物
 - `.github/workflows/build-pdf.yml`
 - `.gitignore`
+- `work/*.tex`
 - `tex/generate_missing_figure_assets.py`
 - `reports/working/20260517-1848-github-actions-pdf-build.md`
 
