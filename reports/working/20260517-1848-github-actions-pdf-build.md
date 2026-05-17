@@ -34,12 +34,13 @@
 - `python3 -m py_compile tex/build_integrated_document.py tex/generate_missing_figure_assets.py`
 - `python3 tex/generate_missing_figure_assets.py`
 - `git diff --cached --check`
+- `gh run watch 25987925549 --exit-status`
 
 ## Fit評価
 - 指示適合度: 4.8 / 5
 - PDF本体をコミットせず、GitHub ActionsでPDFを生成する構成に変更した。
-- GitHub Actions自体の実行結果はpush後のGitHub側で確認が必要。
+- GitHub Actions run `25987925549` で、統合TeX生成、不足図版生成、PDFビルド、artifact upload まで成功した。
 
 ## 未対応・制約・リスク
-- Actionsのaptパッケージ解決やTeX Live環境差分による失敗は、GitHub上の初回実行で確認する必要がある。
+- Actions上でPDF生成は成功済み。ただし `actions/checkout@v4` と `actions/upload-artifact@v4` にNode.js 20非推奨の警告が出ている。
 - 作業前から存在する未ステージの生成物・未追跡ファイルは、本件に必要なもの以外は触っていない。
