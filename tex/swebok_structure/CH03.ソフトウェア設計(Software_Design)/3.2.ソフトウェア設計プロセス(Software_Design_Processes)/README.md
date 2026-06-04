@@ -7,3 +7,11 @@
 
 - [3.2.1 高水準設計 (High-Level Design)](./3.2.1.高水準設計(High-Level_Design)/)
 - [3.2.2 詳細設計 (Detailed Design)](./3.2.2.詳細設計(Detailed_Design)/)
+
+## 本文
+
+- [content.tex](./content.tex)
+
+## Assets
+
+- [assets/fig-ch03-05.png](./assets/fig-ch03-05.png)

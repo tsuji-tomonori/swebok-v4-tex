@@ -2,3 +2,7 @@
 
 - 日本語: 専用言語と領域固有言語
 - English: Specialized and Domain-Specific Languages
+
+## 本文
+
+- [content.tex](./content.tex)

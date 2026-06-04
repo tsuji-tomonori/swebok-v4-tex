@@ -11,3 +11,7 @@
 - [3.4.4 設計パターンとスタイル (Design Patterns and Styles)](./3.4.4.設計パターンとスタイル(Design_Patterns_and_Styles)/)
 - [3.4.5 専用言語と領域固有言語 (Specialized and Domain-Specific Languages)](./3.4.5.専用言語と領域固有言語(Specialized_and_Domain-Specific_Languages)/)
 - [3.4.6 設計根拠 (Design Rationale)](./3.4.6.設計根拠(Design_Rationale)/)
+
+## 本文
+
+- [content.tex](./content.tex)
