@@ -3,6 +3,10 @@
 - 日本語: テスト関連測度
 - English: Test-Related Measures
 
+## 本文
+
+- [content.tex](./content.tex)
+
 ## 下位構成
 
 - [5.4.1 SUT の評価 (Evaluation of the SUT)](./5.4.1.SUTの評価(Evaluation_of_the_SUT)/)

@@ -3,6 +3,10 @@
 - 日本語: テスト技法
 - English: Test Techniques
 
+## 本文
+
+- [content.tex](./content.tex)
+
 ## 下位構成
 
 - [5.3.1 仕様ベース技法 (Specification-Based Techniques)](./5.3.1.仕様ベース技法(Specification-Based_Techniques)/)

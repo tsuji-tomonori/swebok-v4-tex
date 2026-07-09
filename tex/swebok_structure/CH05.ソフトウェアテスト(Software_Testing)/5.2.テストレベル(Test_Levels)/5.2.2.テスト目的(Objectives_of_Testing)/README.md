@@ -2,3 +2,7 @@
 
 - 日本語: テスト目的
 - English: Objectives of Testing
+## 本文
+
+- [content.tex](./content.tex)
+

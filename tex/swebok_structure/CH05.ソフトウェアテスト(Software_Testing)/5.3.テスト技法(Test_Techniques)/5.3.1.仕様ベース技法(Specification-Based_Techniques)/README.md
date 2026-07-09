@@ -2,3 +2,7 @@
 
 - 日本語: 仕様ベース技法
 - English: Specification-Based Techniques
+## 本文
+
+- [content.tex](./content.tex)
+

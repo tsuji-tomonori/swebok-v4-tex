@@ -2,3 +2,7 @@
 
 - 日本語: テストと他の活動との関係
 - English: Relationship of Testing to Other Activities
+## 本文
+
+- [content.tex](./content.tex)
+

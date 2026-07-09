@@ -3,6 +3,10 @@
 - 日本語: 開発プロセスと適用領域におけるソフトウェアテスト
 - English: Software Testing in the Development Processes and the Application Domains
 
+## 本文
+
+- [content.tex](./content.tex)
+
 ## 下位構成
 
 - [5.6.1 ソフトウェア開発プロセス内のテスト (Testing Inside Software Development Processes)](./5.6.1.ソフトウェア開発プロセス内のテスト(Testing_Inside_Software_Development_Processes)/)

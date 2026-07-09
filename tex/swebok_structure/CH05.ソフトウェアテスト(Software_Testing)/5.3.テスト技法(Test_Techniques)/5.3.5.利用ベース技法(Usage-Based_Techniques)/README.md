@@ -2,3 +2,7 @@
 
 - 日本語: 利用ベース技法
 - English: Usage-Based Techniques
+## 本文
+
+- [content.tex](./content.tex)
+

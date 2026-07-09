@@ -2,3 +2,7 @@
 
 - 日本語: 経験ベース技法
 - English: Experience-Based Techniques
+## 本文
+
+- [content.tex](./content.tex)
+

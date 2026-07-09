@@ -3,6 +3,10 @@
 - 日本語: ソフトウェアテストの基礎
 - English: Software Testing Fundamentals
 
+## 本文
+
+- [content.tex](./content.tex)
+
 ## 下位構成
 
 - [5.1.1 欠陥と障害 (Faults vs Failures)](./5.1.1.欠陥と障害(Faults_vs_Failures)/)

@@ -2,3 +2,7 @@
 
 - 日本語: 技法の選択と組合せ
 - English: Selecting and Combining Techniques
+## 本文
+
+- [content.tex](./content.tex)
+

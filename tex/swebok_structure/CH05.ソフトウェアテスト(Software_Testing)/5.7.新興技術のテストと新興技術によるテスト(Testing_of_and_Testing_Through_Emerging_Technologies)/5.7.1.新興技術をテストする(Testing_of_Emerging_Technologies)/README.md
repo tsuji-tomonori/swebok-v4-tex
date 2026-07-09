@@ -2,3 +2,7 @@
 
 - 日本語: 新興技術をテストする
 - English: Testing of Emerging Technologies
+## 本文
+
+- [content.tex](./content.tex)
+
